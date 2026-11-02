@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 2 · Ilustrando el Scope léxico — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔭</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#0ea5e9">
+      <span class="sidebar-emoji">🔭</span>
+      <div><div class="sidebar-book">Scope & Closures</div><div class="sidebar-sub">Scope y Closures</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap active"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../scope-closures/README.html">Scope & Closures</a> <span>/</span> Cap. 2 · Ilustrando el Scope léxico</div>
+    <article class="prose" style="--book-color:#0ea5e9">
+      <h1 id="you-dont-know-js-yet-scope-closures---2nd-edition">You Don't Know JS Yet: Scope &amp; Closures - 2nd Edition</h1>
+<h1 id="capítulo-2-ilustrando-el-lexical-scope">Capítulo 2: Ilustrando el Lexical Scope</h1>
+<p>En el Capítulo 1, exploramos cómo se determina el scope durante la compilación del código, un modelo llamado "lexical scope". El término "lexical" hace referencia a la primera etapa de la compilación (lexing/parsing).</p>
+<p>Para <em>razonar</em> correctamente sobre nuestros programas, es importante tener una base conceptual sólida de cómo funciona el scope. Si nos apoyamos en conjeturas e intuición, puede que accidentalmente obtengamos las respuestas correctas algunas veces, pero muchas otras veces estaremos muy lejos. Esta no es una receta para el éxito.</p>
+<p>Como allá en las clases de matemática de la primaria, ¡obtener la respuesta correcta no es suficiente si no mostramos los pasos correctos para llegar a ella! Necesitamos construir modelos mentales precisos y útiles como base para avanzar.</p>
+<p>Este capítulo ilustrará el <em>scope</em> con varias metáforas. El objetivo acá es <em>pensar</em> en cómo tu programa es manejado por el engine de JS de maneras que se alineen más de cerca con cómo funciona realmente el engine de JS.</p>
+<h2 id="canicas-y-baldes-y-burbujas-dios-mío">Canicas, y Baldes, y Burbujas... ¡Dios Mío!</h2>
+<p>Una metáfora que me ha resultado efectiva para entender el scope es clasificar canicas de colores en baldes de su color correspondiente.</p>
+<p>Imaginá que te encontrás con una pila de canicas y notás que todas las canicas son de color rojo, azul o verde. Clasifiquemos todas las canicas, dejando caer las rojas en un balde rojo, las verdes en un balde verde y las azules en un balde azul. Después de clasificarlas, cuando más tarde necesites una canica verde, ya sabés que el balde verde es el lugar al que ir para conseguirla.</p>
+<p>En esta metáfora, las canicas son las variables de nuestro programa. Los baldes son los scopes (funciones y bloques), a los que conceptualmente les asignamos colores individuales para los fines de nuestra discusión. El color de cada canica está determinado por el <em>color</em> del scope en el que encontramos que la canica fue creada originalmente.</p>
+<p>Anotemos el ejemplo del programa en ejecución del Capítulo 1 con etiquetas de color de scope:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// outer/global scope: RED
+
+var students = [
+    { id: 14, name: "Kyle" },
+    { id: 73, name: "Suzy" },
+    { id: 112, name: "Frank" },
+    { id: 6, name: "Sarah" }
+];
+
+function getStudentName(studentID) {
+    // function scope: BLUE
+
+    for (let student of students) {
+        // loop scope: GREEN
+
+        if (student.id == studentID) {
+            return student.name;
+        }
+    }
+}
+
+var nextStudent = getStudentName(73);
+console.log(nextStudent);   // Suzy</code></pre></div>
+<p>Hemos designado tres colores de scope con comentarios en el código: RED (el scope global más externo), BLUE (el scope de la función <code>getStudentName(..)</code>) y GREEN (el scope dentro del bucle <code>for</code>). Pero aún así puede ser difícil reconocer los límites de estos baldes de scope al mirar un listado de código.</p>
+<p>La Figura 2 ayuda a visualizar los límites de los scopes dibujando burbujas de colores (es decir, baldes) alrededor de cada uno:</p>
+<p>&lt;figure&gt;     &lt;img src="images/fig2.png" width="500" alt="Colored Scope Bubbles" align="center"&gt;     &lt;figcaption&gt;&lt;em&gt;Fig. 2: Colored Scope Bubbles&lt;/em&gt;&lt;/figcaption&gt; &lt;/figure&gt;</p>
+<ol><li>La <strong>Burbuja 1</strong> (RED) abarca el scope global, que contiene tres identificadores/variables: <code>students</code> (línea 1), <code>getStudentName</code> (línea 8) y <code>nextStudent</code> (línea 16).</li></ol>
+<ol><li>La <strong>Burbuja 2</strong> (BLUE) abarca el scope de la función <code>getStudentName(..)</code> (línea 8), que contiene solo un identificador/variable: el parámetro <code>studentID</code> (línea 8).</li></ol>
+<ol><li>La <strong>Burbuja 3</strong> (GREEN) abarca el scope del bucle <code>for</code> (línea 9), que contiene solo un identificador/variable: <code>student</code> (línea 9).</li></ol>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Técnicamente, el parámetro <code>studentID</code> no está exactamente en el scope BLUE(2). Desenredaremos esa confusión en "Implied Scopes" en el Apéndice A. Por ahora, es suficientemente cercano etiquetar a <code>studentID</code> como una canica BLUE(2).</p></div></div>
+<p>Las burbujas de scope se determinan durante la compilación en función de dónde se escriben las funciones/bloques de scope, el anidamiento unos dentro de otros, etcétera. Cada burbuja de scope está completamente contenida dentro de su burbuja de scope padre—un scope nunca está parcialmente en dos scopes externos diferentes.</p>
+<p>Cada canica (variable/identificador) se colorea según la burbuja (balde) en la que se declara, no según el color del scope desde el que se puede acceder a ella (por ejemplo, <code>students</code> en la línea 9 y <code>studentID</code> en la línea 10).</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Recordá que afirmamos en el Capítulo 1 que <code>id</code>, <code>name</code> y <code>log</code> son todas propiedades, no variables; en otras palabras, no son canicas en baldes, así que no se colorean según ninguna de las reglas que estamos discutiendo en este libro. Para entender cómo se manejan tales accesos a propiedades, consultá el tercer libro de la serie, <em>Objects &amp; Classes</em>.</p></div></div>
+<p>A medida que el engine de JS procesa un programa (durante la compilación) y encuentra una declaración de una variable, esencialmente se pregunta: "¿En qué scope de qué <em>color</em> (burbuja o balde) estoy actualmente?" La variable se designa con ese mismo <em>color</em>, lo que significa que pertenece a ese balde/burbuja.</p>
+<p>El balde GREEN(3) está totalmente anidado dentro del balde BLUE(2), y de manera similar el balde BLUE(2) está totalmente anidado dentro del balde RED(1). Los scopes pueden anidarse unos dentro de otros como se muestra, a cualquier profundidad de anidamiento que tu programa necesite.</p>
+<p>Las referencias (no declaraciones) a variables/identificadores están permitidas si hay una declaración coincidente ya sea en el scope actual, o en cualquier scope por encima/fuera del scope actual, pero no con declaraciones de scopes inferiores/anidados.</p>
+<p>Una expression en el balde RED(1) solo tiene acceso a las canicas RED(1), <strong>no</strong> a las BLUE(2) o GREEN(3). Una expression en el balde BLUE(2) puede referenciar canicas BLUE(2) o RED(1), <strong>no</strong> GREEN(3). Y una expression en el balde GREEN(3) tiene acceso a las canicas RED(1), BLUE(2) y GREEN(3).</p>
+<p>Podemos conceptualizar el proceso de determinar estos colores de canicas que no son declaraciones durante el runtime como una búsqueda. Como la referencia a la variable <code>students</code> en el statement del bucle <code>for</code> en la línea 9 no es una declaración, no tiene color. Entonces le preguntamos al balde del scope BLUE(2) actual si tiene una canica que coincida con ese nombre. Como no la tiene, la búsqueda continúa con el siguiente scope externo/contenedor: RED(1). El balde RED(1) tiene una canica con el nombre <code>students</code>, así que se determina que la referencia a la variable <code>students</code> del statement del bucle es una canica RED(1).</p>
+<p>El statement <code>if (student.id == studentID)</code> en la línea 10 se determina de manera similar que referencia una canica GREEN(3) llamada <code>student</code> y una canica BLUE(2) llamada <code>studentID</code>.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>El engine de JS generalmente no determina estos colores de canicas durante el runtime; la "búsqueda" acá es un recurso retórico para ayudarte a entender los conceptos. Durante la compilación, la mayoría o todas las referencias a variables coincidirán con baldes de scope ya conocidos, así que su color ya está determinado y almacenado con cada referencia de canica para evitar búsquedas innecesarias mientras el programa se ejecuta. Más sobre este matiz en el Capítulo 3.</p></div></div>
+<p>Las conclusiones clave de las canicas y los baldes (¡y las burbujas!):</p>
+<ul><li>Las variables se declaran en scopes específicos, que pueden pensarse como canicas de colores de baldes del color correspondiente.</li></ul>
+<ul><li>Cualquier referencia a una variable que aparezca en el scope donde fue declarada, o que aparezca en cualquier scope anidado más profundo, será etiquetada como una canica de ese mismo color—a menos que un scope intermedio "sombree" (shadow) la declaración de la variable; consultá "Shadowing" en el Capítulo 3.</li></ul>
+<ul><li>La determinación de los baldes de colores, y de las canicas que contienen, ocurre durante la compilación. Esta información se usa para las "búsquedas" de variables (color de canica) durante la ejecución del código.</li></ul>
+<h2 id="una-conversación-entre-amigos">Una Conversación Entre Amigos</h2>
+<p>Otra metáfora útil para el proceso de analizar variables y los scopes de los que provienen es imaginar varias conversaciones que ocurren dentro del engine a medida que el código se procesa y luego se ejecuta. Podemos "escuchar" estas conversaciones para obtener una mejor base conceptual de cómo funcionan los scopes.</p>
+<p>Conozcamos ahora a los miembros del engine de JS que tendrán conversaciones a medida que procesan nuestro programa:</p>
+<ul><li><em>Engine</em>: responsable de la compilación y ejecución de principio a fin de nuestro programa JavaScript.</li></ul>
+<ul><li><em>Compiler</em>: uno de los amigos de <em>Engine</em>; maneja todo el trabajo sucio de parsear y generar código (ver la sección anterior).</li></ul>
+<ul><li><em>Scope Manager</em>: otro amigo de <em>Engine</em>; recopila y mantiene una lista de búsqueda de todas las variables/identificadores declarados, y hace cumplir un conjunto de reglas sobre cómo estos son accesibles para el código que se está ejecutando actualmente.</li></ul>
+<p>Para que <em>entiendas completamente</em> cómo funciona JavaScript, necesitás empezar a <em>pensar</em> como piensa <em>Engine</em> (y sus amigos), hacer las preguntas que ellos hacen y responder sus preguntas de la misma manera.</p>
+<p>Para explorar estas conversaciones, recordemos una vez más nuestro ejemplo del programa en ejecución:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var students = [
+    { id: 14, name: "Kyle" },
+    { id: 73, name: "Suzy" },
+    { id: 112, name: "Frank" },
+    { id: 6, name: "Sarah" }
+];
+
+function getStudentName(studentID) {
+    for (let student of students) {
+        if (student.id == studentID) {
+            return student.name;
+        }
+    }
+}
+
+var nextStudent = getStudentName(73);
+
+console.log(nextStudent);
+// Suzy</code></pre></div>
+<p>Examinemos cómo JS va a procesar ese programa, específicamente empezando con el primer statement. El array y su contenido son solo valores literales básicos de JS (y por lo tanto no se ven afectados por ninguna cuestión de scoping), así que nuestro foco acá estará en las partes de declaración <code>var students = [ .. ]</code> y de inicialización-asignación.</p>
+<p>Típicamente pensamos en eso como un solo statement, pero no es así como lo ve nuestro amigo <em>Engine</em>. De hecho, JS trata esto como dos operaciones distintas, una que <em>Compiler</em> manejará durante la compilación, y la otra que <em>Engine</em> manejará durante la ejecución.</p>
+<p>Lo primero que <em>Compiler</em> hará con este programa es realizar el lexing para descomponerlo en tokens, que luego parseará en un árbol (AST).</p>
+<p>Una vez que <em>Compiler</em> llega a la generación de código, hay más detalles que considerar de lo que podría ser obvio. Una suposición razonable sería que <em>Compiler</em> producirá código para el primer statement como: "Asignar memoria para una variable, etiquetarla <code>students</code>, y luego colocar una referencia al array en esa variable." Pero esa no es toda la historia.</p>
+<p>Estos son los pasos que <em>Compiler</em> seguirá para manejar ese statement:</p>
+<ol><li>Al encontrar <code>var students</code>, <em>Compiler</em> le preguntará a <em>Scope Manager</em> para ver si ya existe una variable llamada <code>students</code> para ese balde de scope en particular. Si es así, <em>Compiler</em> ignoraría esta declaración y seguiría adelante. De lo contrario, <em>Compiler</em> producirá código que (en tiempo de ejecución) le pide a <em>Scope Manager</em> que cree una nueva variable llamada <code>students</code> en ese balde de scope.</li></ol>
+<ol><li><em>Compiler</em> luego produce código para que <em>Engine</em> lo ejecute más tarde, para manejar la asignación <code>students = []</code>. El código que <em>Engine</em> ejecuta primero le preguntará a <em>Scope Manager</em> si hay una variable llamada <code>students</code> accesible en el balde de scope actual. Si no, <em>Engine</em> sigue buscando en otro lado (ver "Nested Scope" más abajo). Una vez que <em>Engine</em> encuentra una variable, le asigna la referencia del array <code>[ .. ]</code>.</li></ol>
+<p>En forma conversacional, la primera fase de la compilación del programa podría desarrollarse entre <em>Compiler</em> y <em>Scope Manager</em> así:</p>
+<blockquote><p><em><strong>Compiler</strong></em>: Hola, <em>Scope Manager</em> (del scope global), encontré una declaración formal de un identificador llamado <code>students</code>, ¿alguna vez escuchaste de él?</p></blockquote>
+<blockquote><p><em><strong>(Global) Scope Manager</strong></em>: No, nunca escuché de él, así que lo acabo de crear para vos.</p></blockquote>
+<blockquote><p><em><strong>Compiler</strong></em>: Hola, <em>Scope Manager</em>, encontré una declaración formal de un identificador llamado <code>getStudentName</code>, ¿alguna vez escuchaste de él?</p></blockquote>
+<blockquote><p><em><strong>(Global) Scope Manager</strong></em>: No, pero lo acabo de crear para vos.</p></blockquote>
+<blockquote><p><em><strong>Compiler</strong></em>: Hola, <em>Scope Manager</em>, <code>getStudentName</code> apunta a una función, así que necesitamos un nuevo balde de scope.</p></blockquote>
+<blockquote><p><em><strong>(Function) Scope Manager</strong></em>: Entendido, acá está el balde de scope.</p></blockquote>
+<blockquote><p><em><strong>Compiler</strong></em>: Hola, <em>Scope Manager</em> (de la función), encontré una declaración de parámetro formal para <code>studentID</code>, ¿alguna vez escuchaste de él?</p></blockquote>
+<blockquote><p><em><strong>(Function) Scope Manager</strong></em>: No, pero ahora está creado en este scope.</p></blockquote>
+<blockquote><p><em><strong>Compiler</strong></em>: Hola, <em>Scope Manager</em> (de la función), encontré un bucle <code>for</code> que necesitará su propio balde de scope.</p></blockquote>
+<blockquote><p>...</p></blockquote>
+<p>La conversación es un intercambio de preguntas y respuestas, donde <strong>Compiler</strong> le pregunta al <em>Scope Manager</em> actual si una declaración de identificador que encontró ya fue encontrada antes. Si la respuesta es "no", <em>Scope Manager</em> crea esa variable en ese scope. Si la respuesta es "sí", entonces efectivamente se la saltea ya que no hay nada más que hacer para ese <em>Scope Manager</em>.</p>
+<p><em>Compiler</em> también avisa cuando se topa con funciones o bloques de scope, para que puedan instanciarse un nuevo balde de scope y un <em>Scope Manager</em>.</p>
+<p>Más tarde, cuando llegue la ejecución del programa, la conversación cambiará a <em>Engine</em> y <em>Scope Manager</em>, y podría desarrollarse así:</p>
+<blockquote><p><em><strong>Engine</strong></em>: Hola, <em>Scope Manager</em> (del scope global), antes de empezar, ¿podés buscar el identificador <code>getStudentName</code> para que pueda asignarle esta función?</p></blockquote>
+<blockquote><p><em><strong>(Global) Scope Manager</strong></em>: Sí, acá está la variable.</p></blockquote>
+<blockquote><p><em><strong>Engine</strong></em>: Hola, <em>Scope Manager</em>, encontré una referencia <em>target</em> para <code>students</code>, ¿alguna vez escuchaste de ella?</p></blockquote>
+<blockquote><p><em><strong>(Global) Scope Manager</strong></em>: Sí, fue declarada formalmente para este scope, así que acá está.</p></blockquote>
+<blockquote><p><em><strong>Engine</strong></em>: Gracias, estoy inicializando <code>students</code> a <code>undefined</code>, así que está lista para usar.</p></blockquote>
+<blockquote><p>Hola, <em>Scope Manager</em> (del scope global), encontré una referencia <em>target</em> para <code>nextStudent</code>, ¿alguna vez escuchaste de ella?</p></blockquote>
+<blockquote><p><em><strong>(Global) Scope Manager</strong></em>: Sí, fue declarada formalmente para este scope, así que acá está.</p></blockquote>
+<blockquote><p><em><strong>Engine</strong></em>: Gracias, estoy inicializando <code>nextStudent</code> a <code>undefined</code>, así que está lista para usar.</p></blockquote>
+<blockquote><p>Hola, <em>Scope Manager</em> (del scope global), encontré una referencia <em>source</em> para <code>getStudentName</code>, ¿alguna vez escuchaste de ella?</p></blockquote>
+<blockquote><p><em><strong>(Global) Scope Manager</strong></em>: Sí, fue declarada formalmente para este scope. Acá está.</p></blockquote>
+<blockquote><p><em><strong>Engine</strong></em>: Genial, el valor en <code>getStudentName</code> es una función, así que voy a ejecutarla.</p></blockquote>
+<blockquote><p><em><strong>Engine</strong></em>: Hola, <em>Scope Manager</em>, ahora necesitamos instanciar el scope de la función.</p></blockquote>
+<blockquote><p>...</p></blockquote>
+<p>Esta conversación es otro intercambio de preguntas y respuestas, donde <em>Engine</em> primero le pide al <em>Scope Manager</em> actual que busque el identificador <code>getStudentName</code> hoisteado, para poder asociar la función con él. <em>Engine</em> luego procede a preguntarle a <em>Scope Manager</em> sobre la referencia <em>target</em> para <code>students</code>, y así sucesivamente.</p>
+<p>Para repasar y resumir cómo se procesa un statement como <code>var students = [ .. ]</code>, en dos pasos distintos:</p>
+<ol><li><em>Compiler</em> configura la declaración de la variable del scope (ya que no fue declarada previamente en el scope actual).</li></ol>
+<ol><li>Mientras <em>Engine</em> se está ejecutando, para procesar la parte de asignación del statement, <em>Engine</em> le pide a <em>Scope Manager</em> que busque la variable, la inicializa a <code>undefined</code> para que esté lista para usar, y luego le asigna el valor del array.</li></ol>
+<h2 id="nested-scope">Nested Scope</h2>
+<p>Cuando llega el momento de ejecutar la función <code>getStudentName()</code>, <em>Engine</em> pide una instancia de <em>Scope Manager</em> para el scope de esa función, y luego procederá a buscar el parámetro (<code>studentID</code>) al que asignarle el valor del argumento <code>73</code>, y así sucesivamente.</p>
+<p>El scope de la función <code>getStudentName(..)</code> está anidado dentro del scope global. El scope de bloque del bucle <code>for</code> está de manera similar anidado dentro de ese scope de función. Los scopes pueden anidarse léxicamente a cualquier profundidad arbitraria que defina el programa.</p>
+<p>Cada scope obtiene su propia instancia de <em>Scope Manager</em> cada vez que ese scope se ejecuta (una o más veces). Cada scope tiene automáticamente todos sus identificadores registrados al inicio de la ejecución del scope (esto se llama "variable hoisting"; ver Capítulo 5).</p>
+<p>Al comienzo de un scope, si algún identificador provino de una declaración <code>function</code>, esa variable se inicializa automáticamente a su referencia de función asociada. Y si algún identificador provino de una declaración <code>var</code> (a diferencia de <code>let</code>/<code>const</code>), esa variable se inicializa automáticamente a <code>undefined</code> para que pueda usarse; de lo contrario, la variable permanece sin inicializar (es decir, en su "TDZ", ver Capítulo 5) y no puede usarse hasta que se ejecuten su declaración e inicialización completas.</p>
+<p>En el statement <code>for (let student of students) {</code>, <code>students</code> es una referencia <em>source</em> que debe buscarse. Pero ¿cómo se manejará esa búsqueda, ya que el scope de la función no encontrará tal identificador?</p>
+<p>Para explicarlo, imaginemos que ese fragmento de conversación se desarrolla así:</p>
+<blockquote><p><em><strong>Engine</strong></em>: Hola, <em>Scope Manager</em> (de la función), tengo una referencia <em>source</em> para <code>students</code>, ¿alguna vez escuchaste de ella?</p></blockquote>
+<blockquote><p><em><strong>(Function) Scope Manager</strong></em>: No, nunca escuché de ella. Probá con el siguiente scope externo.</p></blockquote>
+<blockquote><p><em><strong>Engine</strong></em>: Hola, <em>Scope Manager</em> (del scope global), tengo una referencia <em>source</em> para <code>students</code>, ¿alguna vez escuchaste de ella?</p></blockquote>
+<blockquote><p><em><strong>(Global) Scope Manager</strong></em>: Sí, fue declarada formalmente, acá está.</p></blockquote>
+<blockquote><p>...</p></blockquote>
+<p>Uno de los aspectos clave del lexical scope es que cada vez que una referencia de identificador no puede encontrarse en el scope actual, se consulta el siguiente scope externo en el anidamiento; ese proceso se repite hasta que se encuentra una respuesta o no hay más scopes para consultar.</p>
+<h3 id="fallas-de-búsqueda">Fallas de Búsqueda</h3>
+<p>Cuando <em>Engine</em> agota todos los scopes <em>léxicamente disponibles</em> (moviéndose hacia afuera) y aún no puede resolver la búsqueda de un identificador, entonces existe una condición de error. Sin embargo, dependiendo del modo del programa (strict-mode o no) y del rol de la variable (es decir, <em>target</em> vs. <em>source</em>; ver Capítulo 1), esta condición de error se manejará de manera diferente.</p>
+<h4 id="el-lío-de-undefined">El Lío de Undefined</h4>
+<p>Si la variable es una <em>source</em>, una búsqueda de identificador no resuelta se considera una variable no declarada (desconocida, faltante), lo que siempre resulta en que se lance un <code>ReferenceError</code>. Además, si la variable es una <em>target</em>, y el código en ese momento se está ejecutando en strict-mode, la variable se considera no declarada y de manera similar lanza un <code>ReferenceError</code>.</p>
+<p>El mensaje de error para una condición de variable no declarada, en la mayoría de los entornos de JS, se verá como "Reference Error: XYZ is not defined." La frase "not defined" parece casi idéntica a la palabra "undefined", en lo que respecta al idioma inglés. Pero estas dos son muy diferentes en JS, y este mensaje de error lamentablemente genera una confusión persistente.</p>
+<p>"Not defined" realmente significa "not declared"—o, más bien, "undeclared", como en una variable que no tiene ninguna declaración formal coincidente en ningún scope <em>léxicamente disponible</em>. En cambio, "undefined" realmente significa que se encontró una variable (declarada), pero la variable por lo demás no tiene ningún otro valor en ese momento, así que toma por defecto el valor <code>undefined</code>.</p>
+<p>Para perpetuar la confusión aún más, el operador <code>typeof</code> de JS devuelve el string <code>"undefined"</code> para referencias de variables en cualquiera de los dos estados:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName;
+typeof studentName;     // "undefined"
+
+typeof doesntExist;     // "undefined"</code></pre></div>
+<p>Estas dos referencias de variables están en condiciones muy diferentes, pero JS sin dudas enturbia las aguas. El lío de terminología es confuso y terriblemente desafortunado. Lamentablemente, los desarrolladores de JS simplemente tienen que prestar mucha atención para no mezclar <em>qué tipo</em> de "undefined" están manejando!</p>
+<h4 id="global-qué">Global... ¡¿Qué?!</h4>
+<p>Si la variable es una <em>target</em> y strict-mode no está en efecto, entra en juego un comportamiento heredado confuso y sorprendente. El resultado problemático es que el <em>Scope Manager</em> del scope global simplemente creará una <strong>variable global accidental</strong> para cumplir con esa asignación target!</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function getStudentName() {
+    // assignment to an undeclared variable :(
+    nextStudent = "Suzy";
+}
+
+getStudentName();
+
+console.log(nextStudent);
+// "Suzy" -- oops, an accidental-global variable!</code></pre></div>
+<p>Así es como procederá esa <em>conversación</em>:</p>
+<blockquote><p><em><strong>Engine</strong></em>: Hola, <em>Scope Manager</em> (de la función), tengo una referencia <em>target</em> para <code>nextStudent</code>, ¿alguna vez escuchaste de ella?</p></blockquote>
+<blockquote><p><em><strong>(Function) Scope Manager</strong></em>: No, nunca escuché de ella. Probá con el siguiente scope externo.</p></blockquote>
+<blockquote><p><em><strong>Engine</strong></em>: Hola, <em>Scope Manager</em> (del scope global), tengo una referencia <em>target</em> para <code>nextStudent</code>, ¿alguna vez escuchaste de ella?</p></blockquote>
+<blockquote><p><em><strong>(Global) Scope Manager</strong></em>: No, pero como estamos en non-strict-mode, te di una mano y acabo de crear una variable global para vos, ¡acá está!</p></blockquote>
+<p>Qué asco.</p>
+<p>Este tipo de accidente (casi con certeza llevará a bugs eventualmente) es un gran ejemplo de las protecciones beneficiosas que ofrece strict-mode, y de por qué es tan mala idea <em>no</em> estar usando strict-mode. En strict-mode, el <em><strong>Global Scope Manager</strong></em> en cambio habría respondido:</p>
+<blockquote><p><em><strong>(Global) Scope Manager</strong></em>: No, nunca escuché de ella. Lo siento, tengo que lanzar un <code>ReferenceError</code>.</p></blockquote>
+<p>Asignar a una variable nunca declarada <em>es</em> un error, así que está bien que recibamos un <code>ReferenceError</code> acá.</p>
+<p>Nunca confíes en variables globales accidentales. Usá siempre strict-mode, y declará siempre formalmente tus variables. Entonces obtendrás un útil <code>ReferenceError</code> si alguna vez intentás por error asignar a una variable no declarada.</p>
+<h3 id="construyendo-sobre-metáforas">Construyendo Sobre Metáforas</h3>
+<p>Para visualizar la resolución de scope anidado, prefiero otra metáfora más, un edificio de oficinas, como en la Figura 3:</p>
+<p>&lt;figure&gt;     &lt;img src="images/fig3.png" width="250" alt="Scope &amp;quot;Building&amp;quot;" align="center"&gt;     &lt;figcaption&gt;&lt;em&gt;Fig. 3: Scope "Building"&lt;/em&gt;&lt;/figcaption&gt;     &lt;br&gt;&lt;br&gt; &lt;/figure&gt;</p>
+<p>El edificio representa la colección de scopes anidados de nuestro programa. El primer piso del edificio representa el scope que se está ejecutando actualmente. El nivel más alto del edificio es el scope global.</p>
+<p>Resolvés una referencia de variable <em>target</em> o <em>source</em> buscando primero en el piso actual, y si no la encontrás, tomando el ascensor al siguiente piso (es decir, un scope externo), buscando ahí, luego el siguiente, y así sucesivamente. Una vez que llegás al piso más alto (el scope global), o encontrás lo que estás buscando, o no. Pero tenés que parar de todos modos.</p>
+<h2 id="continuá-la-conversación">Continuá la Conversación</h2>
+<p>A esta altura, deberías estar desarrollando modelos mentales más ricos sobre qué es el scope y cómo el engine de JS lo determina y lo usa a partir de tu código.</p>
+<p>Antes de <em>continuar</em>, andá a buscar algo de código en uno de tus proyectos y recorré estas conversaciones. En serio, hablá en voz alta de verdad. Buscá un amigo y practicá cada rol con él. Si alguno de los dos se encuentra confundido o trabado, dediquen más tiempo a repasar este material.</p>
+<p>A medida que nos movemos (hacia arriba) al siguiente capítulo (externo), exploraremos cómo los lexical scopes de un programa están conectados en una cadena.</p>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../scope-closures/ch1.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 1 · ¿Qué es el Scope?</span></a>
+      <a class="pager-btn next" href="../scope-closures/ch3.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 3 · El alcance de la cadena de scopes</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#canicas-y-baldes-y-burbujas-dios-mío">Canicas, y Baldes, y Burbujas... ¡Dios Mío!</a></li>
+<li class="toc-l2"><a href="#una-conversación-entre-amigos">Una Conversación Entre Amigos</a></li>
+<li class="toc-l2"><a href="#nested-scope">Nested Scope</a></li>
+<li class="toc-l3"><a href="#fallas-de-búsqueda">Fallas de Búsqueda</a></li>
+<li class="toc-l3"><a href="#construyendo-sobre-metáforas">Construyendo Sobre Metáforas</a></li>
+<li class="toc-l2"><a href="#continuá-la-conversación">Continuá la Conversación</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

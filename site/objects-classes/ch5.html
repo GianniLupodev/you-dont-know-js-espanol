@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 5 · Delegación — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🧩</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#8b5cf6">
+      <span class="sidebar-emoji">🧩</span>
+      <div><div class="sidebar-book">Objects & Classes</div><div class="sidebar-sub">Objetos y Clases</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap active"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../objects-classes/README.html">Objects & Classes</a> <span>/</span> Cap. 5 · Delegación</div>
+    <article class="prose" style="--book-color:#8b5cf6">
+      <h1 id="you-dont-know-js-yet-objects-classes---2nd-edition">You Don't Know JS Yet: Objects &amp; Classes - 2nd Edition</h1>
+<h1 id="capítulo-5-delegación">Capítulo 5: Delegación</h1>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Trabajo en progreso</p></div></div>
+<p>Exploramos a fondo los objetos, los prototipos, las clases y, ahora, la palabra clave <code>this</code>. Pero vamos a revisar lo que aprendimos hasta ahora desde una perspectiva un poco diferente.</p>
+<p>¿Y si pudieras aprovechar todo el poder de los objetos, los prototipos y los mecanismos dinámicos de <code>this</code> en conjunto, sin usar nunca <code>class</code> ni ninguno de sus derivados?</p>
+<p>De hecho, yo diría que JS es, en esencia, menos orientado a clases de lo que la palabra clave <code>class</code> pudiera aparentar. Dado que JS es un lenguaje dinámico y prototípico, su punto fuerte es, en realidad... la <em>delegación</em>.</p>
+<h2 id="preámbulo">Preámbulo</h2>
+<p>Antes de empezar a mirar la delegación, quiero ofrecer una advertencia. Esta perspectiva sobre los mecanismos de <code>[[Prototype]]</code> de los objetos de JS y de contexto de función <code>this</code> <em>no</em> es la corriente principal. <em>No</em> es la forma en que los autores de frameworks y bibliotecas utilizan JS. Hasta donde sé, no vas a encontrar ninguna aplicación grande por ahí que use este patrón.</p>
+<p>Entonces, ¿por qué demonios le dedicaría un capítulo a semejante patrón, si es tan impopular?</p>
+<p>Buena pregunta. La respuesta descarada es: ¡porque es mi libro y puedo hacer lo que se me antoje!</p>
+<p>Pero la respuesta más profunda es porque creo que desarrollar <em>esta</em> comprensión de uno de los pilares centrales del lenguaje te ayuda <em>incluso si</em> todo lo que vas a hacer es usar patrones de JS al estilo <code>class</code>.</p>
+<p>Para ser claro, la delegación no es un invento mío. Existe como patrón de diseño desde hace décadas. Y durante mucho tiempo, los desarrolladores argumentaron que la delegación prototípica era <em>simplemente</em> la forma dinámica de la herencia.<sup class="fnref"><a href="#fn-TreatyOfOrlando">[TreatyOfOrlando]</a></sup> Pero creo que fue un error confundir ambas.<sup class="fnref"><a href="#fn-ClassVsPrototype">[ClassVsPrototype]</a></sup></p>
+<p>Para los fines de este capítulo, voy a presentar la delegación, tal como se implementa mediante los mecanismos de JS, como un patrón de diseño alternativo, posicionado en algún punto entre la orientación a clases y los patrones de objeto-clausura/módulo.</p>
+<p>El primer paso es <em>deconstruir</em> el mecanismo de <code>class</code> hasta sus partes individuales. Luego seleccionaremos y mezclaremos las partes de una forma un poco diferente.</p>
+<h2 id="qué-es-un-constructor-de-todos-modos">¿Qué es un constructor, de todos modos?</h2>
+<p>En el Capítulo 3, vimos <code>constructor(..)</code> como el punto de entrada principal para la construcción de una instancia de <code>class</code>. Pero el <code>constructor(..)</code> en realidad no hace ningún trabajo de <em>creación</em>, solo hace trabajo de <em>inicialización</em>. En otras palabras, la instancia ya está creada para cuando el <code>constructor(..)</code> se ejecuta y la inicializa; por ejemplo, asignaciones del tipo <code>this.whatever</code>.</p>
+<p>Entonces, ¿dónde ocurre realmente el trabajo de <em>creación</em>? En el operador <code>new</code>. Como explica la sección "Invocación de Contexto con New" del Capítulo 4, hay cuatro pasos que la palabra clave <code>new</code> realiza; el primero de ellos es la creación de un nuevo objeto vacío (la instancia). El <code>constructor(..)</code> ni siquiera se invoca hasta el paso 3 de la labor de <code>new</code>.</p>
+<p>Pero <code>new</code> no es la única manera —ni quizás, siquiera, la mejor— de <em>crear</em> una "instancia" de objeto. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// a non-class "constructor"
+function Point2d(x,y) {
+    // create an object (1)
+    var instance = {};
+
+    // initialize the instance (3)
+    instance.x = x;
+    instance.y = y;
+
+    // return the instance (4)
+    return instance;
+}
+
+var point = Point2d(3,4);
+
+point.x;                    // 3
+point.y;                    // 4</code></pre></div>
+<p>No hay <code>class</code>, solo una definición de función regular (<code>Point2d(..)</code>). No hay invocación con <code>new</code>, solo una llamada de función regular (<code>Point2d(3,4)</code>). Y no hay referencias a <code>this</code>, solo asignaciones regulares de propiedades de objeto (<code>instance.x = ..</code>).</p>
+<p>El término que se usa con más frecuencia para referirse a este patrón de código es que <code>Point2d(..)</code> aquí es una <em>función fábrica</em> (<em>factory function</em>). Invocarla provoca la construcción (creación e inicialización) de un objeto, y nos lo devuelve. Ese es un patrón extremadamente común, al menos tan común como el código orientado a clases.</p>
+<p>Anoté con comentarios <code>(1)</code>, <code>(3)</code> y <code>(4)</code> en ese fragmento, que corresponden aproximadamente a los pasos 1, 3 y 4 de la operación <code>new</code>. Pero ¿dónde está el paso 2?</p>
+<p>Si recordás, el paso 2 de <code>new</code> consiste en enlazar el objeto (creado en el paso 1) a otro objeto, mediante su slot <code>[[Prototype]]</code> (ver Capítulo 2). Entonces, ¿a qué objeto querríamos enlazar nuestro objeto <code>instance</code>? Podríamos enlazarlo a un objeto que contenga funciones que quisiéramos asociar/usar con nuestra instancia.</p>
+<p>Modifiquemos el fragmento anterior:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var prototypeObj = {
+    toString() {
+        return `(${this.x},${this.y})`;
+    },
+}
+
+// a non-class "constructor"
+function Point2d(x,y) {
+    // create an object (1)
+    var instance = {
+        // link the instance's [[Prototype]] (2)
+        __proto__: prototypeObj,
+    };
+
+    // initialize the instance (3)
+    instance.x = x;
+    instance.y = y;
+
+    // return the instance (4)
+    return instance;
+}
+
+var point = Point2d(3,4);
+
+point.toString();           // (3,4)</code></pre></div>
+<p>Ahora ves la asignación de <code>__proto__</code> que establece el enlace interno de <code>[[Prototype]]</code>, que era el paso 2 faltante. Usé <code>__proto__</code> acá meramente con fines ilustrativos; usar <code>setPrototypeOf(..)</code> como se mostró en el Capítulo 4 habría logrado la misma tarea.</p>
+<h3 id="instancia-de-fábrica-con-new">Instancia de Fábrica con <em>New</em></h3>
+<p>¿Qué pensás que pasaría si usáramos <code>new</code> para invocar la función <code>Point2d(..)</code> tal como se muestra acá?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var anotherPoint = new Point2d(5,6);
+
+anotherPoint.toString(5,6);         // (5,6)</code></pre></div>
+<p>¡Esperá! ¿Qué está pasando acá? Una función fábrica regular, no-<code>class</code>, se invoca con la palabra clave <code>new</code>, como si fuera una <code>class</code>. ¿Eso cambia algo en el resultado del código?</p>
+<p>No... y sí. <code>anotherPoint</code> acá es exactamente el mismo objeto que habría sido si no hubiera usado <code>new</code>. ¡Pero! ¿El objeto que <code>new</code> crea, enlaza y asigna como contexto <code>this</code>? <em>Ese</em> objeto fue completamente ignorado y descartado, para terminar siendo recolectado por el recolector de basura de JS. Lamentablemente, el engine de JS no puede predecir que no vas a usar el objeto que le pediste a <code>new</code> que creara, así que siempre se crea igual, aunque quede sin usar.</p>
+<p>¡Así es! Usar una palabra clave <code>new</code> contra una función fábrica puede <em>sentirse</em> más ergonómico o familiar, pero es bastante derrochador, en el sentido de que crea <strong>dos</strong> objetos y descarta inútilmente uno de ellos.</p>
+<h3 id="inicialización-de-fábrica">Inicialización de Fábrica</h3>
+<p>En el ejemplo de código actual, la función <code>Point2d(..)</code> todavía se parece muchísimo a un <code>constructor(..)</code> normal de una definición de <code>class</code>. Pero ¿y si moviéramos el código de inicialización a una función aparte, digamos llamada <code>init(..)</code>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var prototypeObj = {
+    init(x,y) {
+        // initialize the instance (3)
+        this.x = x;
+        this.y = y;
+    },
+    toString() {
+        return `(${this.x},${this.y})`;
+    },
+}
+
+// a non-class "constructor"
+function Point2d(x,y) {
+    // create an object (1)
+    var instance = {
+        // link the instance's [[Prototype]] (2)
+        __proto__: prototypeObj,
+    };
+
+    // initialize the instance (3)
+    instance.init(x,y);
+
+    // return the instance (4)
+    return instance;
+}
+
+var point = Point2d(3,4);
+
+point.toString();           // (3,4)</code></pre></div>
+<p>La llamada <code>instance.init(..)</code> hace uso del enlace de <code>[[Prototype]]</code> establecido mediante la asignación de <code>__proto__</code>. Por lo tanto, <em>delega</em> hacia arriba por la cadena de prototipos hasta <code>prototypeObj.init(..)</code>, y lo invoca con un contexto <code>this</code> de <code>instance</code>; mediante asignación de <em>contexto implícito</em> (ver Capítulo 4).</p>
+<p>Continuemos la deconstrucción. ¡Preparate para un cambiazo!</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var Point2d = {
+    init(x,y) {
+        // initialize the instance (3)
+        this.x = x;
+        this.y = y;
+    },
+    toString() {
+        return `(${this.x},${this.y})`;
+    },
+};</code></pre></div>
+<p>¡Pará, qué! Descarté la función <code>Point2d(..)</code> y, en su lugar, renombré <code>prototypeObj</code> como <code>Point2d</code>. Raro.</p>
+<p>Pero miremos el resto del código ahora:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// steps 1, 2, and 4
+var point = { __proto__: Point2d, };
+
+// step 3
+point.init(3,4);
+
+point.toString();           // (3,4)</code></pre></div>
+<p>Y un último refinamiento: usemos una utilidad integrada que JS nos provee, llamada <code>Object.create(..)</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// steps 1, 2, and 4
+var point = Object.create(Point2d);
+
+// step 3
+point.init(3,4);
+
+point.toString();           // (3,4)</code></pre></div>
+<p>¿Qué operaciones realiza <code>Object.create(..)</code>?</p>
+<ol><li>crea un objeto vacío nuevo, de la nada.</li></ol>
+<ol><li>enlaza el <code>[[Prototype]]</code> de ese nuevo objeto vacío al objeto <code>.prototype</code> de la función.</li></ol>
+<p>Si eso te resulta familiar, es porque son exactamente los mismos dos primeros pasos de la palabra clave <code>new</code> (ver Capítulo 4).</p>
+<p>Volvamos a juntar esto ahora:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var Point2d = {
+    init(x,y) {
+        this.x = x;
+        this.y = y;
+    },
+    toString() {
+        return `(${this.x},${this.y})`;
+    },
+};
+
+var point = Object.create(Point2d);
+
+point.init(3,4);
+
+point.toString();           // (3,4)</code></pre></div>
+<p>Mmm. Tomate unos momentos para reflexionar sobre lo que se derivó acá. ¿Cómo se compara con el enfoque de <code>class</code>?</p>
+<p>Este patrón descarta las palabras clave <code>class</code> y <code>new</code>, pero logra exactamente el mismo resultado. ¿El <em>costo</em>? La única operación <code>new</code> se dividió en dos sentencias: <code>Object.create(Point2d)</code> y <code>point.init(3,4)</code>.</p>
+<h4 id="ayudame-a-reconstruir">¡Ayudame a Reconstruir!</h4>
+<p>Si tener esas dos operaciones separadas te molesta —¿está <em>demasiado deconstruido</em>!?—, siempre pueden recombinarse en un pequeño helper de fábrica:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function make(objType,...args) {
+    var instance = Object.create(objType);
+    instance.init(...args);
+    return instance;
+}
+
+var point = make(Point2d,3,4);
+
+point.toString();           // (3,4)</code></pre></div>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Semejante helper de función fábrica <code>make(..)</code> funciona de forma general para cualquier tipo de objeto, siempre que sigas la convención implícita de que cada <code>objType</code> al que enlaces tenga una función llamada <code>init(..)</code> en él.</p></div></div>
+<p>Y, por supuesto, todavía podés crear tantas instancias como quieras:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var point = make(Point2d,3,4);
+
+var anotherPoint = make(Point2d,5,6);</code></pre></div>
+<h2 id="dejando-de-lado-el-pensamiento-de-clase">Dejando de Lado el Pensamiento de Clase</h2>
+<p>Francamente, la <em>deconstrucción</em> que acabamos de atravesar solo termina en código ligeramente diferente, y quizás ligeramente mejor o ligeramente peor, comparado con el estilo <code>class</code>. Si eso fuera todo lo que trata la delegación, probablemente ni siquiera sería lo suficientemente útil como para más que una nota al pie, mucho menos un capítulo entero.</p>
+<p>Pero acá es donde vamos a empezar a dejar de lado en serio el pensamiento orientado a clases en sí mismo, no solo la sintaxis.</p>
+<p>El diseño orientado a clases crea inherentemente una jerarquía de <em>clasificación</em>, es decir, cómo dividimos y agrupamos características, y luego las apilamos verticalmente en una cadena de herencia. Además, definir una subclase es una especialización de la clase base generalizada. Instanciar es una especialización de la clase generalizada.</p>
+<p>El comportamiento en una jerarquía de clases tradicional es una composición vertical a través de las capas de la cadena de herencia. A lo largo de las décadas se han hecho intentos, e incluso se han vuelto bastante populares en ciertos momentos, de aplanar jerarquías profundas de herencia y favorecer una composición más horizontal mediante <em>mixins</em> e ideas relacionadas.</p>
+<p>No estoy afirmando que haya algo malo en esas formas de abordar el código. Pero sí estoy diciendo que no son <em>naturalmente</em> cómo funciona JS, así que adoptarlas en JS ha sido un camino largo, sinuoso y complicado, y ha acumulado, de diversas maneras, mucha sintaxis llena de matices para adaptarlas por encima del pilar central de <code>[[Prototype]]</code> y <code>this</code> de JS.</p>
+<p>Durante el resto de este capítulo, pretendo descartar tanto la sintaxis de <code>class</code> <em>como</em> el pensamiento de <em>clase</em>.</p>
+<h2 id="la-delegación-ilustrada">La Delegación Ilustrada</h2>
+<p>Entonces, ¿de qué trata la delegación? En su esencia, trata de que dos o más <em>cosas</em> compartan el esfuerzo de completar una tarea.</p>
+<p>En lugar de definir una <em>cosa</em> padre general <code>Point2d</code> que representa un comportamiento compartido del que un conjunto de una o más <em>cosas</em> hijas <code>point</code> / <code>anotherPoint</code> heredan, la delegación nos lleva a construir nuestro programa con <em>cosas</em> pares discretas que cooperan entre sí.</p>
+<p>Voy a esbozar eso en algo de código:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var Coordinates = {
+    setX(x) {
+        this.x = x;
+    },
+    setY(y) {
+        this.y = y;
+    },
+    setXY(x,y) {
+        this.setX(x);
+        this.setY(y);
+    },
+};
+
+var Inspect = {
+    toString() {
+        return `(${this.x},${this.y})`;
+    },
+};
+
+var point = {};
+
+Coordinates.setXY.call(point,3,4);
+Inspect.toString.call(point);         // (3,4)
+
+var anotherPoint = Object.create(Coordinates);
+
+anotherPoint.setXY(5,6);
+Inspect.toString.call(anotherPoint);  // (5,6)</code></pre></div>
+<p>Desglosemos lo que está pasando acá.</p>
+<p>Definí <code>Coordinates</code> como un objeto concreto que contiene algunos comportamientos que asocio con el establecimiento de coordenadas de puntos (<code>x</code> e <code>y</code>). También definí <code>Inspect</code> como un objeto concreto que contiene algo de lógica de inspección para depuración, como <code>toString()</code>.</p>
+<p>Luego creo dos objetos concretos más, <code>point</code> y <code>anotherPoint</code>.</p>
+<p><code>point</code> no tiene un <code>[[Prototype]]</code> específico (por defecto: <code>Object.prototype</code>). Usando asignación de <em>contexto explícito</em> (ver Capítulo 4), invoco las utilidades <code>Coordinates.setXY(..)</code> e <code>Inspect.toString()</code> en el contexto de <code>point</code>. A eso lo llamo <em>delegación explícita</em>.</p>
+<p><code>anotherPoint</code> está enlazado por <code>[[Prototype]]</code> a <code>Coordinates</code>, principalmente por una cuestión de conveniencia. Eso me permite usar asignación de <em>contexto implícito</em> con <code>anotherPoint.setXY(..)</code>. Pero todavía puedo compartir <em>explícitamente</em> <code>anotherPoint</code> como contexto para la llamada <code>Inspect.toString()</code>. A eso lo llamo <em>delegación implícita</em>.</p>
+<p>**No te pierdas <em>esto</em>:<strong> De todas formas logramos la composición: compusimos los comportamientos de <code>Coordinates</code> e <code>Inspect</code>, durante invocaciones de funciones en tiempo de ejecución con compartición del contexto <code>this</code>. No tuvimos que combinar en el código esos comportamientos dentro de una única <code>class</code> (o una jerarquía de <code>class</code> base-subclase) de la que <code>point</code> / <code>anotherPoint</code> heredaran. Me gusta llamar a esto composición en tiempo de ejecución, </strong>composición virtual**.</p>
+<p>El <em>punto</em> acá es: ninguno de estos cuatro objetos es un padre o un hijo. Todos son pares entre sí, y todos tienen propósitos diferentes. Podemos organizar nuestro comportamiento en fragmentos lógicos (en cada objeto respectivo) y compartir el contexto mediante <code>this</code> (y, opcionalmente, el enlace de <code>[[Prototype]]</code>), lo que termina con los mismos resultados de composición que los otros patrones que examinamos hasta ahora en el libro.</p>
+<p><em>Eso</em> es el corazón del patrón de <strong>delegación</strong>, tal como JS lo encarna.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>En la primera edición de esta serie de libros, este libro ("this &amp; Object Prototypes") acuñó un término, "OLOO", que significa "Objects Linked to Other Objects" (Objetos Enlazados a Otros Objetos), para contrastar con "OO" ("Object Oriented", Orientado a Objetos). En este ejemplo precedente, podés ver la esencia de OLOO: todo lo que tenemos son objetos, enlazados a y cooperando con, otros objetos. Encuentro esto hermoso en su simplicidad.</p></div></div>
+<h2 id="componiendo-objetos-pares">Componiendo Objetos Pares</h2>
+<p>Llevemos <em>esta delegación</em> aún más lejos.</p>
+<p>En el fragmento precedente, <code>point</code> y <code>anotherPoint</code> solo contenían datos, y los comportamientos a los que delegaban estaban en otros objetos (<code>Coordinates</code> e <code>Inspect</code>). Pero podemos agregar comportamientos directamente a cualquiera de los objetos en una cadena de delegación, y esos comportamientos pueden incluso interactuar entre sí, todo mediante la magia de la <em>composición virtual</em> (compartición del contexto <code>this</code>).</p>
+<p>Para ilustrarlo, vamos a evolucionar bastante nuestro ejemplo actual del <em>point</em>. Y, como bonus, vamos a dibujar realmente nuestros puntos en un elemento <code>&lt;canvas&gt;</code> del DOM. Echémosle un vistazo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var Canvas = {
+    setOrigin(x,y) {
+        this.ctx.translate(x,y);
+
+        // flip the canvas context vertically,
+        // so coordinates work like on a normal
+        // 2d (x,y) graph
+        this.ctx.scale(1,-1);
+    },
+    pixel(x,y) {
+        this.ctx.fillRect(x,y,1,1);
+    },
+    renderScene() {
+        // clear the canvas
+        var matrix = this.ctx.getTransform();
+        this.ctx.resetTransform();
+        this.ctx.clearRect(
+            0, 0,
+            this.ctx.canvas.width,
+            this.ctx.canvas.height
+        );
+        this.ctx.setTransform(matrix);
+
+        this.draw();  // &lt;-- where is draw()?
+    },
+};
+
+var Coordinates = {
+    setX(x) {
+        this.x = Math.round(x);
+    },
+    setY(y) {
+        this.y = Math.round(y);
+    },
+    setXY(x,y) {
+        this.setX(x);
+        this.setY(y);
+        this.render();   // &lt;-- where is render()?
+    },
+};
+
+var ControlPoint = {
+    // delegate to Coordinates
+    __proto__: Coordinates,
+
+    // NOTE: must have a &lt;canvas id="my-canvas"&gt;
+    // element in the DOM
+    ctx: document.getElementById("my-canvas")
+        .getContext("2d"),
+
+    rotate(angleRadians) {
+        var rotatedX = this.x * Math.cos(angleRadians) -
+            this.y * Math.sin(angleRadians);
+        var rotatedY = this.x * Math.sin(angleRadians) +
+            this.y * Math.cos(angleRadians);
+        this.setXY(rotatedX,rotatedY);
+    },
+    draw() {
+        // plot the point
+        Canvas.pixel.call(this,this.x,this.y);
+    },
+    render() {
+        // clear the canvas, and re-render
+        // our control-point
+        Canvas.renderScene.call(this);
+    },
+};
+
+// set the logical (0,0) origin at this
+// physical location on the canvas
+Canvas.setOrigin.call(ControlPoint,100,100);
+
+ControlPoint.setXY(30,40);
+// [renders point (30,40) on the canvas]
+
+// ..
+// later:
+
+// rotate the point about the (0,0) origin
+// 90 degrees counter-clockwise
+ControlPoint.rotate(Math.PI / 2);
+// [renders point (-40,30) on the canvas]</code></pre></div>
+<p>OK, eso es un montón de código para digerir. Tomate tu tiempo y releé el fragmento varias veces. Agregué un par de objetos concretos nuevos (<code>Canvas</code> y <code>ControlPoint</code>) junto al objeto <code>Coordinates</code> anterior.</p>
+<p>Asegurate de ver y entender las interacciones entre estos tres objetos concretos.</p>
+<p><code>ControlPoint</code> está enlazado (mediante <code>__proto__</code>) para <em>delegar implícitamente</em> (cadena de <code>[[Prototype]]</code>) a <code>Coordinates</code>.</p>
+<p>Acá hay una <em>delegación explícita</em>: <code>Canvas.setOrigin.call(ControlPoint,100,100);</code>; estoy invocando la llamada <code>Canvas.setOrigin(..)</code> en el contexto de <code>ControlPoint</code>. Eso tiene el efecto de compartir <code>ctx</code> con <code>setOrigin(..)</code>, mediante <code>this</code>.</p>
+<p><code>ControlPoint.setXY(..)</code> delega <em>implícitamente</em> a <code>Coordinates.setXY(..)</code>, pero todavía en el contexto de <code>ControlPoint</code>. Acá hay un detalle clave que es fácil pasar por alto: ¿ves el <code>this.render()</code> dentro de <code>Coordinates.setXY(..)</code>? ¿De dónde sale eso? Dado que el contexto <code>this</code> es <code>ControlPoint</code> (no <code>Coordinates</code>), está invocando <code>ControlPoint.render()</code>.</p>
+<p><code>ControlPoint.render()</code> <em>delega explícitamente</em> a <code>Canvas.renderScene()</code>, nuevamente todavía en el contexto de <code>ControlPoint</code>. <code>renderScene()</code> llama a <code>this.draw()</code>, pero ¿de dónde sale eso? Sí, todavía de <code>ControlPoint</code> (mediante el contexto <code>this</code>).</p>
+<p>¿Y <code>ControlPoint.draw()</code>? <em>Delega explícitamente</em> a <code>Canvas.pixel(..)</code>, una vez más todavía en el contexto de <code>ControlPoint</code>.</p>
+<p>Los tres objetos tienen métodos que terminan invocándose entre sí. Pero estas llamadas no están particularmente cableadas de forma rígida. <code>Canvas.renderScene()</code> no llama a <code>ControlPoint.draw()</code>, llama a <code>this.draw()</code>. Eso es importante, porque significa que <code>Canvas.renderScene()</code> es más flexible de usar en un contexto <code>this</code> diferente; por ejemplo, contra otro tipo de objeto <em>point</em> además de <code>ControlPoint</code>.</p>
+<p>Es a través del contexto <code>this</code>, y de la cadena de <code>[[Prototype]]</code>, que estos tres objetos básicamente quedan mezclados (compuestos) virtualmente juntos, según se necesite en cada paso, de modo que trabajan juntos <strong>como si fueran un solo objeto en lugar de tres objetos separados</strong>.</p>
+<p>Esa es la <em>belleza</em> de la composición virtual tal como la realiza el patrón de delegación en JS.</p>
+<h3 id="contexto-flexible">Contexto Flexible</h3>
+<p>Mencioné arriba que podemos agregar con bastante facilidad otros objetos concretos a la mezcla. Acá hay un ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var Coordinates = { /* .. */ };
+
+var Canvas = {
+    /* .. */
+    line(start,end) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(start.x,start.y);
+        this.ctx.lineTo(end.x,end.y);
+        this.ctx.stroke();
+    },
+};
+
+function lineAnchor(x,y) {
+    var anchor = {
+        __proto__: Coordinates,
+        render() {},
+    };
+    anchor.setXY(x,y);
+    return anchor;
+}
+
+var GuideLine = {
+    // NOTE: must have a &lt;canvas id="my-canvas"&gt;
+    // element in the DOM
+    ctx: document.getElementById("my-canvas")
+        .getContext("2d"),
+
+    setAnchors(sx,sy,ex,ey) {
+        this.start = lineAnchor(sx,sy);
+        this.end = lineAnchor(ex,ey);
+        this.render();
+    },
+    draw() {
+        // plot the point
+        Canvas.line.call(this,this.start,this.end);
+    },
+    render() {
+        // clear the canvas, and re-render
+        // our line
+        Canvas.renderScene.call(this);
+    },
+};
+
+// set the logical (0,0) origin at this
+// physical location on the canvas
+Canvas.setOrigin.call(GuideLine,100,100);
+
+GuideLine.setAnchors(-30,65,45,-17);
+// [renders line from (-30,65) to (45,-17)
+//   on the canvas]</code></pre></div>
+<p>¡Eso está bastante bueno, me parece!</p>
+<p>Pero creo que otro beneficio menos obvio es que tener objetos enlazados dinámicamente mediante el contexto <code>this</code> tiende a hacer que probar diferentes partes del programa de forma independiente sea, en cierto modo, más fácil.</p>
+<p>Por ejemplo, <code>Object.setPrototypeOf(..)</code> puede usarse para cambiar dinámicamente el enlace de <code>[[Prototype]]</code> de un objeto, delegándolo a un objeto diferente, como un objeto mock. O podrías redefinir dinámicamente <code>GuideLine.draw()</code> y <code>GuideLine.render()</code> para que <em>deleguen explícitamente</em> a un <code>MockCanvas</code> en lugar de a <code>Canvas</code>.</p>
+<p>La palabra clave <code>this</code>, y el enlace de <code>[[Prototype]]</code>, son un mecanismo tremendamente flexible cuando los entendés y los aprovechás por completo.</p>
+<h2 id="por-qué-this">¿Por qué <em>This</em>?</h2>
+<p>OK, así que con suerte está claro que el patrón de delegación se apoya fuertemente en la entrada implícita, compartiendo el contexto mediante <code>this</code> en lugar de a través de un parámetro explícito.</p>
+<p>Podrías preguntar, con razón, ¿por qué no simplemente pasar siempre ese contexto de forma explícita? Ciertamente podemos hacerlo, pero... para pasar manualmente el contexto necesario, vamos a tener que cambiar prácticamente cada una de las firmas de función, y cualquier sitio de llamada correspondiente.</p>
+<p>Revisitemos el ejemplo anterior de delegación de <code>ControlPoint</code>, e implementémoslo sin ninguna compartición de contexto <code>this</code> orientada a la delegación. Prestá mucha atención a las diferencias:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var Canvas = {
+    setOrigin(ctx,x,y) {
+        ctx.translate(x,y);
+        ctx.scale(1,-1);
+    },
+    pixel(ctx,x,y) {
+        ctx.fillRect(x,y,1,1);
+    },
+    renderScene(ctx,entity) {
+        // clear the canvas
+        var matrix = ctx.getTransform();
+        ctx.resetTransform();
+        ctx.clearRect(
+            0, 0,
+            ctx.canvas.width,
+            ctx.canvas.height
+        );
+        ctx.setTransform(matrix);
+
+        entity.draw();
+    },
+};
+
+var Coordinates = {
+    setX(entity,x) {
+        entity.x = Math.round(x);
+    },
+    setY(entity,y) {
+        entity.y = Math.round(y);
+    },
+    setXY(entity,x,y) {
+        this.setX(entity,x);
+        this.setY(entity,y);
+        entity.render();
+    },
+};
+
+var ControlPoint = {
+    // NOTE: must have a &lt;canvas id="my-canvas"&gt;
+    // element in the DOM
+    ctx: document.getElementById("my-canvas")
+        .getContext("2d"),
+
+    setXY(x,y) {
+        Coordinates.setXY(this,x,y);
+    },
+    rotate(angleRadians) {
+        var rotatedX = this.x * Math.cos(angleRadians) -
+            this.y * Math.sin(angleRadians);
+        var rotatedY = this.x * Math.sin(angleRadians) +
+            this.y * Math.cos(angleRadians);
+        this.setXY(rotatedX,rotatedY);
+    },
+    draw() {
+        // plot the point
+        Canvas.pixel(this.ctx,this.x,this.y);
+    },
+    render() {
+        // clear the canvas, and re-render
+        // our control-point
+        Canvas.renderScene(this.ctx,this);
+    },
+};
+
+// set the logical (0,0) origin at this
+// physical location on the canvas
+Canvas.setOrigin(ControlPoint.ctx,100,100);
+
+// ..</code></pre></div>
+<p>Para ser honesto, a algunos de ustedes quizás les guste más ese estilo de código. Y está bien si estás en ese bando. Este fragmento evita <code>[[Prototype]]</code> por completo, y solo se apoya en muchas menos referencias básicas al estilo <code>this.</code> a propiedades y métodos.</p>
+<p>En contraste, el estilo de delegación que defiendo en este capítulo es poco familiar y usa la compartición de <code>[[Prototype]]</code> y <code>this</code> de maneras con las que probablemente no estés familiarizado. Para usar semejante estilo con eficacia, vas a tener que invertir el tiempo y la práctica para construir una familiaridad más profunda.</p>
+<p>Pero, en mi opinión, el "costo" de evitar la composición virtual mediante la delegación puede sentirse a lo largo de todas las firmas de función y los sitios de llamada; los encuentro mucho más recargados. Ese paso de contexto explícito es todo un impuesto.</p>
+<p>De hecho, yo nunca recomendaría ese estilo de código en absoluto. Si querés evitar la delegación, probablemente lo mejor sea simplemente quedarte con el código al estilo <code>class</code>, como se ve en el Capítulo 3. Como ejercicio que le queda al lector, intentá convertir los fragmentos de código anteriores de <code>ControlPoint</code> / <code>GuideLine</code> para que usen <code>class</code>.</p>
+<div class="footnotes"><hr><ol><li id="fn-TreatyOfOrlando">"Treaty of Orlando"; Henry Lieberman, Lynn Andrea Stein, David Ungar; 6 de octubre de 1987; https://web.media.mit.edu/~lieber/Publications/Treaty-of-Orlando-Treaty-Text.pdf ; PDF; Consultado en julio de 2022</li><li id="fn-ClassVsPrototype">"Classes vs. Prototypes, Some Philosophical and Historical Observations"; Antero Taivalsaari; 22 de abril de 1996; https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.56.4713&amp;rep=rep1&amp;type=pdf ; PDF; Consultado en julio de 2022</li></ol></div>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../objects-classes/ch4.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 4 · Esto es por qué "this"</span></a>
+      <a class="pager-btn next" href="../objects-classes/thanks.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Agradecimientos</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#preámbulo">Preámbulo</a></li>
+<li class="toc-l2"><a href="#qué-es-un-constructor-de-todos-modos">¿Qué es un constructor, de todos modos?</a></li>
+<li class="toc-l3"><a href="#instancia-de-fábrica-con-new">Instancia de Fábrica con <em>New</em></a></li>
+<li class="toc-l3"><a href="#inicialización-de-fábrica">Inicialización de Fábrica</a></li>
+<li class="toc-l2"><a href="#dejando-de-lado-el-pensamiento-de-clase">Dejando de Lado el Pensamiento de Clase</a></li>
+<li class="toc-l2"><a href="#la-delegación-ilustrada">La Delegación Ilustrada</a></li>
+<li class="toc-l2"><a href="#componiendo-objetos-pares">Componiendo Objetos Pares</a></li>
+<li class="toc-l3"><a href="#contexto-flexible">Contexto Flexible</a></li>
+<li class="toc-l2"><a href="#por-qué-this">¿Por qué <em>This</em>?</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

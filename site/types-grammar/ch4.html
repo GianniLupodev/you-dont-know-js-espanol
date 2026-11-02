@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 4 · Coerción de valores — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔡</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#ec4899">
+      <span class="sidebar-emoji">🔡</span>
+      <div><div class="sidebar-book">Types & Grammar</div><div class="sidebar-sub">Tipos y Gramática</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap active"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../types-grammar/README.html">Types & Grammar</a> <span>/</span> Cap. 4 · Coerción de valores</div>
+    <article class="prose" style="--book-color:#ec4899">
+      <h1 id="you-dont-know-js-yet-types-grammar---2nd-edition">You Don't Know JS Yet: Types &amp; Grammar - 2nd Edition</h1>
+<h1 id="capítulo-4-coercionando-valores">Capítulo 4: Coercionando Valores</h1>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Trabajo en progreso</p></div></div>
+<p>Hemos cubierto a fondo todos los distintos <em>tipos</em> de valores en JS. Y en el camino, más de una vez, mencionamos la noción de convertir -- en realidad, coercionar -- de un tipo de valor a otro.</p>
+<p>En este capítulo, nos sumergiremos a fondo en la coerción y develaremos todos sus misterios.</p>
+<h2 id="coerción-explícita-vs-implícita">Coerción: Explícita vs Implícita</h2>
+<p>Algunos desarrolladores afirman que cuando indicás explícitamente un cambio de tipo en una operación, eso no califica como una <em>coerción</em> sino apenas como un type-cast o una conversión de tipos. En otras palabras, la afirmación es que la coerción es solo implícita.</p>
+<p>No estoy de acuerdo con esa caracterización. Yo uso <em>coerción</em> para etiquetar cualquier conversión de tipos en un lenguaje de tipado dinámico, ya sea que resulte evidente en el código o no. Acá está el porqué: la línea entre <em>explícito</em> e <em>implícito</em> no es clara ni objetiva, es bastante subjetiva. Si vos pensás que una conversión de tipos es implícita (y por lo tanto <em>coerción</em>), pero yo pienso que es explícita (y por lo tanto no es <em>coerción</em>), la distinción se vuelve irrelevante.</p>
+<p>Tené esa subjetividad en mente mientras exploramos varias formas <em>explícitas</em> e <em>implícitas</em> de coerción. De hecho, acá va un spoiler: la mayoría de las coerciones podrían argumentarse como una u otra, así que las vamos a mirar con esa perspectiva balanceada.</p>
+<h3 id="implícita-mala-o-">Implícita: ¿Mala o ...?</h3>
+<p>Una opinión extremadamente común entre los desarrolladores de JS es que <em>la coerción es mala</em>, específicamente, que <em>la coerción implícita es mala</em>; el aumento de popularidad de herramientas conscientes de los tipos como TypeScript habla a las claras de ese sentimiento.</p>
+<p>Pero ese sentimiento no es nuevo. Hace más de 14 años, el libro "The Good Parts" de Douglas Crockford también condenó célebremente la <em>coerción implícita</em> como una de las <em>bad parts</em>. Hasta Brendan Eich, el creador de JS, afirma con regularidad que la <em>coerción implícita</em> fue un error<sup class="fnref"><a href="#fn-EichCoercion">[EichCoercion]</a></sup> en el diseño temprano del lenguaje que ahora lamenta.</p>
+<p>Si estuviste en el mundo de JS por más de unos pocos meses, casi con certeza escuchaste estas opiniones expresadas con fuerza y de manera predominante. Y si estuviste en JS por años o más, probablemente ya tengas tu decisión tomada.</p>
+<p>De hecho, creo que te costaría nombrar casi cualquier otra fuente reconocida de enseñanza de JS que respalde con fuerza la coerción (en prácticamente todas sus formas); yo lo hago -- ¡y este libro definitivamente lo hace! -- pero me siento mayormente como una voz solitaria gritando en vano en el desierto.</p>
+<p>Sin embargo, acá va una observación que hice a lo largo de los años: la mayoría de la gente que condena públicamente la <em>coerción implícita</em>, en realidad usa <em>coerción implícita</em> en su propio código. Mmmmm...</p>
+<p>Douglas Crockford dice que hay que evitar el error de la <em>coerción implícita</em><sup class="fnref"><a href="#fn-CrockfordCoercion">[CrockfordCoercion]</a></sup>, pero su código usa sentencias <code>if (..)</code> con valores no booleanos evaluados. <sup class="fnref"><a href="#fn-CrockfordIfs">[CrockfordIfs]</a></sup> Muchos descartaron mi señalamiento de eso en el pasado, con la afirmación de que la conversión a booleano no es <em>realmente</em> coerción. Ehhh... ¿ok?</p>
+<p>Brendan Eich dice que lamenta la <em>coerción implícita</em>, pero aun así respalda abiertamente<sup class="fnref"><a href="#fn-BrendanToString">[BrendanToString]</a></sup> expresiones idiomáticas como <code>x + ""</code> (¡y otras!) para coercionar el valor de <code>x</code> a un string (lo cubriremos más adelante); y eso es sin dudas una <em>coerción implícita</em>.</p>
+<p>¿Qué hacemos con esta disonancia? ¿Es apenas una, "hacé lo que digo, no lo que hago", una menor autocontradicción? ¿O hay algo más detrás?</p>
+<p>No voy a emitir un juicio final acá todavía, pero quiero que vos, lector, reflexiones profundamente sobre esa pregunta, a medida que avanzás a lo largo de este capítulo y del libro.</p>
+<h2 id="abstractas">Abstractas</h2>
+<p>Ahora que te desafié a examinar la coerción con más profundidad de la que quizás te habías permitido antes, miremos primero los fundamentos de cómo ocurre la coerción, según la especificación de JS.</p>
+<p>La especificación detalla una cantidad de <em>operaciones abstractas</em><sup class="fnref"><a href="#fn-AbstractOperations">[AbstractOperations]</a></sup> que dictan la conversión interna de un tipo de valor a otro. Es importante conocer estas operaciones, ya que las mecánicas de coerción del lenguaje las combinan y entremezclan de varias maneras.</p>
+<p>Estas operaciones <em>parecen</em> ser funciones reales que podrían invocarse, como <code>ToString(..)</code> o <code>ToNumber(..)</code>. Pero por <em>abstractas</em>, queremos decir que solo existen conceptualmente bajo estos nombres; no son funciones que podamos invocar <em>directamente</em> en nuestros programas. En cambio, las activamos implícita/indirectamente dependiendo de las sentencias/expresiones en nuestros programas.</p>
+<h3 id="toboolean">ToBoolean</h3>
+<p>La toma de decisiones (ramificación condicional) siempre requiere un valor booleano <code>true</code> o <code>false</code>. Pero es extremadamente común querer tomar esas decisiones basándonos en condiciones de valores no booleanos, como si un string está vacío o tiene algo adentro.</p>
+<p>Cuando se encuentran valores no booleanos en un contexto que requiere un booleano -- como la cláusula de condición de una sentencia <code>if</code> o un loop <code>for</code> -- se activa la operación abstracta <code>ToBoolean(..)</code><sup class="fnref"><a href="#fn-ToBoolean">[ToBoolean]</a></sup> para facilitar la coerción.</p>
+<p>Todos los valores en JS están en uno de dos cubos: <em>truthy</em> o <em>falsy</em>. Los valores truthy se coercionan vía la operación <code>ToBoolean()</code> a <code>true</code>, mientras que los valores falsy se coercionan a <code>false</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// ToBoolean() is abstract
+
+ToBoolean(undefined);               // false
+ToBoolean(null);                    // false
+ToBoolean("");                      // false
+ToBoolean(0);                       // false
+ToBoolean(-0);                      // false
+ToBoolean(0n);                      // false
+ToBoolean(NaN);                     // false</code></pre></div>
+<p>Regla simple: <em>cualquier otro valor</em> que no esté en la lista de arriba es truthy y se coerciona vía <code>ToBoolean()</code> a <code>true</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToBoolean("hello");                 // true
+ToBoolean(42);                      // true
+ToBoolean([ 1, 2, 3 ]);             // true
+ToBoolean({ a: 1 });                // true</code></pre></div>
+<p>Incluso valores como <code>"   "</code> (string con solo espacios en blanco), <code>[]</code> (array vacío) y <code>{}</code> (objeto vacío), que intuitivamente podrían parecer más "false" que "true", sin embargo se coercionan a <code>true</code>.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p><em>Existen</em> excepciones estrechas y complicadas a esta regla de truthy. Por ejemplo, la plataforma web deprecó la antigua característica de colección/array <code>document.all</code>, aunque no puede eliminarse por completo -- eso rompería demasiados sitios. Incluso donde <code>document.all</code> sigue estando definido, se comporta como un "objeto falsy"<sup class="fnref"><a href="#fn-ExoticFalsyObjects">[ExoticFalsyObjects]</a></sup> -- <code>undefined</code> que luego se coerciona a <code>false</code>; esto significa que verificaciones condicionales heredadas como <code>if (document.all) { .. }</code> ya no pasan.</p></div></div>
+<p>La operación de coerción <code>ToBoolean()</code> es básicamente una tabla de búsqueda más que un algoritmo de pasos a usar para coercionar un no booleano a un booleano. Por eso, algunos desarrolladores afirman que esto no es <em>realmente</em> coerción de la manera en que lo son otras operaciones abstractas de coerción. Creo que eso es un disparate. <code>ToBoolean()</code> convierte de tipos de valores no booleanos a un booleano, y eso es coerción de tipos pura y dura (aunque sea una búsqueda muy simple en lugar de un algoritmo).</p>
+<p>Tené en mente: estas reglas de coerción booleana solo aplican cuando <code>ToBoolean()</code> está efectivamente activada. Hay construcciones/expresiones idiomáticas en el lenguaje JS que pueden parecer involucrar coerción booleana pero que en realidad no lo hacen. Más sobre esto después.</p>
+<h3 id="toprimitive">ToPrimitive</h3>
+<p>Cualquier valor que no sea ya un primitive puede reducirse a un primitive usando la operación abstracta <code>ToPrimitive()</code> (específicamente, <code>OrdinaryToPrimitive()</code><sup class="fnref"><a href="#fn-OrdinaryToPrimitive">[OrdinaryToPrimitive]</a></sup>). Generalmente, a <code>ToPrimitive()</code> se le da un <em>hint</em> para indicarle si se prefiere un <code>number</code> o un <code>string</code>.</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// ToPrimitive() is abstract
+
+ToPrimitive({ a: 1 },"string");          // "[object Object]"
+
+ToPrimitive({ a: 1 },"number");          // NaN</code></pre></div>
+<p>La operación <code>ToPrimitive()</code> buscará en el objeto provisto, ya sea un método <code>toString()</code> o un método <code>valueOf()</code>; el orden en que los busca está controlado por el <em>hint</em>. <code>"string"</code> significa verificar en orden <code>toString()</code> / <code>valueOf()</code>, mientras que <code>"number"</code> (o ningún <em>hint</em>) significa verificar en orden <code>valueOf()</code> / <code>toString()</code>.</p>
+<p>Si el método devuelve un valor que coincide con el tipo <em>hinteado</em>, la operación termina. Pero si el método no devuelve un valor del tipo <em>hinteado</em>, <code>ToPrimitive()</code> entonces buscará e invocará el otro método (si lo encuentra).</p>
+<p>Si los intentos de invocación de métodos fallan en producir un valor del tipo <em>hinteado</em>, el valor de retorno final se coerciona forzosamente vía la operación abstracta correspondiente: <code>ToString()</code> o <code>ToNumber()</code>.</p>
+<h3 id="tostring">ToString</h3>
+<p>Prácticamente cualquier valor que no sea ya un string puede coercionarse a una representación en string, vía <code>ToString()</code>. <sup class="fnref"><a href="#fn-ToString">[ToString]</a></sup> Esto suele ser bastante intuitivo, especialmente con valores primitive:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// ToString() is abstract
+
+ToString(42.0);                 // "42"
+ToString(-3);                   // "-3"
+ToString(Infinity);             // "Infinity"
+ToString(NaN);                  // "NaN"
+ToString(42n);                  // "42"
+
+ToString(true);                 // "true"
+ToString(false);                // "false"
+
+ToString(null);                 // "null"
+ToString(undefined);            // "undefined"</code></pre></div>
+<p>Hay <em>algunos</em> resultados que pueden variar de la intuición común. Como se mencionó en el Capítulo 2, los números muy grandes o muy chicos se representarán usando notación científica:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToString(Number.MAX_VALUE);     // "1.7976931348623157e+308"
+ToString(Math.EPSILON);         // "2.220446049250313e-16"</code></pre></div>
+<p>Otro resultado contraintuitivo proviene de <code>-0</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToString(-0);                   // "0" -- wtf?</code></pre></div>
+<p>Esto no es un bug, es solo un comportamiento intencional desde los primeros días de JS, basado en la suposición de que los desarrolladores en general no querrían nunca ver una salida de cero negativo.</p>
+<p>Un tipo de valor primitive que <em>no tiene permitido</em> coercionarse (implícitamente, al menos) a string es <code>symbol</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToString(Symbol("ok"));         // TypeError exception thrown</code></pre></div>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Invocar la función concreta <code>String()</code><sup class="fnref"><a href="#fn-StringFunction">[StringFunction]</a></sup> (sin el operador <code>new</code>) generalmente se piensa como <em>meramente</em> invocar la operación abstracta <code>ToString()</code>. Si bien eso es mayormente cierto, no lo es del todo. <code>String(Symbol("ok"))</code> funciona, mientras que la abstracta <code>ToString(Symbol(..))</code> en sí misma lanza una excepción. Más sobre <code>String(..)</code> más adelante en este capítulo.</p></div></div>
+<h4 id="tostring-por-defecto"><code>toString()</code> por defecto</h4>
+<p>Cuando <code>ToString()</code> se activa con un tipo de valor objeto, delega a la operación <code>ToPrimitive()</code> (como se explicó antes), con <code>"string"</code> como su tipo <em>hinteado</em>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToString(new String("abc"));        // "abc"
+ToString(new Number(42));           // "42"
+
+ToString({ a: 1 });                 // "[object Object]"
+ToString([ 1, 2, 3 ]);              // "1,2,3"</code></pre></div>
+<p>En virtud de la delegación <code>ToPrimitive(..,"string")</code>, todos estos objetos tienen invocado su método <code>toString()</code> por defecto (heredado vía <code>[[Prototype]]</code>).</p>
+<h3 id="tonumber">ToNumber</h3>
+<p>Los valores no numéricos <em>que se asemejan</em> a números, como los strings numéricos, generalmente pueden coercionarse a una representación numérica, usando <code>ToNumber()</code>: <sup class="fnref"><a href="#fn-ToNumber">[ToNumber]</a></sup></p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// ToNumber() is abstract
+
+ToNumber("42");                     // 42
+ToNumber("-3");                     // -3
+ToNumber("1.2300");                 // 1.23
+ToNumber("   8.0    ");             // 8</code></pre></div>
+<p>Si el valor completo no se asemeja <em>completamente</em> (más allá de los espacios en blanco) a un número válido, el resultado será <code>NaN</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToNumber("123px");                  // NaN
+ToNumber("hello");                  // NaN</code></pre></div>
+<p>Otros valores primitive tienen ciertos equivalentes numéricos designados:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToNumber(true);                     // 1
+ToNumber(false);                    // 0
+
+ToNumber(null);                     // 0
+ToNumber(undefined);                // NaN</code></pre></div>
+<p>Hay algunas designaciones bastante sorprendentes para <code>ToNumber()</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToNumber("");                       // 0
+ToNumber("       ");                // 0</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Las llamo "sorprendentes" porque creo que habría tenido mucho más sentido que se coercionaran a <code>NaN</code>, de la manera en que lo hace <code>undefined</code>.</p></div></div>
+<p>Algunos valores primitive <em>no tienen permitido</em> coercionarse a números, y resultan en excepciones en lugar de <code>NaN</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToNumber(42n);                      // TypeError exception thrown
+ToNumber(Symbol("42"));             // TypeError exception thrown</code></pre></div>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Invocar la función concreta <code>Number()</code><sup class="fnref"><a href="#fn-NumberFunction">[NumberFunction]</a></sup> (sin el operador <code>new</code>) generalmente se piensa como <em>meramente</em> invocar la operación abstracta <code>ToNumber()</code> para coercionar un valor a un número. Si bien eso es mayormente cierto, no lo es del todo. <code>Number(42n)</code> funciona, mientras que la abstracta <code>ToNumber(42n)</code> en sí misma lanza una excepción.</p></div></div>
+<h4 id="otras-conversiones-numéricas-abstractas">Otras Conversiones Numéricas Abstractas</h4>
+<p>Además de <code>ToNumber()</code>, la especificación define <code>ToNumeric()</code>, que activa <code>ToPrimitive()</code> sobre un valor, y luego condicionalmente delega a <code>ToNumber()</code> si el valor <em>no</em> es ya un tipo de valor <code>bigint</code>.</p>
+<p>También hay una amplia variedad de operaciones abstractas relacionadas con la conversión de valores a subconjuntos muy específicos del tipo general <code>number</code>:</p>
+<ul><li><code>ToIntegerOrInfinity()</code></li><li><code>ToInt32()</code></li><li><code>ToUint32()</code></li><li><code>ToInt16()</code></li><li><code>ToUint16()</code></li><li><code>ToInt8()</code></li><li><code>ToUint8()</code></li><li><code>ToUint8Clamp()</code></li></ul>
+<p>Otras operaciones relacionadas con <code>bigint</code>:</p>
+<ul><li><code>ToBigInt()</code></li><li><code>StringToBigInt()</code></li><li><code>ToBigInt64()</code></li><li><code>ToBigUint64()</code></li></ul>
+<p>Probablemente puedas inferir el propósito de estas operaciones a partir de sus nombres, y/o consultando sus algoritmos en la especificación. Para la mayoría de las operaciones de JS, es más probable que se active una operación de más alto nivel como <code>ToNumber()</code>, en lugar de estas específicas.</p>
+<h4 id="valueof-por-defecto"><code>valueOf()</code> por defecto</h4>
+<p>Cuando <code>ToNumber()</code> se activa sobre un tipo de valor objeto, en cambio delega a la operación <code>ToPrimitive()</code> (como se explicó antes), con <code>"number"</code> como su tipo <em>hinteado</em>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">ToNumber(new String("abc"));        // NaN
+ToNumber(new Number(42));           // 42
+
+ToNumber({ a: 1 });                 // NaN
+ToNumber([ 1, 2, 3 ]);              // NaN
+ToNumber([]);                       // 0</code></pre></div>
+<p>En virtud de la delegación <code>ToPrimitive(..,"number")</code>, todos estos objetos tienen invocado su método <code>valueOf()</code> por defecto (heredado vía <code>[[Prototype]]</code>).</p>
+<h3 id="comparación-de-igualdad">Comparación de Igualdad</h3>
+<p>Cuando JS necesita determinar si dos valores son el <em>mismo valor</em>, activa la operación <code>SameValue()</code><sup class="fnref"><a href="#fn-SameValue">[SameValue]</a></sup>, que delega a una variedad de sub-operaciones relacionadas.</p>
+<p>Esta operación es muy estrecha y estricta, y no realiza ninguna coerción ni ninguna otra excepción de caso especial. Si dos valores son <em>exactamente</em> iguales, el resultado es <code>true</code>, de lo contrario es <code>false</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// SameValue() is abstract
+
+SameValue("hello","\x68ello");          // true
+SameValue("\u{1F4F1}","📱");  // true
+SameValue(42,42);                       // true
+SameValue(NaN,NaN);                     // true
+
+SameValue("é","é");     // false
+SameValue(0,-0);                        // false
+SameValue([1,2,3],[1,2,3]);             // false</code></pre></div>
+<p>Una variación de estas operaciones es <code>SameValueZero()</code> y sus sub-operaciones asociadas. La diferencia principal es que estas operaciones tratan <code>0</code> y <code>-0</code> como indistinguibles.</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// SameValueZero() is abstract
+
+SameValueZero(0,-0);                    // true</code></pre></div>
+<p>Si los valores son numéricos (<code>number</code> o <code>bigint</code>), tanto <code>SameValue()</code> como <code>SameValueZero()</code> delegan a sub-operaciones de los mismos nombres, especializadas para cada tipo <code>number</code> y <code>bigint</code>, respectivamente.</p>
+<p>De lo contrario, <code>SameValueNonNumeric()</code> es la sub-operación a la que se delega si los valores que se comparan son ambos no numéricos:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// SameValueNonNumeric() is abstract
+
+SameValueNonNumeric("hello","hello");   // true
+
+SameValueNonNumeric([1,2,3],[1,2,3]);   // false</code></pre></div>
+<h4 id="igualdad-de-más-alta-abstracción">Igualdad de Más Alta Abstracción</h4>
+<p>A diferencia de <code>SameValue()</code> y sus variaciones, la especificación también define dos importantes operaciones abstractas de comparación de igualdad de más alta abstracción:</p>
+<ul><li><code>IsStrictlyEqual()</code><sup class="fnref"><a href="#fn-StrictEquality">[StrictEquality]</a></sup></li><li><code>IsLooselyEqual()</code><sup class="fnref"><a href="#fn-LooseEquality">[LooseEquality]</a></sup></li></ul>
+<p>La operación <code>IsStrictlyEqual()</code> devuelve inmediatamente <code>false</code> si los tipos de valor que se comparan son diferentes.</p>
+<p>Si los tipos de valor son iguales, <code>IsStrictlyEqual()</code> delega a sub-operaciones para comparar valores <code>number</code> o <code>bigint</code>. <sup class="fnref"><a href="#fn-NumericAbstractOps">[NumericAbstractOps]</a></sup> Lógicamente podrías esperar que estas sub-operaciones delegadas sean las antes mencionadas operaciones <code>SameValue()</code> / <code>SameValueZero()</code> especializadas en numéricos. Sin embargo, <code>IsStrictlyEqual()</code> en cambio delega a <code>Number:equal()</code><sup class="fnref"><a href="#fn-NumberEqual">[NumberEqual]</a></sup> o <code>BigInt:equal()</code><sup class="fnref"><a href="#fn-BigIntEqual">[BigIntEqual]</a></sup>.</p>
+<p>La diferencia entre <code>Number:SameValue()</code> y <code>Number:equal()</code> es que esta última define casos límite para la comparación de <code>0</code> vs <code>-0</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// all of these are abstract operations
+
+Number:SameValue(0,-0);             // false
+Number:SameValueZero(0,-0);         // true
+Number:equal(0,-0);                 // true</code></pre></div>
+<p>Estas operaciones también difieren en la comparación de <code>NaN</code> vs <code>NaN</code>:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">Number:SameValue(NaN,NaN);          // true
+Number:equal(NaN,NaN);              // false</code></pre></div>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Así que, en otras palabras, a pesar de su nombre, <code>IsStrictlyEqual()</code> no es tan "estricta" como <code>SameValue()</code>, en el sentido de que <em>miente</em> cuando se involucran comparaciones de <code>-0</code> o <code>NaN</code>.</p></div></div>
+<p>La operación <code>IsLooselyEqual()</code> también inspecciona los tipos de valor que se comparan; si son iguales, delega inmediatamente a <code>IsStrictlyEqual()</code>.</p>
+<p>Pero si los tipos de valor que se comparan son diferentes, <code>IsLooselyEqual()</code> realiza una variedad de pasos de <em>igualdad coercitiva</em>. Es importante notar que este algoritmo siempre está tratando de reducir la comparación hasta donde ambos tipos de valor sean iguales (y tiende a preferir <code>number</code> / <code>bigint</code>).</p>
+<p>Los pasos de la porción de <em>igualdad coercitiva</em> del algoritmo pueden resumirse aproximadamente de la siguiente manera:</p>
+<ol><li>Si alguno de los valores es <code>null</code> y el otro es <code>undefined</code>, <code>IsLooselyEqual()</code> devuelve <code>true</code>. En otras palabras, este algoritmo aplica igualdad <em>nullish</em>, en el sentido de que <code>null</code> y <code>undefined</code> son coercitivamente iguales entre sí (y a ningún otro valor).</li></ol>
+<ol><li>Si alguno de los valores es un <code>number</code> y el otro es un <code>string</code>, el valor <code>string</code> se coerciona a un <code>number</code> vía <code>ToNumber()</code>.</li></ol>
+<ol><li>Si alguno de los valores es un <code>bigint</code> y el otro es un <code>string</code>, el valor <code>string</code> se coerciona a un <code>bigint</code> vía <code>StringToBigInt()</code>.</li></ol>
+<ol><li>Si alguno de los valores es un <code>boolean</code>, se coerciona a un <code>number</code>.</li></ol>
+<ol><li>Si alguno de los valores es un no primitive (objeto, etc), se coerciona a un primitive con <code>ToPrimitive()</code>; aunque no se provee explícitamente un <em>hint</em>, el comportamiento por defecto será como si <code>"number"</code> fuera el hint.</li></ol>
+<p>Cada vez que se realiza una coerción en los pasos de arriba, el algoritmo se reactiva <em>recursivamente</em> con el/los nuevo(s) valor(es). Ese proceso continúa hasta que los tipos son iguales, y entonces la comparación se delega a la operación <code>IsStrictlyEqual()</code>.</p>
+<p>¿Qué podemos sacar de este algoritmo? Primero, vemos que hay un sesgo hacia la comparación <code>number</code> (o <code>bigint</code>); nunca coerciona valores a los tipos de valor <code>string</code> o <code>boolean</code>.</p>
+<p>Es importante destacar que vemos que tanto <code>IsLooselyEqual()</code> como <code>IsStrictlyEqual()</code> son sensibles al tipo. <code>IsStrictlyEqual()</code> abandona inmediatamente si los tipos no coinciden, mientras que <code>IsLooselyEqual()</code> realiza el trabajo extra de coercionar los tipos de valor que no coinciden para que sean iguales (de nuevo, idealmente, <code>number</code> o <code>bigint</code>).</p>
+<p>Además, si/una vez que los tipos son iguales, ambas operaciones son idénticas -- <code>IsLooselyEqual()</code> delega a <code>IsStrictlyEqual()</code>.</p>
+<h3 id="comparación-relacional">Comparación Relacional</h3>
+<p>Cuando los valores se comparan relacionalmente -- es decir, ¿es un valor "menor que" otro? -- hay una operación abstracta específica que se activa: <code>IsLessThan()</code>. <sup class="fnref"><a href="#fn-LessThan">[LessThan]</a></sup></p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// IsLessThan() is abstract
+
+IsLessThan(1,2, /*LeftFirst=*/ true );            // true</code></pre></div>
+<p>No hay una operación <code>IsGreaterThan()</code>; en cambio, los primeros dos argumentos de <code>IsLessThan()</code> pueden invertirse para lograr una comparación "mayor que". Para preservar la semántica de evaluación de izquierda a derecha (en el caso de efectos secundarios sutiles), <code>isLessThan()</code> también toma un tercer argumento (<code>LeftFirst</code>); si es <code>false</code>, esto indica que una comparación fue invertida y que el segundo parámetro debe evaluarse antes que el primero.</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">IsLessThan(1,2, /*LeftFirst=*/ true );            // true
+
+// equivalent of a fictional "IsGreaterThan()"
+IsLessThan(2,1, /*LeftFirst=*/ false );          // false</code></pre></div>
+<p>Similar a <code>IsLooselyEqual()</code>, la operación <code>IsLessThan()</code> es <em>coercitiva</em>, lo que significa que primero se asegura de que los tipos de valor de sus dos valores coincidan, y prefiere las comparaciones numéricas. No hay un <code>IsStrictLessThan()</code> para la comparación relacional no coercitiva.</p>
+<p>Como ejemplo de comparación relacional coercitiva, si el tipo de un valor es <code>string</code> y el tipo del otro es <code>bigint</code>, el <code>string</code> se coerciona a un <code>bigint</code> con la antes mencionada operación <code>StringToBigInt()</code>. Una vez que los tipos son iguales, <code>IsLessThan()</code> procede como se describe en las siguientes secciones.</p>
+<h4 id="comparación-de-strings">Comparación de Strings</h4>
+<p>Cuando ambos valores son de tipo <code>string</code>, <code>IsLessThan()</code> verifica si el valor de la izquierda es un prefijo (los primeros <em>n</em> caracteres<sup class="fnref"><a href="#fn-StringPrefix">[StringPrefix]</a></sup>) del de la derecha; si es así, se devuelve <code>true</code>.</p>
+<p>Si ninguno de los strings es prefijo del otro, se compara la primera posición de carácter (dirección inicio-a-fin, no izquierda-a-derecha) que sea diferente entre los dos strings, según sus respectivos valores de code-unit (numéricos); luego se devuelve el resultado.</p>
+<p>Generalmente, los code-units siguen un orden lexicográfico intuitivo (también conocido como orden de diccionario):</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">IsLessThan("a","b", /*LeftFirst=*/ true );        // true</code></pre></div>
+<p>Incluso los dígitos se tratan como caracteres (no como números):</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">IsLessThan("101","12", /*LeftFirst=*/ true );     // true</code></pre></div>
+<p>Hay hasta un poco de <em>humor</em> incrustado en el ordenamiento de code-units unicode:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">IsLessThan("🐔","🥚", /*LeftFirst=*/ true );      // true</code></pre></div>
+<p>¡Al menos ahora respondimos la vieja pregunta de <em>qué viene primero</em>!</p>
+<h4 id="comparación-numérica">Comparación Numérica</h4>
+<p>Para las comparaciones numéricas, <code>IsLessThan()</code> delega ya sea a la operación <code>Number:lessThan()</code> o <code>BigInt:lessThan()</code><sup class="fnref"><a href="#fn-NumericAbstractOps">[NumericAbstractOps]</a></sup>, respectivamente:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">IsLessThan(41,42, /*LeftFirst=*/ true );         // true
+
+IsLessThan(-0,0, /*LeftFirst=*/ true );          // false
+
+IsLessThan(NaN,1 /*LeftFirst=*/ true );          // false
+
+IsLessThan(41n,42n, /*LeftFirst=*/ true );       // true</code></pre></div>
+<h2 id="coerciones-concretas">Coerciones Concretas</h2>
+<p>Ahora que cubrimos todas las operaciones abstractas que JS define para manejar varias coerciones, es momento de dirigir nuestra atención a las sentencias/expresiones concretas que podemos usar en nuestros programas que activan estas operaciones.</p>
+<h3 id="a-booleano">A Booleano</h3>
+<p>Para coercionar un valor que no es de tipo <code>boolean</code> a ese tipo, necesitamos la operación abstracta <code>ToBoolean()</code>, como se describió antes en este capítulo.</p>
+<p>Antes de explorar <em>cómo</em> activarla, discutamos <em>por qué</em> querrías forzar una coerción <code>ToBoolean()</code>.</p>
+<p>Desde una perspectiva de legibilidad del código, ser <em>explícito</em> sobre las coerciones de tipos puede ser preferible (aunque no universalmente). Pero funcionalmente, la razón más común para forzar un <code>boolean</code> es cuando estás pasando datos a una fuente externa -- por ejemplo, enviando datos como JSON a un endpoint de una API -- y ese lugar espera <code>true</code> / <code>false</code> sin necesidad de hacer coerciones.</p>
+<p>Hay varias maneras en que <code>ToBoolean()</code> puede activarse. Quizás la más <em>explícita</em> (obvia) es la función <code>Boolean(..)</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Boolean("hello");               // true
+Boolean(42);                    // true
+
+Boolean("");                    // false
+Boolean(0);                     // false</code></pre></div>
+<p>Como se mencionó en el Capítulo 3, tené en mente que <code>Boolean(..)</code> se está invocando sin la palabra clave <code>new</code>, para activar la operación abstracta <code>ToBoolean()</code>.</p>
+<p>No es terriblemente común ver a los desarrolladores de JS usar la función <code>Boolean(..)</code> para tales coerciones explícitas. Con más frecuencia, los desarrolladores usarán la expresión idiomática del doble-<code>!</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">!!"hello";                      // true
+!!42;                           // true
+
+!!"";                           // false
+!!0;                            // false</code></pre></div>
+<p>El <code>!!</code> no es su propio operador, aunque lo parezca. En realidad son dos usos del operador unario <code>!</code>. Este operador primero coerciona cualquier no-<code>boolean</code>, luego lo niega. Para deshacer la negación, el segundo <code>!</code> lo vuelve a invertir.</p>
+<p>Entonces... ¿cuál de los dos, <code>Boolean(..)</code> o <code>!!</code>, considerás que es más una coerción explícita?</p>
+<p>Dado el volteo que hace <code>!</code>, que luego debe deshacerse con otro <code>!</code>, yo diría que <code>Boolean(..)</code> es <em>más</em> explícita -- en el trabajo de coercionar un no-<code>boolean</code> a un <code>boolean</code> -- que <code>!!</code>. Pero relevando código JS open-source, el <code>!!</code> se usa mucho más seguido.</p>
+<p>Si definimos <em>explícito</em> como, "realizar una acción de la manera más directa y obvia", <code>Boolean(..)</code> le gana por poco a <code>!!</code>. Pero si definimos <em>explícito</em> como, "realizar una acción de la manera más reconocible", <code>!!</code> podría tener la ventaja. ¿Hay una respuesta definitiva acá?</p>
+<p>Mientras reflexionás sobre esa pregunta, miremos otro mecanismo de JS que activa <code>ToBoolean()</code> por debajo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">specialNumber = 42;
+
+if (specialNumber) {
+    // ..
+}</code></pre></div>
+<p>La sentencia <code>if</code> requiere un <code>boolean</code> para que el condicional tome su decisión de control de flujo. Si le pasás un no-<code>boolean</code>, se realiza una <em>coerción</em> <code>ToBoolean()</code>.</p>
+<p>A diferencia de las expresiones de coerción <code>ToBoolean()</code> anteriores, como <code>Boolean(..)</code> o <code>!!</code>, esta coerción del <code>if</code> es efímera, en el sentido de que nuestro programa JS nunca ve el resultado de la coerción; solo lo usa internamente el <code>if</code>. Algunos pueden sentir que no es <em>realmente</em> coerción si el programa no preserva/usa el valor. Pero estoy fuertemente en desacuerdo, porque la coerción definitivamente afecta el comportamiento del programa.</p>
+<p>Muchos otros tipos de sentencias también activan la coerción <code>ToBoolean()</code>, incluyendo el condicional ternario <code>? :</code>, y los loops <code>for</code> / <code>while</code>. También tenemos los operadores <code>&amp;&amp;</code> (AND lógico) y <code>||</code> (OR lógico). Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">isLoggedIn = user.sessionID || req.cookie["Session-ID"];
+
+isAdmin = isLoggedIn &amp;&amp; ("admin" in user.permissions);</code></pre></div>
+<p>Para ambos operadores, la expresión de la izquierda se evalúa primero; si no es ya un <code>boolean</code>, se activa una coerción <code>ToBoolean()</code> para producir un valor para la decisión condicional.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Para explicar brevemente estos operadores: para <code>||</code>, si el valor de la expresión de la izquierda (post-coerción, si es necesario) es <code>true</code>, se devuelve el valor pre-coerción; de lo contrario se evalúa y devuelve la expresión de la derecha (sin coerción). Para <code>&amp;&amp;</code>, si el valor de la expresión de la izquierda (post-coerción, si es necesario) es <code>false</code>, se devuelve el valor pre-coerción; de lo contrario, se evalúa y devuelve la expresión de la derecha (sin coerción). En otras palabras, tanto <code>&amp;&amp;</code> como <code>||</code> fuerzan una coerción <code>ToBoolean()</code> del operando de la izquierda para tomar la decisión, pero el resultado final de ninguno de los operadores se coerciona realmente a un <code>boolean</code>.</p></div></div>
+<p>En el fragmento anterior, a pesar de las implicancias del nombre, es improbable que <code>isLoggedIn</code> sea realmente un <code>boolean</code>; y si es truthy, <code>isAdmin</code> tampoco será un <code>boolean</code>. Ese tipo de código es bastante común, pero es definitivamente peligroso que los tipos <code>boolean</code> resultantes asumidos no estén realmente ahí. Revisaremos este ejemplo, y estos operadores, en el próximo capítulo.</p>
+<p>¿Están estos tipos de sentencias/expresiones (p. ej., <code>if (..)</code>, <code>||</code>, <code>&amp;&amp;</code>, etc) ilustrando coerción <em>explícita</em> o coerción <em>implícita</em> en su toma de decisiones condicionales?</p>
+<p>De nuevo, creo que depende de tu perspectiva. La especificación dicta bastante explícitamente que solo toman sus decisiones con valores condicionales <code>boolean</code>, requiriendo coerción si se recibe un no-<code>boolean</code>. Por otro lado, también puede hacerse un argumento fuerte de que cualquier coerción interna es un efecto secundario (implícito) respecto del trabajo principal de <code>if</code> / <code>&amp;&amp;</code> / etc.</p>
+<p>Además, como se mencionó antes en la discusión de <code>ToBoolean()</code>, algunos no consideran que <em>ninguna</em> activación de <code>ToBoolean()</code> sea una coerción.</p>
+<p>Creo que eso es forzar demasiado las cosas, de todos modos. Mi postura: <code>Boolean(..)</code> es la forma de coerción <em>explícita</em> más preferible. Creo que <code>!!</code>, <code>if</code>, <code>for</code>, <code>while</code>, <code>&amp;&amp;</code> y <code>||</code> están todos coercionando <em>implícitamente</em> los no-<code>boolean</code>s, pero estoy OK con eso.</p>
+<p>Dado que la mayoría de los desarrolladores, incluyendo nombres famosos como Doug Crockford, también usan en la práctica coerciones (<code>boolean</code>) implícitas en su código<sup class="fnref"><a href="#fn-CrockfordIfs">[CrockfordIfs]</a></sup>, creo que podemos decir que al menos <em>algunas formas</em> de coerción <em>implícita</em> son ampliamente aceptables, sin importar la omnipresente retórica en contra.</p>
+<h3 id="a-string">A String</h3>
+<p>Al igual que con <code>ToBoolean()</code>, hay una cantidad de maneras de activar la coerción <code>ToString()</code> (como se discutió antes en el capítulo). La decisión de cuál enfoque es igualmente subjetiva.</p>
+<p>Como la función <code>Boolean(..)</code>, la función <code>String(..)</code> (sin la palabra clave <code>new</code>) es una manera principal de activar la coerción <em>explícita</em> <code>ToString()</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">String(true);                   // "true"
+String(42);                     // "42"
+String(-0);                     // "0"
+String(Infinity);               // "Infinity"
+
+String(null);                   // "null"
+String(undefined);              // "undefined"</code></pre></div>
+<p>Sin embargo, <code>String(..)</code> es más que <em>solo</em> una activación de <code>ToString()</code>. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">String(Symbol("ok"));           // "Symbol(ok)"</code></pre></div>
+<p>Esto funciona, porque la coerción <em>explícita</em> de valores <code>symbol</code> está permitida. Pero en casos donde un symbol se coerciona <em>implícitamente</em> a un string (p. ej., <code>Symbol("ok") + ""</code>), la operación subyacente <code>ToString()</code> lanza una excepción. Eso prueba que <code>String(..)</code> es más que solo una activación de <code>ToString()</code>. Más sobre la coerción <em>implícita</em> de symbols a string en un ratito.</p>
+<p>Si invocás <code>String(..)</code> con un valor objeto (p. ej., array, etc), activa la operación <code>ToPrimitive()</code> (vía la operación <code>ToString()</code>), que luego busca e invoca el método <code>toString()</code> de ese valor:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">String([1,2,3]);                // "1,2,3"
+
+String(x =&gt; x + 1);             // "x =&gt; x + 1"</code></pre></div>
+<p>Aparte de <code>String(..)</code>, cualquier valor primitive, no nullish (ni <code>null</code> ni <code>undefined</code>) puede ser auto-boxeado (ver Capítulo 3) en su respectivo wrapper de objeto, proveyendo un método <code>toString()</code> invocable.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">true.toString();                // "true"
+42..toString();                 // "42"
+-0..toString();                 // "0"
+Infinity.toString();            // "Infinity"
+Symbol("ok").toString();        // "Symbol(ok)"</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Tené en mente que estos métodos <code>toString()</code> <em>no</em> necesariamente activan la operación <code>ToString()</code>, solo definen sus propias reglas de cómo representar el valor como un string.</p></div></div>
+<p>Como se mostró con <code>String(..)</code> hace un momento, los distintos sub-tipos de objeto -- como arrays, funciones, expresiones regulares, instancias de <code>Date</code> y <code>Error</code>, etc -- todos definen sus propios métodos <code>toString()</code> específicos, que pueden invocarse directamente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">[1,2,3].toString();             // "1,2,3"
+
+(x =&gt; x + 1).toString();        // "x =&gt; x + 1"</code></pre></div>
+<p>Además, cualquier objeto plano que (por defecto) esté enlazado vía <code>[[Prototype]]</code> a <code>Object.prototype</code> tiene disponible un método <code>toString()</code> por defecto:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">({ a : 1 }).toString();         // "[object Object]"</code></pre></div>
+<p>¿Es el enfoque <code>toString()</code> de coerción <em>explícito</em> o <em>implícito</em>? De nuevo, depende. Es ciertamente un mecanismo autodescriptivo, lo que se inclina hacia <em>explícito</em>. Pero a menudo depende del auto-boxing, que es en sí mismo una coerción bastante <em>implícita</em>.</p>
+<p>Miremos otra expresión idiomática común -- ¡y famosamente respaldada! -- para coercionar un valor a un string. Recordá de "Concatenación de Strings" en el Capítulo 2 que el operador <code>+</code> está sobrecargado para preferir la concatenación de strings si alguno de los operandos ya es un string, y por lo tanto coerciona el operando no string a un string si es necesario.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">true + "";                      // "true"
+42 + "";                        // "42"
+null + "";                      // "null"
+undefined + "";                 // "undefined"</code></pre></div>
+<p>La expresión idiomática <code>+ ""</code> para coerción a string aprovecha la sobrecarga de <code>+</code>, sin alterar el valor string coercionado final. Por cierto, todas estas funcionan igual con los operandos invertidos (es decir, <code>"" + ..</code>).</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Un concepto erróneo extremadamente común es que <code>String(x)</code> y <code>x + ""</code> son básicamente coerciones equivalentes, respectivamente solo <em>explícita</em> vs <em>implícita</em> en forma. ¡Pero eso no es del todo cierto! Revisaremos esto en la sección "A Primitive" más adelante en este capítulo.</p></div></div>
+<p>Algunos sienten que esta es una coerción <em>explícita</em>, pero creo que es claramente más <em>implícita</em>, en el sentido de que aprovecha la sobrecarga de <code>+</code>; además, el <code>""</code> se usa indirectamente para activar la coerción sin modificarla. Es más, considerá qué pasa cuando esta expresión idiomática se aplica con un valor symbol:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Symbol("ok") + "";              // TypeError exception thrown</code></pre></div>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Permitir la coerción <em>explícita</em> de symbols (<code>String(Symbol("ok"))</code>), pero prohibir la coerción <em>implícita</em> (<code>Symbol("ok") + ""</code>), es bastante intencional por parte de TC39. <sup class="fnref"><a href="#fn-SymbolString">[SymbolString]</a></sup> Se sintió que los symbols, como primitives que suelen usarse en lugares donde de otro modo se usan strings, podían confundirse demasiado fácilmente con strings. Por eso, quisieron asegurarse de que los desarrolladores expresaran la intención de coercionar un symbol a un string, con la esperanza de evitar muchas de esas confusiones anticipadas. Este es uno de los <em>casos extremadamente raros</em> donde el diseño del lenguaje afirma una opinión, y de hecho discrimina, entre coerciones <em>explícitas</em> vs. <em>implícitas</em>.</p></div></div>
+<p>¿Por qué la excepción? JS trata <code>+ ""</code> como una coerción <em>implícita</em>, por lo que cuando se activa con un symbol, se lanza una excepción. Creo que esa es una prueba bastante irrefutable.</p>
+<p>No obstante, como mencioné al comienzo de este capítulo, Brendan Eich respalda <code>+ ""</code><sup class="fnref"><a href="#fn-BrendanToString">[BrendanToString]</a></sup> como la <em>mejor</em> manera de coercionar valores a strings. Creo que eso tiene mucho peso, en términos de que él apoya al menos un subconjunto de prácticas de coerción <em>implícita</em>. Sus puntos de vista sobre la coerción <em>implícita</em> deben ser un poco más matizados que, "todo es malo".</p>
+<h3 id="a-número">A Número</h3>
+<p>Las coerciones numéricas son un poco más complicadas que las coerciones a string, ya que podemos estar hablando ya sea de <code>number</code> o <code>bigint</code> como el tipo objetivo. También hay un conjunto mucho más chico de valores que pueden representarse numéricamente de manera válida (todo lo demás se convierte en <code>NaN</code>).</p>
+<p>Empecemos con las funciones <code>Number(..)</code> y <code>BigInt(..)</code> (sin palabras clave <code>new</code>):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number("42");                   // 42
+Number("-3.141596");            // -3.141596
+Number("-0");                   // -0
+
+BigInt("42");                   // 42n
+BigInt("-0");                   // 0n</code></pre></div>
+<p>La coerción <code>Number</code> que falla (no reconocida) resulta en <code>NaN</code> (ver "Número Inválido" en el Capítulo 1), mientras que <code>BigInt</code> lanza una excepción:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number("123px");                // NaN
+
+BigInt("123px");
+// SyntaxError: Cannot convert 123px to a BigInt</code></pre></div>
+<p>Es más, aunque <code>42n</code> es sintaxis válida como un <code>bigint</code> literal, el string <code>"42n"</code> nunca es una representación en string reconocida de un <code>bigint</code>, por ninguna de las formas de función coercitiva:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number("42n");                  // NaN
+
+BigInt("42n");
+// SyntaxError: Cannot convert 42n to a BigInt</code></pre></div>
+<p>Sin embargo, <em>sí podemos</em> coercionar strings numéricos con otras representaciones de los números distintas a los típicos decimales en base-10 (ver Capítulo 1 para más información):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number("0b101010");             // 42
+
+BigInt("0b101010");             // 42n</code></pre></div>
+<p>Típicamente, <code>Number(..)</code> y <code>BigInt(..)</code> reciben valores string, pero eso en realidad no es requerido. Por ejemplo, <code>true</code> y <code>false</code> se coercionan a sus típicos equivalentes numéricos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number(true);                   // 1
+Number(false);                  // 0
+
+BigInt(true);                   // 1n
+BigInt(false);                  // 0n</code></pre></div>
+<p>También podés en general coercionar entre los tipos <code>number</code> y <code>bigint</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number(42n);                    // 42
+Number(42n ** 1000n);           // Infinity
+
+BigInt(42);                     // 42n</code></pre></div>
+<p>También podemos usar el operador unario <code>+</code>, que comúnmente se asume que coerciona igual que la función <code>Number(..)</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">+"42";                          // 42
++"0b101010";                    // 42</code></pre></div>
+<p>Ojo, eso sí. Si las coerciones son inseguras/inválidas de ciertas maneras, se lanzan excepciones:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">BigInt(3.141596);
+// RangeError: The number 3.141596 cannot be converted to a BigInt
+
++42n;
+// TypeError: Cannot convert a BigInt value to a number</code></pre></div>
+<p>Claramente, <code>3.141596</code> no se coerciona de manera segura a un entero, mucho menos a un <code>bigint</code>.</p>
+<p>Pero <code>+42n</code> lanzando una excepción es un caso interesante. En contraste, <code>Number(42n)</code> funciona bien, así que es un poco sorprendente que <code>+42n</code> falle.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Esa sorpresa es especialmente palpable ya que anteponer un <code>+</code> delante de un número típicamente se asume que significa solo un "número positivo", de la misma manera en que <code>-</code> delante de un número se asume que significa un "número negativo". Como se explicó en el Capítulo 1, sin embargo, la sintaxis numérica de JS (<code>number</code> y <code>bigint</code>) no reconoce ninguna sintaxis para "valores negativos". Todos los literales numéricos se parsean como "positivos" por defecto. Si se antepone un <code>+</code> o un <code>-</code>, esos se tratan como operadores unarios aplicados contra el número (positivo) parseado.</p></div></div>
+<p>OK, entonces <code>+42n</code> se parsea como <code>+(42n)</code>. Pero aun así... ¿por qué <code>+</code> lanza una excepción acá?</p>
+<p>¿Te acordás antes cuando mostramos que JS permite la coerción <em>explícita</em> a string de valores symbol, pero prohíbe las coerciones <em>implícitas</em> a string? Lo mismo está pasando acá. El diseño del lenguaje JS interpreta el <code>+</code> unario delante de un valor <code>bigint</code> como una coerción <code>ToNumber()</code> <em>implícita</em> (¡por lo tanto prohibida!), pero <code>Number(..)</code> se interpreta como una coerción <code>ToNumber()</code> <em>explícita</em> (¡por lo tanto permitida!).</p>
+<p>En otras palabras, contrario a la suposición/afirmación popular, <code>Number(..)</code> y <code>+</code> no son intercambiables. Creo que <code>Number(..)</code> es la forma más segura/confiable.</p>
+<h4 id="operaciones-matemáticas">Operaciones Matemáticas</h4>
+<p>Los operadores matemáticos (p. ej., <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> y <code>**</code>) esperan que sus operandos sean numéricos. Si usás un no-<code>number</code> con ellos, ese valor será coercionado a un <code>number</code> para los fines del cálculo matemático.</p>
+<p>Similar a cómo <code>x + ""</code> es una expresión idiomática para coercionar <code>x</code> a un string, una expresión como <code>x - 0</code> coerciona de manera segura <code>x</code> a un número.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p><code>x + 0</code> no es tan seguro, ya que el operador <code>+</code> está sobrecargado para realizar concatenación de strings si alguno de los operandos ya es un string. El operador menos <code>-</code> no está sobrecargado de esa manera, así que la única coerción será a <code>number</code>. Por supuesto, <code>x * 1</code>, <code>x / 1</code>, e incluso <code>x ** 1</code> también serían en general equivalentes matemáticamente, pero esos son mucho menos comunes, y probablemente deberían evitarse por ser potencialmente confusos para los lectores de tu código. Incluso <code>x % 1</code> parece que debería ser seguro, pero puede introducir sesgo de punto flotante (ver "Imprecisión de Punto Flotante" en el Capítulo 2).</p></div></div>
+<p>Sin importar qué operador matemático se use, si la coerción falla, un <code>NaN</code> es el resultado, y todos estos operadores propagarán el <code>NaN</code> hacia afuera como su resultado.</p>
+<h4 id="operaciones-a-nivel-de-bits">Operaciones a Nivel de Bits</h4>
+<p>Los operadores a nivel de bits (p. ej., <code>|</code>, <code>&amp;</code>, <code>^</code>, <code>&gt;&gt;</code>, <code>&lt;&lt;</code> y <code>&lt;&lt;&lt;</code>) todos esperan operandos number, pero específicamente limitan estos valores a enteros de 32 bits.</p>
+<p>Si estás seguro de que los números con los que estás tratando están de manera segura dentro del rango de enteros de 32 bits, <code>x | 0</code> es otra expresión idiomática común que tiene el efecto de coercionar <code>x</code> a un <code>number</code> si es necesario.</p>
+<p>Es más, ya que los engines de JS saben que estos valores serán enteros, hay potencial para que optimicen hacia matemática de solo enteros si ven <code>x | 0</code>. Esta es una de varias "anotaciones de tipo" recomendadas por los esfuerzos de ASM.js<sup class="fnref"><a href="#fn-ASMjs">[ASMjs]</a></sup> de hace años.</p>
+<h4 id="acceso-a-propiedades">Acceso a Propiedades</h4>
+<p>El acceso a propiedades de objetos (y el acceso por índice de arrays) es otro lugar donde puede ocurrir coerción implícita.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myObj = {};
+
+myObj[3] = "hello";
+myObj["3"] = "world";
+
+console.log( myObj );</code></pre></div>
+<p>¿Qué esperás del contenido de este objeto? ¿Esperás dos propiedades diferentes, numérica <code>3</code> (conteniendo <code>"hello"</code>) y string <code>"3"</code> (conteniendo <code>"world"</code>)? ¿O pensás que ambas propiedades están en la misma ubicación?</p>
+<p>Si probás ese código, verás que efectivamente obtenemos un objeto con una sola propiedad, y contiene el valor <code>"world"</code>. Eso significa que JS está coercionando internamente ya sea el <code>3</code> a <code>"3"</code>, o viceversa, cuando se hacen esos accesos a propiedades.</p>
+<p>Curiosamente, la consola de desarrollador muy probablemente represente el objeto más o menos así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">console.log( myObj );
+// {3: 'world'}</code></pre></div>
+<p>¿Ese <code>3</code> de ahí indica que la propiedad es un <code>3</code> numérico? No del todo. Probá agregar otra propiedad a <code>myObj</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myObj.something = 42;
+
+console.log( myObj )
+// {3: 'world', something: 42}</code></pre></div>
+<p>Podemos ver que esta consola de desarrollador no pone comillas en las claves de propiedad string, así que no podemos inferir nada de <code>3</code> versus si la consola hubiera usado <code>"3"</code> para el nombre de la clave.</p>
+<p>En cambio, probemos consultar la especificación para el valor objeto<sup class="fnref"><a href="#fn-ObjectValue">[ObjectValue]</a></sup>, donde encontramos:</p>
+<blockquote><p>Una clave de propiedad es o bien un valor String de ECMAScript o bien un valor Symbol. Todos los valores String y Symbol, incluyendo el String vacío, son válidos como claves de propiedad. Un nombre de propiedad es una clave de propiedad que es un valor String.</p></blockquote>
+<p>¡OK! Entonces, en JS, los objetos solo contienen propiedades string (o symbol). Eso debe significar que el <code>3</code> numérico se coerciona a un string <code>"3"</code>, ¿no?</p>
+<p>En la misma sección de la especificación, leemos además:</p>
+<blockquote><p>Un índice entero es una clave de propiedad con valor String que es un String numérico canónico (ver 7.1.21) y cuyo valor numérico es o bien +0𝔽 o bien un Number entero positivo ≤ 𝔽(253 - 1). Un índice de array es un índice entero cuyo valor numérico i está en el rango +0𝔽 ≤ i &lt; 𝔽(232 - 1).</p></blockquote>
+<p>Si una clave de propiedad (como <code>"3"</code>) <em>parece</em> un número, se trata como un índice entero. Mmmm... eso casi parece sugerir lo opuesto de lo que acabamos de postular, ¿no?</p>
+<p>No obstante, sabemos de la cita anterior que las claves de propiedad son <em>solo</em> strings (o symbols). Entonces debe ser que "índice entero" acá no describe la ubicación real, sino más bien el uso intencional de <code>3</code> en el código JS, como un "índice entero" expresado por el desarrollador; JS entonces aún debe en realidad almacenarlo en la ubicación del "String numérico canónico".</p>
+<p>Considerá intentos de usar otros tipos de valor, como <code>true</code>, <code>null</code>, <code>undefined</code>, o incluso no primitives (otros objetos):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myObj[true] = 100;
+myObj[null] = 200;
+myObj[undefined] = 300;
+myObj[ {a:1} ] = 400;
+
+console.log(myObj);
+// {3: 'world', something: 42, true: 100, null: 200,
+// undefined: 300, [object Object]: 400}</code></pre></div>
+<p>Como podés ver, todos esos otros tipos de valor fueron coercionados a strings para los fines de los nombres de propiedad del objeto.</p>
+<p>Pero antes de convencernos de esta interpretación de que todo (hasta los números) se coerciona a strings, miremos un ejemplo con array:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myArr = [];
+
+myArr[3] = "hello";
+myArr["3"] = "world";
+
+console.log( myArr );
+// [empty × 3, 'world']</code></pre></div>
+<p>La consola de desarrollador probablemente represente un array de manera un poco diferente a un objeto plano. No obstante, aún vemos que este array solo tiene el único valor <code>"world"</code> adentro, en la posición de índice numérico correspondiente a <code>3</code>.</p>
+<p>Ese tipo de salida más o menos implica lo opuesto de nuestra interpretación anterior: que los valores de un array se están almacenando solo en posiciones numéricas. Si agregamos otro nombre de propiedad string a <code>myArr</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myArr.something = 42;
+console.log( myArr );
+// [empty × 3, 'world', something: 42]</code></pre></div>
+<p>Ahora vemos que esta consola de desarrollador representa las posiciones indexadas numéricamente en el array <em>sin</em> los nombres de propiedad (ubicaciones), pero la propiedad <code>something</code> sí aparece nombrada en la salida.</p>
+<p>También es cierto que los engines de JS como v8 tienden a, por razones de optimización de rendimiento, tratar como caso especial las propiedades de objeto que son strings de aspecto numérico como si realmente se almacenaran en posiciones numéricas como si fueran arrays. Así que incluso si el programa JS actúa como si el nombre de propiedad fuera <code>"3"</code>, de hecho por debajo, v8 podría estar tratándolo como si fuera coercionado a <code>3</code>.</p>
+<p>¿Qué podemos sacar de todo esto?</p>
+<p>La especificación nos dice claramente que el comportamiento de las propiedades de objeto es que se traten como strings (o symbols). Eso significa que podemos asumir que usar <code>3</code> para acceder a una ubicación en un objeto tendrá el efecto interno de coercionar ese nombre de propiedad a <code>"3"</code>.</p>
+<p>Pero con los arrays, observamos una especie de semántica opuesta: usar <code>"3"</code> como un nombre de propiedad tiene el efecto de acceder a la posición <code>3</code> indexada numéricamente, como si el string se coercionara al número. Pero eso es mayormente solo una consecuencia del hecho de que los arrays siempre tienden a comportarse como indexados numéricamente, y/o quizás un reflejo de detalles de implementación/optimización subyacentes en el engine de JS.</p>
+<p>La parte importante es que necesitamos reconocer que los objetos no pueden simplemente usar cualquier valor como un nombre de propiedad. Si es algo distinto a un string o un número, podemos esperar que <em>habrá</em> una coerción de ese valor.</p>
+<p>¡Necesitamos esperar y planear para eso en lugar de permitir que nos sorprenda con bugs más adelante!</p>
+<h3 id="a-primitive">A Primitive</h3>
+<p>La mayoría de los operadores en JS, incluyendo los que hemos visto con coerciones a <code>string</code> y <code>number</code>, están diseñados para ejecutarse contra valores primitive. Cuando cualquiera de estos operadores se usa en cambio contra un valor objeto, se activa el algoritmo abstracto <code>ToPrimitive</code> (como se describió antes) para coercionar el objeto a un primitive.</p>
+<p>Armemos un objeto que podamos usar para inspeccionar cómo se comportan las diferentes operaciones:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">spyObject = {
+    toString() {
+        console.log("toString() invoked!");
+        return "10";
+    },
+    valueOf() {
+        console.log("valueOf() invoked!");
+        return 42;
+    },
+};</code></pre></div>
+<p>Este objeto define tanto el método <code>toString()</code> como el <code>valueOf()</code>, y cada uno devuelve un tipo de valor diferente (<code>string</code> vs <code>number</code>).</p>
+<p>Probemos algunas de las operaciones de coerción que ya vimos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">String(spyObject);
+// toString() invoked!
+// "10"
+
+spyObject + "";
+// valueOf() invoked!
+// "42"</code></pre></div>
+<p>¡Guau! Apuesto a que eso sorprendió a varios de ustedes, lectores; a mí sin dudas me sorprendió. Es tan común que la gente afirme que <code>String(..)</code> y <code>+ ""</code> son formas equivalentes de activar la operación <code>ToString()</code>. ¡Pero claramente no lo son!</p>
+<p>La diferencia se reduce al <em>hint</em> que cada operación provee a <code>ToPrimitive()</code>. <code>String(..)</code> claramente provee <code>"string"</code> como el <em>hint</em>, mientras que la expresión idiomática <code>+ ""</code> no provee ningún <em>hint</em> (similar a <em>hintear</em> <code>"number"</code>). Pero no te pierdas este detalle: aunque <code>+ ""</code> invoca <code>valueOf()</code>, cuando este devuelve un valor primitive <code>number</code> de <code>42</code>, ese valor luego se coerciona a un string (vía <code>ToString()</code>), así que obtenemos <code>"42"</code> en lugar de <code>42</code>.</p>
+<p>Sigamos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number(spyObject);
+// valueOf() invoked!
+// 42
+
++spyObject;
+// valueOf() invoked!
+// 42</code></pre></div>
+<p>Este ejemplo implica que <code>Number(..)</code> y el operador unario <code>+</code> ambos realizan la misma coerción <code>ToPrimitive()</code> (con <em>hint</em> de <code>"number"</code>), que en nuestro caso devuelve <code>42</code>. Como eso ya es un <code>number</code> como se pidió, el valor sale sin más vueltas.</p>
+<p>¿Pero qué pasa si un <code>valueOf()</code> devuelve un <code>bigint</code>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">spyObject2 = {
+    valueOf() {
+        console.log("valueOf() invoked!");
+        return 42n;  // bigint!
+    }
+};
+
+Number(spyObject2);
+// valueOf() invoked!
+// 42     &lt;--- look, not a bigint!
+
++spyObject2;
+// valueOf() invoked!
+// TypeError: Cannot convert a BigInt value to a number</code></pre></div>
+<p>Vimos esta diferencia antes en la sección "A Número". JS permite una coerción <em>explícita</em> del valor bigint <code>42n</code> al valor number <code>42</code>, pero prohíbe lo que considera una forma de coerción <em>implícita</em>.</p>
+<p>¿Qué hay de la función de coerción <code>BigInt(..)</code> (sin palabra clave <code>new</code>)?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">BigInt(spyObject);
+// valueOf() invoked!
+// 42n    &lt;--- look, a bigint!
+
+BigInt(spyObject2);
+// valueOf() invoked!
+// 42n
+
+// *******************************
+
+spyObject3 = {
+    valueOf() {
+        console.log("valueOf() invoked!");
+        return 42.3;
+    }
+};
+
+BigInt(spyObject3);
+// valueOf() invoked!
+// RangeError: The number 42.3 cannot be converted to a BigInt</code></pre></div>
+<p>De nuevo, como vimos en la sección "A Número", <code>42</code> puede coercionarse de manera segura a <code>42n</code>. Por otro lado, <code>42.3</code> no puede coercionarse de manera segura a un <code>bigint</code>.</p>
+<p>Hemos visto que <code>toString()</code> y <code>valueOf()</code> se invocan, de maneras variadas, a medida que se realizan ciertas coerciones <code>string</code> y <code>number</code> / <code>bigint</code>.</p>
+<h4 id="no-se-encontró-primitive">¿No Se Encontró Primitive?</h4>
+<p>Si <code>ToPrimitive()</code> falla en producir un valor primitive, se lanzará una excepción:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">spyObject4 = {
+    toString() {
+        console.log("toString() invoked!");
+        return [];
+    },
+    valueOf() {
+        console.log("valueOf() invoked!");
+        return {};
+    }
+};
+
+String(spyObject4);
+// toString() invoked!
+// valueOf() invoked!
+// TypeError: Cannot convert object to primitive value
+
+Number(spyObject4);
+// valueOf() invoked!
+// toString() invoked!
+// TypeError: Cannot convert object to primitive value</code></pre></div>
+<p>Si vas a definir coerciones a-primitive personalizadas vía <code>toString()</code> / <code>valueOf()</code>, ¡asegurate de devolver un primitive desde al menos uno de ellos!</p>
+<h4 id="objeto-a-booleano">Objeto A Booleano</h4>
+<p>¿Qué hay de las coerciones a <code>boolean</code> de objetos?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Boolean(spyObject);
+// true
+
+!spyObject;
+// false
+
+if (spyObject) {
+    console.log("if!");
+}
+// if!
+
+result = spyObject ? "ternary!" : "nope";
+// "ternary!"
+
+while (spyObject) {
+    console.log("while!");
+    break;
+}
+// while!</code></pre></div>
+<p>Cada uno de estos está activando <code>ToBoolean()</code>. Pero si recordás de antes, <em>ese</em> algoritmo nunca delega a <code>ToPrimitive()</code>; por lo tanto, no vemos "valueOf() invoked!" siendo logueado.</p>
+<h4 id="unboxing-wrapper-a-primitive">Unboxing: Wrapper A Primitive</h4>
+<p>Una forma especial de objetos que a menudo se coercionan vía <code>ToPrimitive()</code>: primitives boxeados/wrappeados (como se vio en el Capítulo 3). Esta coerción particular de objeto-a-primitive a menudo se denomina <em>unboxing</em>.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">hello = new String("hello");
+String(hello);                  // "hello"
+hello + "";                     // "hello"
+
+fortyOne = new Number(41);
+Number(fortyOne);               // 41
+fortyOne + 1;                   // 42</code></pre></div>
+<p>Los wrappers de objeto <code>hello</code> y <code>fortyOne</code> de arriba tienen métodos <code>toString()</code> y <code>valueOf()</code> configurados sobre ellos, para comportarse de manera similar a los objetos <code>spyObject</code> / etc de nuestros ejemplos anteriores.</p>
+<p>Un caso especial con el que hay que tener cuidado con los primitives wrappeados en objeto es con <code>Boolean()</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">nope = new Boolean(false);
+Boolean(nope);                  // true   &lt;--- oops!
+!!nope;                         // true   &lt;--- oops!</code></pre></div>
+<p>Recordá, esto es porque <code>ToBoolean()</code> <em>no</em> reduce un objeto a su forma primitive con <code>ToPrimitive</code>; simplemente busca el valor en su tabla interna, y como los objetos normales (no exóticos<sup class="fnref"><a href="#fn-ExoticFalsyObjects">[ExoticFalsyObjects]</a></sup>) son siempre truthy, sale <code>true</code>.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Es un pequeño y feo gotcha. Ciertamente podría argumentarse que <code>new Boolean(false)</code> debería configurarse internamente como un "objeto falsy" exótico. <sup class="fnref"><a href="#fn-ExoticFalsyObjects">[ExoticFalsyObjects]</a></sup> Desafortunadamente, ese cambio ahora, 25 años después del inicio de la historia de JS, podría fácilmente crear roturas en los programas. Por eso, JS dejó este gotcha intacto.</p></div></div>
+<h4 id="sobrescribiendo-el-tostring-por-defecto">Sobrescribiendo el <code>toString()</code> por defecto</h4>
+<p>Como hemos visto, siempre podés definir un <code>toString()</code> en un objeto para que <em>él</em> sea invocado por la coerción <code>ToPrimitive()</code> apropiada. Pero otra opción es sobrescribir el <code>Symbol.toStringTag</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">spyObject5a = {};
+String(spyObject5a);
+// "[object Object]"
+spyObject5a.toString();
+// "[object Object]"
+
+spyObject5b = {
+    [Symbol.toStringTag]: "my-spy-object"
+};
+String(spyObject5b);
+// "[object my-spy-object]"
+spyObject5b.toString();
+// "[object my-spy-object]"
+
+spyObject5c = {
+    get [Symbol.toStringTag]() {
+        return `myValue:${this.myValue}`;
+    },
+    myValue: 42
+};
+String(spyObject5c);
+// "[object myValue:42]"
+spyObject5c.toString();
+// "[object myValue:42]"</code></pre></div>
+<p><code>Symbol.toStringTag</code> está pensado para definir un valor string personalizado para describir el objeto cada vez que su operación <code>toString()</code> por defecto se invoca directamente, o implícitamente vía coerción; en su ausencia, el valor usado es <code>"Object"</code> en la común salida <code>"[object Object]"</code>.</p>
+<p>La sintaxis <code>get ..</code> en <code>spyObject5c</code> está definiendo un <em>getter</em>. Eso significa que cuando JS intenta acceder a este <code>Symbol.toStringTag</code> como una propiedad (como es normal), este código getter en cambio causa que la función que especificamos sea invocada para computar el resultado. Podemos ejecutar cualquier lógica arbitraria dentro de este getter para determinar dinámicamente un <em>tag</em> string para uso del método <code>toString()</code> por defecto.</p>
+<h4 id="sobrescribiendo-toprimitive">Sobrescribiendo <code>ToPrimitive</code></h4>
+<p>Alternativamente, podés sobrescribir toda la operación <code>ToPrimitive()</code> por defecto para cualquier objeto, seteando la propiedad symbol especial <code>Symbol.toPrimitive</code> para que contenga una función:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">spyObject6 = {
+    [Symbol.toPrimitive](hint) {
+        console.log(`toPrimitive(${hint}) invoked!`);
+        return 25;
+    },
+    toString() {
+        console.log("toString() invoked!");
+        return "10";
+    },
+    valueOf() {
+        console.log("valueOf() invoked!");
+        return 42;
+    },
+};
+
+String(spyObject6);
+// toPrimitive(string) invoked!
+// "25"   &lt;--- not "10"
+
+spyObject6 + "";
+// toPrimitive(default) invoked!
+// "25"   &lt;--- not "42"
+
+Number(spyObject6);
+// toPrimitive(number) invoked!
+// 25     &lt;--- not 42 or "25"
+
++spyObject6;
+// toPrimitive(number) invoked!
+// 25</code></pre></div>
+<p>Como podés ver, si definís esta función en un objeto, se usa enteramente en reemplazo de la operación abstracta <code>ToPrimitive()</code> por defecto. Ya que <code>hint</code> todavía se provee a esta función invocada (<code>[Symbol.toPrimitive](..)</code>), podrías en teoría implementar tu propia versión del algoritmo, invocando un <code>toString()</code>, <code>valueOf()</code>, o cualquier otro método del objeto (referencia de contexto <code>this</code>).</p>
+<p>O simplemente podés definir manualmente un valor de retorno como se muestra arriba. Sin importar cuál, JS <em>no</em> invocará automáticamente ni el método <code>toString()</code> ni el <code>valueOf()</code>.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Como se discutió antes en "¿No Se Encontró Primitive?", si la función <code>Symbol.toPrimitive</code> definida no devuelve en realidad un valor que sea un primitive, se lanzará una excepción sobre no poder "...convertir objeto a valor primitive". ¡Asegurate de devolver siempre un valor primitive real desde tal función!</p></div></div>
+<h3 id="igualdad">Igualdad</h3>
+<p>Hasta ahora, las coerciones que hemos visto se enfocaron en valores individuales. Dirigimos nuestra atención ahora a las comparaciones de igualdad, que inherentemente involucran dos valores, cualquiera o ambos de los cuales pueden estar sujetos a coerción.</p>
+<p>Antes en este capítulo, hablamos de varias operaciones abstractas para la comparación de igualdad de valores.</p>
+<p>Por ejemplo, la operación <code>SameValue()</code><sup class="fnref"><a href="#fn-SameValue">[SameValue]</a></sup> es la más estricta de las comparaciones de igualdad, sin absolutamente ninguna coerción. La operación de JS más obvia que depende de <code>SameValue()</code> es:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Object.is(42,42);                   // true
+Object.is(-0,-0);                   // true
+Object.is(NaN,NaN);                 // true
+
+Object.is(0,-0);                    // false</code></pre></div>
+<p>La operación <code>SameValueZero()</code> -- recordá, solo difiere de <code>SameValue()</code> en tratar <code>-0</code> y <code>0</code> como indistinguibles -- se usa en bastantes más lugares, incluyendo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">[ 1, 2, NaN ].includes(NaN);        // true</code></pre></div>
+<p>Podemos ver el malentendido de <code>0</code> / <code>-0</code> de <code>SameValueZero()</code> acá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">[ 1, 2, -0 ].includes(0);           // true  &lt;--- oops!
+
+(new Set([ 1, 2, 0 ])).has(-0);     // true  &lt;--- ugh
+
+(new Map([[ 0, "ok" ]])).has(-0);   // true  &lt;--- :(</code></pre></div>
+<p>En estos casos, hay una <em>coerción</em> (¡de cierta clase!) que trata <code>-0</code> y <code>0</code> como indistinguibles. No, técnicamente eso no es una "coerción" en el sentido de que el tipo no está cambiando, pero estoy medio forzando la definición para <em>incluir</em> este caso en nuestra discusión más amplia de coerción acá.</p>
+<p>Contrastá los métodos <code>includes()</code> / <code>has()</code> acá, que activan <code>SameValueZero()</code>, con el viejo y querido utilitario de array <code>indexOf(..)</code>, que en cambio activa <code>IsStrictlyEqual()</code>. Este algoritmo es un poco más "coercitivo" que <code>SameValueZero()</code>, en el sentido de que previene que los valores <code>NaN</code> sean tratados como iguales entre sí:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">[ 1, 2, NaN ].indexOf(NaN);         // -1  &lt;--- not found</code></pre></div>
+<p>Si estas peculiaridades matizadas de <code>includes(..)</code> e <code>indexOf(..)</code> te molestan, cuando buscás -- buscando una coincidencia de igualdad dentro de -- un valor en un array, podés evitar cualquier peculiaridad "coercitiva" y <em>forzar</em> la coincidencia de igualdad más estricta de <code>SameValue()</code>, vía <code>Object.is(..)</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">vals = [ 0, 1, 2, -0, NaN ];
+
+vals.find(v =&gt; Object.is(v,-0));            // -0
+vals.find(v =&gt; Object.is(v,NaN));           // NaN
+
+vals.findIndex(v =&gt; Object.is(v,-0));       // 3
+vals.findIndex(v =&gt; Object.is(v,NaN));      // 4</code></pre></div>
+<h4 id="operadores-de-igualdad-vs-">Operadores de Igualdad: <code>==</code> vs <code>===</code></h4>
+<p>El lugar más obvio donde se involucra <em>coerción</em> en las verificaciones de igualdad es con el operador <code>==</code>. A pesar de cualquier noción preconcebida que puedas tener sobre <code>==</code>, se comporta de manera extremadamente predecible, asegurando que ambos operandos coincidan en tipos antes de realizar su verificación de igualdad.</p>
+<p>Para decir algo que puede o no ser súper obvio: los operadores <code>==</code> (y <code>===</code>) siempre devuelven un <code>boolean</code> (<code>true</code> o <code>false</code>), indicando el resultado de la verificación de igualdad; nunca devuelven ninguna otra cosa, sin importar qué coerción pueda ocurrir.</p>
+<p>Ahora, recordá y repasá los pasos discutidos antes en el capítulo para la operación <code>IsLooselyEqual()</code>. <sup class="fnref"><a href="#fn-LooseEquality">[LooseEquality]</a></sup> Su comportamiento, y por lo tanto cómo actúa <code>==</code>, puede intuirse pragmáticamente teniendo en mente solo estos dos hechos:</p>
+<ol><li>Si los tipos de ambos operandos son iguales, <code>==</code> tiene exactamente el mismo comportamiento que <code>===</code> -- <code>IsLooselyEqual()</code> delega inmediatamente a <code>IsStrictlyEqual()</code>. <sup class="fnref"><a href="#fn-StrictEquality">[StrictEquality]</a></sup></li></ol>
+<p>Por ejemplo, cuando ambos operandos son referencias a objetos:</p>
+<p>```js     myObj = { a: 1 };     anotherObj = myObj;</p>
+<p>myObj == anotherObj;                // true     myObj === anotherObj;               // true     ```</p>
+<p>Acá, <code>==</code> y <code>===</code> determinan que ambos de sus respectivos operandos son del tipo referencia <code>object</code>, así que ambas verificaciones de igualdad se comportan idénticamente; comparan las referencias a los objetos para igualdad.</p>
+<ol><li>Pero si los tipos de los operandos difieren, <code>==</code> permite coerción hasta que coincidan, y prefiere la comparación numérica; intenta coercionar ambos operandos a números, si es posible:</li></ol>
+<p>``<code>js     42 == "42";                         // true     </code>``</p>
+<p>Acá, el string <code>"42"</code> se coerciona a un number <code>42</code> (no viceversa), y por lo tanto la comparación es entonces <code>42 == 42</code>, y debe claramente devolver <code>true</code>.</p>
+<p>Armados con este conocimiento, ahora disiparemos el mito común de que solo <code>===</code> verifica el tipo y el valor, mientras que <code>==</code> verifica solo el valor. ¡No es cierto!</p>
+<p>De hecho, <code>==</code> y <code>===</code> son ambos sensibles al tipo, cada uno verificando los tipos de sus operandos. El operador <code>==</code> permite coerción de tipos que no coinciden, mientras que <code>===</code> prohíbe cualquier coerción.</p>
+<p>Es una opinión sostenida casi universalmente que <code>==</code> debería evitarse a favor de <code>===</code>. Puede que yo sea uno de los únicos desarrolladores que públicamente defiende con la cara seria el caso opuesto. Creo que la razón principal por la que la gente en cambio prefiere <code>===</code>, más allá de simplemente conformarse con el status quo, es una falta de tomarse el tiempo para entender realmente <code>==</code>.</p>
+<p>Voy a revisitar este tema para presentar el caso de preferir <code>==</code> sobre <code>===</code>, más adelante en este capítulo, en "Igualdad Consciente del Tipo". Todo lo que pido es, no importa cuán fuertemente estés en desacuerdo conmigo ahora, tratá de mantener una mente abierta.</p>
+<h4 id="coerción-nullish">Coerción Nullish</h4>
+<p>Ya hemos visto una cantidad de operaciones de JS que son nullish -- tratando <code>null</code> y <code>undefined</code> como coercitivamente iguales entre sí, incluyendo el operador de encadenamiento opcional <code>?.</code> y el operador de coalescencia nullish <code>??</code> (ver "Null'ish" en el Capítulo 1).</p>
+<p>Pero <code>==</code> es el lugar más obvio donde JS expone la igualdad coercitiva nullish:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">null == undefined;              // true</code></pre></div>
+<p>Ni <code>null</code> ni <code>undefined</code> serán jamás coercitivamente iguales a ningún otro valor en el lenguaje, más allá de entre sí. Eso significa que <code>==</code> hace ergonómico tratar estos dos valores como indistinguibles.</p>
+<p>Podrías aprovechar esta capacidad así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (someData == null) {
+    // `someData` is "unset" (either null or undefined),
+    // so set it to some default value
+}
+
+// OR:
+
+if (someData != null) {
+    // `someData` is set (neither null nor undefined),
+    // so use it somehow
+}</code></pre></div>
+<p>Recordá que <code>!=</code> es la negación de <code>==</code>, mientras que <code>!==</code> es la negación de <code>===</code>. ¡No hagas coincidir la cantidad de <code>=</code>s a menos que quieras confundirte!</p>
+<p>Compará estos dos enfoques:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (someData == null) {
+    // ..
+}
+
+// vs:
+
+if (someData === null || someData === undefined) {
+    // ..
+}</code></pre></div>
+<p>Ambas sentencias <code>if</code> se comportarán exactamente idénticamente. ¿Cuál preferirías escribir, y cuál preferirías leer más adelante?</p>
+<p>Para ser justos, algunos de ustedes prefieren el equivalente más verboso con <code>===</code>. Y eso está OK. Estoy en desacuerdo, creo que la versión con <code>==</code> de esta verificación es <em>mucho</em> mejor. Y también sostengo que la versión con <code>==</code> es más consistente en espíritu estilístico con cómo actúan los otros operadores nullish como <code>?.</code> y <code>??</code>.</p>
+<p>Pero otro hecho menor que podrías considerar: en benchmarks de rendimiento que corrí muchas veces, los engines de JS pueden realizar la única verificación <code>== null</code> como se muestra <em>ligeramente más rápido</em> que la combinación de dos verificaciones <code>===</code>. En otras palabras, hay un diminuto pero medible beneficio en dejar que el <code>==</code> de JS realice la coerción nullish <em>implícita</em> que en tratar de listar <em>explícitamente</em> ambas verificaciones vos mismo.</p>
+<p>Observaría que hasta muchos fans acérrimos de <code>===</code> tienden a conceder que <code>== null</code> es al menos uno de esos casos donde <code>==</code> es preferible.</p>
+<h4 id="gotcha-de-booleanos-con-">Gotcha de Booleanos con <code>==</code></h4>
+<p>Aparte de algunos casos límite coercitivos que abordaremos en la próxima sección, probablemente el gotcha más grande a tener en cuenta con <code>==</code> tiene que ver con los booleanos.</p>
+<p>Prestá mucha atención acá, ya que es una de las mayores razones por las que la gente se quema con, y luego llega a despreciar, <code>==</code>. ¡Si seguís mi simple consejo (al final de esta sección), nunca serás una víctima!</p>
+<p>Considerá el siguiente fragmento, y asumamos por un minuto que <code>isLoggedIn</code> <em>no</em> está conteniendo un valor <code>boolean</code> (<code>true</code> o <code>false</code>):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (isLoggedIn) {
+    // ..
+}
+
+// vs:
+
+if (isLoggedIn == true) {
+    // ..
+}</code></pre></div>
+<p>Ya cubrimos la primera forma de sentencia <code>if</code>. Sabemos que <code>if</code> espera un <code>boolean</code>, así que en este caso <code>isLoggedIn</code> será coercionado a un <code>boolean</code> usando la tabla de búsqueda en la operación abstracta <code>ToBoolean()</code>. Bastante directo de predecir, ¿no?</p>
+<p>Pero mirá la expresión <code>isLoggedIn == true</code>. ¿Pensás que se va a comportar de la misma manera?</p>
+<p>Si tu instinto fue <em>sí</em>, acabás de caer en una trampita engañosa. Recordá al principio de este capítulo cuando advertí que las reglas de la coerción <code>ToBoolean()</code> solo aplican si la operación de JS está efectivamente activando ese algoritmo. Acá, parece que JS debe estar haciéndolo, porque <code>== true</code> parece tan claramente un tipo de comparación "relacionada con booleanos".</p>
+<p>Pero nop. Andá y releé el algoritmo <code>IsLooselyEqual()</code> (para <code>==</code>) antes en el capítulo. Dale, te espero. Si no te gusta mi resumen, andá y leé el algoritmo de la especificación<sup class="fnref"><a href="#fn-LooseEquality">[LooseEquality]</a></sup> en sí.</p>
+<p>OK, ¿ves ahí algo que mencione invocar <code>ToBoolean()</code> bajo alguna circunstancia?</p>
+<p>¡Nop!</p>
+<p>Recordá: cuando los tipos de los dos operandos de <code>==</code> no son iguales, prefiere coercionar ambos a números.</p>
+<p>¿Qué podría haber en <code>isLoggedIn</code>, si no es un <code>boolean</code>? Bueno, podría ser un valor string como <code>"yes"</code>, por ejemplo. En esa forma, <code>if ("yes") { .. }</code> claramente pasaría la verificación condicional y ejecutaría el bloque.</p>
+<p>¿Pero qué va a pasar con la forma <code>==</code> del condicional del <code>if</code>? Va a actuar así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// (1)
+"yes" == true
+
+// (2)
+"yes" == 1
+
+// (3)
+NaN == 1
+
+// (4)
+NaN === 1           // false</code></pre></div>
+<p>Así que en otras palabras, si <code>isLoggedIn</code> contiene un valor como <code>"yes"</code>, el bloque <code>if (isLoggedIn) { .. }</code> pasará la verificación condicional, pero la verificación <code>if (isLoggedIn == true)</code> no lo hará. ¡Uf!</p>
+<p>¿Qué pasaría si <code>isLoggedIn</code> contuviera el string <code>"true"</code>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// (1)
+"true" == true
+
+// (2)
+"true" == 1
+
+// (3)
+NaN == 1
+
+// (4)
+NaN === 1           // false</code></pre></div>
+<p>Facepalm.</p>
+<p>Acá va una pregunta sorpresa: ¿qué valor necesitaría contener <code>isLoggedIn</code> para que ambas formas del condicional de la sentencia <code>if</code> pasaran?</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>¿Qué pasaría si <code>isLoggedIn</code> estuviera conteniendo el número <code>1</code>? <code>1</code> es truthy, así que la forma <code>if (isLoggedIn)</code> pasa. Y la otra forma <code>==</code> que involucra coerción:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// (1)
+1 == true
+
+// (2)
+1 == 1
+
+// (3)
+1 === 1             // true</code></pre></div>
+<p>¿Pero si <code>isLoggedIn</code> estuviera en cambio conteniendo el string <code>"1"</code>? De nuevo, <code>"1"</code> es truthy, pero ¿qué hay de la coerción <code>==</code>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// (1)
+"1" == true
+
+// (2)
+"1" == 1
+
+// (3)
+1 == 1
+
+// (4)
+1 === 1             // true</code></pre></div>
+<p>OK, entonces <code>1</code> y <code>"1"</code> son dos valores que <code>isLoggedIn</code> puede contener que son seguros de coercionar junto con <code>true</code> en una verificación de igualdad <code>==</code>. Pero básicamente casi ningún otro valor es seguro para que <code>isLoggedIn</code> contenga.</p>
+<p>Tenemos un gotcha similar si la verificación es <code>== false</code>. ¿Qué valores son seguros en tal comparación? <code>""</code> y <code>0</code> funcionan. Pero:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if ([] == false) {
+    // this will run!
+}</code></pre></div>
+<p><code>[]</code> es un valor truthy, ¿pero también es coercitivamente igual a <code>false</code>?! Ay.</p>
+<p>¿Qué hacemos con estos gotchas con las verificaciones <code>== true</code> y <code>== false</code>? Tengo una respuesta llana y simple.</p>
+<p>Nunca, jamás, bajo ninguna circunstancia, realices una verificación <code>==</code> si cualquier lado de la comparación es un valor <code>true</code> o <code>false</code>. Parece que se va a comportar como una linda coerción <code>ToBoolean()</code>, pero astutamente no lo hará, y en cambio quedará atrapada en una variedad de casos límite de coerción (abordados en la próxima sección). Y evitá también las formas <code>===</code>.</p>
+<p>Cuando estés tratando con booleanos, quedate con las formas implícitamente coercitivas que genuinamente activan <code>ToBoolean()</code>, como <code>if (isLoggedIn)</code>, y mantenete lejos de las formas <code>==</code> / <code>===</code>.</p>
+<h2 id="casos-límite-de-coerción">Casos Límite de Coerción</h2>
+<p>He sido claro al expresar mi opinión pro-coerción hasta ahora. Y <em>es</em> solo una opinión, aunque está basada en interpretar hechos recopilados de estudiar la especificación del lenguaje y los comportamientos observables de JS.</p>
+<p>Eso no quiere decir que la coerción sea perfecta. Hay varios casos límite frustrantes de los que necesitamos estar conscientes, para evitar tropezar en esos pozos. En caso de que no esté claro, mis siguientes caracterizaciones de estos casos límite son solo más opiniones mías. Tu experiencia puede variar.</p>
+<h3 id="strings">Strings</h3>
+<p>Ya vimos que la coerción a string de un array se ve así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">String([ 1, 2, 3 ]);                // "1,2,3"</code></pre></div>
+<p>Personalmente encuentro eso súper molesto, que no incluya los <code>[ ]</code> que lo rodean. En particular, eso lleva a esta absurdidad:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">String([]);                         // ""</code></pre></div>
+<p>¿Así que no podemos decir que siquiera es un array, porque todo lo que obtenemos es un string vacío? Genial, JS. Eso es simplemente estúpido. Perdón, pero lo es. Y se pone peor:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">String([ null, undefined ]);        // ","</code></pre></div>
+<p>¡¿WAT?! Sabemos que <code>null</code> se coerciona al string <code>"null"</code>, y <code>undefined</code> se coerciona al string <code>"undefined"</code>. Pero si esos valores están en un array, mágicamente simplemente <em>desaparecen</em> como strings vacíos en la coerción array-a-string. ¡Solo queda el <code>","</code> para siquiera darnos una pista de que había algo en el array! Eso es pura tierra de tontos, ahí mismo.</p>
+<p>¿Qué hay de los objetos? Casi igual de exasperante, aunque en la dirección opuesta:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">String({});                         // "[object Object]"
+
+String({ a: 1 });                   // "[object Object]"</code></pre></div>
+<p>Ehm... OK. Claro, gracias JS por ninguna ayuda en entender cuál es el valor del objeto.</p>
+<h3 id="números">Números</h3>
+<p>Estoy por revelar lo que creo que es <em>la</em> peor raíz de todos los males de los casos límite de coerción. ¿Están listos?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number("");                         // 0
+Number("       ");                  // 0</code></pre></div>
+<p>Todavía estoy sacudiendo mi cabeza por este, y lo conozco desde hace casi 20 años. Todavía no entiendo en qué estaba pensando Brendan con este.</p>
+<p>El string vacío está desprovisto de cualquier contenido; no tiene nada adentro con lo cual determinar una representación numérica. <code>0</code> absolutamente <em><strong>NO</strong></em> es el equivalente numérico de un valor numérico faltante/inválido. ¿Sabés qué valor number tenemos que está bien adaptado para comunicar eso? <code>NaN</code>. Ni me hagas arrancar sobre cómo se despojan los espacios en blanco de los strings al coercionar a un número, así que el para-nada-vacío string <code>"       "</code> todavía se trata igual que <code>""</code> para los fines de la coerción numérica.</p>
+<p>Peor aún, ¿recordás cómo <code>[]</code> se coerciona al string <code>""</code>? Por extensión:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number([]);                         // 0</code></pre></div>
+<p>¡Doh! Si <code>""</code> no se coercionara a <code>0</code> -- recordá, ¡esta es la raíz de todo el mal de coerción! --, entonces <code>[]</code> tampoco se coercionaría a <code>0</code>.</p>
+<p>Esto es simplemente territorio absurdo de universo patas para arriba.</p>
+<p>Mucho más moderado, pero aún levemente molesto:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number("NaN");                      // NaN  &lt;--- accidental!
+
+Number("Infinity");                 // Infinity
+Number("infinity");                 // NaN  &lt;--- oops, watch case!</code></pre></div>
+<p>El string <code>"NaN"</code> no se parsea como un valor numérico reconocible, así que la coerción falla, produciendo (¡accidentalmente!) el valor <code>NaN</code>. <code>"Infinity"</code> es explícitamente parseable para la coerción, pero cualquier otra capitalización, incluyendo <code>"infinity"</code>, fallará, produciendo de nuevo <code>NaN</code>.</p>
+<p>Este próximo ejemplo, puede que no pienses que es para nada un caso límite:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number(false);                      // 0
+Number(true);                       // 1</code></pre></div>
+<p>Es meramente una convención de programadores, legado de lenguajes que originalmente no tenían valores booleanos <code>true</code> y <code>false</code>, que tratemos <code>0</code> como <code>false</code>, y <code>1</code> como <code>true</code>. ¿Pero <em>realmente</em> tiene sentido ir en la otra dirección?</p>
+<p>Pensalo de esta manera:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">false + true + false + false + true;        // 2</code></pre></div>
+<p>¿En serio? No creo que haya ningún caso donde tratar un <code>boolean</code> como su equivalente <code>number</code> tenga algún sentido racional en un programa. Puedo entender el revés, por razones históricas: <code>Boolean(0)</code> y <code>Boolean(1)</code>.</p>
+<p>Pero genuinamente siento que <code>Number(false)</code> y <code>Number(true)</code> (así como cualquier forma de coerción implícita) deberían producir <code>NaN</code>, no <code>0</code> / <code>1</code>.</p>
+<h3 id="absurdidad-de-la-coerción">Absurdidad de la Coerción</h3>
+<p>Para probar mi punto, llevemos la absurdidad hasta el nivel 11:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">[] == ![];                          // true</code></pre></div>
+<p>¡¿Cómo?! Eso parece más allá de lo creíble, ¡¿que un valor pueda ser coercitivamente igual a su negación, no?!</p>
+<p>Pero seguí por la madriguera del conejo de la coerción:</p>
+<ol><li><code>[] == ![]</code></li><li><code>[] == false</code></li><li><code>"" == false</code></li><li><code>0 == false</code></li><li><code>0 == 0</code></li><li><code>0 === 0</code>  -&gt;  <code>true</code></li></ol>
+<p>Tenemos tres absurdidades diferentes conspirando contra nosotros: <code>String([])</code>, <code>Number("")</code> y <code>Number(false)</code>; si cualquiera de estas no fuera cierta, este resultado disparatado de caso límite no ocurriría.</p>
+<p>Dejame dejar algo absolutamente claro, eso sí: nada de esto es culpa de <code>==</code>. Se lleva la culpa acá, por supuesto. Pero los verdaderos culpables son los casos límite subyacentes de <code>string</code> y <code>number</code>.</p>
+<h2 id="conciencia-de-tipos">Conciencia de Tipos</h2>
+<p>Ahora hemos cortado y rebanado y examinado la coerción desde cada ángulo concebible, empezando desde las internas abstractas de la especificación, luego moviéndonos a las expresiones y sentencias concretas que efectivamente disparan las coerciones.</p>
+<p>¿Pero cuál es el punto de todo esto? ¿El detalle de este capítulo, y de hecho de todo este libro hasta este punto, es mayormente solo trivia? Eh, no lo creo.</p>
+<p>Volvamos a las observaciones/preguntas que planteé allá al comienzo de este largo capítulo.</p>
+<p>No hay escasez de opiniones (especialmente negativas) sobre la coerción. La posición sostenida casi universalmente es que la coerción es mayormente/enteramente una <em>parte mala</em> del diseño del lenguaje JS. Pero a pesar de esa realidad, casi todo desarrollador, en casi todo programa JS jamás escrito, enfrenta la realidad de que la coerción no puede evitarse.</p>
+<p>En otras palabras, no importa lo que hagas, no vas a poder escapar de la necesidad de estar consciente de, entender, y manejar los tipos de valor de JS y las conversiones entre ellos. Contrario a las suposiciones comunes, abrazar un lenguaje de tipado dinámico (o incluso de tipado débil), <em>no</em> significa ser descuidado o inconsciente de los tipos.</p>
+<p>La programación consciente de los tipos es siempre, siempre mejor que la programación ignorante/agnóstica de los tipos.</p>
+<h3 id="ehh-typescript">Ehh... ¿TypeScript?</h3>
+<p>Seguramente estás pensando en este momento: "¿Por qué no puedo simplemente usar TypeScript y declarar todos mis tipos estáticamente, evitando toda la confusión del tipado dinámico y la coerción?"</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Tengo muchos más pensamientos detallados sobre TypeScript y el rol más grande que juega en nuestro ecosistema; guardaré esas opiniones para el apéndice ("Pensamientos sobre TypeScript").</p></div></div>
+<p>Empecemos por abordar de frente las maneras en que TypeScript ayuda, y no ayuda, en la programación consciente de los tipos, como estoy defendiendo.</p>
+<p>TypeScript es tanto <strong>de tipado estático</strong> (lo que significa que los tipos se declaran en tiempo de autoría y se verifican en tiempo de compilación) como <strong>de tipado fuerte</strong> (lo que significa que las variables/contenedores están tipados, y estas asociaciones se hacen cumplir; los sistemas de tipado fuerte también prohíben la coerción <em>implícita</em>). La mayor fortaleza de TypeScript es que típicamente obliga tanto al autor del código, como al lector del código, a confrontar los tipos que componen la mayor parte (¡idealmente, toda!) de un programa. Eso es definitivamente algo bueno.</p>
+<p>En contraste, JS es <strong>de tipado dinámico</strong> (lo que significa que los tipos se descubren y manejan puramente en tiempo de ejecución) y <strong>de tipado débil</strong> (lo que significa que las variables/contenedores no están tipados, así que no hay asociaciones que hacer cumplir, y las variables pueden por lo tanto contener cualquier tipo de valor; los sistemas de tipado débil permiten cualquier forma de coerción).</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Estoy haciendo gestos a un nivel bastante alto acá, e intencionalmente no sumergiéndome profundamente en un montón de matices sobre los espectros de tipado estático/dinámico y fuerte/débil. Si sentís la urgencia de "Bueno, en realidad..." corregirme en este momento, por favor solo aguantá un poco y dejame exponer mis argumentos.</p></div></div>
+<h3 id="conciencia-de-tipos-sin-typescript">Conciencia de Tipos <em>Sin</em> TypeScript</h3>
+<p>¿Un sistema de tipado dinámico automáticamente significa que estás programando con menos conciencia de tipos? Muchos argumentarían eso, pero yo estoy en desacuerdo.</p>
+<p>No creo para nada que declarar tipos estáticos (anotaciones, como en TypeScript) sea la única manera de lograr una conciencia de tipos efectiva. Claramente, sin embargo, los proponentes del tipado estático creen que esa es la <em>mejor</em> manera.</p>
+<p>Dejame ilustrar la conciencia de tipos sin el tipado estático de TypeScript. Considerá esta declaración de variable:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">let API_BASE_URL = "https://some.tld/api/2";</code></pre></div>
+<p>¿Es esa sentencia de alguna manera <em>consciente del tipo</em>? Claro, no hay anotación <code>: string</code> después de <code>API_BASE_URL</code>. ¡Pero definitivamente creo que <em>sí</em> es consciente del tipo! Vemos claramente el tipo de valor (<code>string</code>) del valor que se asigna a <code>API_BASE_URL</code>.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>No te distraigas con que la declaración <code>let</code> es re-asignable (en contraposición a un <code>const</code>). El <code>const</code> de JS <em>no</em> es una característica de primera clase de su sistema de tipos. En realidad no ganamos conciencia de tipos adicional simplemente porque sabemos que el engine de JS prohíbe la reasignación de una variable <code>const</code>. Si el código está bien estructurado -- ejem, estructurado con la conciencia de tipos como prioridad -- podemos simplemente leer el código y ver claramente que <code>API_BASE_URL</code> <em>no</em> se reasigna y por lo tanto sigue siendo el tipo de valor que se le asignó previamente. Desde una perspectiva de conciencia de tipos, eso es efectivamente lo mismo que si <em>no pudiera</em> reasignarse.</p></div></div>
+<p>Si más adelante quiero hacer algo como:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// are we using the secure API URL?
+isSecureAPI = /^https/.test(API_BASE_URL);</code></pre></div>
+<p>Sé que el método <code>test(..)</code> de la expresión regular espera un string, y como sé que <code>API_BASE_URL</code> está conteniendo un string, sé que esa operación es segura en cuanto a tipos.</p>
+<p>Similarmente, como conozco las simples reglas de la coerción <code>ToBoolean()</code> tal como se relaciona con los valores string, sé que este tipo de sentencia también es segura en cuanto a tipos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// do we have an API URL determined yet?
+if (API_BASE_URL) {
+    // ..
+}</code></pre></div>
+<p>Pero si más adelante, empiezo a tipear algo como esto:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">APIVersion = Number(API_BASE_URL);</code></pre></div>
+<p>Una sirena de advertencia se dispara en mi cabeza. Como sé que hay reglas muy específicas sobre cómo los valores string se coercionan a números, reconozco que esta operación <strong>no</strong> es segura en cuanto a tipos. Así que en cambio la encaro de manera diferente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// pull out the version number from API URL
+versionDigit = API_BASE_URL.match(/\/api\/(\d+)$/)[1];
+
+// make sure the version is actually a number
+APIVersion = Number(versionDigit);</code></pre></div>
+<p>Sé que <code>API_BASE_URL</code> es un string, y además sé que el formato de su contenido incluye <code>".../api/{digits}"</code> al final. Eso me permite saber que la coincidencia de la expresión regular tendrá éxito, así que el acceso al array <code>[1]</code> es seguro en cuanto a tipos.</p>
+<p>También sé que <code>versionDigit</code> contendrá un string, porque eso es lo que devuelven las coincidencias de expresiones regulares. Ahora, sé que es seguro coercionar ese string de dígito-numérico a un número con <code>Number(..)</code>.</p>
+<p>Según mi definición, ese tipo de pensamiento, y ese estilo de codificar, es consciente de los tipos. La conciencia de tipos al codificar significa pensar cuidadosamente sobre si tales cosas serán o no <em>claras</em> y <em>obvias</em> para el lector del código.</p>
+<h3 id="conciencia-de-tipos-con-typescript">Conciencia de Tipos <em>Con</em> TypeScript</h3>
+<p>Los fans de TypeScript señalarán que TypeScript puede, vía inferencia de tipos, hacer tipado estático (hacerlo cumplir) sin necesitar jamás una sola anotación de tipo en el programa. Así que todos los ejemplos de código que compartí en la sección anterior, TypeScript también puede manejarlos, y proveer su variante de hacer cumplir el tipado estático en tiempo de compilación.</p>
+<p>En otras palabras, TypeScript nos dará el mismo tipo de beneficio en verificación de tipos, cualquiera de estos dos que escribamos:</p>
+<div class="code-block" data-lang="ts"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-ts">let API_BASE_URL: string = "https://some.tld/api/2";
+
+// vs:
+
+let API_BASE_URL = "https://some.tld/api/2";</code></pre></div>
+<p>Pero no hay almuerzo gratis. Tenemos algunos problemas que necesitamos confrontar. Antes que nada, TypeScript <em>no</em> dispara un error acá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">API_BASE_URL = "https://some.tld/api/2";
+
+APIVersion = Number(API_BASE_URL);
+// NaN</code></pre></div>
+<p>Intuitivamente, <em>yo</em> quiero que un sistema consciente de los tipos entienda por qué eso es inseguro. Pero quizás eso es simplemente pedir demasiado. O tal vez si efectivamente definimos un tipo más estrecho/específico para esa variable <code>API_BASE_URL</code>, que simplemente <code>string</code>, ¿podría ayudar? Podemos usar un truco de TypeScript llamado "Template Literal Types": <sup class="fnref"><a href="#fn-TSLiteralTypes">[TSLiteralTypes]</a></sup></p>
+<div class="code-block" data-lang="ts"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-ts">type VersionedURL = `https://some.tld/api/${number}`;
+
+API_BASE_URL: VersionedURL = "https://some.tld/api/2";
+
+APIVersion = Number(API_BASE_URL);
+// NaN</code></pre></div>
+<p>Nop, TypeScript todavía no ve ningún problema con eso. Sí, sé que hay una explicación para el porqué (cómo está tipado el <code>Number(..)</code> en sí).</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Me imagino que la gente realmente inteligente que <em>sabe</em> TypeScript bien tiene ideas creativas de cómo podemos contorsionarnos para levantar un error ahí. Quizás hasta hay una docena de maneras diferentes de forzar a TypeScript a dispararse en ese código. Pero ese no es realmente el punto.</p></div></div>
+<p>Mi punto es que no podemos confiar completamente en los tipos de TypeScript para resolver todos nuestros problemas, dejándonos desentender y permanecer felizmente inconscientes de los matices de los tipos y, en este caso, los comportamientos de coerción.</p>
+<p>¡Pero! Seguramente estás objetando esta línea de argumento, desesperado por afirmar que aunque TypeScript no pueda entender alguna situación específica, ¡seguramente usar TypeScript no la hace <em>peor</em>! ¡¿No?!</p>
+<p>Veamos qué tiene que decir TypeScript<sup class="fnref"><a href="#fn-TSExample1">[TSExample1]</a></sup> sobre esta línea:</p>
+<div class="code-block" data-lang="ts"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-ts">type VersionedURL = `https://some.tld/api/${number}`;
+
+let API_BASE_URL: VersionedURL = "https://some.tld/api/2";
+
+let versionDigit = API_BASE_URL.match(/\/api\/(\d+)$/)[1];
+// Object is possibly 'null'.</code></pre></div>
+<p>El error indica que el acceso <code>[1]</code> no es seguro en cuanto a tipos, porque si la expresión regular falla en encontrar cualquier coincidencia en el string, <code>match(..)</code> devuelve <code>null</code>.</p>
+<p>Verás, aunque <em>yo</em> pueda razonar sobre el contenido del string comparado con cómo está escrita la expresión regular, e incluso si <em>yo</em> me tomé el trabajo de dejarle súper claro a TypeScript exactamente cuál es ese contenido específico del string, no es lo suficientemente inteligente como para alinear esas dos cosas y ver que en realidad es totalmente seguro en cuanto a tipos asumir que la coincidencia ocurre.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>¿Es realmente el trabajo de, y el mejor uso de, una herramienta consciente de los tipos el contorsionarse para expresar cada único matiz posible de la seguridad de tipos? No necesitamos herramientas perfectas y universales para derivar inmensas cantidades de beneficio de las cosas que <em>sí</em> pueden hacer.</p></div></div>
+<p>Es más, comparando el estilo de código en la sección anterior con el código en esta sección (con o sin las anotaciones), ¿TypeScript realmente está haciendo nuestra codificación más consciente de los tipos?</p>
+<p>Tipo, ¿ese asunto de <code>type VersionedURL = ..</code> y <code>API_BASE_URL: VersionedURL</code> <em>realmente</em> hace nuestro código más claramente consciente de los tipos? No necesariamente lo creo.</p>
+<h3 id="inteligencia-de-typescript">Inteligencia de TypeScript</h3>
+<p>Sí, te escucho gritándome a través de la pantalla de la computadora. Sí, sé que TypeScript provee la información de tipos que descubre (o infiere) a tu editor de código, que llega en la forma de autocompletados inteligentes, marcadores de advertencia inline útiles, etc.</p>
+<p>Pero estoy argumentando que incluso <em>esos</em> no, en sí mismos, te hacen más consciente de los tipos como desarrollador</p>
+<p>¿Por qué? Porque la conciencia de tipos <em>no</em> es solo sobre la experiencia de autoría. También es sobre la experiencia de lectura, quizás incluso más. Y no todos los lugares/mecanismos donde se lee código, tienen acceso para beneficiarse de toda la inteligencia extra.</p>
+<p>Mirá, la magia de un servidor de lenguaje bombeando inteligencia a tu editor de código es incuestionablemente asombrosa. Es copada y súper útil.</p>
+<p>Y no le reprocho a TypeScript como herramienta inferir cosas sobre mi <strong>código JS</strong> y darme pistas y sugerencias a través de deliciosas integraciones con el editor de código. Simplemente no necesariamente quiero <em>tener</em> que anotar la información de tipos de alguna manera extremadamente específica solo para silenciar las quejas de la herramienta.</p>
+<h3 id="la-vara-por-encima-de-typescript">La Vara Por Encima de TypeScript</h3>
+<p>Pero incluso si hiciera/tuviera todo eso, aún no es <em><strong>suficiente</strong></em> para que yo sea plenamente consciente de los tipos, tanto como autor de código como lector de código.</p>
+<p>Estas herramientas no atrapan cada error de tipo que puede ocurrir, no importa cuánto queramos decirnos a nosotros mismos que pueden, y no importa cuántos aros y contorsiones soportemos para desear que así fuera. Todos los esfuerzos para engatusar y <em>coercionar</em> a una herramienta a atrapar esos errores matizados, a través de una complejidad interminablemente creciente de trucos de sintaxis de tipos, es... en el mejor de los casos, esfuerzo mal empleado.</p>
+<p>Es más, ninguna herramienta así es inmune a los falsos positivos, quejándose de cosas que no son en realidad errores; estas herramientas nunca serán tan inteligentes como lo somos nosotros como humanos. Realmente estás desperdiciando tu tiempo persiguiendo algún truco de sintaxis peculiar para callar las quejas de la herramienta.</p>
+<p>Simplemente no hay sustituto, si querés ser verdaderamente un autor de código y lector de código consciente de los tipos, para aprender cómo funcionan los sistemas de tipos incorporados del lenguaje. Y sí, eso significa que cada único desarrollador en tu equipo necesita invertir los esfuerzos para aprenderlo. No podés aguar estas cosas solo para que sean más alcanzables para los desarrolladores con menos experiencia en el proyecto/equipo.</p>
+<p>Incluso si concediéramos que podrías evitar el 100% de todas las coerciones <em>implícitas</em> -- no podés -- vas a enfrentar absolutamente la necesidad de coerciones <em>explícitas</em> -- ¡todos los programas lo hacen!</p>
+<p>Y si tu respuesta a ese hecho es sugerir que simplemente vas a descargar la carga mental de entenderlas a una herramienta como TypeScript... entonces lamento decírtelo, pero estás llana y dolorosamente quedándote corto de la vara de <em>conciencia de tipos</em> que estoy desafiando a todos los desarrolladores a esforzarse por alcanzar.</p>
+<p>No estoy abogando, acá, por que descartes TypeScript. Si te gusta, bien. Pero sí te estoy desafiando muy explícita y apasionadamente: dejá de usar TypeScript como una muleta. Dejá de prosternarte para apaciguar a los señores del engine de TypeScript. Dejá de perseguir tontamente cada conejo de tipo por cada madriguera sintáctica.</p>
+<p>Desde mi observación, hay una trágica relación inversa entre el uso de herramientas conscientes de los tipos (como TypeScript) y el deseo/esfuerzo de perseguir la conciencia de tipos real como autor de código y lector de código. Cuanto más dependés de TypeScript, más parece que te tientan y alientan a desviar tu atención del sistema de tipos de JS (y especialmente, de la coerción) hacia el sistema de tipos alternativo de TypeScript.</p>
+<p>Desafortunadamente, TypeScript nunca puede escapar completamente del sistema de tipos de JS, porque los tipos de TypeScript son <em>borrados</em> por el compilador, y lo que queda es solo JS con lo que el engine de JS tiene que lidiar.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Imaginá si alguien te diera un vaso de agua filtrada para tomar. Y justo antes de que tomaras un sorbo, dijeran, "Extrajimos esa agua del suelo cerca de un basurero. Pero no te preocupes, usamos un filtro perfectamente bueno, ¡y esa agua es totalmente segura!" ¿Cuánto confiás en ese filtro? Más a mi punto general, ¿no te sentirías más cómodo tomando esa agua si entendieras todo sobre la fuente del agua, todos los procesos de filtración, y todo lo que estaba <em>en</em> el agua del vaso en tu mano? ¿O es confiar en ese filtro suficientemente bueno?</p></div></div>
+<h3 id="igualdad-consciente-del-tipo">Igualdad Consciente del Tipo</h3>
+<p>Cerraré este largo y sinuoso capítulo con una ilustración final, modelando cómo creo que los desarrolladores deberían -- armados con más pensamiento crítico que conformismo de manada -- encarar la codificación consciente de los tipos, uses o no una herramienta como TypeScript.</p>
+<p>Volveremos una vez más a las comparaciones de igualdad (<code>==</code> vs <code>===</code>), desde la perspectiva de la conciencia de tipos. Antes en este capítulo, prometí que presentaría el caso de <code>==</code> sobre <code>===</code>, así que acá va.</p>
+<p>Reafirmemos/resumamos lo que sabemos sobre <code>==</code> y <code>===</code> hasta ahora:</p>
+<ol><li>Si los tipos de los operandos para <code>==</code> coinciden, se comporta <em>exactamente igual</em> que <code>===</code>.</li></ol>
+<ol><li>Si los tipos de los operandos para <code>===</code> no coinciden, siempre devolverá <code>false</code>.</li></ol>
+<ol><li>Si los tipos de los operandos para <code>==</code> no coinciden, permitirá coerción de cualquiera de los operandos (generalmente prefiriendo los tipos de valor numéricos), hasta que los tipos finalmente coincidan; una vez que coinciden, ver (1).</li></ol>
+<p>OK, entonces tomemos esos hechos y analicemos cómo podrían interactuar en nuestro programa.</p>
+<p>Si estás haciendo una comparación de igualdad de <code>x</code> e <code>y</code> así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if ( /* are x and y equal */ ) {
+    // ..
+}</code></pre></div>
+<p>¿Cuáles son las posibles condiciones en las que podemos estar, con respecto a los tipos de <code>x</code> e <code>y</code>?</p>
+<ol><li>Podríamos saber exactamente qué tipo(s) podrían ser <code>x</code> e <code>y</code>, porque sabemos cómo se están asignando esas variables.</li></ol>
+<ol><li>O podríamos no ser capaces de decir cuáles podrían ser esos tipos. Podría ser que <code>x</code> o <code>y</code> pudieran ser cualquier tipo, o al menos cualquiera de varios tipos diferentes, de modo que las combinaciones posibles de tipos en la comparación sean demasiado complejas para entender/predecir.</li></ol>
+<p>¿Podemos coincidir en que (1) es muy preferible a (2)? ¿Podemos coincidir además en que (1) representa haber escrito nuestro código de una manera consciente de los tipos, mientras que (2) representa código que es decididamente <em>inconsciente</em> de los tipos?</p>
+<p>Si estás usando TypeScript, es muy probable que estés consciente de los tipos de <code>x</code> e <code>y</code>, ¿no? Incluso si no estás usando TypeScript, ya mostramos que podés tomar pasos intencionales para escribir tu código de tal manera que los tipos de <code>x</code> e <code>y</code> sean conocidos y obvios.</p>
+<h4 id="2-tipos-desconocidos">(2) Tipos Desconocidos</h4>
+<p>Si estás en el escenario (2), voy a afirmar que tu código está en un estado problemático. Tu código es menos-que-ideal. Tu código necesita ser refactorizado. Lo mejor que podés hacer, si encontrás código en este estado, es... ¡arreglarlo!</p>
+<p>Cambiá el código para que sea consciente de los tipos. Si eso significa usar TypeScript, e incluso insertar algunas anotaciones de tipo, hacelo. O si sentís que podés llegar al estado consciente de los tipos con <em>solo JS</em>, hacé eso. De cualquier manera, hacé lo que puedas para llegar al escenario (1).</p>
+<p>Si no podés asegurar que el código que hace esta comparación de igualdad entre <code>x</code> e <code>y</code> sea consciente de los tipos, y no tenés otras opciones, entonces absolutamente <em>debés</em> usar el operador de igualdad estricta <code>===</code>. No hacerlo sería supremamente irresponsable.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (x === y) {
+    // ..
+}</code></pre></div>
+<p>Si no sabés nada sobre los tipos, ¿cómo podrías vos (o cualquier otro futuro lector de tu código) tener alguna idea de cómo se van a comportar los pasos coercitivos en <code>==</code>? No podés.</p>
+<p>Lo único responsable que se puede hacer es, evitar la coerción y usar <code>===</code>.</p>
+<p>Pero no pierdas de vista este hecho: solo estás eligiendo <code>===</code> como último recurso, cuando tu código es tan inconsciente de los tipos -- ejem, ¡roto en los tipos! -- como para no tener otra opción.</p>
+<h4 id="1-tipos-conocidos">(1) Tipos Conocidos</h4>
+<p>OK, asumamos en cambio que estás en el escenario (1). Conocés los tipos de <code>x</code> e <code>y</code>. Está muy claro en el código cuál es ese conjunto estrecho de tipos que participan en la verificación de igualdad.</p>
+<p>¡Genial!</p>
+<p>Pero aún hay dos posibles sub-condiciones en las que podés estar:</p>
+<ul><li>(1a): <code>x</code> e <code>y</code> podrían ser ya del mismo tipo, ya sea que ambos sean <code>string</code>s, <code>number</code>s, etc.</li></ul>
+<ul><li>(1b): <code>x</code> e <code>y</code> podrían ser de tipos diferentes.</li></ul>
+<p>Consideremos cada uno de estos casos individualmente.</p>
+<h5 id="1a-tipos-conocidos-que-coinciden">(1a) Tipos Conocidos que Coinciden</h5>
+<p>Si los tipos en la comparación de igualdad coinciden (sean los que sean), ya sabemos con certeza que <code>==</code> y <code>===</code> hacen exactamente lo mismo. No hay absolutamente ninguna diferencia.</p>
+<p>Salvo que <code>==</code> <em>es</em> más corto por un carácter. La mayoría de los desarrolladores sienten instintivamente que la versión más escueta pero equivalente de algo es a menudo la más preferible. Eso no es universal, por supuesto, pero es al menos una preferencia general.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// this is best
+if (x == y) {
+    // ..
+}</code></pre></div>
+<p>En este caso particular, un <code>=</code> extra no haría nada por nosotros para hacer el código más claro. De hecho, ¡en realidad haría la comparación peor!</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// this is strictly worse here!
+if (x === y) {
+    // ..
+}</code></pre></div>
+<p>¿Por qué es peor?</p>
+<p>Porque en el escenario (2), ya establecimos que <code>===</code> se usa para el último recurso cuando no sabemos lo suficiente/nada sobre los tipos como para poder predecir el resultado. Usamos <code>===</code> cuando queremos asegurarnos de evitar la coerción cuando sabemos que la coerción podría ocurrir.</p>
+<p>¡Pero eso no aplica acá! Ya sabemos que no ocurriría ninguna coerción. No hay razón para confundir al lector con un <code>===</code> acá. Si usás <code>===</code> en un lugar donde ya <em>sabés</em> los tipos -- y además, ¡coinciden! -- eso en realidad podría enviar una señal mixta al lector. ¡Podrían haber asumido que sabían lo que pasaría en la verificación de igualdad, pero luego ven el <code>===</code> y dudan de sí mismos!</p>
+<p>De nuevo, para decirlo llanamente, si conocés los tipos de una comparación de igualdad, y sabés que coinciden, solo hay una elección correcta: <code>==</code>.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// stick to this option
+if (x == y) {
+    // ..
+}</code></pre></div>
+<h5 id="1b-tipos-conocidos-que-no-coinciden">(1b) Tipos Conocidos que No Coinciden</h5>
+<p>OK, estamos en nuestro escenario final. Necesitamos comparar <code>x</code> e <code>y</code>, y conocemos sus tipos, pero también sabemos que sus tipos <strong>NO</strong> son iguales.</p>
+<p>¿Qué operador deberíamos usar acá?</p>
+<p>Si elegís <code>===</code>, cometiste un error enorme. ¡¿Por qué?! Porque <code>===</code> usado con tipos conocidos que no coinciden nunca, jamás, jamás devolverá <code>true</code>. Siempre fallará.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// `x` and `y` have different types?
+if (x === y) {
+    // congratulations, this code in here will NEVER run
+}</code></pre></div>
+<p>OK. Entonces, <code>===</code> queda descartado cuando los tipos son conocidos y no coinciden. ¿Cuál es nuestra única otra opción?</p>
+<p>Bueno, en realidad, de nuevo tenemos dos opciones. <em>Podríamos</em> decidir:</p>
+<ul><li>(1b-1): Cambiemos el código para que no estemos tratando de hacer una verificación de igualdad con tipos conocidos que no coinciden; eso podría involucrar coercionar explícitamente uno o ambos valores para que sus tipos ahora coincidan, en cuyo caso volvamos de un salto al escenario (1a).</li></ul>
+<ul><li>(1b-2): Si vamos a comparar tipos conocidos que no coinciden para igualdad, y queremos alguna esperanza de que esa verificación alguna vez pase, <em>debemos</em> usar <code>==</code>, porque es el único de los operadores de igualdad que puede coercionar uno o ambos operandos hasta que los tipos coincidan.</li></ul>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// `x` and `y` have different types,
+// so let's allow JS to coerce them
+// for equality comparison
+if (x == y) {
+    // .. (so, you're saying there's a chance?)
+}</code></pre></div>
+<p>Eso es todo. Terminamos. Miramos cada posible condición de comparación de igualdad sensible al tipo (entre <code>x</code> e <code>y</code>).</p>
+<h4 id="resumiendo-la-comparación-de-igualdad-sensible-al-tipo">Resumiendo la Comparación de Igualdad Sensible al Tipo</h4>
+<p>El caso de preferir siempre <code>==</code> sobre <code>===</code> es el siguiente:</p>
+<ol><li>Uses TypeScript o no -- pero especialmente si <em>sí</em> usás TypeScript -- la meta debería ser que cada única parte del código, incluyendo todas las comparaciones de igualdad, sea <em>consciente de los tipos</em>.</li></ol>
+<ol><li>Si conocés los tipos, siempre deberías preferir <code>==</code>.</li></ol>
+<ul><li>En el caso donde los tipos coinciden, <code>==</code> es tanto más corto como más apropiado para la verificación.</li></ul>
+<ul><li>En el caso donde los tipos no coinciden, <code>==</code> es el único operador que puede coercionar operando(s) hasta que los tipos coincidan, así que es la única manera en que tal verificación podría esperar siquiera pasar</li></ul>
+<ol><li>Finalmente, solo si <em>no podés</em> conocer/predecir los tipos, por alguna razón frustrante, y no tenés otra opción, recurrí a usar <code>===</code> como último recurso. Y probablemente agregá ahí un comentario de código admitiendo por qué se está usando <code>===</code>, y quizás incitando a algún futuro desarrollador a más adelante cambiar el código para arreglar esa deficiencia y remover la muleta de <code>===</code>.</li></ol>
+<h4 id="el-problema-de-inconsistencia-de-typescript">El Problema de Inconsistencia de TypeScript</h4>
+<p>Dejame ser súper claro: si estás usando TypeScript correctamente, y conocés los tipos de una comparación de igualdad, usar <code>===</code> para esa comparación está simplemente <em>mal</em>. Punto.</p>
+<p>El problema es que TypeScript extraña y frustrantemente todavía te requiere usar <code>===</code>, a menos que ya sepa que los tipos coinciden.</p>
+<p>Eso es porque TypeScript o bien no entiende completamente la conciencia de tipos y la coerción, o -- ¡y esto es aún más enfurecedor! -- la entiende completamente pero aun así desprecia tanto el sistema de tipos de JS como para rehuir hasta el más básico razonamiento consciente de los tipos.</p>
+<p>¿No me creés? ¿Pensás que estoy siendo demasiado duro? Probá esto en TypeScript: <sup class="fnref"><a href="#fn-TSExample2">[TSExample2]</a></sup></p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">let result = (42 == "42");
+// This condition will always return 'false' since
+// the types 'number' and 'string' have no overlap.</code></pre></div>
+<p>No encuentro palabras para describir lo exasperante que eso me resulta. Si prestaste atención a este largo y pesado capítulo, sabés que TypeScript básicamente está diciendo una mentira acá. Por supuesto que <code>42 == "42"</code> producirá <code>true</code> en JS.</p>
+<p>Bueno, no es una mentira, pero está exponiendo una verdad fundamental que tantos todavía no aprecian plenamente: TypeScript tira completamente por la borda las reglas normales del sistema de tipos de JS, porque la posición de TypeScript es que el sistema de tipos de JS -- y especialmente, la coerción implícita -- son malos, y necesitan ser reemplazados.</p>
+<p>En el mundo de TypeScript, <code>42</code> y <code>"42"</code> nunca pueden ser iguales entre sí. De ahí el mensaje de error. Pero en tierra de JS, <code>42</code> y <code>"42"</code> son absolutamente coercitivamente iguales entre sí. Y creo que he presentado un caso fuerte acá de que <em>deberían</em> asumirse como coercitivamente equivalentes de manera segura.</p>
+<p>Lo que me molesta aún más es que TypeScript tiene una variedad de inconsistencias en este aspecto. TypeScript está perfectamente bien con la coerción <em>implícita</em> en este código:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">irony = `The value '42' and ${42} are coercively equal.`;</code></pre></div>
+<p>El <code>42</code> se coerciona implícitamente a un string al interpolarlo en la oración. ¿Por qué TypeScript está ok con esta coerción implícita, pero no con la coerción implícita de <code>42 == "42"</code>?</p>
+<p>TypeScript tampoco tiene quejas sobre este código:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">API_BASE_URL = "https://some.tld/api/2";
+if (API_BASE_URL) {
+    // ..
+}</code></pre></div>
+<p>¿Por qué <code>ToBoolean()</code> es una coerción implícita OK, pero <code>ToNumber()</code> en el algoritmo de <code>==</code> no lo es?</p>
+<p>Te dejaré reflexionar sobre esto: ¿realmente pensás que es una buena idea escribir código que finalmente va a correr en un engine de JS, pero usar una herramienta y un estilo de código que intencionalmente ha expulsado la mayor parte de un pilar entero del lenguaje JS? Es más, ¿está bien que también haya titubeado con una variedad de excepciones inconsistentes, simplemente para complacer los viejos hábitos de los desarrolladores de JS?</p>
+<h2 id="qué-queda">¿Qué Queda?</h2>
+<p>Espero que a esta altura te sientas mucho más informado sobre cómo funciona el sistema de tipos de JS, desde los tipos de valor primitive hasta los tipos objeto, hasta cómo el engine realiza las coerciones de tipos.</p>
+<p>Más importante aún, ahora también tenés una imagen mucho más completa de los pros/contras de las elecciones que hacemos usando el sistema de tipos de JS, como elegir coerciones <em>implícitas</em> o <em>explícitas</em> en distintos puntos.</p>
+<p>Pero no hemos cubierto completamente el contexto en el que opera el sistema de tipos. Para el resto de este libro, dirigiremos nuestra atención a las reglas de sintaxis/gramática de JS que gobiernan cómo se comportan los operadores y las sentencias.</p>
+<div class="footnotes"><hr><ol><li id="fn-EichCoercion">"The State of JavaScript - Brendan Eich", comment thread, Hacker News; Oct 9 2012; https://news.ycombinator.com/item?id=4632704 ; Accessed August 2022</li><li id="fn-CrockfordCoercion">"JavaScript: The World's Most Misunderstood Programming Language"; 2001; https://www.crockford.com/javascript/javascript.html ; Accessed August 2022</li><li id="fn-CrockfordIfs">"json2.js", Github; Apr 21 2018; https://github.com/douglascrockford/JSON-js/blob/8e8b0407e475e35942f7e9461dab81929fcc7321/json2.js#L336 ; Accessed August 2022</li><li id="fn-BrendanToString">ESDiscuss mailing list; Aug 26 2014; https://esdiscuss.org/topic/string-symbol#content-15 ; Accessed August 2022</li><li id="fn-AbstractOperations">"7.1 Type Conversion", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-type-conversion ; Accessed August 2022</li><li id="fn-ToBoolean">"7.1.2 ToBoolean(argument)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-toboolean ; Accessed August 2022</li><li id="fn-ExoticFalsyObjects">"B.3.6 The [[IsHTMLDDA]] Internal Slot", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-IsHTMLDDA-internal-slot ; Accessed August 2022</li><li id="fn-OrdinaryToPrimitive">"7.1.1.1 OrdinaryToPrimitive(O,hint)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-ordinarytoprimitive ; Accessed August 2022</li><li id="fn-ToString">"7.1.17 ToString(argument)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-tostring ; Accessed August 2022</li><li id="fn-StringConstructor">"22.1.1 The String Constructor", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-string-constructor ; Accessed August 2022</li><li id="fn-StringFunction">"22.1.1.1 String(value)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-string-constructor-string-value ; Accessed August 2022</li><li id="fn-ToNumber">"7.1.4 ToNumber(argument)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-tonumber ; Accessed August 2022</li><li id="fn-ToNumeric">"7.1.3 ToNumeric(argument)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-tonumeric ; Accessed August 2022</li><li id="fn-NumberConstructor">"21.1.1 The Number Constructor", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-number-constructor ; Accessed August 2022</li><li id="fn-NumberFunction">"21.1.1.1 Number(value)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-number-constructor-number-value ; Accessed August 2022</li><li id="fn-SameValue">"7.2.11 SameValue(x,y)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-samevalue ; Accessed August 2022</li><li id="fn-StrictEquality">"7.2.16 IsStrictlyEqual(x,y)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-isstrictlyequal ; Accessed August 2022</li><li id="fn-LooseEquality">"7.2.15 IsLooselyEqual(x,y)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-islooselyequal ; Accessed August 2022</li><li id="fn-NumericAbstractOps">"6.1.6 Numeric Types", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-numeric-types ; Accessed August 2022</li><li id="fn-NumberEqual">"6.1.6.1.13 Number:equal(x,y)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-numeric-types-number-equal ; Accessed August 2022</li><li id="fn-BigIntEqual">"6.1.6.2.13 BigInt:equal(x,y)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-numeric-types-bigint-equal ; Accessed August 2022</li><li id="fn-LessThan">"7.2.14 IsLessThan(x,y,LeftFirst)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-islessthan ; Accessed August 2022</li><li id="fn-StringPrefix">"7.2.9 IsStringPrefix(p,q)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-isstringprefix ; Accessed August 2022</li><li id="fn-SymbolString">"String(symbol)", ESDiscuss mailing list; Aug 12 2014; https://esdiscuss.org/topic/string-symbol ; Accessed August 2022</li><li id="fn-ASMjs">"ASM.js - Working Draft"; Aug 18 2014; http://asmjs.org/spec/latest/ ; Accessed August 2022</li><li id="fn-TSExample1">"TypeScript Playground"; https://tinyurl.com/ydkjs-ts-example-1 ; Accessed August 2022</li><li id="fn-TSExample2">"TypeScript Playground"; https://tinyurl.com/ydkjs-ts-example-2 ; Accessed August 2022</li><li id="fn-TSLiteralTypes">"TypeScript 4.1, Template Literal Types"; https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#template-literal-types ; Accessed August 2022</li></ol></div>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../types-grammar/ch3.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 3 · Valores de objeto</span></a>
+      <a class="pager-btn next" href="../types-grammar/thanks.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Agradecimientos</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#coerción-explícita-vs-implícita">Coerción: Explícita vs Implícita</a></li>
+<li class="toc-l3"><a href="#implícita-mala-o-">Implícita: ¿Mala o ...?</a></li>
+<li class="toc-l2"><a href="#abstractas">Abstractas</a></li>
+<li class="toc-l3"><a href="#toboolean">ToBoolean</a></li>
+<li class="toc-l3"><a href="#toprimitive">ToPrimitive</a></li>
+<li class="toc-l3"><a href="#tostring">ToString</a></li>
+<li class="toc-l3"><a href="#tonumber">ToNumber</a></li>
+<li class="toc-l3"><a href="#comparación-de-igualdad">Comparación de Igualdad</a></li>
+<li class="toc-l3"><a href="#comparación-relacional">Comparación Relacional</a></li>
+<li class="toc-l2"><a href="#coerciones-concretas">Coerciones Concretas</a></li>
+<li class="toc-l3"><a href="#a-booleano">A Booleano</a></li>
+<li class="toc-l3"><a href="#a-string">A String</a></li>
+<li class="toc-l3"><a href="#a-número">A Número</a></li>
+<li class="toc-l3"><a href="#a-primitive">A Primitive</a></li>
+<li class="toc-l3"><a href="#igualdad">Igualdad</a></li>
+<li class="toc-l2"><a href="#casos-límite-de-coerción">Casos Límite de Coerción</a></li>
+<li class="toc-l3"><a href="#strings">Strings</a></li>
+<li class="toc-l3"><a href="#números">Números</a></li>
+<li class="toc-l3"><a href="#absurdidad-de-la-coerción">Absurdidad de la Coerción</a></li>
+<li class="toc-l2"><a href="#conciencia-de-tipos">Conciencia de Tipos</a></li>
+<li class="toc-l3"><a href="#ehh-typescript">Ehh... ¿TypeScript?</a></li>
+<li class="toc-l3"><a href="#conciencia-de-tipos-sin-typescript">Conciencia de Tipos <em>Sin</em> TypeScript</a></li>
+<li class="toc-l3"><a href="#conciencia-de-tipos-con-typescript">Conciencia de Tipos <em>Con</em> TypeScript</a></li>
+<li class="toc-l3"><a href="#inteligencia-de-typescript">Inteligencia de TypeScript</a></li>
+<li class="toc-l3"><a href="#la-vara-por-encima-de-typescript">La Vara Por Encima de TypeScript</a></li>
+<li class="toc-l3"><a href="#igualdad-consciente-del-tipo">Igualdad Consciente del Tipo</a></li>
+<li class="toc-l2"><a href="#qué-queda">¿Qué Queda?</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

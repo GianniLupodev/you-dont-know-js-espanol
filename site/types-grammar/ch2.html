@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 2 · Valores primitivos — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔡</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#ec4899">
+      <span class="sidebar-emoji">🔡</span>
+      <div><div class="sidebar-book">Types & Grammar</div><div class="sidebar-sub">Tipos y Gramática</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap active"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../types-grammar/README.html">Types & Grammar</a> <span>/</span> Cap. 2 · Valores primitivos</div>
+    <article class="prose" style="--book-color:#ec4899">
+      <h1 id="you-dont-know-js-yet-types-grammar---2nd-edition">You Don't Know JS Yet: Types &amp; Grammar - 2nd Edition</h1>
+<h1 id="capítulo-2-comportamientos-de-los-primitivos">Capítulo 2: Comportamientos de los Primitivos</h1>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Trabajo en progreso</p></div></div>
+<p>Hasta ahora, hemos explorado siete value types primitivos incorporados en JS: <code>null</code>, <code>undefined</code>, <code>boolean</code>, <code>string</code>, <code>number</code>, <code>bigint</code>, y <code>symbol</code>.</p>
+<p>El Capítulo 1 tuvo bastante para asimilar, mucho más complejo de lo que apuesto que la mayoría de los lectores esperaba. Si todavía estás recuperando el aliento después de leer todo eso, ¡no te preocupes por tomarte un pequeño descanso antes de continuar aquí!</p>
+<p>Una vez que tengas la mente despejada y estés listo para seguir, metámonos en ciertos comportamientos que los value types implican para todos sus respectivos valores. Vamos a mirar con cuidado y más de cerca todos estos diversos comportamientos.</p>
+<h2 id="inmutabilidad-de-los-primitivos">Inmutabilidad de los Primitivos</h2>
+<p>Todos los valores primitivos son inmutables, lo que significa que nada en un programa JS puede acceder al contenido del valor y modificarlo de ninguna manera.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42;
+
+// later:
+
+myAge = 43;</code></pre></div>
+<p>La sentencia <code>myAge = 43</code> no cambia el valor. Reasigna un valor diferente <code>43</code> a <code>myAge</code>, reemplazando completamente el valor previo de <code>42</code>.</p>
+<p>También se crean nuevos valores a través de diversas operaciones, pero de nuevo, estas no modifican el valor original:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">42 + 1;             // 43
+
+"Hello" + "!";      // "Hello!"</code></pre></div>
+<p>Los valores <code>43</code> y <code>"Hello!"</code> son valores nuevos, distintos de los valores previos <code>42</code> y <code>"Hello"</code>, respectivamente.</p>
+<p>Incluso un valor string, que parece meramente un array de caracteres -- y el contenido de los arrays suele ser mutable -- es inmutable:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting = "Hello.";
+
+greeting[5] = "!";
+
+console.log(greeting);      // Hello.</code></pre></div>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>En modo no estricto, asignar a una propiedad de solo lectura (como <code>greeting[5] = ..</code>) falla silenciosamente. En modo estricto, la asignación no permitida lanzará una excepción.</p></div></div>
+<p>La naturaleza inmutable de los valores primitivos no se ve afectada <em>de ninguna manera</em> por cómo se declara la variable o la propiedad del objeto que contiene el valor. Por ejemplo, ya sea que se use <code>const</code>, <code>let</code>, o <code>var</code> para declarar la variable <code>greeting</code> de arriba, el valor string que contiene es inmutable.</p>
+<p><code>const</code> no crea valores inmutables, declara variables que no pueden ser reasignadas (es decir, asignaciones inmutables) -- consulta el título "Scope &amp; Closures" de esta serie para más información.</p>
+<p>Una propiedad de un objeto puede marcarse como de solo lectura -- con el atributo de descriptor <code>writable: false</code>, como se discute en el título "Objects &amp; Classes" de esta serie. Pero eso todavía no tiene ningún efecto sobre la naturaleza del valor, solo sobre impedir la reasignación de la propiedad.</p>
+<h3 id="primitivos-con-propiedades">¿Primitivos Con Propiedades?</h3>
+<p>Adicionalmente, las propiedades <em>no pueden</em> agregarse a ningún valor primitivo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting = "Hello.";
+
+greeting.isRendered = true;
+
+greeting.isRendered;        // undefined</code></pre></div>
+<p>Este fragmento parece estar agregando una propiedad <code>isRendered</code> al valor en <code>greeting</code>, pero esta asignación falla silenciosamente (incluso en modo estricto).</p>
+<p>El acceso a propiedades no está permitido de ninguna manera en los valores primitivos nulos <code>null</code> y <code>undefined</code>. Pero las propiedades <em>sí pueden</em> ser accedidas en todos los demás valores primitivos -- sí, eso suena contraintuitivo.</p>
+<p>Por ejemplo, todos los valores string tienen una propiedad de solo lectura <code>length</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting = "Hello.";
+
+greeting.length;            // 6</code></pre></div>
+<p><code>length</code> no puede ser establecida, pero puede ser accedida, y expone el número de code-units almacenados en el valor (consulta "JS Character Encodings" en el Capítulo 1), lo que a menudo significa el número de caracteres en el string.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>En cierto modo. Para la mayoría de los caracteres estándar, eso es verdad; un carácter es un code-point, que es un code-unit. Sin embargo, como se explicó en el Capítulo 1, los caracteres Unicode extendidos por encima del code-point <code>65535</code> se almacenarán como dos code-units (mitades surrogate). Por lo tanto, para cada uno de esos caracteres, <code>length</code> incluirá <code>2</code> en su conteo, aunque el carácter se imprima visualmente como un solo símbolo.</p></div></div>
+<p>Los valores primitivos no nulos también tienen un par de métodos incorporados estándar que pueden ser accedidos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting = "Hello.";
+
+greeting.toString();    // "Hello." &lt;-- redundant
+greeting.valueOf();     // "Hello."</code></pre></div>
+<p>Adicionalmente, la mayoría de los value types primitivos definen sus propios métodos con comportamientos específicos inherentes a ese type. Los cubriremos más adelante en este capítulo.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Como ya se mencionó brevemente en el Capítulo 1, técnicamente, este tipo de accesos a propiedades/métodos en valores primitivos se facilitan mediante un comportamiento coercitivo implícito llamado <em>auto-boxing</em>. Lo cubriremos en detalle en "Automatic Objects" en el Capítulo 3.</p></div></div>
+<h2 id="asignaciones-de-primitivos">Asignaciones de Primitivos</h2>
+<p>Cualquier asignación de un valor primitivo de una variable/contenedor a otra es una <em>copia-por-valor</em>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42;
+
+yourAge = myAge;        // assigned by value-copy
+
+myAge;                  // 42
+yourAge;                // 42</code></pre></div>
+<p>Aquí, las variables <code>myAge</code> y <code>yourAge</code> tienen cada una su propia copia del valor number <code>42</code>.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Dentro del engine de JS, <em>puede</em> ser el caso de que solo exista un valor <code>42</code> en memoria, y que el engine apunte ambas variables <code>myAge</code> y <code>yourAge</code> al valor compartido. Dado que los valores primitivos son inmutables, no hay peligro en que un engine de JS haga eso. Pero lo importante para nosotros como desarrolladores de JS es que, en nuestros programas, <code>myAge</code> y <code>yourAge</code> actúan como si tuvieran su propia copia de ese valor, en lugar de compartirlo.</p></div></div>
+<p>Si más adelante reasignamos <code>myAge</code> a <code>43</code> (cuando tengo un cumpleaños), eso no afecta al <code>42</code> que sigue asignado a <code>yourAge</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge++;            // sort of like: myAge = myAge + 1
+
+myAge;              // 43
+yourAge;            // 42 &lt;-- unchanged</code></pre></div>
+<h2 id="comportamientos-de-los-strings">Comportamientos de los Strings</h2>
+<p>Los valores string tienen una serie de comportamientos específicos que todo desarrollador de JS debería conocer.</p>
+<h3 id="acceso-a-caracteres-del-string">Acceso a Caracteres del String</h3>
+<p>Aunque los strings no son realmente arrays, JS permite el acceso al estilo de array <code>[ .. ]</code> de un carácter en un índice numérico (basado en <code>0</code>):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting = "Hello!";
+
+greeting[4];            // "o"</code></pre></div>
+<p>Si el valor/expresión entre los <code>[ .. ]</code> no se resuelve a un number, el valor será coercionado implícitamente a su representación numérica entera/completa (si es posible).</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting["4"];          // "o"</code></pre></div>
+<p>Si el valor/expresión se resuelve a un number fuera del rango entero de <code>0</code> - <code>length - 1</code> (o <code>NaN</code>), o si no es un value type number, el acceso será tratado en cambio como un acceso a propiedad con el nombre de propiedad equivalente en string. Si ese acceso a propiedad falla, el resultado es <code>undefined</code>.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Cubriremos la coerción en profundidad más adelante en el libro.</p></div></div>
+<h3 id="iteración-de-caracteres">Iteración de Caracteres</h3>
+<p>Los strings no son arrays, pero ciertamente imitan a los arrays de cerca en muchos aspectos. Uno de esos comportamientos es que, al igual que los arrays, los strings son iterables. Esto significa que los caracteres (code-units) de un string pueden iterarse individualmente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myName = "Kyle";
+
+for (let char of myName) {
+    console.log(char);
+}
+// K
+// y
+// l
+// e
+
+chars = [ ...myName ];
+chars;
+// [ "K", "y", "l", "e" ]</code></pre></div>
+<p>Los valores, como los strings y los arrays, son iterables (vía <code>...</code>, <code>for..of</code>, y <code>Array.from(..)</code>), si exponen un método productor de iteradores en la ubicación de propiedad de símbolo especial <code>Symbol.iterator</code> (consulta "Well-Known Symbols" en el Capítulo 1):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myName = "Kyle";
+it = myName[Symbol.iterator]();
+
+it.next();      // { value: "K", done: false }
+it.next();      // { value: "y", done: false }
+it.next();      // { value: "l", done: false }
+it.next();      // { value: "e", done: false }
+it.next();      // { value: undefined, done: true }</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Los detalles del protocolo de iterador, incluyendo el hecho de que el resultado <code>{ value: "e" .. }</code> todavía muestra <code>done: false</code>, se cubren en detalle en el título "Sync &amp; Async" de esta serie.</p></div></div>
+<h3 id="cálculo-de-la-longitud">Cálculo de la Longitud</h3>
+<p>Como se mencionó en el Capítulo 1, los valores string tienen una propiedad <code>length</code> que expone automáticamente la longitud del string; esta propiedad solo puede ser accedida; los intentos de establecerla se ignoran silenciosamente.</p>
+<p>El valor <code>length</code> reportado corresponde en cierto modo al número de caracteres en el string (en realidad, code-units), pero como vimos en el Capítulo 1, es más complejo cuando hay caracteres Unicode involucrados.</p>
+<p>La mayoría de las personas distinguen visualmente los símbolos como caracteres separados; esta noción de un símbolo visual independiente se denomina <em>grafema</em>, o <em>clúster de grafemas</em>. Así que cuando contamos la "longitud" de un string, típicamente queremos decir que estamos contando el número de grafemas.</p>
+<p>Pero no es así como la computadora trata los caracteres.</p>
+<p>En JS, cada <em>carácter</em> es un code-unit (16 bits), con un valor de code-point igual o inferior a <code>65535</code>. La propiedad <code>length</code> de un string siempre cuenta el número de code-units en el valor del string, no de code-points. Un code-unit podría representar un solo carácter por sí mismo, o puede ser parte de un surrogate pair, o puede combinarse con un símbolo <em>combinante</em> adyacente, o ser parte de un clúster de grafemas. Como tal, <code>length</code> no coincide con la noción típica de contar caracteres/grafemas visuales.</p>
+<p>Para acercarse más a una <em>longitud de grafemas</em> esperada/intuitiva para un string, el valor del string primero necesita ser normalizado con <code>normalize("NFC")</code> (consulta "Normalizing Unicode" en el Capítulo 1) para producir cualquier code-unit <em>compuesto</em> (donde sea posible), en caso de que algunos caracteres hayan sido originalmente almacenados <em>descompuestos</em> como code-units separados.</p>
+<p>Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">favoriteItem = "teléfono";
+favoriteItem.length;            // 9 -- uh oh!
+
+favoriteItem = favoriteItem.normalize("NFC");
+favoriteItem.length;            // 8 -- phew!</code></pre></div>
+<p>Desafortunadamente, como vimos en el Capítulo 1, todavía tendremos la posibilidad de caracteres con code-point mayor a <code>65535</code>, y por lo tanto necesitando un surrogate pair para ser representados. Tales caracteres contarán doble en el <code>length</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// "☎" === "☎"
+oldTelephone = "☎";
+oldTelephone.length;            // 1
+
+// "📱" === "\u{1F4F1}" === "📱"
+cellphone = "📱";
+cellphone.length;               // 2 -- oops!</code></pre></div>
+<p>¿Entonces qué hacemos?</p>
+<p>Una solución es usar la iteración de caracteres (vía el operador <code>...</code>) como vimos en la sección anterior, ya que automáticamente devuelve cada carácter combinado de un surrogate pair:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">cellphone = "📱";
+cellphone.length;               // 2 -- oops!
+[ ...cellphone ].length;        // 1 -- phew!</code></pre></div>
+<p>Pero, desafortunadamente, los clústeres de grafemas (como se explicó en el Capítulo 1) meten otra traba más en el cálculo de la longitud de un string. Por ejemplo, si tomamos el emoji de pulgar hacia abajo (<code>"\u{1F44E}"</code>) y le agregamos el modificador de tono de piel para piel medio-oscura (<code>"\u{1F3FE}"</code>), obtenemos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// "👎🏾" = "\u{1F44E}\u{1F3FE}"
+thumbsDown = "👎🏾";
+
+thumbsDown.length;              // 4 -- oops!
+[ ...thumbsDown ].length;       // 2 -- oops!</code></pre></div>
+<p>Como puedes ver, estos son dos code-points distintos (no un surrogate pair) que, en virtud de su orden y adyacencia, hacen que el renderizado Unicode de la computadora dibuje el símbolo de pulgar hacia abajo pero con un tono de piel más oscuro que el predeterminado. La longitud computada del string es por lo tanto <code>2</code>.</p>
+<p>Haría falta replicar la mayor parte de la compleja lógica de renderizado Unicode de una plataforma para poder reconocer tales clústeres de code-points como un solo "carácter" a efectos del conteo de longitud. Hay bibliotecas que dicen hacerlo, pero no son necesariamente perfectas, y vienen con un costo considerable en términos de código extra.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Como usuario de Twitter, podrías esperar poder poner 280 emojis de pulgar hacia abajo en un solo tweet, ya que parece un solo carácter. Twitter cuenta el <code>"👎"</code> (pulgar hacia abajo predeterminado), el <code>"👎🏾"</code> (pulgar hacia abajo con tono de piel medio-oscuro), e incluso el <code>"👩‍👩‍👦‍👦"</code> (clúster de grafemas de emoji de familia) todos como 2 caracteres cada uno, aunque sus respectivas longitudes de string (desde la perspectiva de JS) son <code>2</code>, <code>4</code>, y <code>7</code>; por lo tanto, solo puedes caber la mitad del número de emojis (140 en lugar de 280) en un tweet. De hecho, Twitter implementó este cambio en 2018 específicamente para nivelar el conteo de todos los caracteres Unicode, a 2 caracteres por símbolo. <sup class="fnref"><a href="#fn-TwitterUnicode">[TwitterUnicode]</a></sup> Ese fue un cambio bienvenido para los usuarios de Twitter, especialmente para aquellos que quieren usar caracteres emoji que sean más representativos del género, tono de piel, etc., pretendidos. Aun así, <em>es</em> curioso que Twitter haya elegido contar todos los símbolos Unicode/emoji como 2 caracteres cada uno, en lugar del más intuitivo 1 carácter (grafema) cada uno.</p></div></div>
+<p>Contar la <em>longitud</em> de un string para que coincida con nuestras intuiciones humanas es una tarea notablemente desafiante, quizás más un arte que una ciencia. Podemos obtener aproximaciones aceptables en muchos casos, pero hay muchos otros casos que pueden confundir a nuestros programas.</p>
+<h3 id="internacionalización-i18n-y-localización-l10n">Internacionalización (i18n) y Localización (l10n)</h3>
+<p>Para servir a la creciente necesidad de que los programas JS operen como se espera en cualquier contexto de idioma/cultura internacional, el comité de ECMAScript también publica la ECMAScript Internationalization API. <sup class="fnref"><a href="#fn-INTLAPI">[INTLAPI]</a></sup></p>
+<p>Un programa JS tiene por defecto un locale/idioma según el entorno que ejecuta el programa (página de navegador web, instancia de Node, etc). El locale en efecto afecta el ordenamiento (y las comparaciones de valores), el formateo, y varios otros comportamientos asumidos. Tales comportamientos alterados son quizás un poco más obvios con los strings, pero también pueden verse con los numbers (¡y las fechas!).</p>
+<p>Pero los caracteres de los strings también pueden tener información de idioma/locale incrustada en ellos, lo cual tiene precedencia sobre el valor por defecto del entorno. Si el carácter del string es ambiguo/compartido en términos de su idioma/locale (como <code>"a"</code>), se usa la configuración por defecto del entorno.</p>
+<p>Dependiendo del contenido del string, puede ser interpretado como ordenado de izquierda a derecha (LTR) o de derecha a izquierda (RTL). Como tal, muchos de los métodos de string que cubriremos más adelante usan descriptores lógicos en sus nombres, como "start", "end", "begin", "end", y "last", en lugar de términos direccionales como "left" y "right".</p>
+<p>Por ejemplo, el hebreo y el árabe son ambos idiomas RTL comunes:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">hebrewHello = "\u{5e9}\u{5dc}\u{5d5}\u{5dd}";
+
+console.log(hebrewHello);                       // שלום</code></pre></div>
+<p>¿Notas que el primer carácter listado en el literal del string (<code>"\u{5e9}"</code>) es en realidad el carácter más a la derecha cuando el string se renderiza?</p>
+<p>Aunque el hebreo es un idioma RTL, en realidad no escribes los caracteres en el literal del string en orden invertido (RTL) de la manera en que deberían renderizarse. Ingresas los caracteres en orden lógico, donde la posición <code>0</code> es el primer carácter, la posición <code>1</code> es el segundo carácter, etc. La capa de renderizado es donde los caracteres RTL se invierten para mostrarse en su orden correcto.</p>
+<p>Eso también significa que si accedes a <code>hebrewHello[0]</code> (o <code>hebrewHello.charAt(0)</code>) -- para obtener el carácter en la posición <code>0</code> -- obtienes <code>"ש"</code> porque ese es lógicamente el primer carácter del string, no <code>"ם"</code> (lógicamente el último carácter del string). El acceso por posición de índice sigue la posición lógica, no la posición renderizada.</p>
+<p>Aquí está el mismo ejemplo en otro idioma RTL, el árabe:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">arabicHello = "\u{631}\u{62d}\u{628}\u{627}";
+
+console.log(arabicHello);                       // رحبا
+
+console.log(arabicHello[0]);                    // ر</code></pre></div>
+<p>Los programas JS pueden forzar un idioma/locale específico, usando varias APIs de <code>Intl</code> como <code>Intl.Collator</code>: <sup class="fnref"><a href="#fn-INTLCollator">[INTLCollator]</a></sup></p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">germanStringSorter = new Intl.Collator("de");
+
+listOfGermanWords = [ /* .. */ ];
+
+germanStringSorter.compare("Hallo","Welt");
+// -1 (or negative number)
+
+// examples adapted from MDN:
+//
+germanStringSorter.compare("Z","z");
+// 1 (or positive number)
+
+caseFirstSorter = new Intl.Collator("de",{ caseFirst: "upper", });
+caseFirstSorter.compare("Z","z");
+// -1 (or negative number)</code></pre></div>
+<p>Los strings de múltiples palabras pueden segmentarse usando <code>Intl.Segmenter</code>: <sup class="fnref"><a href="#fn-INTLSegmenter">[INTLSegmenter]</a></sup></p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">arabicHelloWorld = "\u{645}\u{631}\u{62d}\u{628}\u{627} \
+\u{628}\u{627}\u{644}\u{639}\u{627}\u{644}\u{645}";
+
+console.log(arabicHelloWorld);      // مرحبا بالعالم
+
+arabicSegmenter = new Intl.Segmenter("ar",{ granularity: "word" });
+
+for (
+    let { segment: word, isWordLike } of
+    arabicSegmenter.segment(arabicHelloWorld)
+) {
+    if (isWordLike) {
+        console.log(word);
+    }
+}
+// مرحبا
+//لعالم</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>El método <code>segment(..)</code> (de instancias de <code>Intl.Segmenter</code>) devuelve un iterador JS estándar, que el bucle <code>for..of</code> aquí consume. Más sobre protocolos de iteración en el título "Sync &amp; Async" de esta serie.</p></div></div>
+<h3 id="comparación-de-strings">Comparación de Strings</h3>
+<p>Los valores string pueden compararse (tanto por igualdad como por ordenamiento relacional) con otros valores string, usando varios operadores incorporados. Es importante tener en cuenta que tales comparaciones son sensibles al contenido real del string, incluyendo especialmente los code-points subyacentes de los caracteres Unicode no-BPM.</p>
+<p>Tanto la comparación por igualdad como la relacional distinguen entre mayúsculas y minúsculas, para cualquier carácter donde las mayúsculas y minúsculas estén bien definidas. Para hacer comparaciones que no distingan entre mayúsculas y minúsculas, normaliza primero la capitalización de ambos valores (con <code>toUpperCase()</code> o <code>toLowerCase()</code>).</p>
+<h4 id="igualdad-de-strings">Igualdad de Strings</h4>
+<p>Los operadores <code>===</code> y <code>==</code> (junto con sus contrapartes negadas <code>!==</code> y <code>!=</code>, respectivamente) son la forma más común en que se hacen las comparaciones de igualdad para valores primitivos, incluyendo los valores string:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"my name" === "my n\x61me";               // true
+
+"my name" !== String.raw`my n\x61me`;     // true</code></pre></div>
+<p>El operador <code>===</code><sup class="fnref"><a href="#fn-StrictEquality">[StrictEquality]</a></sup> -- a menudo referido como "igualdad estricta" -- primero verifica si los types coinciden, y si no, devuelve <code>false</code> de inmediato. Si los types coinciden, entonces verifica si los valores son los mismos; para los strings, esto es una comparación code-unit por code-unit, de principio a fin.</p>
+<p>A pesar del nombre "estricto", hay matices en <code>===</code> (como el manejo de <code>-0</code> y <code>NaN</code>), pero los cubriremos más adelante.</p>
+<h5 id="igualdad-coercitiva">Igualdad Coercitiva</h5>
+<p>En contraste, el operador <code>==</code><sup class="fnref"><a href="#fn-LooseEquality">[LooseEquality]</a></sup> -- a menudo referido como "igualdad flexible" -- realiza <em>igualdad coercitiva</em>: si los value types de los dos operandos no coinciden, <code>==</code> primero coerciona uno o ambos operandos hasta que los value types <em>sí</em> coincidan, y luego pasa la comparación internamente a <code>===</code>.</p>
+<p>La coerción es un tema extremadamente importante -- es una parte inherente del sistema de types de JS, uno de los 3 pilares del lenguaje -- pero solo vamos a introducirla brevemente aquí en este capítulo, y la revisitaremos en detalle más adelante.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Puede que hayas escuchado la explicación a menudo citada, pero no obstante inexacta, de que la diferencia entre <code>==</code> y <code>===</code> es que <code>==</code> compara los valores mientras que <code>==</code> compara tanto los valores como los types. No es verdad, y puedes leer la especificación tú mismo para verificarlo -- tanto los algoritmos de especificación <code>isStrictlyEqual(..)</code> como <code>isLooselyEqual(..)</code> están enlazados como footnotes en los párrafos anteriores. Para resumir, sin embargo: tanto <code>==</code> como <code>===</code> conocen y son sensibles a los types de los operandos. Si los types de los operandos son los mismos, ambos operadores hacen literalmente exactamente lo mismo; si los types difieren, <code>==</code> fuerza la coerción hasta que los types coincidan, mientras que <code>===</code> devuelve <code>false</code> inmediatamente.</p></div></div>
+<p>Es extremadamente común que los desarrolladores afirmen que el operador <code>==</code> es confuso y demasiado difícil de usar sin sorpresas (de ahí la preferencia casi universal por <code>===</code>). Pienso que eso es totalmente una tontería, y de hecho, los desarrolladores de JS deberían usar <code>==</code> por defecto (y evitar <code>===</code> si es posible). Pero necesitamos mucha más discusión para respaldar una afirmación tan controversial; retén tus objeciones hasta que la revisitemos más adelante.</p>
+<p>Por ahora, para ganar algo de intuición sobre la naturaleza coercitiva de <code>==</code>, la observación más esclarecedora es que si los types no coinciden, <code>==</code> <em>prefiere</em> la comparación numérica. Eso significa que intentará convertir ambos operandos a numbers, y luego realizar la verificación de igualdad (igual que <code>===</code>).</p>
+<p>Así que, en lo que respecta a nuestra discusión presente, la igualdad real de strings <em>solo puede</em> verificarse si ambos operandos ya son strings:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// actual string equality check (via === internally):
+"42" == "42";           // true</code></pre></div>
+<p><code>==</code> en realidad no realiza verificaciones de igualdad de strings por sí mismo. Si los value types de los operandos son ambos strings, <code>==</code> simplemente pasa la comparación a <code>===</code>. Si no son ambos strings, los pasos coercitivos en <code>==</code> reducirán la coincidencia de la comparación a numérica en lugar de string:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// numeric (not string!) equality check:
+42 == "42";             // true</code></pre></div>
+<p>Cubriremos la igualdad numérica más adelante en este capítulo.</p>
+<h5 id="igualdad-realmente-estricta">Igualdad <em>Realmente</em> Estricta</h5>
+<p>Además de <code>==</code> y <code>===</code>, JS provee la utilidad <code>Object.is(..)</code>, que devuelve <code>true</code> si ambos argumentos son <em>exactamente idénticos</em>, y <code>false</code> en caso contrario (sin excepciones ni matices):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Object.is("42",42);             // false
+
+Object.is("42","\x34\x32");     // true</code></pre></div>
+<p>Dado que <code>===</code> agrega un <code>=</code> al final de <code>==</code> para hacerlo más estricto en comportamiento, hago una especie de medio chiste de que la utilidad <code>Object.is(..)</code> es como un operador <code>====</code> (un cuarto <code>=</code> agregado), ¡para el tipo de verificación de igualdad realmente-verdaderamente-estricta-sin-excepciones!</p>
+<p>Dicho eso, <code>===</code> (y <code>==</code> en virtud de su delegación interna a <code>===</code>) son <em>extremadamente predecibles</em>, sin excepciones raras, cuando se trata de comparar dos valores que ya son realmente strings. Recomiendo encarecidamente usar <code>==</code> para tales verificaciones (o <code>===</code>), y reservar <code>Object.is(..)</code> para los casos límite (que son numéricos).</p>
+<h4 id="comparaciones-relacionales-de-strings">Comparaciones Relacionales de Strings</h4>
+<p>Además de las verificaciones de igualdad entre strings, JS soporta comparaciones relacionales entre valores primitivos, como los strings: <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, y <code>&gt;=</code>.</p>
+<p>Las operaciones <code>&lt;</code> (menor-que) y <code>&gt;</code> (mayor-que) comparan dos valores string lexicográficamente -- como ordenarías palabras en un diccionario -- y por lo tanto deberían ser bastante autoexplicativas:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"hello" &lt; "world";          // true</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Como se mencionó antes, el programa JS en ejecución tiene un locale por defecto, y estos operadores comparan según ese locale.</p></div></div>
+<p>Al igual que <code>==</code>, los operadores <code>&lt;</code> y <code>&gt;</code> son numéricamente coercitivos. Cualquier valor que no sea number es coercionado a number. Así que la única manera de hacer una comparación relacional con strings es asegurarse de que ambos operandos ya sean valores string.</p>
+<p>Quizás de forma algo sorprendente, <code>&lt;</code> y <code>&gt;</code> no tienen un equivalente de comparación estricta, de la manera en que <code>===</code> evita la coerción de <code>==</code>. Estos operadores siempre son coercitivos (cuando los types no coinciden), y no hay manera en JS de evitar eso.</p>
+<p>¿Entonces qué pasa cuando ambos valores son strings <em>con apariencia numérica</em>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"100" &lt; "11";               // true</code></pre></div>
+<p>Numéricamente, por supuesto, <code>100</code> <em>no debería ser</em> menor que <code>11</code>.</p>
+<p>Pero las comparaciones relacionales entre dos strings usan el ordenamiento lexicográfico. Así que el segundo carácter <code>"0"</code> (en <code>"100"</code>) es menor que el segundo <code>"1"</code> (en <code>"11"</code>), y por lo tanto <code>"100"</code> se ordenaría en un <em>diccionario</em> antes que <code>"11"</code>. Los operadores relacionales solo coercionan a numbers si los types de los operandos no son ya strings.</p>
+<p>Los operadores <code>&lt;=</code> (menor-o-igual) y <code>&gt;=</code> (mayor-o-igual) son efectivamente una abreviatura de una verificación compuesta.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"hello" &lt;= "hello";                             // true
+("hello" &lt; "hello") || ("hello" == "hello");    // true
+
+"hello" &gt;= "hello";                             // true
+("hello" &gt; "hello") || ("hello" == "hello");    // true</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Aquí hay un interesante matiz de la especificación: JS en realidad no define las operaciones subyacentes de mayor-que (para <code>&gt;</code>) o mayor-o-igual (para <code>&gt;=</code>). En cambio, las define invirtiendo los argumentos de sus contrapartes complementarias <em>menor-que</em>. Así que <code>x &gt; y</code> es tratado por JS esencialmente como <code>y &lt;= x</code>, y <code>x &gt;= y</code> es tratado por JS esencialmente como <code>y &lt; x</code>. ¡Así que JS solo necesita especificar cómo funcionan <code>&lt;</code> y <code>==</code>, y por lo tanto obtiene <code>&gt;</code> y <code>&gt;=</code> gratis!</p></div></div>
+<h5 id="comparaciones-relacionales-conscientes-del-locale">Comparaciones Relacionales Conscientes del Locale</h5>
+<p>Como mencioné hace un momento, los operadores relacionales asumen y usan el locale actual en efecto. Sin embargo, a veces puede ser útil forzar un locale específico para las comparaciones (como cuando se ordena una lista de strings).</p>
+<p>JS provee el método <code>localCompare(..)</code> en los strings de JS para este propósito:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"hello".localeCompare("world");
+// -1 (or negative number)
+
+"world".localeCompare("hello","en");
+// 1 (or positive number)
+
+"hello".localeCompare("hello","en",{ ignorePunctuation: true });
+// 0
+
+// examples from MDN:
+//
+// in German, ä sorts before z
+"ä".localeCompare("z","de");
+// -1 (or negative number) // a negative value
+
+// in Swedish, ä sorts after z
+"ä".localeCompare("z","sv");
+// 1 (or positive number)</code></pre></div>
+<p>Los argumentos segundo y tercero opcionales de <code>localeCompare(..)</code> controlan qué locale usar, vía la API <code>Intl.Collator</code><sup class="fnref"><a href="#fn-INTLCollatorApi">[INTLCollatorApi]</a></sup>, como se cubrió anteriormente.</p>
+<p>Podrías usar <code>localeCompare(..)</code> al ordenar un array de strings:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">studentNames = [
+    "Lisa",
+    "Kyle",
+    "Jason"
+];
+
+// Array::sort() mutates the array in place
+studentNames.sort(function alphabetizeNames(name1,name2){
+    return name1.localeCompare(name2);
+});
+
+studentNames;
+// [ "Jason", "Kyle", "Lisa" ]</code></pre></div>
+<p>Pero como se discutió antes, una forma más directa (y ligeramente más performante al ordenar muchos strings) es usar <code>Intl.Collator</code> directamente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">studentNames = [
+    "Lisa",
+    "Kyle",
+    "Jason"
+];
+
+nameSorter = new Intl.Collator("en");
+
+// Array::sort() mutates the array in place
+studentNames.sort(nameSorter.compare);
+
+studentNames;
+// [ "Jason", "Kyle", "Lisa" ]</code></pre></div>
+<h3 id="concatenación-de-strings">Concatenación de Strings</h3>
+<p>Dos o más valores string pueden concatenarse (combinarse) en un nuevo valor string, usando el operador <code>+</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting = "Hello, " + "Kyle!";
+
+greeting;               // Hello, Kyle!</code></pre></div>
+<p>El operador <code>+</code> actuará como una concatenación de strings si cualquiera de los dos operandos (valores en los lados izquierdo o derecho del operador) ya es un string (incluso un string vacío <code>""</code>).</p>
+<p>Si un operando es un string y el otro no lo es, el que no es un string será coercionado a su representación en string a efectos de la concatenación:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">userCount = 7;
+
+status = "There are " + userCount + " users online";
+
+status;         // There are 7 users online</code></pre></div>
+<p>La concatenación de strings de este tipo es esencialmente la interpolación de datos dentro del string, que es el propósito principal de los template literals (consulta el Capítulo 1). Así que el siguiente código tendrá el mismo resultado pero generalmente se considera el enfoque más preferido:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">userCount = 7;
+
+status = `There are ${userCount} users online`;
+
+status;         // There are 7 users online</code></pre></div>
+<p>Otras opciones para la concatenación de strings incluyen <code>"one".concat("two","three")</code> y <code>[ "one", "two", "three" ].join("")</code>, pero este tipo de enfoques solo son preferibles cuando el número de strings a concatenar depende de condiciones/cómputo en tiempo de ejecución. Si el string tiene un conjunto de contenido fijo/conocido, como arriba, los template literals son la mejor opción.</p>
+<h3 id="métodos-de-los-valores-string">Métodos de los Valores String</h3>
+<p>Los valores string proveen un montón de métodos adicionales específicos de strings (como propiedades):</p>
+<ul><li><code>charAt(..)</code>: produce un nuevo valor string en el índice numérico, similar a <code>[ .. ]</code>; a diferencia de <code>[ .. ]</code>, el resultado siempre es un string, ya sea el carácter en la posición <code>0</code> (si es un number válido fuera del rango de índices), o el string vacío <code>""</code> (si falta el índice o es inválido)</li></ul>
+<ul><li><code>at(..)</code> es similar a <code>charAt(..)</code>, pero los índices negativos cuentan hacia atrás desde el final del string</li></ul>
+<ul><li><code>charCodeAt(..)</code>: devuelve el code-unit numérico (consulta "JS Character Encodings" en el Capítulo 1) en el índice especificado</li></ul>
+<ul><li><code>codePointAt(..)</code>: devuelve el code-point completo que comienza en el índice especificado; si se encuentra un surrogate pair allí, se devuelve el carácter completo (code-point)</li></ul>
+<ul><li><code>substr(..)</code> / <code>substring(..)</code> / <code>slice(..)</code>: producen un nuevo valor string que representa un rango de caracteres del string original; estos difieren en cómo se especifican o determinan los índices de inicio/fin del rango</li></ul>
+<ul><li><code>toUpperCase()</code>: produce un nuevo valor string que está todo en caracteres mayúsculas</li></ul>
+<ul><li><code>toLowerCase()</code>: produce un nuevo valor string que está todo en caracteres minúsculas</li></ul>
+<ul><li><code>toLocaleUpperCase()</code> / <code>toLocaleLowerCase()</code>: usan mapeos de locale para las operaciones de mayúsculas o minúsculas</li></ul>
+<ul><li><code>concat(..)</code>: produce un nuevo valor string que es la concatenación del string original y todos los valores string pasados como argumentos</li></ul>
+<ul><li><code>indexOf(..)</code>: busca un valor string argumento en el string original, opcionalmente comenzando desde la posición especificada en el segundo argumento; devuelve la posición de índice basada en <code>0</code> si se encuentra, o <code>-1</code> si no se encuentra</li></ul>
+<ul><li><code>lastIndexOf(..)</code>: como <code>indexOf(..)</code> pero, desde el final del string (derecha en locales LTR, izquierda en locales RTL)</li></ul>
+<ul><li><code>includes(..)</code>: similar a <code>indexOf(..)</code> pero devuelve un resultado boolean</li></ul>
+<ul><li><code>search(..)</code>: similar a <code>indexOf(..)</code> pero con una coincidencia de expresión regular según se especifique</li></ul>
+<ul><li><code>trimStart()</code> / <code>trimEnd()</code> / <code>trim()</code>: producen un nuevo valor string con el espacio en blanco recortado del inicio del string (izquierda en locales LTR, derecha en locales RTL), o del final del string (derecha en locales LTR, izquierda en locales RTL), o de ambos</li></ul>
+<ul><li><code>repeat(..)</code>: produce un nuevo string con el valor del string original repetido el número de veces especificado</li></ul>
+<ul><li><code>split(..)</code>: produce un array de valores string separados en los límites de string o expresión regular especificados</li></ul>
+<ul><li><code>padStart(..)</code> / <code>padEnd(..)</code>: producen un nuevo valor string con relleno (por defecto " " espacio en blanco, pero puede sobrescribirse) aplicado ya sea al inicio (izquierda en locales LTR, derecha en locales RTL) o al final (derecha en locales LTR, izquierda en locales RTL), de modo que el resultado final del string tenga al menos una longitud especificada</li></ul>
+<ul><li><code>startsWith(..)</code> / <code>endsWith(..)</code>: verifican ya sea el inicio (izquierda en locales LTR, derecha en locales RTL) o el final (derecha en locales LTR) del string original para el valor string argumento; devuelven un resultado boolean</li></ul>
+<ul><li><code>match(..)</code> / <code>matchAll(..)</code>: devuelven un resultado similar a array de coincidencia de expresión regular contra el string original</li></ul>
+<ul><li><code>replace(..)</code>: devuelve un nuevo string con un reemplazo del string original, de una o más ocurrencias coincidentes de la coincidencia de expresión regular especificada</li></ul>
+<ul><li><code>normalize(..)</code>: produce un nuevo string con la normalización Unicode (consulta "Unicode Normalization" en el Capítulo 1) habiendo sido realizada sobre el contenido</li></ul>
+<ul><li><code>localCompare(..)</code>: función que compara dos strings según el locale actual (útil para ordenar); devuelve un number negativo (usualmente <code>-1</code> pero no garantizado) si el valor del string original viene antes que el valor del string argumento lexicográficamente, un number positivo (usualmente <code>1</code> pero no garantizado) si el valor del string original viene después del valor del string argumento lexicográficamente, y <code>0</code> si los dos strings son idénticos</li></ul>
+<ul><li><code>anchor()</code>, <code>big()</code>, <code>blink()</code>, <code>bold()</code>, <code>fixed()</code>, <code>fontcolor()</code>, <code>fontsize()</code>, <code>italics()</code>, <code>link()</code>, <code>small()</code>, <code>strike()</code>, <code>sub()</code>, y <code>sup()</code>: históricamente, estos eran útiles para generar fragmentos de string HTML; ahora están obsoletos y deberían evitarse</li></ul>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Muchos de los métodos descritos arriba dependen de índices de posición. Como se mencionó antes en la sección "Cálculo de la Longitud", estas posiciones dependen del contenido interno del valor del string, lo que significa que si está presente un carácter Unicode extendido y ocupa dos slots de code-unit, eso contará como dos posiciones de índice en lugar de una. No tener en cuenta los code-units <em>descompuestos</em>, los surrogate pairs, y los clústeres de grafemas es una fuente común de bugs en el manejo de strings en JS.</p></div></div>
+<p>Todos estos métodos de string pueden llamarse directamente sobre un valor literal, o sobre una variable/propiedad que contiene un valor string. Cuando corresponde, producen un nuevo valor string en lugar de modificar el valor string existente (ya que los strings son inmutables):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"all these letters".toUpperCase();      // ALL THESE LETTERS
+
+greeting = "Hello!";
+greeting.repeat(2);                     // Hello!Hello!
+greeting;                               // Hello!</code></pre></div>
+<h3 id="ayudantes-estáticos-de-string">Ayudantes Estáticos de <code>String</code></h3>
+<p>Las siguientes funciones utilitarias de string se proveen directamente en el objeto <code>String</code>, en lugar de como métodos en los valores string individuales:</p>
+<ul><li><code>String.fromCharCode(..)</code> / <code>String.fromCodePoint(..)</code>: producen un string a partir de uno o más argumentos que representan los code-units (<code>fromCharCode(..)</code>) o los code-points completos (<code>fromCodePoint(..)</code>)</li></ul>
+<ul><li><code>String.raw(..)</code>: una función template-tag por defecto que permite la interpolación en un template literal pero impide que las secuencias de escape de caracteres sean parseadas, de modo que permanecen en sus caracteres de entrada individuales <em>crudos</em> del literal</li></ul>
+<p>Además, la mayoría de los valores (especialmente los primitivos) pueden ser coercionados explícitamente a su equivalente en string pasándolos a la función <code>String(..)</code> (sin la palabra clave <code>new</code>). Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">String(true);           // "true"
+String(42);             // "42"
+String(Infinity);       // "Infinity"
+String(undefined);      // "undefined"</code></pre></div>
+<p>Cubriremos mucho más detalle sobre tales coerciones de type en un capítulo posterior.</p>
+<h2 id="comportamientos-de-los-numbers">Comportamientos de los Numbers</h2>
+<p>Los numbers se usan para una variedad de tareas en nuestros programas, pero mayormente para cómputos matemáticos. Presta mucha atención a cómo se comportan los numbers en JS, para asegurarte de que los resultados sean los esperados.</p>
+<h3 id="imprecisión-de-punto-flotante">Imprecisión de Punto Flotante</h3>
+<p>Necesitamos revisitar nuestra discusión sobre IEEE-754 del Capítulo 1.</p>
+<p>Uno de los clásicos escollos de cualquier sistema numérico IEEE-754 en cualquier lenguaje de programación -- ¡NO EXCLUSIVO DE JS! -- es que no todas las operaciones y valores pueden encajar prolijamente en las representaciones IEEE-754.</p>
+<p>La ilustración más común es:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">point3a = 0.1 + 0.2;
+point3b = 0.3;
+
+point3a;                        // 0.30000000000000004
+point3b;                        // 0.3
+
+point3a === point3b;            // false &lt;-- oops!</code></pre></div>
+<p>La operación <code>0.1 + 0.2</code> termina creando un error de punto flotante (deriva), donde el valor almacenado es en realidad <code>0.30000000000000004</code>.</p>
+<p>Las respectivas representaciones en bits son:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// 0.30000000000000004
+00111111110100110011001100110011
+00110011001100110011001100110100
+
+// 0.3
+00111111110100110011001100110011
+00110011001100110011001100110011</code></pre></div>
+<p>Si miras de cerca esos patrones de bits, solo los últimos 2 bits difieren, de <code>00</code> a <code>11</code>. ¡Pero eso es suficiente para que esos dos numbers sean desiguales!</p>
+<p>De nuevo, solo para reforzar: este comportamiento <strong>NO ES DE NINGUNA MANERA</strong> exclusivo de JS. Así es exactamente como funcionará cualquier lenguaje de programación conforme a IEEE-754 en el mismo escenario. Como afirmé arriba, la mayoría de todos los lenguajes de programación usan IEEE-754, y por lo tanto todos sufrirán este mismo destino.</p>
+<p>La tentación de burlarse de JS por <code>0.1 + 0.2 !== 0.3</code> es fuerte, lo sé. Pero aquí es completamente una tontería.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Prácticamente todos los programadores necesitan ser conscientes de IEEE-754 y asegurarse de ser cuidadosos con este tipo de escollos. Es algo asombroso, de manera decepcionante, lo pocos de ellos que tienen alguna idea de cómo funciona IEEE-754. Si te has tomado tu tiempo leyendo y entendiendo estos conceptos hasta ahora, ¡ahora estás en ese raro pequeño porcentaje que realmente hizo el esfuerzo de entender los numbers en sus programas!</p></div></div>
+<h4 id="umbral-epsilon">Umbral Epsilon</h4>
+<p>Un consejo común para sortear tal imprecisión de punto flotante usa este valor number <em>muy pequeño</em> definido por JS:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.EPSILON;                 // 2.220446049250313e-16</code></pre></div>
+<p><em>Epsilon</em> es la diferencia más pequeña que JS puede representar entre <code>1</code> y el siguiente valor mayor que <code>1</code>. Si bien este valor técnicamente depende de la implementación/plataforma, generalmente es alrededor de <code>2.2E-16</code>, o <code>2^-52</code>.</p>
+<p>Para quienes no prestan suficiente atención a los detalles aquí -- ¡incluyendo mi yo del pasado! -- generalmente se asume que cualquier desviación en la precisión de punto flotante de una sola operación nunca debería ser mayor que <code>Number.EPSILON</code>. Así, en teoría, podemos usar <code>Number.EPSILON</code> como un valor de tolerancia <em>muy pequeño</em> para asegurar que las comparaciones de igualdad de numbers sean <em>seguras</em>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function safeNumberEquals(a,b) {
+    return Math.abs(a - b) &lt; Number.EPSILON;
+}
+
+point3a = 0.1 + 0.2;
+point3b = 0.3;
+
+// are these safely "equal"?
+safeNumberEquals(point3a,point3b);      // true</code></pre></div>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>En el libro "Types &amp; Grammar" de la primera edición, efectivamente recomendé exactamente este enfoque. Estaba equivocado. Debería haber investigado el tema más de cerca.</p></div></div>
+<p>Pero, resulta que, este enfoque no es seguro en absoluto:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">point3a = 10.1 + 0.2;
+point3b = 10.3;
+
+safeNumberEquals(point3a,point3b);      // false :(</code></pre></div>
+<p>Bueno... ¡qué lástima!</p>
+<p>Desafortunadamente, <code>Number.EPSILON</code> solo funciona como un umbral de error "seguramente igual" para ciertos numbers/operaciones pequeños, y en otros casos, es demasiado pequeño, y produce falsos negativos.</p>
+<p>Podrías escalar <code>Number.EPSILON</code> por algún factor para producir un umbral más grande que evite falsos negativos pero que todavía filtre toda la desviación de punto flotante en tu programa. Pero qué factor usar es enteramente una decisión de juicio manual basada en qué magnitud de valores, y operaciones sobre ellos, implicará tu programa. No hay forma automática de computar un umbral confiable y universal.</p>
+<p>A menos que realmente sepas lo que estás haciendo, simplemente <em>no</em> deberías usar este enfoque del umbral <code>Number.EPSILON</code> en absoluto.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Si te gustaría leer más detalles y consejos sólidos sobre este tema, recomiendo encarecidamente leer este post. <sup class="fnref"><a href="#fn-EpsilonBad">[EpsilonBad]</a></sup> Pero si no podemos usar <code>Number.EPSILON</code> para evitar los peligros de la desviación de punto flotante, ¿qué hacemos? Si puedes evitar el punto flotante por completo escalando todos tus numbers hacia arriba de modo que sean todos enteros (o bigints) mientras realizas matemáticas, hazlo. Solo trata con valores decimales cuando tengas que mostrar/representar un valor final después de que toda la matemática esté hecha. Si eso no es posible/práctico, usa una biblioteca de emulación de decimales de precisión arbitraria y evita los valores number por completo. O haz tus matemáticas en otro entorno de programación externo que no esté basado en IEEE-754.</p></div></div>
+<h3 id="comparación-numérica">Comparación Numérica</h3>
+<p>Al igual que los strings, los valores number pueden compararse (tanto por igualdad como por ordenamiento relacional) usando los mismos operadores.</p>
+<p>Recuerda que no importa qué forma tome el valor number cuando se especifica como literal (base-10, octal, hexadecimal, exponencial, etc), el valor subyacente almacenado es lo que se comparará. También ten en cuenta los problemas de imprecisión de punto flotante discutidos en la sección anterior, ya que las comparaciones serán sensibles al contenido binario exacto.</p>
+<h4 id="igualdad-numérica">Igualdad Numérica</h4>
+<p>Al igual que los strings, las comparaciones de igualdad para numbers usan ya sea los operadores <code>==</code> / <code>===</code> o <code>Object.is(..)</code>. También recuerda que si los types de ambos operandos son los mismos, <code>==</code> se comporta idénticamente a <code>===</code>.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">42 == 42;                   // true
+42 === 42;                  // true
+
+42 == 43;                   // false
+42 === 43;                  // false
+
+Object.is(42,42);           // true
+Object.is(42,43);           // false</code></pre></div>
+<p>Para la igualdad coercitiva <code>==</code> (cuando los types de los operandos no coinciden), si cualquiera de los operandos no es un valor string, <code>==</code> prefiere una verificación de igualdad numérica (lo que significa que ambos operandos son coercionados a numbers).</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// numeric (not string!) comparison
+42 == "42";                 // true</code></pre></div>
+<p>En este fragmento, la igualdad coercitiva coerciona <code>"42"</code> a <code>42</code>, no al revés (<code>42</code> a <code>"42"</code>). Una vez que ambos types son number, entonces sus valores se comparan por igualdad exacta, igual que lo haría <code>===</code>.</p>
+<p>Recuerda que JS no distingue entre valores como <code>42</code>, <code>42.0</code>, y <code>42.000000</code>; por debajo, son todos lo mismo. Como no sorprende, las verificaciones de igualdad <code>==</code> y <code>===</code> lo verifican:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">42 == 42.0;                 // true
+42.0 == 42.00000;           // true
+42.00 === 42.000;           // true</code></pre></div>
+<p>La intuición que probablemente tienes es que, si dos numbers son literalmente los mismos, son iguales. Y así es como JS lo interpreta. Pero <code>0.3</code> no es literalmente lo mismo que el resultado de <code>0.1 + 0.2</code>, porque (como vimos antes), este último produce un valor subyacente que está <em>muy cerca</em> de <code>0.3</code>, pero no es exactamente idéntico.</p>
+<p>Lo interesante es que los dos valores están <em>tan cerca</em> que su diferencia es menor que el umbral <code>Number.EPSILON</code>, así que JS en realidad no puede representar esa diferencia <em>con precisión</em>.</p>
+<p>Podrías entonces pensar, al menos informalmente, que tales numbers de JS deberían ser "iguales", ya que la diferencia entre ellos es demasiado pequeña para representar. Pero fíjate: JS <em>sí puede</em> representar que <em>hay</em> una diferencia, razón por la cual ves ese <code>4</code> justo al final del decimal cuando JS evalúa <code>0.1 + 0.2</code>. Y <em>podrías</em> escribir el literal number <code>0.00000000000000004</code> (es decir, <code>4e-17</code>), siendo esa la diferencia entre <code>0.3</code> y <code>0.1 + 0.2</code>.</p>
+<p>Lo que JS no puede hacer, con sus numbers de punto flotante IEEE-754, es representar un number tan pequeño de una manera lo suficientemente <em>precisa</em> como para que las operaciones sobre él produzcan resultados esperados. Es demasiado pequeño para ser representado completa y apropiadamente en el type number que JS provee.</p>
+<p>Así que <code>0.1 + 0.2 == 0.3</code> se resuelve a <code>false</code>, porque hay una diferencia entre los dos valores, aunque JS no pueda representar con precisión o hacer nada con un valor tan pequeño como esa diferencia.</p>
+<p>También, como vimos con los strings, los operadores <code>!=</code> (no-igual coercitivo) y <code>!==</code> (no-igual estricto) funcionan con numbers. <code>x != y</code> es básicamente <code>!(x == y)</code>, y <code>x !== y</code> es básicamente <code>!(x === y)</code>.</p>
+<p>Hay dos excepciones frustrantes en la igualdad numérica (ya sea que uses <code>==</code> o <code>===</code>):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">NaN === NaN;                // false -- ugh!
+-0 === 0;                   // true -- ugh!</code></pre></div>
+<p><code>NaN</code> nunca es igual a sí mismo (incluso con <code>===</code>), y <code>-0</code> siempre es igual a <code>0</code> (incluso con <code>===</code>). A veces sorprende a la gente que incluso <code>===</code> tenga estas dos excepciones.</p>
+<p>Sin embargo, la verificación de igualdad <code>Object.is(..)</code> no tiene ninguna de estas excepciones, así que para comparaciones de igualdad con <code>NaN</code> y <code>-0</code>, evita los operadores <code>==</code> / <code>===</code> y usa <code>Object.is(..)</code> -- o para <code>NaN</code> específicamente, <code>Number.isNaN(..)</code>.</p>
+<h4 id="comparaciones-relacionales-numéricas">Comparaciones Relacionales Numéricas</h4>
+<p>Al igual que con los valores string, los operadores relacionales de JS (<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, y <code>&gt;=</code>) operan con numbers. Las operaciones <code>&lt;</code> (menor-que) y <code>&gt;</code> (mayor-que) deberían ser bastante autoexplicativas:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">41 &lt; 42;                    // true
+
+0.1 + 0.2 &gt; 0.3;            // true (ugh, IEEE-754)</code></pre></div>
+<p>Recuerda: al igual que <code>==</code>, los operadores <code>&lt;</code> y <code>&gt;</code> también son coercitivos, lo que significa que cualquier valor que no sea number es coercionado a number -- a menos que ambos operandos ya sean strings, como vimos antes. No hay operadores de comparación relacional estrictos.</p>
+<p>Si estás haciendo comparaciones relacionales entre numbers, la única manera de evitar la coerción es asegurarte de que las comparaciones siempre tengan dos numbers. De lo contrario, estos operadores harán comparaciones <em>relacionales coercitivas</em> similares a cómo <code>==</code> realiza comparaciones de <em>igualdad coercitiva</em>.</p>
+<h3 id="operadores-matemáticos">Operadores Matemáticos</h3>
+<p>Como afirmé antes, la razón principal para tener numbers en un lenguaje de programación es realizar operaciones matemáticas con ellos. Así que hablemos de cómo lo hacemos.</p>
+<p>Los operadores aritméticos básicos son <code>+</code> (suma), <code>-</code> (resta), <code>*</code> (multiplicación), y <code>/</code> (división). También están disponibles los operadores <code>**</code> (exponenciación) y <code>%</code> (módulo, es decir, <em>resto de división</em>). También hay formas <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>**=</code>, y <code>%=</code> de los operadores, que adicionalmente asignan el resultado de vuelta al operando izquierdo -- debe ser un objetivo de asignación válido como una variable o propiedad.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Como ya hemos visto, el operador <code>+</code> está sobrecargado para funcionar tanto con numbers como con strings. Cuando uno o ambos operandos es un string, el resultado es una concatenación de strings (incluyendo coercionar cualquier operando a string si es necesario). Pero si ninguno de los operandos es un string, el resultado es una suma numérica, como se espera.</p></div></div>
+<p>Todos estos operadores matemáticos son <em>binarios</em>, lo que significa que esperan dos operandos de valor, uno a cada lado del operador; todos esperan que los operandos sean valores number. Si uno o ambos operandos no son numbers, el/los operando(s) que no es/son number es/son coercionado(s) a numbers para realizar la operación. Cubriremos la coerción en detalle en un capítulo posterior.</p>
+<p>Considera:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">40 + 2;                 // 42
+44 - 2;                 // 42
+21 * 2;                 // 42
+84 / 2;                 // 42
+7 ** 2;                 // 49
+49 % 2;                 // 1
+
+40 + "2";               // "402" (string concatenation)
+44 - "2";               // 42 (because "2" is coerced to 2)
+21 * "2";               // 42 (..ditto..)
+84 / "2";               // 42 (..ditto..)
+"7" ** "2";             // 49 (both operands are coerced to numbers)
+"49" % "2";             // 1 (..ditto..)</code></pre></div>
+<p>Los operadores <code>+</code> y <code>-</code> también vienen en una forma <em>unaria</em>, lo que significa que solo tienen un operando; de nuevo, se espera que el operando sea un number, y es coercionado a number si no lo es:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">+42;                    // 42
+-42;                    // -42
+
++"42";                  // 42
+-"42";                  // -42</code></pre></div>
+<p>Puede que hayas notado que <code>-42</code> parece ser simplemente un literal numérico "cuarenta y dos negativo". Eso no es del todo correcto. Un matiz de la sintaxis de JS es que no reconoce literales numéricos negativos. En cambio, JS trata esto como un literal numérico positivo <code>42</code> que está precedido, y negado, por el operador unario <code>-</code> delante de él.</p>
+<p>Entonces, de manera algo sorprendente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">-42;                    // -42
+- 42;                   // -42
+-
+    42;                 // -42</code></pre></div>
+<p>Como puedes ver, el espacio en blanco (e incluso las nuevas líneas) están permitidos entre el operador unario <code>-</code> y su operando; en realidad, esto es verdad para todos los operadores y operandos.</p>
+<h4 id="incremento-y-decremento">Incremento y Decremento</h4>
+<p>Hay otros dos operadores numéricos unarios: <code>++</code> (incremento) y <code>--</code> decremento. Ambos realizan su respectiva operación y luego reasignan el resultado al operando -- debe ser un objetivo de asignación válido como una variable o propiedad.</p>
+<p>Puedes pensar en cierto modo en <code>++</code> como equivalente a <code>+= 1</code>, y <code>--</code> como equivalente a <code>-= 1</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42;
+
+myAge++;
+myAge;                  // 43
+
+numberOfHeadHairs--;</code></pre></div>
+<p>Sin embargo, estos son operadores especiales en el sentido de que pueden aparecer en una posición postfija (después del operando), como arriba, o en una posición prefija (antes del operando):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42;
+
+++myAge;
+myAge;                  // 43
+
+--numberofHeadHairs;</code></pre></div>
+<p>Puede parecer peculiar que las posiciones prefija y postfija parezcan dar el mismo resultado (incrementar o decrementar) en tales ejemplos. La diferencia es sutil, y no está relacionada con el resultado reasignado final. Revisitaremos estos operadores en particular en un capítulo posterior para profundizar en las diferencias posicionales.</p>
+<h3 id="operadores-bit-a-bit">Operadores Bit a Bit</h3>
+<p>JS provee varios operadores bit a bit para realizar operaciones a nivel de bit sobre valores number.</p>
+<p>Sin embargo, estas operaciones de bit no se realizan contra el patrón de bits empaquetado de los numbers IEEE-754 (consulta el Capítulo 1). En cambio, el number operando primero se convierte a un <em>entero</em> con signo de 32 bits, se realiza la operación de bit, y luego el resultado se convierte de vuelta en un number IEEE-754.</p>
+<p>Ten en cuenta que, al igual que cualquier otro operador de primitivos, estos solo computan nuevos valores, sin modificar realmente un valor en su lugar.</p>
+<ul><li><code>&amp;</code> (AND bit a bit): Realiza una operación AND con cada bit correspondiente de los dos operandos; <code>42 &amp; 36 === 32</code> (es decir, <code>0b00...101010 &amp; 0b00...100100 === 0b00..100000</code>)</li></ul>
+<ul><li><code>|</code> (OR bit a bit): Realiza una operación OR con cada bit correspondiente de los dos operandos; <code>42 | 36 === 46</code> (es decir, <code>0b00...101010 | 0b00...100100 === 0b00...101110</code>)</li></ul>
+<ul><li><code>^</code> (XOR bit a bit): Realiza una operación XOR (OR-eXclusivo) con cada bit correspondiente de los dos operandos; <code>42 ^ 36 === 14</code> (es decir, <code>0b00...101010 ^ 0b00...100100 === 0b00...001110</code>)</li></ul>
+<ul><li><code>~</code> (NOT bit a bit): Realiza una operación NOT contra los bits de un solo operando; <code>~42 === -43</code> (es decir, <code>~0b00...101010 === 0b11...010101</code>); usando complemento a 2, el entero con signo tiene el primer bit establecido en <code>1</code> lo que significa negativo, y el resto de los bits (cuando se vuelven a invertir, según el complemento a 2, que es la inversión de bits del complemento a 1 y luego sumar <code>1</code>) sería <code>43</code> (<code>0b10...101011</code>); el equivalente de <code>~</code> en la aritmética de numbers decimales es <code>~x === -(x + 1)</code>, así que <code>~42 === -43</code></li></ul>
+<ul><li><code>&lt;&lt;</code> (desplazamiento a la izquierda): Realiza un desplazamiento a la izquierda de los bits del operando izquierdo por la cantidad de bits especificada por el operando derecho; <code>42 &lt;&lt; 3 == 336</code> (es decir, <code>0b00...101010 &lt;&lt; 3 === 0b00...101010000</code>)</li></ul>
+<ul><li><code>&gt;&gt;</code> (desplazamiento a la derecha): Realiza un desplazamiento a la derecha con propagación de signo de los bits del operando izquierdo por la cantidad de bits especificada por el operando derecho, descartando los bits que caen por el lado derecho; sea cual sea el bit más a la izquierda (<code>0</code>, o <code>1</code> es negativo) se copia como bits a la izquierda (preservando así el signo del valor original en el resultado); <code>42 &gt;&gt; 3 === 5</code> (es decir, <code>0b00..101010 &gt;&gt; 3 === 0b00...000101</code>)</li></ul>
+<ul><li><code>&gt;&gt;&gt;</code> (desplazamiento a la derecha con relleno de cero, es decir, desplazamiento a la derecha sin signo): Realiza el mismo desplazamiento a la derecha que <code>&gt;&gt;</code>, pero rellena con <code>0</code> los bits desplazados que entran por el lado izquierdo en lugar de copiar el bit más a la izquierda (ignorando así el signo del valor original en el resultado); <code>42 &gt;&gt;&gt; 3 === 5</code> pero <code>-43 &gt;&gt;&gt; 3 === 536870906</code> (es decir, <code>0b11...010101 &gt;&gt;&gt; 3 === 0b0001...111010</code>)</li></ul>
+<ul><li><code>&amp;=</code>, <code>|=</code>, <code>&lt;&lt;=</code>, <code>&gt;&gt;=</code>, y <code>&gt;&gt;&gt;=</code> (operadores bit a bit con asignación): Realizan la operación bit a bit correspondiente, pero luego asignan el resultado al operando izquierdo (que debe ser un objetivo de asignación válido, como una variable o propiedad, no solo un valor literal); nota que <code>~=</code> falta en la lista, porque no existe tal operador de "negación binaria con asignación"</li></ul>
+<p>Honestamente, las operaciones bit a bit no son muy comunes en JS. Pero a veces puedes ver una sentencia como:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myGPA = 3.54;
+
+myGPA | 0;              // 3</code></pre></div>
+<p>Dado que los operadores bit a bit actúan solo sobre enteros de 32 bits, la operación <code>| 0</code> trunca (es decir, <code>Math.trunc(..)</code>) cualquier valor decimal, dejando solo el entero.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Un concepto erróneo común es que <code>| 0</code> es como <em>floor</em> (es decir, <code>Math.floor(..)</code>). El resultado de <code>| 0</code> coincide con <code>Math.floor(..)</code> en numbers positivos, pero difiere en numbers negativos, porque por definición estándar, <em>floor</em> es una operación que redondea hacia abajo hacia <code>-Infinity</code>. <code>| 0</code> simplemente descarta los bits decimales, lo que es de hecho truncamiento.</p></div></div>
+<h3 id="métodos-de-los-valores-number">Métodos de los Valores Number</h3>
+<p>Los valores number proveen los siguientes métodos (como propiedades) para operaciones específicas de numbers:</p>
+<ul><li><code>toExponential(..)</code>: produce una representación en string del number usando notación científica (p. ej., <code>"4.2e+1"</code>)</li></ul>
+<ul><li><code>toFixed(..)</code>: produce una representación en string en notación no-científica del number con el número especificado de lugares decimales (redondeando o rellenando con ceros según sea necesario)</li></ul>
+<ul><li><code>toPrecision(..)</code>: como <code>toFixed(..)</code>, excepto que aplica el argumento numérico como el número de dígitos significativos (es decir, precisión) incluyendo tanto el número entero como los lugares decimales si los hay</li></ul>
+<ul><li><code>toLocaleString(..)</code>: produce una representación en string del number según el locale actual</li></ul>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42;
+
+myAge.toExponential(3);         // "4.200e+1"</code></pre></div>
+<p>Un matiz particular de la sintaxis de JS es que <code>.</code> puede ser ambiguo al tratar con literales number y el acceso a propiedades/métodos.</p>
+<p>Si un <code>.</code> viene inmediatamente (sin espacio en blanco) después de un dígito de un literal numérico, y no hay ya un <code>.</code> decimal en el valor number, se asume que el <code>.</code> está comenzando la porción decimal del number. Pero si la posición del <code>.</code> inequívocamente <em>no</em> es parte del literal numérico, entonces siempre se trata como un acceso a propiedad.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">42 .toExponential(3);           // "4.200e+1"</code></pre></div>
+<p>Aquí, el espacio en blanco desambigua el <code>.</code>, designándolo como un acceso a propiedad/método. Quizás es más común/preferido usar <code>(..)</code> en lugar de espacio en blanco para tal desambiguación:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">(42).toExponential(3);          // "4.200e+1"</code></pre></div>
+<p>Un efecto de apariencia inusual de esta regla de gramática de parseo de JS:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">42..toExponential(3);           // "4.200e+1"</code></pre></div>
+<p>Llamado el idiom del "doble-punto", el primer <code>.</code> en esta expresión es un decimal, y por lo tanto el segundo <code>.</code> inequívocamente <em>no</em> es un decimal, sino más bien un acceso a propiedad/método.</p>
+<p>También, nota que no hay dígitos después del primer <code>.</code>; es sintaxis perfectamente legal dejar un <code>.</code> final en un literal numérico:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 41. + 1.;
+
+myAge;                          // 42</code></pre></div>
+<p>Los valores de type <code>bigint</code> no pueden tener decimales, así que el parseo es inequívoco de que un <code>.</code> después de un literal (con la <code>n</code> final) siempre es un acceso a propiedad:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">42n.toString();                 // 42</code></pre></div>
+<h3 id="propiedades-estáticas-de-number">Propiedades Estáticas de <code>Number</code></h3>
+<ul><li><code>Number.EPSILON</code>: El valor más pequeño posible entre <code>1</code> y el siguiente number más alto</li></ul>
+<ul><li><code>Number.NaN</code>: Lo mismo que el símbolo global <code>NaN</code>, el number inválido especial</li></ul>
+<ul><li><code>Number.MIN_SAFE_INTEGER</code> / <code>Number.MAX_SAFE_INTEGER</code>: Los enteros positivo y negativo con el mayor valor absoluto (más lejanos de <code>0</code>)</li></ul>
+<ul><li><code>Number.MIN_VALUE</code> / <code>Number.MAX_VALUE</code>: El mínimo (valor positivo más cercano a <code>0</code>) y el máximo (valor positivo más lejano de <code>0</code>) representable por el type number</li></ul>
+<ul><li><code>Number.NEGATIVE_INFINITY</code> / <code>Number.POSITIVE_INFINITY</code>: Lo mismo que los globales <code>-Infinity</code> e <code>Infinity</code>, los valores que representan los valores más grandes (no-finitos) más lejanos de <code>0</code></li></ul>
+<h3 id="ayudantes-estáticos-de-number">Ayudantes Estáticos de <code>Number</code></h3>
+<ul><li><code>Number.isFinite(..)</code>: devuelve un boolean que indica si el valor es finito -- un number que no es <code>NaN</code>, ni uno de los dos infinitos</li></ul>
+<ul><li><code>Number.isInteger(..)</code> / <code>Number.isSafeInteger(..)</code>: ambos devuelven booleans que indican si el valor es un number entero sin lugares decimales, y si está dentro del rango <em>seguro</em> para enteros (<code>-2^53 + 1</code> - <code>2^53 - 1</code>)</li></ul>
+<ul><li><code>Number.isNaN(..)</code>: La versión con el bug corregido de la utilidad global <code>isNaN(..)</code>, que identifica si el argumento provisto es el valor especial <code>NaN</code></li></ul>
+<ul><li><code>Number.parseFloat(..)</code> / <code>Number.parseInt(..)</code>: utilidades para parsear valores string en busca de dígitos numéricos, de izquierda a derecha, hasta el final del string o el primer carácter no-flotante (o no-entero) que se encuentre</li></ul>
+<h3 id="espacio-de-nombres-estático-math">Espacio de Nombres Estático <code>Math</code></h3>
+<p>Dado que el uso principal de los valores number es realizar operaciones matemáticas, JS incluye muchas constantes matemáticas estándar y utilidades de operación en el espacio de nombres <code>Math</code>.</p>
+<p>Hay un montón de estas, así que omitiré listar cada una. Pero aquí hay algunas con fines ilustrativos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Math.PI;                        // 3.141592653589793
+
+// absolute value
+Math.abs(-32.6);                // 32.6
+
+// rounding
+Math.round(-32.6);              // -33
+
+// min/max selection
+Math.min(100,Math.max(0,42));   // 42</code></pre></div>
+<p>A diferencia de <code>Number</code>, que también es la función <code>Number(..)</code> (para la coerción de numbers), <code>Math</code> es solo un objeto que contiene estas propiedades y utilidades de función estáticas; no puede ser llamado como una función.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Un miembro peculiar del espacio de nombres <code>Math</code> es <code>Math.random()</code>, para producir un valor de punto flotante aleatorio entre <code>0</code> y <code>1.0</code>. Es inusual considerar la generación de numbers aleatorios -- una tarea que es inherentemente con estado/con efectos secundarios -- como una operación matemática. También ha sido durante mucho tiempo un footgun en términos de seguridad, ya que el generador de numbers pseudo-aleatorios (PRNG) que JS usa <em>no</em> es seguro (puede predecirse) desde una perspectiva de criptografía. La plataforma web intervino hace varios años con la API más segura <code>crypto.getRandomValues(..)</code> (basada en un mejor PRNG), que llena un typed-array con bits aleatorios que pueden interpretarse como uno o más enteros (de magnitud máxima especificada por el type). El uso de <code>Math.random()</code> está universalmente desaconsejado ahora.</p></div></div>
+<h3 id="los-bigints-y-los-numbers-no-se-mezclan">Los BigInts y los Numbers No Se Mezclan</h3>
+<p>Como cubrimos en el Capítulo 1, los valores de type number y type bigint no pueden mezclarse en las mismas operaciones. Eso puede hacerte tropezar incluso si estás haciendo un simple incremento del valor (como en un bucle):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42n;
+
+myAge + 1;                  // TypeError thrown!
+myAge += 1;                 // TypeError thrown!
+
+myAge + 1n;                 // 43n
+myAge += 1n;                // 43n
+
+myAge++;
+myAge;                      // 44n</code></pre></div>
+<p>Como tal, si estás usando ambos valores number y bigint en tus programas, necesitarás coercionar manualmente un value type al otro con cierta regularidad. La función <code>BigInt(..)</code> (sin la palabra clave <code>new</code>) puede coercionar un valor number a bigint. Viceversa, para ir en la otra dirección de bigint a number, usa la función <code>Number(..)</code> (de nuevo, sin la palabra clave <code>new</code>):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">BigInt(42);                 // 42n
+
+Number(42n);                // 42</code></pre></div>
+<p>Ten en cuenta sin embargo: coercionar entre estos types tiene cierto riesgo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">BigInt(4.2);                // RangeError thrown!
+BigInt(NaN);                // RangeError thrown!
+BigInt(Infinity);           // RangeError thrown!
+
+Number(2n ** 1024n);        // Infinity</code></pre></div>
+<h2 id="los-primitivos-son-fundacionales">Los Primitivos Son Fundacionales</h2>
+<p>A lo largo de los últimos dos capítulos, nos hemos metido a fondo en cómo se comportan los valores primitivos en JS. Apuesto a que más de unos pocos lectores estaban, como yo, listos para saltarse estos temas. Pero ahora, con suerte, ves la importancia de entender estos conceptos.</p>
+<p>Sin embargo, la historia no termina aquí. ¡Para nada! En el próximo capítulo, dirigiremos nuestra atención a entender los object types de JS (objetos, arrays, etc).</p>
+<div class="footnotes"><hr><ol><li id="fn-TwitterUnicode">"New update to the Twitter-Text library: Emoji character count"; Andy Piper; Oct 2018; https://twittercommunity.com/t/new-update-to-the-twitter-text-library-emoji-character-count/114607 ; Accedido en Julio 2022</li><li id="fn-INTLAPI">ECMAScript 2022 Internationalization API Specification; https://402.ecma-international.org/9.0/ ; Accedido en Agosto 2022</li><li id="fn-INTLCollator">"Intl.Collator", MDN; https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator ; Accedido en Agosto 2022</li><li id="fn-INTLSegmenter">"Intl.Segmenter", MDN; https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter ; Accedido en Agosto 2022</li><li id="fn-StrictEquality">"7.2.16 IsStrictlyEqual(x,y)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-isstrictlyequal ; Accedido en Agosto 2022</li><li id="fn-LooseEquality">"7.2.15 IsLooselyEqual(x,y)", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-islooselyequal ; Accedido en Agosto 2022</li><li id="fn-EpsilonBad">"PLEASE don't follow the code recipe in the accepted answer", Stack Overflow; Daniel Scott; July 2019; https://stackoverflow.com/a/56967003/228852 ; Accedido en Agosto 2022</li></ol></div>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../types-grammar/ch1.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 1 · Tipos primitivos</span></a>
+      <a class="pager-btn next" href="../types-grammar/ch3.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 3 · Valores de objeto</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#inmutabilidad-de-los-primitivos">Inmutabilidad de los Primitivos</a></li>
+<li class="toc-l3"><a href="#primitivos-con-propiedades">¿Primitivos Con Propiedades?</a></li>
+<li class="toc-l2"><a href="#asignaciones-de-primitivos">Asignaciones de Primitivos</a></li>
+<li class="toc-l2"><a href="#comportamientos-de-los-strings">Comportamientos de los Strings</a></li>
+<li class="toc-l3"><a href="#acceso-a-caracteres-del-string">Acceso a Caracteres del String</a></li>
+<li class="toc-l3"><a href="#iteración-de-caracteres">Iteración de Caracteres</a></li>
+<li class="toc-l3"><a href="#cálculo-de-la-longitud">Cálculo de la Longitud</a></li>
+<li class="toc-l3"><a href="#internacionalización-i18n-y-localización-l10n">Internacionalización (i18n) y Localización (l10n)</a></li>
+<li class="toc-l3"><a href="#comparación-de-strings">Comparación de Strings</a></li>
+<li class="toc-l3"><a href="#concatenación-de-strings">Concatenación de Strings</a></li>
+<li class="toc-l3"><a href="#métodos-de-los-valores-string">Métodos de los Valores String</a></li>
+<li class="toc-l3"><a href="#ayudantes-estáticos-de-string">Ayudantes Estáticos de <code>String</code></a></li>
+<li class="toc-l2"><a href="#comportamientos-de-los-numbers">Comportamientos de los Numbers</a></li>
+<li class="toc-l3"><a href="#imprecisión-de-punto-flotante">Imprecisión de Punto Flotante</a></li>
+<li class="toc-l3"><a href="#comparación-numérica">Comparación Numérica</a></li>
+<li class="toc-l3"><a href="#operadores-matemáticos">Operadores Matemáticos</a></li>
+<li class="toc-l3"><a href="#operadores-bit-a-bit">Operadores Bit a Bit</a></li>
+<li class="toc-l3"><a href="#métodos-de-los-valores-number">Métodos de los Valores Number</a></li>
+<li class="toc-l3"><a href="#propiedades-estáticas-de-number">Propiedades Estáticas de <code>Number</code></a></li>
+<li class="toc-l3"><a href="#ayudantes-estáticos-de-number">Ayudantes Estáticos de <code>Number</code></a></li>
+<li class="toc-l3"><a href="#espacio-de-nombres-estático-math">Espacio de Nombres Estático <code>Math</code></a></li>
+<li class="toc-l3"><a href="#los-bigints-y-los-numbers-no-se-mezclan">Los BigInts y los Numbers No Se Mezclan</a></li>
+<li class="toc-l2"><a href="#los-primitivos-son-fundacionales">Los Primitivos Son Fundacionales</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

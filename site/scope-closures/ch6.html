@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 6 · Exponer el scope con módulos — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔭</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#0ea5e9">
+      <span class="sidebar-emoji">🔭</span>
+      <div><div class="sidebar-book">Scope & Closures</div><div class="sidebar-sub">Scope y Closures</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap active"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../scope-closures/README.html">Scope & Closures</a> <span>/</span> Cap. 6 · Exponer el scope con módulos</div>
+    <article class="prose" style="--book-color:#0ea5e9">
+      <h1 id="you-dont-know-js-yet-scope-closures---2nd-edition">You Don't Know JS Yet: Scope &amp; Closures - 2nd Edition</h1>
+<h1 id="capítulo-6-limitando-la-exposición-del-scope">Capítulo 6: Limitando la Exposición del Scope</h1>
+<p>Hasta ahora nuestro foco ha estado en explicar los mecanismos de cómo funcionan los scopes y las variables. Con esa base ya firmemente asentada, nuestra atención se eleva a un nivel de pensamiento más alto: decisiones y patrones que aplicamos a lo largo de todo el programa.</p>
+<p>Para empezar, vamos a ver cómo y por qué deberíamos usar diferentes niveles de scope (funciones y bloques) para organizar las variables de nuestro programa, específicamente para reducir la sobreexposición del scope.</p>
+<h2 id="mínima-exposición">Mínima Exposición</h2>
+<p>Tiene sentido que las funciones definan sus propios scopes. Pero ¿por qué necesitamos que los bloques creen scopes también?</p>
+<p>La ingeniería de software articula una disciplina fundamental, aplicada típicamente a la seguridad del software, llamada "El Principio de Mínimo Privilegio" (POLP). <sup class="fnref"><a href="#fn-POLP">[POLP]</a></sup> Y una variante de este principio que aplica a nuestra discusión actual se denomina típicamente "Mínima Exposición" (POLE).</p>
+<p>POLP expresa una postura defensiva hacia la arquitectura de software: los componentes del sistema deberían diseñarse para funcionar con el mínimo privilegio, el mínimo acceso, la mínima exposición. Si cada pieza está conectada con las capacidades mínimas necesarias, el sistema en conjunto es más fuerte desde el punto de vista de la seguridad, porque un compromiso o fallo de una pieza tiene un impacto minimizado sobre el resto del sistema.</p>
+<p>Si POLP se enfoca en el diseño de componentes a nivel de sistema, la variante <em>Exposición</em> de POLE se enfoca en un nivel más bajo; la aplicaremos a cómo interactúan los scopes entre sí.</p>
+<p>Al seguir POLE, ¿de qué queremos minimizar la exposición? Simplemente: de las variables registradas en cada scope.</p>
+<p>Pensalo de esta manera: ¿por qué no deberías simplemente colocar todas las variables de tu programa en el scope global? Eso probablemente se siente de inmediato como una mala idea, pero vale la pena considerar por qué es así. Cuando las variables que usa una parte del programa quedan expuestas a otra parte del programa, a través del scope, surgen tres peligros principales que aparecen con frecuencia:</p>
+<ul><li><strong>Colisiones de Nombres</strong>: si usás un nombre de variable/función común y útil en dos partes diferentes del programa, pero el identificador proviene de un scope compartido (como el scope global), entonces ocurre una colisión de nombres, y es muy probable que aparezcan bugs cuando una parte usa la variable/función de una manera que la otra parte no espera.</li></ul>
+<p>Por ejemplo, imaginá que todos tus bucles usaran una única variable índice global <code>i</code>, y resulta que un bucle de una función se está ejecutando durante una iteración de un bucle de otra función, y ahora la variable compartida <code>i</code> obtiene un valor inesperado.</p>
+<ul><li><strong>Comportamiento Inesperado</strong>: si exponés variables/funciones cuyo uso de otro modo es <em>privado</em> a una parte del programa, eso permite que otros desarrolladores las usen de maneras que no pretendías, lo que puede violar el comportamiento esperado y causar bugs.</li></ul>
+<p>Por ejemplo, si tu parte del programa asume que un array contiene solo números, pero el código de otra persona accede y modifica el array para incluir booleanos y strings, tu código puede entonces comportarse mal de maneras inesperadas.</p>
+<p>Peor aún, la exposición de detalles <em>privados</em> invita a quienes tienen malas intenciones a intentar sortear las limitaciones que impusiste, para hacer con tu parte del software cosas que no deberían estar permitidas.</p>
+<ul><li><strong>Dependencia No Intencionada</strong>: si exponés variables/funciones innecesariamente, invitás a otros desarrolladores a usar y depender de esas piezas de otro modo <em>privadas</em>. Si bien eso no rompe tu programa hoy, crea un peligro de refactorización en el futuro, porque ahora no podés refactorizar tan fácilmente esa variable o función sin potencialmente romper otras partes del software que no controlás.</li></ul>
+<p>Por ejemplo, si tu código depende de un array de números, y más tarde decidís que es mejor usar alguna otra estructura de datos en lugar de un array, ahora debés asumir la responsabilidad de ajustar otras partes afectadas del software.</p>
+<p>POLE, aplicado al scoping de variables/funciones, dice esencialmente: por defecto, exponé el mínimo indispensable, manteniendo todo lo demás lo más privado posible. Declará las variables en scopes lo más pequeños y profundamente anidados posible, en lugar de colocar todo en el scope global (o incluso en el de la función externa).</p>
+<p>Si diseñás tu software en consecuencia, tenés muchas más chances de evitar (o al menos minimizar) estos tres peligros.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function diff(x,y) {
+    if (x &gt; y) {
+        let tmp = x;
+        x = y;
+        y = tmp;
+    }
+
+    return y - x;
+}
+
+diff(3,7);      // 4
+diff(7,5);      // 2</code></pre></div>
+<p>En esta función <code>diff(..)</code>, queremos asegurarnos de que <code>y</code> sea mayor o igual que <code>x</code>, de modo que cuando restemos (<code>y - x</code>), el resultado sea <code>0</code> o mayor. Si <code>x</code> es inicialmente mayor (¡el resultado sería negativo!), intercambiamos <code>x</code> e <code>y</code> usando una variable <code>tmp</code>, para mantener el resultado positivo.</p>
+<p>En este ejemplo simple, no parece importar si <code>tmp</code> está dentro del bloque <code>if</code> o si pertenece al nivel de la función—¡ciertamente no debería ser una variable global! Sin embargo, siguiendo el principio POLE, <code>tmp</code> debería estar lo más oculta en el scope posible. Así que ponemos <code>tmp</code> en block scope (usando <code>let</code>) dentro del bloque <code>if</code>.</p>
+<h2 id="ocultando-a-la-vista-del-scope-de-función">Ocultando a la Vista (del Scope de Función)</h2>
+<p>Ahora debería estar claro por qué es importante ocultar nuestras declaraciones de variables y funciones en los scopes más bajos (más profundamente anidados) posibles. Pero ¿cómo lo hacemos?</p>
+<p>Ya vimos las palabras clave <code>let</code> y <code>const</code>, que son declaradores de block scope; volveremos a ellas en más detalle en breve. Pero primero, ¿qué pasa con ocultar declaraciones <code>var</code> o <code>function</code> en scopes? Eso puede hacerse fácilmente envolviendo un scope de <code>function</code> alrededor de una declaración.</p>
+<p>Consideremos un ejemplo donde el scoping de <code>function</code> puede ser útil.</p>
+<p>La operación matemática "factorial" (notada como "6!") es la multiplicación de un entero dado contra todos los enteros sucesivamente menores hasta <code>1</code>—en realidad, podés detenerte en <code>2</code> ya que multiplicar por <code>1</code> no hace nada. En otras palabras, "6!" es lo mismo que "6 <em> 5!", que es lo mismo que "6 </em> 5 * 4!", y así sucesivamente. Debido a la naturaleza de la matemática involucrada, una vez que se ha calculado el factorial de cualquier entero dado (como "4!"), no deberíamos necesitar hacer ese trabajo de nuevo, ya que siempre será la misma respuesta.</p>
+<p>Así que si calculás ingenuamente el factorial de <code>6</code>, y luego querés calcular el factorial de <code>7</code>, podrías recalcular innecesariamente los factoriales de todos los enteros desde 2 hasta 6. Si estás dispuesto a intercambiar memoria por velocidad, podés resolver ese cómputo desperdiciado cacheando el factorial de cada entero a medida que se calcula:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var cache = {};
+
+function factorial(x) {
+    if (x &lt; 2) return 1;
+    if (!(x in cache)) {
+        cache[x] = x * factorial(x - 1);
+    }
+    return cache[x];
+}
+
+factorial(6);
+// 720
+
+cache;
+// {
+//     "2": 2,
+//     "3": 6,
+//     "4": 24,
+//     "5": 120,
+//     "6": 720
+// }
+
+factorial(7);
+// 5040</code></pre></div>
+<p>Estamos almacenando todos los factoriales computados en <code>cache</code> para que, a través de múltiples llamadas a <code>factorial(..)</code>, los cálculos previos permanezcan. Pero la variable <code>cache</code> es bastante obviamente un detalle <em>privado</em> de cómo funciona <code>factorial(..)</code>, no algo que debería exponerse en un scope externo—especialmente no el scope global.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p><code>factorial(..)</code> aquí es recursiva—se hace una llamada a sí misma desde dentro—pero eso es solo por brevedad del código; una implementación no recursiva daría el mismo análisis de scoping con respecto a <code>cache</code>.</p></div></div>
+<p>Sin embargo, arreglar este problema de sobreexposición no es tan simple como ocultar la variable <code>cache</code> dentro de <code>factorial(..)</code>, como podría parecer. Dado que necesitamos que <code>cache</code> sobreviva a múltiples llamadas, debe ubicarse en un scope fuera de esa función. Entonces ¿qué podemos hacer?</p>
+<p>Definir otro scope intermedio (entre el scope externo/global y el interior de <code>factorial(..)</code>) para que <code>cache</code> se ubique allí:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// scope externo/global
+
+function hideTheCache() {
+    // "scope intermedio", donde ocultamos `cache`
+    var cache = {};
+
+    return factorial;
+
+    // **********************
+
+    function factorial(x) {
+        // scope interno
+        if (x &lt; 2) return 1;
+        if (!(x in cache)) {
+            cache[x] = x * factorial(x - 1);
+        }
+        return cache[x];
+    }
+}
+
+var factorial = hideTheCache();
+
+factorial(6);
+// 720
+
+factorial(7);
+// 5040</code></pre></div>
+<p>La función <code>hideTheCache()</code> no tiene otro propósito que crear un scope para que <code>cache</code> persista a través de múltiples llamadas a <code>factorial(..)</code>. Pero para que <code>factorial(..)</code> tenga acceso a <code>cache</code>, tenemos que definir <code>factorial(..)</code> dentro de ese mismo scope. Luego retornamos la referencia de la función, como un valor de <code>hideTheCache()</code>, y la almacenamos en una variable de scope externo, también llamada <code>factorial</code>. Ahora, al llamar a <code>factorial(..)</code> (¡múltiples veces!), ¡su <code>cache</code> persistente permanece oculta pero accesible solo para <code>factorial(..)</code>!</p>
+<p>OK, pero... va a ser tedioso definir (¡y nombrar!) un scope de función <code>hideTheCache(..)</code> cada vez que surja tal necesidad de ocultar variables/funciones, especialmente porque probablemente querremos evitar colisiones de nombres con esta función dándole a cada ocurrencia un nombre único. Uf.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>La técnica ilustrada—cachear la salida computada de una función para optimizar el rendimiento cuando se esperan llamadas repetidas con las mismas entradas—es bastante común en el mundo de la Programación Funcional (FP), referida canónicamente como "memoización"; este cacheo se basa en closure (ver el Capítulo 7). Además, hay preocupaciones sobre el uso de memoria (abordadas en "Una Palabra Sobre la Memoria" en el Apéndice B). Las bibliotecas de FP usualmente proveen una utilidad optimizada y verificada para la memoización de funciones, que tomaría el lugar de <code>hideTheCache(..)</code> aquí. La memoización está más allá del <em>scope</em> (¡juego de palabras!) de nuestra discusión, pero mirá mi libro <em>Functional-Light JavaScript</em> para más información.</p></div></div>
+<p>En lugar de definir una función nueva y nombrada de manera única cada vez que ocurre una de esas situaciones de scope-solo-con-el-propósito-de-ocultar-una-variable, una solución quizás mejor es usar una expresión de función:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var factorial = (function hideTheCache() {
+    var cache = {};
+
+    function factorial(x) {
+        if (x &lt; 2) return 1;
+        if (!(x in cache)) {
+            cache[x] = x * factorial(x - 1);
+        }
+        return cache[x];
+    }
+
+    return factorial;
+})();
+
+factorial(6);
+// 720
+
+factorial(7);
+// 5040</code></pre></div>
+<p>¡Esperá! Esto todavía usa una función para crear el scope que oculta <code>cache</code>, y en este caso, la función todavía se llama <code>hideTheCache</code>, así que ¿cómo resuelve eso algo?</p>
+<p>Recordá de "Scope del Nombre de Función" (en el Capítulo 3), qué le ocurre al identificador de nombre de una expresión de <code>function</code>. Dado que <code>hideTheCache(..)</code> se define como una expresión de <code>function</code> en lugar de una declaración de <code>function</code>, su nombre está en su propio scope—esencialmente el mismo scope que <code>cache</code>—en lugar de en el scope externo/global.</p>
+<p>Eso significa que podemos nombrar cada una de las ocurrencias de tal expresión de función con exactamente el mismo nombre, y nunca tener ninguna colisión. Más apropiadamente, podemos nombrar cada ocurrencia semánticamente según lo que sea que estemos intentando ocultar, y no preocuparnos de que el nombre que elijamos vaya a colisionar con cualquier otro scope de expresión de <code>function</code> en el programa.</p>
+<p>De hecho, <em>podríamos</em> simplemente omitir el nombre por completo—definiendo así una "expresión de <code>function</code> anónima" en su lugar. Pero el Apéndice A discutirá la importancia de los nombres incluso para tales funciones de solo-scope.</p>
+<h3 id="invocando-expresiones-de-función-de-inmediato">Invocando Expresiones de Función de Inmediato</h3>
+<p>Hay otra parte importante en el programa recursivo factorial anterior que es fácil pasar por alto: la línea al final de la expresión de <code>function</code> que contiene <code>})();</code>.</p>
+<p>Notá que rodeamos la expresión de <code>function</code> entera en un conjunto de <code>( .. )</code>, y luego al final, agregamos ese segundo conjunto de paréntesis <code>()</code>; eso en realidad está llamando a la expresión de <code>function</code> que acabamos de definir. Además, en este caso, el primer conjunto de <code>( .. )</code> que rodea la expresión de función no es estrictamente necesario (más sobre eso en un momento), pero los usamos de todos modos por legibilidad.</p>
+<p>Así que, en otras palabras, estamos definiendo una expresión de <code>function</code> que luego es invocada de inmediato. Este patrón común tiene un nombre (¡muy creativo!): Expresión de Función Invocada de Inmediato (IIFE, por sus siglas en inglés).</p>
+<p>Una IIFE es útil cuando queremos crear un scope para ocultar variables/funciones. Dado que es una expresión, puede usarse en <strong>cualquier</strong> lugar de un programa JS donde se permita una expresión. Una IIFE puede tener nombre, como con <code>hideTheCache()</code>, o (¡mucho más comúnmente!) sin nombre/anónima. Y puede ser independiente o, como antes, parte de otra sentencia—<code>hideTheCache()</code> retorna la referencia a la función <code>factorial()</code>, que luego se asigna con <code>=</code> a la variable <code>factorial</code>.</p>
+<p>A modo de comparación, aquí hay un ejemplo de una IIFE independiente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// scope externo
+
+(function(){
+    // scope interno oculto
+})();
+
+// más scope externo</code></pre></div>
+<p>A diferencia de antes con <code>hideTheCache()</code>, donde los <code>(..)</code> externos que la rodeaban se señalaban como una elección estilística opcional, para una IIFE independiente son <strong>obligatorios</strong>; distinguen a la <code>function</code> como una expresión, no como una sentencia. Por consistencia, sin embargo, siempre rodeá una <code>function</code> de una IIFE con <code>( .. )</code>.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Técnicamente, los <code>( .. )</code> que la rodean no son la única manera sintáctica de asegurar que la <code>function</code> en una IIFE sea tratada por el parser de JS como una expresión de función. Veremos algunas otras opciones en el Apéndice A.</p></div></div>
+<h4 id="fronteras-de-función">Fronteras de Función</h4>
+<p>Tené cuidado de que usar una IIFE para definir un scope puede tener algunas consecuencias no intencionadas, dependiendo del código a su alrededor. Debido a que una IIFE es una función completa, la frontera de la función altera el comportamiento de ciertas sentencias/constructos.</p>
+<p>Por ejemplo, una sentencia <code>return</code> en alguna porción de código cambiaría su significado si se envuelve una IIFE a su alrededor, porque ahora el <code>return</code> se referiría a la función de la IIFE. Las IIFE con funciones no-flecha también cambian el binding de la palabra clave <code>this</code>—más sobre eso en el libro <em>Objects &amp; Classes</em>. Y sentencias como <code>break</code> y <code>continue</code> no operarán a través de la frontera de función de una IIFE para controlar un bucle o bloque externo.</p>
+<p>Así que, si el código alrededor del cual necesitás envolver un scope tiene <code>return</code>, <code>this</code>, <code>break</code> o <code>continue</code>, una IIFE probablemente no sea el mejor enfoque. En ese caso, podrías considerar crear el scope con un bloque en lugar de una función.</p>
+<h2 id="scoping-con-bloques">Scoping con Bloques</h2>
+<p>A esta altura deberías sentirte bastante cómodo con los méritos de crear scopes para limitar la exposición de identificadores.</p>
+<p>Hasta ahora, vimos cómo hacer esto a través del scope de <code>function</code> (es decir, IIFE). Pero consideremos ahora usar declaraciones <code>let</code> con bloques anidados. En general, cualquier par de llaves <code>{ .. }</code> que sea una sentencia actuará como un bloque, pero <strong>no necesariamente</strong> como un scope.</p>
+<p>Un bloque solo se convierte en scope si es necesario, para contener sus declaraciones de block scope (es decir, <code>let</code> o <code>const</code>). Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">{
+    // no necesariamente un scope (todavía)
+
+    // ..
+
+    // ahora sabemos que el bloque necesita ser un scope
+    let thisIsNowAScope = true;
+
+    for (let i = 0; i &lt; 5; i++) {
+        // esto también es un scope, activado en cada
+        // iteración
+        if (i % 2 == 0) {
+            // esto es solo un bloque, no un scope
+            console.log(i);
+        }
+    }
+}
+// 0 2 4</code></pre></div>
+<p>No todos los pares de llaves <code>{ .. }</code> crean bloques (y por lo tanto son elegibles para convertirse en scopes):</p>
+<ul><li>Los literales de objeto usan pares de llaves <code>{ .. }</code> para delimitar sus listas de clave-valor, pero tales valores de objeto <strong>no</strong> son scopes.</li></ul>
+<ul><li><code>class</code> usa llaves <code>{ .. }</code> alrededor de la definición de su cuerpo, pero esto no es un bloque ni un scope.</li></ul>
+<ul><li>Una <code>function</code> usa <code>{ .. }</code> alrededor de su cuerpo, pero esto no es técnicamente un bloque—es una sola sentencia para el cuerpo de la función. Sin embargo, <em>sí es</em> un scope (de función).</li></ul>
+<ul><li>El par de llaves <code>{ .. }</code> de una sentencia <code>switch</code> (alrededor del conjunto de cláusulas <code>case</code>) no define un bloque/scope.</li></ul>
+<p>Fuera de tales ejemplos de no-bloque, un par de llaves <code>{ .. }</code> puede definir un bloque adjunto a una sentencia (como un <code>if</code> o <code>for</code>), o estar por sí mismo de manera independiente—mirá el par de llaves <code>{ .. }</code> más externo en el fragmento anterior. Un bloque explícito de este tipo—si no tiene declaraciones, en realidad no es un scope—no cumple ningún propósito operativo, aunque todavía puede ser útil como señal semántica.</p>
+<p>Los bloques <code>{ .. }</code> independientes explícitos siempre han sido sintaxis JS válida, pero dado que no podían ser un scope antes de <code>let</code>/<code>const</code> de ES6, son bastante raros. Sin embargo, después de ES6, están empezando a popularizarse un poco.</p>
+<p>En la mayoría de los lenguajes que soportan block scoping, un block scope explícito es un patrón extremadamente común para crear una porción estrecha de scope para una o unas pocas variables. Así que siguiendo el principio POLE, deberíamos adoptar este patrón de manera más generalizada también en JS; usá block scoping (explícito) para reducir la exposición de identificadores al mínimo práctico.</p>
+<p>Un block scope explícito puede ser útil incluso dentro de otro bloque (sea que el bloque externo sea un scope o no).</p>
+<p>Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (somethingHappened) {
+    // esto es un bloque, pero no un scope
+
+    {
+        // esto es tanto un bloque como un
+        // scope explícito
+        let msg = somethingHappened.message();
+        notifyOthers(msg);
+    }
+
+    // ..
+
+    recoverFromSomething();
+}</code></pre></div>
+<p>Aquí, el par de llaves <code>{ .. }</code> <strong>dentro</strong> de la sentencia <code>if</code> es un block scope explícito interno aún más pequeño para <code>msg</code>, dado que esa variable no se necesita para todo el bloque <code>if</code>. La mayoría de los desarrolladores simplemente pondrían <code>msg</code> en block scope del bloque <code>if</code> y seguirían adelante. Y para ser justos, cuando hay solo unas pocas líneas a considerar, es una decisión de criterio discutible. Pero a medida que el código crece, estos problemas de sobreexposición se vuelven más pronunciados.</p>
+<p>¿Entonces importa lo suficiente como para agregar el par <code>{ .. }</code> extra y el nivel de indentación? Creo que deberías seguir POLE y siempre (¡dentro de lo razonable!) definir el bloque más pequeño para cada variable. Así que recomiendo usar el block scope explícito extra como se muestra.</p>
+<p>Recordá la discusión de los errores de TDZ de "Variables No Inicializadas (TDZ)" (Capítulo 5). Mi sugerencia allí fue: para minimizar el riesgo de errores de TDZ con declaraciones <code>let</code>/<code>const</code>, siempre colocá esas declaraciones al tope de su scope.</p>
+<p>Si te encontrás colocando una declaración <code>let</code> en el medio de un scope, primero pensá: "¡Oh, no! ¡Alerta de TDZ!" Si esta declaración <code>let</code> no se necesita en la primera mitad de ese bloque, ¡deberías usar un block scope explícito interno para reducir aún más su exposición!</p>
+<p>Otro ejemplo con un block scope explícito:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function getNextMonthStart(dateStr) {
+    var nextMonth, year;
+
+    {
+        let curMonth;
+        [ , year, curMonth ] = dateStr.match(
+                /(\d{4})-(\d{2})-\d{2}/
+            ) || [];
+        nextMonth = (Number(curMonth) % 12) + 1;
+    }
+
+    if (nextMonth == 1) {
+        year++;
+    }
+
+    return `${ year }-${
+            String(nextMonth).padStart(2,"0")
+        }-01`;
+}
+getNextMonthStart("2019-12-25");   // 2020-01-01</code></pre></div>
+<p>Primero identifiquemos los scopes y sus identificadores:</p>
+<ol><li>El scope externo/global tiene un identificador, la función <code>getNextMonthStart(..)</code>.</li></ol>
+<ol><li>El scope de función de <code>getNextMonthStart(..)</code> tiene tres: <code>dateStr</code> (parámetro), <code>nextMonth</code> y <code>year</code>.</li></ol>
+<ol><li>El par de llaves <code>{ .. }</code> define un block scope interno que incluye una variable: <code>curMonth</code>.</li></ol>
+<p>¿Entonces por qué poner <code>curMonth</code> en un block scope explícito en lugar de simplemente junto a <code>nextMonth</code> y <code>year</code> en el scope de función de nivel superior? Porque <code>curMonth</code> solo se necesita para esas dos primeras sentencias; a nivel del scope de función está sobreexpuesta.</p>
+<p>Este ejemplo es pequeño, así que los peligros de sobreexponer <code>curMonth</code> son bastante limitados. Pero los beneficios del principio POLE se logran mejor cuando adoptás la mentalidad de minimizar la exposición del scope por defecto, como un hábito. Si seguís el principio consistentemente incluso en los casos pequeños, te servirá más a medida que tus programas crezcan.</p>
+<p>Veamos ahora un ejemplo aún más sustancial:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function sortNamesByLength(names) {
+    var buckets = [];
+
+    for (let firstName of names) {
+        if (buckets[firstName.length] == null) {
+            buckets[firstName.length] = [];
+        }
+        buckets[firstName.length].push(firstName);
+    }
+
+    // un bloque para estrechar el scope
+    {
+        let sortedNames = [];
+
+        for (let bucket of buckets) {
+            if (bucket) {
+                // ordena cada bucket alfanuméricamente
+                bucket.sort();
+
+                // anexa los nombres ordenados a nuestra
+                // lista acumulada
+                sortedNames = [
+                    ...sortedNames,
+                    ...bucket
+                ];
+            }
+        }
+
+        return sortedNames;
+    }
+}
+
+sortNamesByLength([
+    "Sally",
+    "Suzy",
+    "Frank",
+    "John",
+    "Jennifer",
+    "Scott"
+]);
+// [ "John", "Suzy", "Frank", "Sally",
+//   "Scott", "Jennifer" ]</code></pre></div>
+<p>Hay seis identificadores declarados a lo largo de cinco scopes diferentes. ¿Podrían haber existido todas estas variables en el único scope externo/global? Técnicamente, sí, dado que todas tienen nombres únicos y por lo tanto no tienen colisiones de nombres. Pero esto sería una organización de código realmente pobre, y probablemente llevaría tanto a confusión como a bugs futuros.</p>
+<p>Las separamos en cada scope anidado interno según corresponda. Cada variable se define en el scope más interno posible para que el programa opere como se desea.</p>
+<p><code>sortedNames</code> podría haberse definido en el scope de función de nivel superior, pero solo se necesita para la segunda mitad de esta función. Para evitar sobreexponer esa variable en un scope de nivel más alto, seguimos nuevamente POLE y la ponemos en block scope dentro del block scope explícito interno.</p>
+<h3 id="var-y-let"><code>var</code> <em>y</em> <code>let</code></h3>
+<p>A continuación, hablemos de la declaración <code>var buckets</code>. Esa variable se usa a lo largo de toda la función (excepto la sentencia <code>return</code> final). Cualquier variable que se necesite a lo largo de toda (o incluso la mayor parte de) una función debería declararse de modo que tal uso sea obvio.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>El parámetro <code>names</code> no se usa a lo largo de toda la función, pero no hay forma de limitar el scope de un parámetro, así que se comporta como una declaración de alcance de función de todos modos.</p></div></div>
+<p>¿Entonces por qué usamos <code>var</code> en lugar de <code>let</code> para declarar la variable <code>buckets</code>? Hay razones tanto semánticas como técnicas para elegir <code>var</code> aquí.</p>
+<p>Estilísticamente, <code>var</code> siempre, desde los primeros días de JS, ha señalado "variable que pertenece a toda una función". Como afirmamos en "Scope Léxico" (Capítulo 1), <code>var</code> se adjunta al scope de función envolvente más cercano, sin importar dónde aparezca. Eso es cierto incluso si <code>var</code> aparece dentro de un bloque:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function diff(x,y) {
+    if (x &gt; y) {
+        var tmp = x;    // `tmp` tiene scope de función
+        x = y;
+        y = tmp;
+    }
+
+    return y - x;
+}</code></pre></div>
+<p>Aunque <code>var</code> está dentro de un bloque, su declaración tiene scope de función (de <code>diff(..)</code>), no block scope.</p>
+<p>Si bien podés declarar <code>var</code> dentro de un bloque (y que aún tenga scope de función), yo recomendaría evitar este enfoque excepto en unos pocos casos específicos (discutidos en el Apéndice A). De otro modo, <code>var</code> debería reservarse para su uso en el scope de nivel superior de una función.</p>
+<p>¿Por qué no simplemente usar <code>let</code> en esa misma ubicación? Porque <code>var</code> es visualmente distinto de <code>let</code> y por lo tanto señala claramente: "esta variable tiene scope de función". Usar <code>let</code> en el scope de nivel superior, especialmente si no está en las primeras líneas de una función, y cuando todas las demás declaraciones en bloques usan <code>let</code>, no atrae visualmente la atención a la diferencia con la declaración de scope de función.</p>
+<p>En otras palabras, siento que <code>var</code> comunica mejor el scope de función que <code>let</code>, y <code>let</code> tanto comunica (¡como logra!) el block scope donde <code>var</code> es insuficiente. Mientras tus programas vayan a necesitar tanto variables con scope de función como con block scope, el enfoque más sensato y legible es usar tanto <code>var</code> <em>como</em> <code>let</code> juntos, cada uno para su mejor propósito.</p>
+<p>Hay otras razones semánticas y operativas para elegir <code>var</code> o <code>let</code> en diferentes escenarios. Exploraremos el caso de <code>var</code> <em>y</em> <code>let</code> en más detalle en el Apéndice A.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Mi recomendación de usar tanto <code>var</code> <em>como</em> <code>let</code> es claramente controvertida y contradice a la mayoría. Es mucho más común escuchar afirmaciones como "var está roto, let lo arregla" y "nunca uses var, let es el reemplazo". Esas opiniones son válidas, pero son meramente opiniones, igual que la mía. <code>var</code> no está fácticamente roto ni deprecado; ha funcionado desde los primeros JS y seguirá funcionando mientras JS exista.</p></div></div>
+<h3 id="dónde-usar-let">¿Dónde Usar <code>let</code>?</h3>
+<p>Mi consejo de reservar <code>var</code> para (mayormente) solo un scope de función de nivel superior significa que la mayoría de las demás declaraciones deberían usar <code>let</code>. Pero quizás todavía te estés preguntando cómo decidir dónde pertenece cada declaración en tu programa.</p>
+<p>POLE ya te guía en esas decisiones, pero asegurémonos de enunciarlo explícitamente. La forma de decidir no se basa en qué palabra clave querés usar. La forma de decidir es preguntar: "¿Cuál es la exposición de scope más mínima que sea suficiente para esta variable?"</p>
+<p>Una vez que eso esté respondido, sabrás si una variable pertenece a un block scope o al scope de función. Si decidís inicialmente que una variable debería tener block scope, y más tarde te das cuenta de que necesita elevarse a scope de función, entonces eso dicta un cambio no solo en la ubicación de la declaración de esa variable, sino también en la palabra clave declaradora utilizada. El proceso de toma de decisiones realmente debería proceder así.</p>
+<p>Si una declaración pertenece a un block scope, usá <code>let</code>. Si pertenece al scope de función, usá <code>var</code> (de nuevo, solo mi opinión).</p>
+<p>Pero otra forma de visualizar esta toma de decisiones es considerar la versión pre-ES6 de un programa. Por ejemplo, recordemos <code>diff(..)</code> de antes:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function diff(x,y) {
+    var tmp;
+
+    if (x &gt; y) {
+        tmp = x;
+        x = y;
+        y = tmp;
+    }
+
+    return y - x;
+}</code></pre></div>
+<p>En esta versión de <code>diff(..)</code>, <code>tmp</code> está claramente declarada en el scope de función. ¿Es eso apropiado para <code>tmp</code>? Yo argumentaría que no. <code>tmp</code> solo se necesita para esas pocas sentencias. No se necesita para la sentencia <code>return</code>. Por lo tanto debería tener block scope.</p>
+<p>Antes de ES6, no teníamos <code>let</code> así que no podíamos <em>realmente</em> darle block scope. Pero podíamos hacer lo siguiente mejor para señalar nuestra intención:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function diff(x,y) {
+    if (x &gt; y) {
+        // `tmp` todavía tiene scope de función, pero
+        // la colocación aquí señala semánticamente
+        // block scope
+        var tmp = x;
+        x = y;
+        y = tmp;
+    }
+
+    return y - x;
+}</code></pre></div>
+<p>Colocar la declaración <code>var</code> para <code>tmp</code> dentro de la sentencia <code>if</code> le señala al lector del código que <code>tmp</code> pertenece a ese bloque. Aunque JS no fuerza ese scoping, la señal semántica todavía tiene beneficio para el lector de tu código.</p>
+<p>Siguiendo esta perspectiva, podés encontrar cualquier <code>var</code> que esté dentro de un bloque de este tipo y cambiarlo a <code>let</code> para forzar la señal semántica que ya se está enviando. Ese es el uso adecuado de <code>let</code> en mi opinión.</p>
+<p>Otro ejemplo que históricamente se basaba en <code>var</code> pero que ahora debería prácticamente siempre usar <code>let</code> es el bucle <code>for</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">for (var i = 0; i &lt; 5; i++) {
+    // haz algo
+}</code></pre></div>
+<p>Sin importar dónde se defina tal bucle, la <code>i</code> básicamente siempre debería usarse solo dentro del bucle, en cuyo caso POLE dicta que debería declararse con <code>let</code> en lugar de <code>var</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">for (let i = 0; i &lt; 5; i++) {
+    // haz algo
+}</code></pre></div>
+<p>Casi el único caso en el que cambiar un <code>var</code> a un <code>let</code> de esta manera "rompería" tu código es si estuvieras dependiendo de acceder al iterador del bucle (<code>i</code>) fuera/después del bucle, como:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">for (var i = 0; i &lt; 5; i++) {
+    if (checkValue(i)) {
+        break;
+    }
+}
+
+if (i &lt; 5) {
+    console.log("The loop stopped early!");
+}</code></pre></div>
+<p>Este patrón de uso no es terriblemente poco común, pero la mayoría siente que huele a una mala estructura de código. Un enfoque preferible es usar otra variable de scope externo para ese propósito:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var lastI;
+
+for (let i = 0; i &lt; 5; i++) {
+    lastI = i;
+    if (checkValue(i)) {
+        break;
+    }
+}
+
+if (lastI &lt; 5) {
+    console.log("The loop stopped early!");
+}</code></pre></div>
+<p><code>lastI</code> se necesita a lo largo de todo este scope, así que se declara con <code>var</code>. <code>i</code> solo se necesita en (cada) iteración del bucle, así que se declara con <code>let</code>.</p>
+<h3 id="cuál-es-el-truco">¿Cuál es el Truco?</h3>
+<p>Hasta ahora hemos afirmado que <code>var</code> y los parámetros tienen scope de función, y que <code>let</code>/<code>const</code> señalan declaraciones de block scope. Hay una pequeña excepción para destacar: la cláusula <code>catch</code>.</p>
+<p>Desde la introducción de <code>try..catch</code> allá por ES3 (en 1999), la cláusula <code>catch</code> ha usado una capacidad adicional (poco conocida) de declaración con block scope:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">try {
+    doesntExist();
+}
+catch (err) {
+    console.log(err);
+    // ReferenceError: 'doesntExist' is not defined
+    // ^^^^ mensaje impreso de la excepción capturada
+
+    let onlyHere = true;
+    var outerVariable = true;
+}
+
+console.log(outerVariable);     // true
+
+console.log(err);
+// ReferenceError: 'err' is not defined
+// ^^^^ esta es otra excepción lanzada (no capturada)</code></pre></div>
+<p>La variable <code>err</code> declarada por la cláusula <code>catch</code> tiene block scope de ese bloque. Este bloque de la cláusula <code>catch</code> puede contener otras declaraciones de block scope mediante <code>let</code>. Pero una declaración <code>var</code> dentro de este bloque todavía se adjunta al scope externo de función/global.</p>
+<p>ES2019 (recientemente, al momento de escribir) cambió las cláusulas <code>catch</code> para que su declaración sea opcional; si la declaración se omite, el bloque <code>catch</code> ya no es (por defecto) un scope; ¡igual sigue siendo un bloque!</p>
+<p>Así que si necesitás reaccionar a la condición <em>de que ocurrió una excepción</em> (para poder recuperarte con gracia), pero no te importa el valor del error en sí, podés omitir la declaración del <code>catch</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">try {
+    doOptionOne();
+}
+catch {   // declaración de catch omitida
+    doOptionTwoInstead();
+}</code></pre></div>
+<p>Esta es una simplificación pequeña pero encantadora de la sintaxis para un caso de uso bastante común, ¡y también puede ser ligeramente más performante al eliminar un scope innecesario!</p>
+<h2 id="declaraciones-de-función-en-bloques-fib">Declaraciones de Función en Bloques (FiB)</h2>
+<p>Ya hemos visto que las declaraciones que usan <code>let</code> o <code>const</code> tienen block scope, y que las declaraciones <code>var</code> tienen scope de función. ¿Entonces qué pasa con las declaraciones de <code>function</code> que aparecen directamente dentro de bloques? Como característica, esto se llama "FiB".</p>
+<p>Típicamente pensamos en las declaraciones de <code>function</code> como si fueran el equivalente de una declaración <code>var</code>. ¿Entonces tienen scope de función como lo tiene <code>var</code>?</p>
+<p>No y sí. Lo sé... eso es confuso. Profundicemos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (false) {
+    function ask() {
+        console.log("Does this run?");
+    }
+}
+ask();</code></pre></div>
+<p>¿Qué esperás que haga este programa? Tres resultados razonables:</p>
+<ol><li>La llamada <code>ask()</code> podría fallar con una excepción <code>ReferenceError</code>, porque el identificador <code>ask</code> tiene block scope del scope del bloque <code>if</code> y por lo tanto no está disponible en el scope externo/global.</li></ol>
+<ol><li>La llamada <code>ask()</code> podría fallar con una excepción <code>TypeError</code>, porque el identificador <code>ask</code> existe, pero es <code>undefined</code> (dado que la sentencia <code>if</code> no se ejecuta) y por lo tanto no es una función invocable.</li></ol>
+<ol><li>La llamada <code>ask()</code> podría ejecutarse correctamente, imprimiendo el mensaje "Does it run?".</li></ol>
+<p>Aquí está la parte confusa: ¡dependiendo del entorno JS en el que pruebes ese fragmento de código, podés obtener resultados diferentes! Esta es una de esas pocas áreas locas donde el comportamiento heredado existente traiciona un resultado predecible.</p>
+<p>La especificación de JS dice que las declaraciones de <code>function</code> dentro de bloques tienen block scope, así que la respuesta debería ser la (1). Sin embargo, la mayoría de los engines de JS basados en navegador (incluyendo v8, que viene de Chrome pero también se usa en Node) se comportarán como la (2), lo que significa que el identificador tiene scope fuera del bloque <code>if</code> pero el valor de la función no se inicializa automáticamente, así que permanece <code>undefined</code>.</p>
+<p>¿Por qué se les permite a los engines de JS de navegador comportarse de manera contraria a la especificación? Porque estos engines ya tenían ciertos comportamientos en torno a FiB antes de que ES6 introdujera el block scoping, y había preocupación de que cambiar para adherir a la especificación pudiera romper algún código JS existente de sitios web. Como tal, se hizo una excepción en el Apéndice B de la especificación de JS, que permite ciertas desviaciones para los engines de JS de navegador (¡solo!).</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Típicamente no categorizarías a Node como un entorno JS de navegador, dado que usualmente corre en un servidor. Pero el engine v8 de Node es compartido con los navegadores Chrome (y Edge). Dado que v8 es primero un engine de JS de navegador, adopta esta excepción del Apéndice B, lo que entonces significa que las excepciones de navegador se extienden a Node.</p></div></div>
+<p>Uno de los casos de uso más comunes para colocar una declaración de <code>function</code> en un bloque es definir condicionalmente una función de una manera u otra (como con una sentencia <code>if..else</code>) dependiendo de algún estado del entorno. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (typeof Array.isArray != "undefined") {
+    function isArray(a) {
+        return Array.isArray(a);
+    }
+}
+else {
+    function isArray(a) {
+        return Object.prototype.toString.call(a)
+            == "[object Array]";
+    }
+}</code></pre></div>
+<p>Es tentador estructurar el código de esta manera por razones de rendimiento, dado que la verificación <code>typeof Array.isArray</code> solo se realiza una vez, en contraposición a definir una sola <code>isArray(..)</code> y poner la sentencia <code>if</code> dentro de ella—la verificación entonces se ejecutaría innecesariamente en cada llamada.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Además de los riesgos de las desviaciones de FiB, otro problema con la definición condicional de funciones es que es más difícil depurar tal programa. Si terminás con un bug en la función <code>isArray(..)</code>, primero tenés que averiguar <em>cuál</em> implementación de <code>isArray(..)</code> está realmente corriendo. ¡A veces, el bug es que se aplicó la equivocada porque la verificación condicional era incorrecta! Si definís múltiples versiones de una función, ese programa siempre es más difícil de razonar y mantener.</p></div></div>
+<p>Además de los fragmentos anteriores, varios otros casos límite de FiB están al acecho; tales comportamientos en varios navegadores y entornos JS que no son de navegador (engines de JS que no están basados en navegador) probablemente varíen. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (true) {
+    function ask() {
+        console.log("Am I called?");
+    }
+}
+
+if (true) {
+    function ask() {
+        console.log("Or what about me?");
+    }
+}
+
+for (let i = 0; i &lt; 5; i++) {
+    function ask() {
+        console.log("Or is it one of these?");
+    }
+}
+
+ask();
+
+function ask() {
+    console.log("Wait, maybe, it's this one?");
+}</code></pre></div>
+<p>Recordá que el hoisting de funciones, como se describió en "¿Cuándo Puedo Usar una Variable?" (en el Capítulo 5), podría sugerir que la última <code>ask()</code> de este fragmento, con "Wait, maybe..." como su mensaje, se elevaría (hoist) por encima de la llamada a <code>ask()</code>. Dado que es la última declaración de función con ese nombre, debería "ganar", ¿no? Lamentablemente, no.</p>
+<p>No es mi intención documentar todos estos casos límite raros, ni intentar explicar por qué cada uno de ellos se comporta de cierta manera. Esa información es, en mi opinión, trivia heredada y arcana.</p>
+<p>Mi verdadera preocupación con FiB es: ¿qué consejo puedo dar para asegurar que tu código se comporte de manera predecible en todas las circunstancias?</p>
+<p>En lo que a mí respecta, la única respuesta práctica para evitar las veleidades de FiB es simplemente evitar FiB por completo. En otras palabras, nunca coloques una declaración de <code>function</code> directamente dentro de ningún bloque. Siempre colocá las declaraciones de <code>function</code> en cualquier lugar del scope de nivel superior de una función (o en el scope global).</p>
+<p>Así que para el ejemplo anterior de <code>if..else</code>, mi sugerencia es evitar definir funciones condicionalmente si es posible. Sí, puede ser ligeramente menos performante, pero este es el mejor enfoque en general:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function isArray(a) {
+    if (typeof Array.isArray != "undefined") {
+        return Array.isArray(a);
+    }
+    else {
+        return Object.prototype.toString.call(a)
+            == "[object Array]";
+    }
+}</code></pre></div>
+<p>Si ese impacto en el rendimiento se vuelve un problema de ruta crítica para tu aplicación, te sugiero que consideres este enfoque:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var isArray = function isArray(a) {
+    return Array.isArray(a);
+};
+
+// anula la definición, si debés
+if (typeof Array.isArray == "undefined") {
+    isArray = function isArray(a) {
+        return Object.prototype.toString.call(a)
+            == "[object Array]";
+    };
+}</code></pre></div>
+<p>Es importante notar que aquí estoy colocando una <strong>expresión</strong> de <code>function</code>, no una declaración, dentro de la sentencia <code>if</code>. Eso está perfectamente bien y es válido, que las expresiones de <code>function</code> aparezcan dentro de bloques. Nuestra discusión sobre FiB trata de evitar las <strong>declaraciones</strong> de <code>function</code> en bloques.</p>
+<p>Incluso si probás tu programa y funciona correctamente, el pequeño beneficio que podrías derivar de usar el estilo FiB en tu código es ampliamente superado por los riesgos potenciales en el futuro de confusión por parte de otros desarrolladores, o variaciones en cómo corre tu código en otros entornos JS.</p>
+<p>FiB no vale la pena, y debería evitarse.</p>
+<h2 id="bloqueado-y-superado">Bloqueado y Superado</h2>
+<p>El punto de las reglas de scoping léxico en un lenguaje de programación es para que podamos organizar apropiadamente las variables de nuestro programa, tanto para propósitos operativos como de comunicación semántica del código.</p>
+<p>Y una de las técnicas organizativas más importantes es asegurar que ninguna variable quede sobreexpuesta a scopes innecesarios (POLE). Con suerte ahora apreciás el block scoping mucho más profundamente que antes.</p>
+<p>Con suerte, a esta altura sentís que estás parado sobre un terreno mucho más sólido en cuanto a la comprensión del scope léxico. Desde esa base, el próximo capítulo salta al pesado tema del closure.</p>
+<div class="footnotes"><hr><ol><li id="fn-POLP"><em>Principle of Least Privilege</em>, https://en.wikipedia.org/wiki/Principle_of_least_privilege, 3 de marzo de 2020.</li></ol></div>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../scope-closures/ch5.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 5 · El (no tan) secreto de los closures</span></a>
+      <a class="pager-btn next" href="../scope-closures/ch7.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 7 · Usar los closures</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#mínima-exposición">Mínima Exposición</a></li>
+<li class="toc-l2"><a href="#ocultando-a-la-vista-del-scope-de-función">Ocultando a la Vista (del Scope de Función)</a></li>
+<li class="toc-l3"><a href="#invocando-expresiones-de-función-de-inmediato">Invocando Expresiones de Función de Inmediato</a></li>
+<li class="toc-l2"><a href="#scoping-con-bloques">Scoping con Bloques</a></li>
+<li class="toc-l3"><a href="#var-y-let"><code>var</code> <em>y</em> <code>let</code></a></li>
+<li class="toc-l3"><a href="#dónde-usar-let">¿Dónde Usar <code>let</code>?</a></li>
+<li class="toc-l3"><a href="#cuál-es-el-truco">¿Cuál es el Truco?</a></li>
+<li class="toc-l2"><a href="#declaraciones-de-función-en-bloques-fib">Declaraciones de Función en Bloques (FiB)</a></li>
+<li class="toc-l2"><a href="#bloqueado-y-superado">Bloqueado y Superado</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

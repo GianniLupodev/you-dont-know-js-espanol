@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 5 · El (no tan) secreto de los closures — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔭</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#0ea5e9">
+      <span class="sidebar-emoji">🔭</span>
+      <div><div class="sidebar-book">Scope & Closures</div><div class="sidebar-sub">Scope y Closures</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap active"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../scope-closures/README.html">Scope & Closures</a> <span>/</span> Cap. 5 · El (no tan) secreto de los closures</div>
+    <article class="prose" style="--book-color:#0ea5e9">
+      <h1 id="you-dont-know-js-yet-scope-closures---2nd-edition">You Don't Know JS Yet: Scope &amp; Closures - 2nd Edition</h1>
+<h1 id="capítulo-5-el-no-tan-secreto-ciclo-de-vida-de-las-variables">Capítulo 5: El (No Tan) Secreto Ciclo de Vida de las Variables</h1>
+<p>A esta altura ya deberías tener una comprensión decente del anidamiento de scopes, desde el global scope hacia abajo—lo que se denomina la cadena de scopes de un programa.</p>
+<p>Pero conocer de qué scope proviene una variable es solo parte de la historia. Si la declaración de una variable aparece después del primer statement de un scope, ¿cómo se comportará cualquier referencia a ese identificador <em>antes</em> de la declaración? ¿Qué pasa si intentás declarar la misma variable dos veces en un scope?</p>
+<p>El particular sabor de lexical scope de JS está lleno de matices sobre cómo y cuándo las variables cobran existencia y quedan disponibles para el programa.</p>
+<h2 id="cuándo-puedo-usar-una-variable">¿Cuándo Puedo Usar una Variable?</h2>
+<p>¿En qué punto una variable queda disponible para usarse dentro de su scope? Podría parecer que hay una respuesta obvia: <em>después</em> de que la variable haya sido declarada/creada. ¿No? No del todo.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting();
+// Hello!
+
+function greeting() {
+    console.log("Hello!");
+}</code></pre></div>
+<p>Este código funciona perfecto. Quizás viste o incluso escribiste código como este antes. Pero, ¿alguna vez te preguntaste cómo o por qué funciona? Específicamente, ¿por qué podés acceder al identificador <code>greeting</code> desde la línea 1 (para recuperar y ejecutar una referencia a función), aun cuando la declaración de la función <code>greeting()</code> no ocurre hasta la línea 4?</p>
+<p>Recordá que el Capítulo 1 señala que todos los identificadores se registran en sus respectivos scopes durante el compile time. Es más, cada identificador se <em>crea</em> al comienzo del scope al que pertenece, <strong>cada vez que se ingresa a ese scope</strong>.</p>
+<p>El término usado con mayor frecuencia para referirse a que una variable sea visible desde el comienzo de su scope contenedor, aun cuando su declaración pueda aparecer más abajo en el scope, se denomina <strong>hoisting</strong>.</p>
+<p>Pero el hoisting por sí solo no responde del todo la pregunta. Podemos ver un identificador llamado <code>greeting</code> desde el comienzo del scope, pero ¿por qué podemos <strong>invocar</strong> la función <code>greeting()</code> antes de que haya sido declarada?</p>
+<p>En otras palabras, ¿cómo es que la variable <code>greeting</code> tiene algún valor (la referencia a la función) asignado, desde el momento en que el scope empieza a ejecutarse? La respuesta es una característica especial de las declaraciones formales con <code>function</code>, llamada <em>function hoisting</em>. Cuando el identificador del nombre de una declaración <code>function</code> se registra en la parte superior de su scope, además se auto-inicializa con la referencia a esa función. ¡Por eso la función puede invocarse a lo largo de todo el scope!</p>
+<p>Un detalle clave es que tanto el <em>function hoisting</em> como el <em>variable hoisting</em> al estilo de <code>var</code> adjuntan sus identificadores de nombre al <strong>function scope</strong> contenedor más cercano (o, si no hay ninguno, al global scope), no a un block scope.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Las declaraciones con <code>let</code> y <code>const</code> igualmente hacen hoisting (ver la discusión sobre la TDZ más adelante en este capítulo). Pero estas dos formas de declaración se adjuntan a su bloque contenedor en vez de simplemente a una función contenedora, como ocurre con las declaraciones <code>var</code> y <code>function</code>. Ver "Scoping con Bloques" en el Capítulo 6 para más información.</p></div></div>
+<h3 id="hoisting-declaración-vs-expresión">Hoisting: Declaración vs. Expresión</h3>
+<p>El <em>function hoisting</em> solo aplica a las declaraciones formales con <code>function</code> (específicamente aquellas que aparecen fuera de bloques—ver "FiB" en el Capítulo 6), no a las asignaciones de function expression. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting();
+// TypeError
+
+var greeting = function greeting() {
+    console.log("Hello!");
+};</code></pre></div>
+<p>La línea 1 (<code>greeting();</code>) lanza un error. Pero el <em>tipo</em> de error que se lanza es muy importante de notar. Un <code>TypeError</code> significa que estamos intentando hacer algo con un valor que no está permitido. Dependiendo de tu entorno de JS, el mensaje de error diría algo como "'undefined' is not a function", o de forma más útil, "'greeting' is not a function".</p>
+<p>Fijate que el error <strong>no</strong> es un <code>ReferenceError</code>. JS no nos está diciendo que no pudo encontrar <code>greeting</code> como identificador en el scope. Nos está diciendo que <code>greeting</code> fue encontrado pero no contiene una referencia a función en ese momento. Solo las funciones pueden invocarse, así que intentar invocar algún valor que no es una función resulta en un error.</p>
+<p>Pero, ¿qué contiene <code>greeting</code>, si no la referencia a la función?</p>
+<p>Además de hacer hoisting, las variables declaradas con <code>var</code> también se inicializan automáticamente a <code>undefined</code> al comienzo de su scope—de nuevo, la función contenedora más cercana, o el global. Una vez inicializadas, quedan disponibles para usarse (asignarles, recuperar de ellas, etc.) a lo largo de todo el scope.</p>
+<p>Así que en esa primera línea, <code>greeting</code> existe, pero solo contiene el valor por defecto <code>undefined</code>. Recién en la línea 4 <code>greeting</code> recibe la asignación de la referencia a la función.</p>
+<p>Prestá mucha atención a la distinción acá. Una declaración <code>function</code> hace hoisting <strong>y se inicializa con su valor de función</strong> (de nuevo, lo que se llama <em>function hoisting</em>). Una variable <code>var</code> también hace hoisting, y luego se auto-inicializa a <code>undefined</code>. Cualquier asignación posterior de function expression a esa variable no ocurre hasta que esa asignación se procesa durante la ejecución en runtime.</p>
+<p>En ambos casos, el nombre del identificador hace hoisting. Pero la asociación con la referencia a la función no se maneja en el momento de la inicialización (comienzo del scope) a menos que el identificador haya sido creado en una declaración formal con <code>function</code>.</p>
+<h3 id="variable-hoisting">Variable Hoisting</h3>
+<p>Veamos otro ejemplo de <em>variable hoisting</em>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting = "Hello!";
+console.log(greeting);
+// Hello!
+
+var greeting = "Howdy!";</code></pre></div>
+<p>Aunque <code>greeting</code> no se declara hasta la línea 5, está disponible para asignarle tan temprano como en la línea 1. ¿Por qué?</p>
+<p>Hay dos partes necesarias en la explicación:</p>
+<ul><li>el identificador hace hoisting,</li><li><strong>y</strong> se inicializa automáticamente con el valor <code>undefined</code> desde la parte superior del scope.</li></ul>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Usar <em>variable hoisting</em> de este tipo probablemente se sienta poco natural, y muchos lectores podrían querer, con razón, evitar depender de esto en sus programas. Pero, ¿debería evitarse todo hoisting (incluido el <em>function hoisting</em>)? Exploraremos estas distintas perspectivas sobre el hoisting en más detalle en el Apéndice A.</p></div></div>
+<h2 id="hoisting-otra-metáfora-más">Hoisting: Otra Metáfora Más</h2>
+<p>El Capítulo 2 estuvo repleto de metáforas (para ilustrar el scope), pero acá nos enfrentamos a otra más: el hoisting mismo. En lugar de que el hoisting sea un paso concreto de ejecución que el engine de JS realiza, es más útil pensar el hoisting como una visualización de varias acciones que JS toma al armar el programa <strong>antes de la ejecución</strong>.</p>
+<p>La afirmación típica de lo que significa hoisting: <em>elevar</em>—como elevar un peso pesado hacia arriba—cualquier identificador hasta la parte superior de un scope. La explicación que suele afirmarse es que el engine de JS en realidad <em>reescribirá</em> ese programa antes de la ejecución, de modo que se vea más así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var greeting;           // hoisted declaration
+greeting = "Hello!";    // the original line 1
+console.log(greeting);  // Hello!
+greeting = "Howdy!";    // `var` is gone!</code></pre></div>
+<p>El hoisting (metáfora) propone que JS pre-procesa el programa original y lo re-ordena un poco, de modo que todas las declaraciones hayan sido movidas a la parte superior de sus respectivos scopes, antes de la ejecución. Es más, la metáfora del hoisting afirma que las declaraciones <code>function</code> son, en su totalidad, elevadas a la parte superior de cada scope. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">studentName = "Suzy";
+greeting();
+// Hello Suzy!
+
+function greeting() {
+    console.log(`Hello ${ studentName }!`);
+}
+var studentName;</code></pre></div>
+<p>La "regla" de la metáfora del hoisting es que las declaraciones de función se elevan primero, y luego las variables se elevan inmediatamente después de todas las funciones. Así, la historia del hoisting sugiere que ese programa es <em>re-ordenado</em> por el engine de JS para verse así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function greeting() {
+    console.log(`Hello ${ studentName }!`);
+}
+var studentName;
+
+studentName = "Suzy";
+greeting();
+// Hello Suzy!</code></pre></div>
+<p>Esta metáfora del hoisting es conveniente. Su beneficio es permitirnos pasar por alto el mágico pre-procesamiento de mirar hacia adelante que es necesario para encontrar todas estas declaraciones enterradas en lo profundo de los scopes y de algún modo moverlas (elevarlas) a la parte superior; podemos simplemente pensar en el programa como si fuera ejecutado por el engine de JS en una <strong>única pasada</strong>, de arriba hacia abajo.</p>
+<p>Una única pasada definitivamente parece más directo que la afirmación del Capítulo 1 de un procesamiento en dos fases.</p>
+<p>El hoisting como mecanismo para re-ordenar código puede ser una simplificación atractiva, pero no es precisa. El engine de JS en realidad no re-ordena el código. No puede mirar hacia adelante mágicamente y encontrar las declaraciones; la única manera de encontrarlas con precisión, así como todos los límites de scope en el programa, sería parsear completamente el código.</p>
+<p>¿Adiviná qué es el parsing? ¡La primera fase del procesamiento en dos fases! No hay gimnasia mental mágica que esquive ese hecho.</p>
+<p>Entonces, si la metáfora del hoisting es (en el mejor de los casos) imprecisa, ¿qué deberíamos hacer con el término? Creo que todavía es útil—es más, ¡incluso miembros de TC39 lo usan regularmente!—pero no creo que debamos afirmar que es un re-ordenamiento real del código fuente.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Los modelos mentales incorrectos o incompletos muchas veces igual parecen suficientes porque de vez en cuando pueden llevar a respuestas correctas por accidente. Pero a la larga es más difícil analizar y predecir resultados con precisión si tu forma de pensar no está particularmente alineada con cómo funciona el engine de JS.</p></div></div>
+<p>Yo sostengo que el hoisting <em>debería</em> usarse para referirse a la <strong>operación en compile-time</strong> de generar instrucciones de runtime para el registro automático de una variable al comienzo de su scope, cada vez que se ingresa a ese scope.</p>
+<p>Ese es un cambio sutil pero importante, desde el hoisting como un comportamiento de runtime hacia su lugar apropiado entre las tareas de compile-time.</p>
+<h2 id="re-declaración">¿Re-declaración?</h2>
+<p>¿Qué pensás que pasa cuando una variable se declara más de una vez en el mismo scope? Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Frank";
+console.log(studentName);
+// Frank
+
+var studentName;
+console.log(studentName);   // ???</code></pre></div>
+<p>¿Qué esperás que se imprima en ese segundo mensaje? Muchos creen que el segundo <code>var studentName</code> ha re-declarado la variable (y por lo tanto la "reseteó"), así que esperan que se imprima <code>undefined</code>.</p>
+<p>Pero, ¿existe tal cosa como una variable siendo "re-declarada" en el mismo scope? No.</p>
+<p>Si considerás este programa desde la perspectiva de la metáfora del hoisting, el código sería re-ordenado así para propósitos de ejecución:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName;
+var studentName;    // clearly a pointless no-op!
+
+studentName = "Frank";
+console.log(studentName);
+// Frank
+
+console.log(studentName);
+// Frank</code></pre></div>
+<p>Dado que el hoisting en realidad se trata de registrar una variable al comienzo de un scope, no hay nada que hacer en medio del scope donde el programa original realmente tenía el segundo statement <code>var studentName</code>. Es simplemente un no-op(eración), un statement sin sentido.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Al estilo de la narrativa de conversación del Capítulo 2, el <em>Compilador</em> encontraría el segundo statement de declaración <code>var</code> y le preguntaría al <em>Administrador de Scope</em> si ya había visto un identificador <code>studentName</code>; como sí lo había visto, no habría nada más que hacer.</p></div></div>
+<p>También es importante señalar que <code>var studentName;</code> no significa <code>var studentName = undefined;</code>, como la mayoría asume. Probemos que son diferentes considerando esta variación del programa:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Frank";
+console.log(studentName);   // Frank
+
+var studentName;
+console.log(studentName);   // Frank &lt;--- still!
+
+// let's add the initialization explicitly
+var studentName = undefined;
+console.log(studentName);   // undefined &lt;--- see!?</code></pre></div>
+<p>¿Ves cómo la inicialización explícita <code>= undefined</code> produce un resultado diferente que asumir que ocurre implícitamente cuando se omite? En la próxima sección, revisitaremos este tema de la inicialización de variables a partir de sus declaraciones.</p>
+<p>Una declaración <code>var</code> repetida del mismo nombre de identificador en un scope es, en efecto, una operación que no hace nada. Acá hay otra ilustración, esta vez a lo largo de una función del mismo nombre:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var greeting;
+
+function greeting() {
+    console.log("Hello!");
+}
+
+// basically, a no-op
+var greeting;
+
+typeof greeting;        // "function"
+
+var greeting = "Hello!";
+
+typeof greeting;        // "string"</code></pre></div>
+<p>La primera declaración <code>greeting</code> registra el identificador en el scope, y como es un <code>var</code> la auto-inicialización será <code>undefined</code>. La declaración <code>function</code> no necesita re-registrar el identificador, pero debido al <em>function hoisting</em> sobrescribe la auto-inicialización para usar la referencia a la función. El segundo <code>var greeting</code> por sí solo no hace nada, ya que <code>greeting</code> ya es un identificador y el <em>function hoisting</em> ya tuvo precedencia para la auto-inicialización.</p>
+<p>Realmente asignar <code>"Hello!"</code> a <code>greeting</code> cambia su valor de la función inicial <code>greeting()</code> al string; <code>var</code> en sí mismo no tiene ningún efecto.</p>
+<p>¿Y qué pasa con repetir una declaración dentro de un scope usando <code>let</code> o <code>const</code>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">let studentName = "Frank";
+
+console.log(studentName);
+
+let studentName = "Suzy";</code></pre></div>
+<p>Este programa no va a ejecutarse, sino que lanzará de inmediato un <code>SyntaxError</code>. Dependiendo de tu entorno de JS, el mensaje de error indicará algo como: "studentName has already been declared". En otras palabras, ¡este es un caso en el que el intento de "re-declaración" no está permitido explícitamente!</p>
+<p>No es solo que dos declaraciones que involucran <code>let</code> lanzarán este error. Si cualquiera de las declaraciones usa <code>let</code>, la otra puede ser <code>let</code> o <code>var</code>, y el error igualmente ocurrirá, como se ilustra con estas dos variaciones:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Frank";
+
+let studentName = "Suzy";</code></pre></div>
+<p>y:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">let studentName = "Frank";
+
+var studentName = "Suzy";</code></pre></div>
+<p>En ambos casos, se lanza un <code>SyntaxError</code> en la <em>segunda</em> declaración. En otras palabras, la única manera de "re-declarar" una variable es usar <code>var</code> para todas (dos o más) sus declaraciones.</p>
+<p>Pero, ¿por qué no permitirlo? La razón del error no es técnica per se, ya que la "re-declaración" con <code>var</code> siempre ha estado permitida; claramente, la misma concesión podría haberse hecho para <code>let</code>.</p>
+<p>En realidad es más una cuestión de "ingeniería social". La "re-declaración" de variables es vista por algunos, incluidos muchos del cuerpo de TC39, como un mal hábito que puede llevar a bugs en el programa. Así que cuando ES6 introdujo <code>let</code>, decidieron prevenir la "re-declaración" con un error.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Esta es, por supuesto, una opinión estilística, no realmente un argumento técnico. Muchos desarrolladores están de acuerdo con la postura, y eso probablemente sea en parte por qué TC39 incluyó el error (además de que <code>let</code> se ajusta a <code>const</code>). Pero se podría haber hecho un caso razonable de que mantenerse consistente con el precedente de <code>var</code> era más prudente, y que tal imposición de opiniones estaba mejor dejada a herramientas de opt-in como los linters. En el Apéndice A, exploraremos si <code>var</code> (y su comportamiento asociado, como la "re-declaración") todavía puede ser útil en el JS moderno.</p></div></div>
+<p>Cuando el <em>Compilador</em> le pregunta al <em>Administrador de Scope</em> sobre una declaración, si ese identificador ya ha sido declarado, y si una o ambas declaraciones se hicieron con <code>let</code>, se lanza un error. La señal buscada para el desarrollador es "¡Dejá de depender de la re-declaración descuidada!".</p>
+<h3 id="constantes">¿Constantes?</h3>
+<p>La palabra clave <code>const</code> es más restringida que <code>let</code>. Al igual que <code>let</code>, <code>const</code> no puede repetirse con el mismo identificador en el mismo scope. Pero en realidad hay una razón técnica superior por la cual ese tipo de "re-declaración" está prohibida, a diferencia de <code>let</code>, que prohíbe la "re-declaración" principalmente por razones estilísticas.</p>
+<p>La palabra clave <code>const</code> requiere que una variable sea inicializada, así que omitir una asignación en la declaración resulta en un <code>SyntaxError</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const empty;   // SyntaxError</code></pre></div>
+<p>Las declaraciones <code>const</code> crean variables que no pueden ser re-asignadas:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const studentName = "Frank";
+console.log(studentName);
+// Frank
+
+studentName = "Suzy";   // TypeError</code></pre></div>
+<p>La variable <code>studentName</code> no puede ser re-asignada porque está declarada con un <code>const</code>.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>El error que se lanza al re-asignar <code>studentName</code> es un <code>TypeError</code>, no un <code>SyntaxError</code>. La distinción sutil acá es en realidad bastante importante, pero lamentablemente demasiado fácil de pasar por alto. Los errores de sintaxis representan fallas en el programa que lo detienen antes de siquiera empezar a ejecutarse. Los errores de tipo representan fallas que surgen durante la ejecución del programa. En el fragmento anterior, <code>"Frank"</code> se imprime antes de que procesemos la re-asignación de <code>studentName</code>, que luego lanza el error.</p></div></div>
+<p>Así que si las declaraciones <code>const</code> no pueden ser re-asignadas, y las declaraciones <code>const</code> siempre requieren asignaciones, entonces tenemos una razón técnica clara por la cual <code>const</code> debe prohibir cualquier "re-declaración": ¡cualquier "re-declaración" de <code>const</code> también sería necesariamente una re-asignación de <code>const</code>, lo cual no puede permitirse!</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const studentName = "Frank";
+
+// obviously this must be an error
+const studentName = "Suzy";</code></pre></div>
+<p>Dado que la "re-declaración" de <code>const</code> debe estar prohibida (por esos fundamentos técnicos), TC39 esencialmente sintió que la "re-declaración" de <code>let</code> debería estar prohibida también, por consistencia. Es debatible si esta fue la mejor elección, pero al menos tenemos el razonamiento detrás de la decisión.</p>
+<h3 id="loops">Loops</h3>
+<p>Entonces queda claro de nuestra discusión anterior que JS realmente no quiere que "re-declaremos" nuestras variables dentro del mismo scope. Eso probablemente parezca una advertencia directa, hasta que considerás qué significa para la ejecución repetida de statements de declaración en loops. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var keepGoing = true;
+while (keepGoing) {
+    let value = Math.random();
+    if (value &gt; 0.5) {
+        keepGoing = false;
+    }
+}</code></pre></div>
+<p>¿Se está "re-declarando" <code>value</code> repetidamente en este programa? ¿Vamos a obtener errores? No.</p>
+<p>Todas las reglas de scope (incluida la "re-declaración" de variables creadas con <code>let</code>) se aplican <em>por instancia de scope</em>. En otras palabras, cada vez que se ingresa a un scope durante la ejecución, todo se resetea.</p>
+<p>Cada iteración del loop es su propia nueva instancia de scope, y dentro de cada instancia de scope, <code>value</code> solo se declara una vez. Así que no hay intento de "re-declaración", y por lo tanto no hay error. Antes de considerar otras formas de loop, ¿qué pasaría si la declaración de <code>value</code> en el fragmento anterior se cambiara a un <code>var</code>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var keepGoing = true;
+while (keepGoing) {
+    var value = Math.random();
+    if (value &gt; 0.5) {
+        keepGoing = false;
+    }
+}</code></pre></div>
+<p>¿Se está "re-declarando" <code>value</code> acá, especialmente dado que sabemos que <code>var</code> lo permite? No. Como <code>var</code> no se trata como una declaración de block-scoping (ver Capítulo 6), se adjunta al global scope. Así que hay un solo <code>value</code>, en el mismo scope que <code>keepGoing</code> (global scope, en este caso). ¡Tampoco hay "re-declaración" acá!</p>
+<p>Una manera de mantener todo esto en claro es recordar que las palabras clave <code>var</code>, <code>let</code> y <code>const</code> son, en efecto, <em>removidas</em> del código para cuando empieza a ejecutarse. Las maneja enteramente el compilador.</p>
+<p>Si borrás mentalmente las palabras clave declaradoras y luego intentás procesar el código, debería ayudarte a decidir si y cuándo podrían ocurrir (re-)declaraciones.</p>
+<p>¿Qué pasa con la "re-declaración" en otras formas de loop, como los loops <code>for</code>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">for (let i = 0; i &lt; 3; i++) {
+    let value = i * 10;
+    console.log(`${ i }: ${ value }`);
+}
+// 0: 0
+// 1: 10
+// 2: 20</code></pre></div>
+<p>Debería quedar claro que hay un solo <code>value</code> declarado por instancia de scope. Pero, ¿qué pasa con <code>i</code>? ¿Se está "re-declarando"?</p>
+<p>Para responder eso, considerá en qué scope está <code>i</code>. Podría parecer que estaría en el scope externo (en este caso, el global), pero no es así. Está en el scope del cuerpo del loop <code>for</code>, igual que <code>value</code>. De hecho, podrías pensar en ese loop en esta forma equivalente más detallada:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">{
+    // a fictional variable for illustration
+    let $$i = 0;
+
+    for ( /* nothing */; $$i &lt; 3; $$i++) {
+        // here's our actual loop `i`!
+        let i = $$i;
+
+        let value = i * 10;
+        console.log(`${ i }: ${ value }`);
+    }
+    // 0: 0
+    // 1: 10
+    // 2: 20
+}</code></pre></div>
+<p>Ahora debería quedar claro: las variables <code>i</code> y <code>value</code> ambas se declaran exactamente una vez <strong>por instancia de scope</strong>. Acá no hay "re-declaración".</p>
+<p>¿Qué pasa con otras formas de loop <code>for</code>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">for (let index in students) {
+    // this is fine
+}
+
+for (let student of students) {
+    // so is this
+}</code></pre></div>
+<p>Lo mismo con los loops <code>for..in</code> y <code>for..of</code>: la variable declarada se trata como <em>dentro</em> del cuerpo del loop, y por lo tanto se maneja por iteración (o sea, por instancia de scope). Nada de "re-declaración".</p>
+<p>OK, ya sé que estás pensando que a esta altura sueno como un disco rayado. Pero exploremos cómo <code>const</code> impacta estas construcciones de loop. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var keepGoing = true;
+while (keepGoing) {
+    // ooo, a shiny constant!
+    const value = Math.random();
+    if (value &gt; 0.5) {
+        keepGoing = false;
+    }
+}</code></pre></div>
+<p>Al igual que la variante con <code>let</code> de este programa que vimos antes, <code>const</code> se está ejecutando exactamente una vez dentro de cada iteración del loop, así que está a salvo de problemas de "re-declaración". Pero las cosas se complican más cuando hablamos de loops <code>for</code>.</p>
+<p><code>for..in</code> y <code>for..of</code> están bien para usar con <code>const</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">for (const index in students) {
+    // this is fine
+}
+
+for (const student of students) {
+    // this is also fine
+}</code></pre></div>
+<p>Pero no el loop <code>for</code> general:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">for (const i = 0; i &lt; 3; i++) {
+    // oops, this is going to fail with
+    // a Type Error after the first iteration
+}</code></pre></div>
+<p>¿Qué está mal acá? Podríamos usar <code>let</code> perfectamente en esta construcción, y afirmamos que crea un nuevo <code>i</code> para cada scope de iteración del loop, así que ni siquiera parece ser una "re-declaración".</p>
+<p>Vamos a "expandir" mentalmente ese loop como hicimos antes:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">{
+    // a fictional variable for illustration
+    const $$i = 0;
+
+    for ( ; $$i &lt; 3; $$i++) {
+        // here's our actual loop `i`!
+        const i = $$i;
+        // ..
+    }
+}</code></pre></div>
+<p>¿Detectás el problema? Nuestro <code>i</code> efectivamente se crea una sola vez dentro del loop. Ese no es el problema. El problema es el <code>$$i</code> conceptual que debe incrementarse cada vez con la expresión <code>$$i++</code>. Eso es <strong>re-asignación</strong> (no "re-declaración"), que no está permitida para las constantes.</p>
+<p>Recordá, esta forma "expandida" es solo un modelo conceptual para ayudarte a intuir el origen del problema. Quizás te preguntes si JS podría haber convertido en efecto el <code>const $$i = 0</code> en <code>let $ii = 0</code>, lo que luego permitiría que <code>const</code> funcionara con nuestro clásico loop <code>for</code>. Es posible, pero entonces podría haber introducido excepciones potencialmente sorprendentes a la semántica del loop <code>for</code>.</p>
+<p>Por ejemplo, habría sido una excepción matizada bastante arbitraria (y probablemente confusa) permitir que <code>i++</code> en el encabezado del loop <code>for</code> eludiera la estrictez de la asignación de <code>const</code>, pero no permitir otras re-asignaciones de <code>i</code> dentro de la iteración del loop, como a veces es útil.</p>
+<p>La respuesta directa es: <code>const</code> no puede usarse con la forma clásica del loop <code>for</code> debido a la re-asignación requerida.</p>
+<p>Curiosamente, si no hacés re-asignación, entonces es válido:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var keepGoing = true;
+
+for (const i = 0; keepGoing; /* nothing here */ ) {
+    keepGoing = (Math.random() &gt; 0.5);
+    // ..
+}</code></pre></div>
+<p>Eso funciona, pero no tiene sentido. No hay razón para declarar <code>i</code> en esa posición con un <code>const</code>, ya que todo el punto de una variable en esa posición es <strong>usarse para contar iteraciones</strong>. ¡Simplemente usá una forma de loop diferente, como un loop <code>while</code>, o usá un <code>let</code>!</p>
+<h2 id="variables-no-inicializadas-o-sea-la-tdz">Variables No Inicializadas (o sea, la TDZ)</h2>
+<p>Con las declaraciones <code>var</code>, la variable hace "hoisting" a la parte superior de su scope. Pero también se inicializa automáticamente con el valor <code>undefined</code>, de modo que la variable pueda usarse a lo largo de todo el scope.</p>
+<p>Sin embargo, las declaraciones <code>let</code> y <code>const</code> no son exactamente iguales en este aspecto.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">console.log(studentName);
+// ReferenceError
+
+let studentName = "Suzy";</code></pre></div>
+<p>El resultado de este programa es que se lanza un <code>ReferenceError</code> en la primera línea. Dependiendo de tu entorno de JS, el mensaje de error puede decir algo como: "Cannot access studentName before initialization".</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>El mensaje de error como se ve acá solía ser mucho más vago o engañoso. Afortunadamente, varios de nosotros en la comunidad logramos hacer lobby con éxito para que los engines de JS mejoraran este mensaje de error, ¡de modo que te diga de forma más precisa qué está mal!</p></div></div>
+<p>Ese mensaje de error es bastante indicativo de qué está mal: <code>studentName</code> existe en la línea 1, pero no ha sido inicializado, así que todavía no puede usarse. Probemos esto:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">studentName = "Suzy";   // let's try to initialize it!
+// ReferenceError
+
+console.log(studentName);
+
+let studentName;</code></pre></div>
+<p>Uy. Seguimos obteniendo el <code>ReferenceError</code>, pero ahora en la primera línea donde estamos intentando asignarle a (¡o sea, inicializar!) esta llamada variable "no inicializada" <code>studentName</code>. ¡¿Qué onda?!</p>
+<p>La verdadera pregunta es, ¿cómo inicializamos una variable no inicializada? Para <code>let</code>/<code>const</code>, la <strong>única manera</strong> de hacerlo es con una asignación adjunta a un statement de declaración. ¡Una asignación por sí sola es insuficiente! Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">let studentName = "Suzy";
+console.log(studentName);   // Suzy</code></pre></div>
+<p>Acá, estamos inicializando <code>studentName</code> (en este caso, a <code>"Suzy"</code> en lugar de <code>undefined</code>) mediante la forma del statement de declaración <code>let</code> que viene acoplada con una asignación.</p>
+<p>Alternativamente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// ..
+
+let studentName;
+// or:
+// let studentName = undefined;
+
+// ..
+
+studentName = "Suzy";
+
+console.log(studentName);
+// Suzy</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>¡Eso es interesante! Recordá que antes dijimos que <code>var studentName;</code> <em>no</em> es lo mismo que <code>var studentName = undefined;</code>, pero acá con <code>let</code>, se comportan igual. La diferencia se reduce al hecho de que <code>var studentName</code> se inicializa automáticamente en la parte superior del scope, mientras que <code>let studentName</code> no lo hace.</p></div></div>
+<p>Recordá que hemos afirmado algunas veces hasta ahora que el <em>Compilador</em> termina removiendo cualquier declarador <code>var</code>/<code>let</code>/<code>const</code>, reemplazándolos con las instrucciones en la parte superior de cada scope para registrar los identificadores apropiados.</p>
+<p>Así que si analizamos qué está pasando acá, vemos que un matiz adicional es que el <em>Compilador</em> también está agregando una instrucción en medio del programa, en el punto donde se declaró la variable <code>studentName</code>, para manejar la auto-inicialización de esa declaración. No podemos usar la variable en ningún punto previo a que ocurra esa inicialización. Lo mismo vale para <code>const</code> que para <code>let</code>.</p>
+<p>El término acuñado por TC39 para referirse a este <em>período de tiempo</em> desde el ingreso a un scope hasta donde ocurre la auto-inicialización de la variable es: Temporal Dead Zone (TDZ).</p>
+<p>La TDZ es la ventana de tiempo en la que una variable existe pero todavía no está inicializada, y por lo tanto no puede accederse de ninguna manera. Solo la ejecución de las instrucciones dejadas por el <em>Compilador</em> en el punto de la declaración original puede hacer esa inicialización. Después de ese momento, la TDZ termina, y la variable queda libre para usarse durante el resto del scope.</p>
+<p>Un <code>var</code> también técnicamente tiene una TDZ, ¡pero es de longitud cero y por lo tanto no observable para nuestros programas! Solo <code>let</code> y <code>const</code> tienen una TDZ observable.</p>
+<p>Por cierto, "temporal" en TDZ sí se refiere al <em>tiempo</em>, no a la <em>posición en el código</em>. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">askQuestion();
+// ReferenceError
+
+let studentName = "Suzy";
+
+function askQuestion() {
+    console.log(`${ studentName }, do you know?`);
+}</code></pre></div>
+<p>Aunque posicionalmente el <code>console.log(..)</code> que referencia a <code>studentName</code> viene <em>después</em> de la declaración <code>let studentName</code>, en términos de tiempo la función <code>askQuestion()</code> se invoca <em>antes</em> de que se encuentre el statement <code>let</code>, ¡mientras <code>studentName</code> todavía está en su TDZ! De ahí el error.</p>
+<p>Hay una idea errónea común de que la TDZ significa que <code>let</code> y <code>const</code> no hacen hoisting. Esta es una afirmación imprecisa, o al menos ligeramente engañosa. Definitivamente hacen hoisting.</p>
+<p>La diferencia real es que las declaraciones <code>let</code>/<code>const</code> no se inicializan automáticamente al comienzo del scope, de la manera en que lo hace <code>var</code>. El <em>debate</em> entonces es si la auto-inicialización es <em>parte del</em> hoisting, o no. Yo creo que el auto-registro de una variable en la parte superior del scope (es decir, lo que yo llamo "hoisting") y la auto-inicialización en la parte superior del scope (a <code>undefined</code>) son operaciones distintas y no deberían agruparse bajo el único término "hoisting".</p>
+<p>Ya hemos visto que <code>let</code> y <code>const</code> no se auto-inicializan en la parte superior del scope. Pero probemos que <code>let</code> y <code>const</code> <em>sí</em> hacen hoisting (auto-registro en la parte superior del scope), cortesía de nuestro amigo el shadowing (ver "Shadowing" en el Capítulo 3):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Kyle";
+
+{
+    console.log(studentName);
+    // ???
+
+    // ..
+
+    let studentName = "Suzy";
+
+    console.log(studentName);
+    // Suzy
+}</code></pre></div>
+<p>¿Qué va a pasar con el primer statement <code>console.log(..)</code>? Si <code>let studentName</code> no hiciera hoisting a la parte superior del scope, entonces el primer <code>console.log(..)</code> <em>debería</em> imprimir <code>"Kyle"</code>, ¿no? En ese momento, parecería, solo existe el <code>studentName</code> externo, así que esa es la variable que <code>console.log(..)</code> debería acceder e imprimir.</p>
+<p>Pero en cambio, el primer <code>console.log(..)</code> lanza un error de TDZ, porque de hecho, el <code>studentName</code> del scope interno <strong>sí</strong> hizo hoisting (auto-registro en la parte superior del scope). Lo que <strong>no</strong> ocurrió (¡todavía!) fue la auto-inicialización de ese <code>studentName</code> interno; todavía está no inicializado en ese momento, ¡de ahí la violación de la TDZ!</p>
+<p>Así que para resumir, los errores de TDZ ocurren porque las declaraciones <code>let</code>/<code>const</code> <em>sí</em> hacen hoisting de sus declaraciones a la parte superior de sus scopes, pero a diferencia de <code>var</code>, difieren la auto-inicialización de sus variables hasta el momento en la secuencia del código donde apareció la declaración original. Esta ventana de tiempo (pista: temporal), cualquiera sea su longitud, es la TDZ.</p>
+<p>¿Cómo podés evitar los errores de TDZ?</p>
+<p>Mi consejo: siempre poné tus declaraciones <code>let</code> y <code>const</code> en la parte superior de cualquier scope. Achicá la ventana de la TDZ a longitud cero (o casi cero), y entonces será un punto discutible.</p>
+<p>Pero, ¿por qué la TDZ existe siquiera? ¿Por qué TC39 no dictó que <code>let</code>/<code>const</code> se auto-inicialicen de la manera en que lo hace <code>var</code>? Tené paciencia, volveremos a explorar el <em>porqué</em> de la TDZ en el Apéndice A.</p>
+<h2 id="finalmente-inicializada">Finalmente Inicializada</h2>
+<p>Trabajar con variables tiene mucho más matiz del que parece a primera vista. El <em>Hoisting</em>, la <em>(re)declaración</em> y la <em>TDZ</em> son fuentes comunes de confusión para los desarrolladores, especialmente aquellos que han trabajado en otros lenguajes antes de llegar a JS. Antes de seguir adelante, asegurate de que tu modelo mental esté totalmente afianzado en estos aspectos del scope y las variables de JS.</p>
+<p>El hoisting generalmente se cita como un mecanismo explícito del engine de JS, pero en realidad es más una metáfora para describir las diversas maneras en que JS maneja las declaraciones de variables durante la compilación. Pero incluso como metáfora, el hoisting ofrece una estructura útil para pensar en el ciclo de vida de una variable—cuándo se crea, cuándo queda disponible para usarse, cuándo desaparece.</p>
+<p>La declaración y re-declaración de variables tienden a causar confusión cuando se piensan como operaciones de runtime. Pero si cambiás a un pensamiento de compile-time para estas operaciones, las rarezas y las <em>sombras</em> disminuyen.</p>
+<p>El error de la TDZ (temporal dead zone) es extraño y frustrante cuando se lo encuentra. Afortunadamente, la TDZ es relativamente directa de evitar si siempre tenés el cuidado de ubicar las declaraciones <code>let</code>/<code>const</code> en la parte superior de cualquier scope.</p>
+<p>A medida que navegues con éxito estos vericuetos del scope de variables, el próximo capítulo expondrá los factores que guían nuestras decisiones de ubicar nuestras declaraciones en varios scopes, especialmente bloques anidados.</p>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../scope-closures/ch4.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 4 · Scope global</span></a>
+      <a class="pager-btn next" href="../scope-closures/ch6.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 6 · Exponer el scope con módulos</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#cuándo-puedo-usar-una-variable">¿Cuándo Puedo Usar una Variable?</a></li>
+<li class="toc-l3"><a href="#hoisting-declaración-vs-expresión">Hoisting: Declaración vs. Expresión</a></li>
+<li class="toc-l3"><a href="#variable-hoisting">Variable Hoisting</a></li>
+<li class="toc-l2"><a href="#hoisting-otra-metáfora-más">Hoisting: Otra Metáfora Más</a></li>
+<li class="toc-l2"><a href="#re-declaración">¿Re-declaración?</a></li>
+<li class="toc-l3"><a href="#constantes">¿Constantes?</a></li>
+<li class="toc-l3"><a href="#loops">Loops</a></li>
+<li class="toc-l2"><a href="#variables-no-inicializadas-o-sea-la-tdz">Variables No Inicializadas (o sea, la TDZ)</a></li>
+<li class="toc-l2"><a href="#finalmente-inicializada">Finalmente Inicializada</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apéndice B · Práctica — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔭</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#0ea5e9">
+      <span class="sidebar-emoji">🔭</span>
+      <div><div class="sidebar-book">Scope & Closures</div><div class="sidebar-sub">Scope y Closures</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap active"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../scope-closures/README.html">Scope & Closures</a> <span>/</span> Apéndice B · Práctica</div>
+    <article class="prose" style="--book-color:#0ea5e9">
+      <h1 id="you-dont-know-js-yet-scope-closures---2nd-edition">You Don't Know JS Yet: Scope &amp; Closures - 2nd Edition</h1>
+<h1 id="apéndice-b-práctica">Apéndice B: Práctica</h1>
+<p>Este apéndice busca darte algunos ejercicios desafiantes e interesantes para poner a prueba y solidificar tu comprensión de los temas principales de este libro. Es buena idea intentar los ejercicios por tu cuenta —¡en un editor de código real!— en lugar de saltar directamente a las soluciones del final. ¡Nada de hacer trampa!</p>
+<p>Estos ejercicios no tienen una respuesta correcta específica que debas obtener con exactitud. Tu enfoque puede diferir un poco (¡o mucho!) de las soluciones presentadas, y eso está bien.</p>
+<p>Nadie te está juzgando por cómo escribes tu código. Mi esperanza es que termines este libro sintiéndote con la confianza de que puedes encarar este tipo de tareas de codificación, apoyado en una base sólida de conocimiento. Ese es el único objetivo acá. Si estás contento con tu código, ¡yo también lo estoy!</p>
+<h2 id="baldes-de-canicas">Baldes de Canicas</h2>
+<p>¿Recuerdas la Figura 2 del Capítulo 2?</p>
+<p>&lt;figure&gt;     &lt;img src="images/fig2.png" width="300" alt="Colored Scope Bubbles" align="center"&gt;     &lt;figcaption&gt;&lt;em&gt;Fig. 2 (Cap. 2): Burbujas de Scope Coloreadas&lt;/em&gt;&lt;/figcaption&gt;     &lt;br&gt;&lt;br&gt; &lt;/figure&gt;</p>
+<p>Este ejercicio te pide que escribas un programa —¡cualquier programa!— que contenga funciones anidadas y scopes de bloque, y que satisfaga estas restricciones:</p>
+<ul><li>Si coloreas todos los scopes (¡incluyendo el scope global!) con colores diferentes, vas a necesitar al menos seis colores. Asegúrate de agregar un comentario en el código que etiquete cada scope con su color.</li></ul>
+<p>BONUS: identifica cualquier scope implícito que pueda tener tu código.</p>
+<ul><li>Cada scope tiene al menos un identificador.</li></ul>
+<ul><li>Contiene al menos dos scopes de función y al menos dos scopes de bloque.</li></ul>
+<ul><li>Al menos una variable de un scope externo debe quedar sombreada (shadowed) por una variable de un scope anidado (ver Capítulo 3).</li></ul>
+<ul><li>Al menos una referencia a una variable debe resolverse a una declaración de variable que esté al menos dos niveles más arriba en la cadena de scope.</li></ul>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p><em>Puedes</em> simplemente escribir código basura tipo foo/bar/baz para este ejercicio, pero te sugiero que intentes crear algún tipo de código no trivial, más o menos realista, que al menos haga algo razonable.</p></div></div>
+<p>Intenta el ejercicio por tu cuenta y luego revisa la solución sugerida al final de este apéndice.</p>
+<h2 id="closure-parte-1">Closure (PARTE 1)</h2>
+<p>Practiquemos primero el closure con algunas operaciones matemáticas comunes en computación: determinar si un valor es primo (no tiene divisores aparte de 1 y de sí mismo), y generar una lista de factores primos (divisores) para un número dado.</p>
+<p>Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">isPrime(11);        // true
+isPrime(12);        // false
+
+factorize(11);      // [ 11 ]
+factorize(12);      // [ 3, 2, 2 ] --&gt; 3*2*2=12</code></pre></div>
+<p>Aquí tienes una implementación de <code>isPrime(..)</code>, adaptada de la librería Math.js: <sup class="fnref"><a href="#fn-MathJSisPrime">[MathJSisPrime]</a></sup></p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function isPrime(v) {
+    if (v &lt;= 3) {
+        return v &gt; 1;
+    }
+    if (v % 2 == 0 || v % 3 == 0) {
+        return false;
+    }
+    var vSqrt = Math.sqrt(v);
+    for (let i = 5; i &lt;= vSqrt; i += 6) {
+        if (v % i == 0 || v % (i + 2) == 0) {
+            return false;
+        }
+    }
+    return true;
+}</code></pre></div>
+<p>Y aquí tienes una implementación bastante básica de <code>factorize(..)</code> (que no debe confundirse con <code>factorial(..)</code> del Capítulo 6):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function factorize(v) {
+    if (!isPrime(v)) {
+        let i = Math.floor(Math.sqrt(v));
+        while (v % i != 0) {
+            i--;
+        }
+        return [
+            ...factorize(i),
+            ...factorize(v / i)
+        ];
+    }
+    return [v];
+}</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>La llamo básica porque no está optimizada para el rendimiento. Es binaria-recursiva (lo cual no es optimizable con llamada de cola), y crea muchas copias intermedias de arreglos. Tampoco ordena de ninguna manera los factores descubiertos. Hay muchísimos otros algoritmos para esta tarea, pero quise usar algo corto y más o menos entendible para nuestro ejercicio.</p></div></div>
+<p>Si llamaras a <code>isPrime(4327)</code> múltiples veces en un programa, verías que recorrería todos sus docenas de pasos de comparación/cómputo cada vez. Si consideras <code>factorize(..)</code>, está llamando a <code>isPrime(..)</code> muchas veces mientras computa la lista de factores. Y hay buenas probabilidades de que la mayoría de esas llamadas sean repeticiones. ¡Eso es un montón de trabajo desperdiciado!</p>
+<p>La primera parte de este ejercicio es usar closure para implementar una caché que recuerde los resultados de <code>isPrime(..)</code>, de modo que la primalidad (<code>true</code> o <code>false</code>) de un número dado se compute una sola vez. Pista: ya mostramos este tipo de caché en el Capítulo 6 con <code>factorial(..)</code>.</p>
+<p>Si observas <code>factorize(..)</code>, está implementada con recursión, lo que significa que se llama a sí misma repetidamente. Eso de nuevo significa que probablemente veamos muchas llamadas desperdiciadas para computar los factores primos del mismo número. Así que la segunda parte del ejercicio es usar la misma técnica de caché con closure para <code>factorize(..)</code>.</p>
+<p>Usa closures separados para el cacheo de <code>isPrime(..)</code> y de <code>factorize(..)</code>, en lugar de ponerlos dentro de un único scope.</p>
+<p>Intenta el ejercicio por tu cuenta y luego revisa la solución sugerida al final de este apéndice.</p>
+<h3 id="una-palabra-sobre-la-memoria">Una Palabra Sobre la Memoria</h3>
+<p>Quiero compartir una pequeña nota rápida sobre esta técnica de caché con closure y los impactos que tiene en el rendimiento de tu aplicación.</p>
+<p>Podemos ver que, al ahorrarnos las llamadas repetidas, mejoramos la velocidad de cómputo (en algunos casos, de forma dramática). Pero este uso del closure implica una compensación explícita de la que debes estar muy consciente.</p>
+<p>La compensación es la memoria. Básicamente estamos haciendo crecer nuestra caché (en memoria) de forma ilimitada. Si las funciones en cuestión se llamaran muchos millones de veces con entradas en su mayoría únicas, estaríamos consumiendo una gran cantidad de memoria. Esto definitivamente puede valer el costo, pero solo si creemos que es probable que veamos repetición de entradas comunes, de manera que estemos aprovechando la caché.</p>
+<p>Si prácticamente toda llamada va a tener una entrada única, y la caché en esencia nunca se <em>usa</em> para algún beneficio, esta es una técnica inapropiada para emplear.</p>
+<p>También podría ser buena idea tener un enfoque de cacheo más sofisticado, como una caché LRU (menos usada recientemente, por sus siglas en inglés), que limite su tamaño; a medida que llega al límite, una LRU desaloja los valores que son... bueno, ¡los menos usados recientemente!</p>
+<p>La desventaja aquí es que la LRU es bastante no trivial por sí misma. Vas a querer usar una implementación altamente optimizada de LRU, y estar muy atento a todas las compensaciones en juego.</p>
+<h2 id="closure-parte-2">Closure (PARTE 2)</h2>
+<p>En este ejercicio, vamos a practicar closure nuevamente definiendo una utilidad <code>toggle(..)</code> que nos da un alternador de valores.</p>
+<p>Vas a pasar uno o más valores (como argumentos) a <code>toggle(..)</code>, y recuperarás una función. Esa función devuelta va a alternar/rotar entre todos los valores pasados, en orden, de a uno por vez, a medida que se la llama repetidamente.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function toggle(/* .. */) {
+    // ..
+}
+
+var hello = toggle("hello");
+var onOff = toggle("on","off");
+var speed = toggle("slow","medium","fast");
+
+hello();      // "hello"
+hello();      // "hello"
+
+onOff();      // "on"
+onOff();      // "off"
+onOff();      // "on"
+
+speed();      // "slow"
+speed();      // "medium"
+speed();      // "fast"
+speed();      // "slow"</code></pre></div>
+<p>El caso límite de no pasar ningún valor a <code>toggle(..)</code> no es muy importante; una instancia de alternador así podría simplemente devolver siempre <code>undefined</code>.</p>
+<p>Intenta el ejercicio por tu cuenta y luego revisa la solución sugerida al final de este apéndice.</p>
+<h2 id="closure-parte-3">Closure (PARTE 3)</h2>
+<p>En este tercer y último ejercicio sobre closure, vamos a implementar una calculadora básica. La función <code>calculator()</code> va a producir una instancia de una calculadora que mantiene su propio estado, en la forma de una función (<code>calc(..)</code>, más abajo):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function calculator() {
+    // ..
+}
+
+var calc = calculator();</code></pre></div>
+<p>Cada vez que se llame a <code>calc(..)</code>, pasarás un único carácter que representa la pulsación de un botón de la calculadora. Para mantener las cosas más sencillas, vamos a restringir nuestra calculadora a soportar el ingreso únicamente de dígitos (0-9), operaciones aritméticas (+, -, \*, /), y "=" para computar la operación. Las operaciones se procesan estrictamente en el orden ingresado; no hay agrupación con "( )" ni precedencia de operadores.</p>
+<p>No soportamos el ingreso de decimales, pero la operación de división puede dar como resultado alguno. No soportamos el ingreso de números negativos, pero la operación "-" puede dar como resultado alguno. Así que deberías poder producir cualquier número negativo o decimal ingresando primero una operación que lo compute. Luego puedes seguir computando con ese valor.</p>
+<p>El retorno de las llamadas a <code>calc(..)</code> debería imitar lo que se mostraría en una calculadora real, como reflejar lo que se acaba de presionar, o computar el total al presionar "=".</p>
+<p>Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">calc("4");     // 4
+calc("+");     // +
+calc("7");     // 7
+calc("3");     // 3
+calc("-");     // -
+calc("2");     // 2
+calc("=");     // 75
+calc("*");     // *
+calc("4");     // 4
+calc("=");     // 300
+calc("5");     // 5
+calc("-");     // -
+calc("5");     // 5
+calc("=");     // 0</code></pre></div>
+<p>Dado que este uso es un poco engorroso, aquí tienes un ayudante <code>useCalc(..)</code>, que ejecuta la calculadora con los caracteres de a uno por vez desde una cadena, y computa el display cada vez:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function useCalc(calc,keys) {
+    return [...keys].reduce(
+        function showDisplay(display,key){
+            var ret = String( calc(key) );
+            return (
+                display +
+                (
+                  (ret != "" &amp;&amp; key == "=") ?
+                      "=" :
+                      ""
+                ) +
+                ret
+            );
+        },
+        ""
+    );
+}
+
+useCalc(calc,"4+3=");           // 4+3=7
+useCalc(calc,"+9=");            // +9=16
+useCalc(calc,"*8=");            // *5=128
+useCalc(calc,"7*2*3=");         // 7*2*3=42
+useCalc(calc,"1/0=");           // 1/0=ERR
+useCalc(calc,"+3=");            // +3=ERR
+useCalc(calc,"51=");            // 51</code></pre></div>
+<p>El uso más sensato de este ayudante <code>useCalc(..)</code> es tener siempre "=" como el último carácter ingresado.</p>
+<p>Parte del formateo de los totales mostrados por la calculadora requiere un manejo especial. Te proporciono esta función <code>formatTotal(..)</code>, que tu calculadora debería usar cada vez que vaya a devolver un total computado actual (después de ingresar un <code>"="</code>):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function formatTotal(display) {
+    if (Number.isFinite(display)) {
+        // constrain display to max 11 chars
+        let maxDigits = 11;
+        // reserve space for "e+" notation?
+        if (Math.abs(display) &gt; 99999999999) {
+            maxDigits -= 6;
+        }
+        // reserve space for "-"?
+        if (display &lt; 0) {
+            maxDigits--;
+        }
+
+        // whole number?
+        if (Number.isInteger(display)) {
+            display = display
+                .toPrecision(maxDigits)
+                .replace(/\.0+$/,"");
+        }
+        // decimal
+        else {
+            // reserve space for "."
+            maxDigits--;
+            // reserve space for leading "0"?
+            if (
+                Math.abs(display) &gt;= 0 &amp;&amp;
+                Math.abs(display) &lt; 1
+            ) {
+                maxDigits--;
+            }
+            display = display
+                .toPrecision(maxDigits)
+                .replace(/0+$/,"");
+        }
+    }
+    else {
+        display = "ERR";
+    }
+    return display;
+}</code></pre></div>
+<p>No te preocupes demasiado por cómo funciona <code>formatTotal(..)</code>. La mayor parte de su lógica es un conjunto de manejos para limitar el display de la calculadora a un máximo de 11 caracteres, incluso si se requieren negativos, decimales periódicos, o incluso notación exponencial "e+".</p>
+<p>Nuevamente, no te quedes demasiado empantanado con el comportamiento específico de la calculadora. Enfócate en la <em>memoria</em> del closure.</p>
+<p>Intenta el ejercicio por tu cuenta y luego revisa la solución sugerida al final de este apéndice.</p>
+<h2 id="módulos">Módulos</h2>
+<p>Este ejercicio consiste en convertir la calculadora de Closure (PARTE 3) en un módulo.</p>
+<p>No estamos agregando ninguna funcionalidad adicional a la calculadora, solo cambiando su interfaz. En lugar de llamar a una única función <code>calc(..)</code>, vamos a llamar a métodos específicos de la API pública para cada "pulsación de tecla" de nuestra calculadora. Las salidas se mantienen igual.</p>
+<p>Este módulo debería expresarse como una función fábrica de módulo clásico llamada <code>calculator()</code>, en lugar de un IIFE singleton, de modo que se puedan crear múltiples calculadoras si se desea.</p>
+<p>La API pública debería incluir los siguientes métodos:</p>
+<ul><li><code>number(..)</code> (entrada: el carácter/número "presionado")</li><li><code>plus()</code></li><li><code>minus()</code></li><li><code>mult()</code></li><li><code>div()</code></li><li><code>eq()</code></li></ul>
+<p>El uso se vería así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var calc = calculator();
+
+calc.number("4");     // 4
+calc.plus();          // +
+calc.number("7");     // 7
+calc.number("3");     // 3
+calc.minus();         // -
+calc.number("2");     // 2
+calc.eq();            // 75</code></pre></div>
+<p><code>formatTotal(..)</code> se mantiene igual que en ese ejercicio anterior. Pero el ayudante <code>useCalc(..)</code> necesita ser ajustado para funcionar con la API del módulo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function useCalc(calc,keys) {
+    var keyMappings = {
+        "+": "plus",
+        "-": "minus",
+        "*": "mult",
+        "/": "div",
+        "=": "eq"
+    };
+
+    return [...keys].reduce(
+        function showDisplay(display,key){
+            var fn = keyMappings[key] || "number";
+            var ret = String( calc[fn](key) );
+            return (
+                display +
+                (
+                  (ret != "" &amp;&amp; key == "=") ?
+                      "=" :
+                      ""
+                ) +
+                ret
+            );
+        },
+        ""
+    );
+}
+
+useCalc(calc,"4+3=");           // 4+3=7
+useCalc(calc,"+9=");            // +9=16
+useCalc(calc,"*8=");            // *5=128
+useCalc(calc,"7*2*3=");         // 7*2*3=42
+useCalc(calc,"1/0=");           // 1/0=ERR
+useCalc(calc,"+3=");            // +3=ERR
+useCalc(calc,"51=");            // 51</code></pre></div>
+<p>Intenta el ejercicio por tu cuenta y luego revisa la solución sugerida al final de este apéndice.</p>
+<p>A medida que trabajas en este ejercicio, dedica también algo de tiempo a considerar los pros/contras de representar la calculadora como un módulo en contraposición al enfoque de función con closure del ejercicio anterior.</p>
+<p>BONUS: escribe unas cuantas oraciones explicando tus reflexiones.</p>
+<p>BONUS #2: intenta convertir tu módulo a otros formatos de módulo, incluyendo: UMD, CommonJS, y ESM (ES Modules).</p>
+<h2 id="soluciones-sugeridas">Soluciones Sugeridas</h2>
+<p>Con suerte, ya has intentado los ejercicios antes de estar leyendo hasta acá. ¡Nada de hacer trampa!</p>
+<p>Recuerda, cada solución sugerida es solo una de un montón de maneras diferentes de abordar los problemas. No son "la respuesta correcta", pero sí ilustran una forma razonable de encarar cada ejercicio.</p>
+<p>El beneficio más importante que puedes obtener de leer estas soluciones sugeridas es compararlas con tu código y analizar por qué cada uno tomó decisiones similares o diferentes. No te metas demasiado en discusiones triviales (bikeshedding); intenta mantenerte enfocado en el tema principal en lugar de los pequeños detalles.</p>
+<h3 id="sugerencia-baldes-de-canicas">Sugerencia: Baldes de Canicas</h3>
+<p>El <em>Ejercicio de Baldes de Canicas</em> se puede resolver así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// RED(1)
+const howMany = 100;
+
+// Sieve of Eratosthenes
+function findPrimes(howMany) {
+    // BLUE(2)
+    var sieve = Array(howMany).fill(true);
+    var max = Math.sqrt(howMany);
+
+    for (let i = 2; i &lt; max; i++) {
+        // GREEN(3)
+        if (sieve[i]) {
+            // ORANGE(4)
+            let j = Math.pow(i,2);
+            for (let k = j; k &lt; howMany; k += i) {
+                // PURPLE(5)
+                sieve[k] = false;
+            }
+        }
+    }
+
+    return sieve
+        .map(function getPrime(flag,prime){
+            // PINK(6)
+            if (flag) return prime;
+            return flag;
+        })
+        .filter(function onlyPrimes(v){
+            // YELLOW(7)
+            return !!v;
+        })
+        .slice(1);
+}
+
+findPrimes(howMany);
+// [
+//    2, 3, 5, 7, 11, 13, 17,
+//    19, 23, 29, 31, 37, 41,
+//    43, 47, 53, 59, 61, 67,
+//    71, 73, 79, 83, 89, 97
+// ]</code></pre></div>
+<h3 id="sugerencia-closure-parte-1">Sugerencia: Closure (PARTE 1)</h3>
+<p>El <em>Ejercicio de Closure (PARTE 1)</em> para <code>isPrime(..)</code> y <code>factorize(..)</code>, se puede resolver así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var isPrime = (function isPrime(v){
+    var primes = {};
+
+    return function isPrime(v) {
+        if (v in primes) {
+            return primes[v];
+        }
+        if (v &lt;= 3) {
+            return (primes[v] = v &gt; 1);
+        }
+        if (v % 2 == 0 || v % 3 == 0) {
+            return (primes[v] = false);
+        }
+        let vSqrt = Math.sqrt(v);
+        for (let i = 5; i &lt;= vSqrt; i += 6) {
+            if (v % i == 0 || v % (i + 2) == 0) {
+                return (primes[v] = false);
+            }
+        }
+        return (primes[v] = true);
+    };
+})();
+
+var factorize = (function factorize(v){
+    var factors = {};
+
+    return function findFactors(v) {
+        if (v in factors) {
+            return factors[v];
+        }
+        if (!isPrime(v)) {
+            let i = Math.floor(Math.sqrt(v));
+            while (v % i != 0) {
+                i--;
+            }
+            return (factors[v] = [
+                ...findFactors(i),
+                ...findFactors(v / i)
+            ]);
+        }
+        return (factors[v] = [v]);
+    };
+})();</code></pre></div>
+<p>Los pasos generales que usé para cada utilidad:</p>
+<ol><li>Envolver en un IIFE para definir el scope donde residirá la variable de la caché.</li></ol>
+<ol><li>En la llamada subyacente, revisar primero la caché, y si ya se conoce un resultado, retornarlo.</li></ol>
+<ol><li>En cada lugar donde originalmente ocurría un <code>return</code>, asignar a la caché y simplemente retornar los resultados de esa operación de asignación—este es un truco de ahorro de espacio, mayormente por brevedad en el libro.</li></ol>
+<p>También renombré la función interna de <code>factorize(..)</code> a <code>findFactors(..)</code>. Eso no es técnicamente necesario, pero ayuda a dejar más claro qué función invocan las llamadas recursivas.</p>
+<h3 id="sugerencia-closure-parte-2">Sugerencia: Closure (PARTE 2)</h3>
+<p>El <em>Ejercicio de Closure (PARTE 2)</em> <code>toggle(..)</code> se puede resolver así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function toggle(...vals) {
+    var unset = {};
+    var cur = unset;
+
+    return function next(){
+        // save previous value back at
+        // the end of the list
+        if (cur != unset) {
+            vals.push(cur);
+        }
+        cur = vals.shift();
+        return cur;
+    };
+}
+
+var hello = toggle("hello");
+var onOff = toggle("on","off");
+var speed = toggle("slow","medium","fast");
+
+hello();      // "hello"
+hello();      // "hello"
+
+onOff();      // "on"
+onOff();      // "off"
+onOff();      // "on"
+
+speed();      // "slow"
+speed();      // "medium"
+speed();      // "fast"
+speed();      // "slow"</code></pre></div>
+<h3 id="sugerencia-closure-parte-3">Sugerencia: Closure (PARTE 3)</h3>
+<p>El <em>Ejercicio de Closure (PARTE 3)</em> <code>calculator()</code> se puede resolver así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// from earlier:
+//
+// function useCalc(..) { .. }
+// function formatTotal(..) { .. }
+
+function calculator() {
+    var currentTotal = 0;
+    var currentVal = "";
+    var currentOper = "=";
+
+    return pressKey;
+
+    // ********************
+
+    function pressKey(key){
+        // number key?
+        if (/\d/.test(key)) {
+            currentVal += key;
+            return key;
+        }
+        // operator key?
+        else if (/[+*/-]/.test(key)) {
+            // multiple operations in a series?
+            if (
+                currentOper != "=" &amp;&amp;
+                currentVal != ""
+            ) {
+                // implied '=' keypress
+                pressKey("=");
+            }
+            else if (currentVal != "") {
+                currentTotal = Number(currentVal);
+            }
+            currentOper = key;
+            currentVal = "";
+            return key;
+        }
+        // = key?
+        else if (
+            key == "=" &amp;&amp;
+            currentOper != "="
+        ) {
+            currentTotal = op(
+                currentTotal,
+                currentOper,
+                Number(currentVal)
+            );
+            currentOper = "=";
+            currentVal = "";
+            return formatTotal(currentTotal);
+        }
+        return "";
+    };
+
+    function op(val1,oper,val2) {
+        var ops = {
+            // NOTE: using arrow functions
+            // only for brevity in the book
+            "+": (v1,v2) =&gt; v1 + v2,
+            "-": (v1,v2) =&gt; v1 - v2,
+            "*": (v1,v2) =&gt; v1 * v2,
+            "/": (v1,v2) =&gt; v1 / v2
+        };
+        return ops[oper](val1,val2);
+    }
+}
+
+var calc = calculator();
+
+useCalc(calc,"4+3=");           // 4+3=7
+useCalc(calc,"+9=");            // +9=16
+useCalc(calc,"*8=");            // *5=128
+useCalc(calc,"7*2*3=");         // 7*2*3=42
+useCalc(calc,"1/0=");           // 1/0=ERR
+useCalc(calc,"+3=");            // +3=ERR
+useCalc(calc,"51=");            // 51</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Recuerda: este ejercicio es sobre closure. No te enfoques demasiado en la mecánica real de una calculadora, sino más bien en si estás <em>recordando</em> correctamente el estado de la calculadora a lo largo de las llamadas a funciones.</p></div></div>
+<h3 id="sugerencia-módulos">Sugerencia: Módulos</h3>
+<p>El <em>Ejercicio de Módulos</em> <code>calculator()</code> se puede resolver así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// from earlier:
+//
+// function useCalc(..) { .. }
+// function formatTotal(..) { .. }
+
+function calculator() {
+    var currentTotal = 0;
+    var currentVal = "";
+    var currentOper = "=";
+
+    var publicAPI = {
+        number,
+        eq,
+        plus() { return operator("+"); },
+        minus() { return operator("-"); },
+        mult() { return operator("*"); },
+        div() { return operator("/"); }
+    };
+
+    return publicAPI;
+
+    // ********************
+
+    function number(key) {
+        // number key?
+        if (/\d/.test(key)) {
+            currentVal += key;
+            return key;
+        }
+    }
+
+    function eq() {
+        // = key?
+        if (currentOper != "=") {
+            currentTotal = op(
+                currentTotal,
+                currentOper,
+                Number(currentVal)
+            );
+            currentOper = "=";
+            currentVal = "";
+            return formatTotal(currentTotal);
+        }
+        return "";
+    }
+
+    function operator(key) {
+        // multiple operations in a series?
+        if (
+            currentOper != "=" &amp;&amp;
+            currentVal != ""
+        ) {
+            // implied '=' keypress
+            eq();
+        }
+        else if (currentVal != "") {
+            currentTotal = Number(currentVal);
+        }
+        currentOper = key;
+        currentVal = "";
+        return key;
+    }
+
+    function op(val1,oper,val2) {
+        var ops = {
+            // NOTE: using arrow functions
+            // only for brevity in the book
+            "+": (v1,v2) =&gt; v1 + v2,
+            "-": (v1,v2) =&gt; v1 - v2,
+            "*": (v1,v2) =&gt; v1 * v2,
+            "/": (v1,v2) =&gt; v1 / v2
+        };
+        return ops[oper](val1,val2);
+    }
+}
+
+var calc = calculator();
+
+useCalc(calc,"4+3=");           // 4+3=7
+useCalc(calc,"+9=");            // +9=16
+useCalc(calc,"*8=");            // *5=128
+useCalc(calc,"7*2*3=");         // 7*2*3=42
+useCalc(calc,"1/0=");           // 1/0=ERR
+useCalc(calc,"+3=");            // +3=ERR
+useCalc(calc,"51=");            // 51</code></pre></div>
+<p>¡Eso es todo para este libro, felicitaciones por tu logro! Cuando estés listo, continúa con el Libro 3, <em>Objects &amp; Classes</em>.</p>
+<div class="footnotes"><hr><ol><li id="fn-MathJSisPrime"><em>Math.js: isPrime(..)</em>, https://github.com/josdejong/mathjs/blob/develop/src/function/utils/isPrime.js, 3 de marzo de 2020.</li></ol></div>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../scope-closures/apA.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Apéndice A · Explorando más a fondo</span></a>
+      <a class="pager-btn next" href="../objects-classes/README.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Portada</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#baldes-de-canicas">Baldes de Canicas</a></li>
+<li class="toc-l2"><a href="#closure-parte-1">Closure (PARTE 1)</a></li>
+<li class="toc-l3"><a href="#una-palabra-sobre-la-memoria">Una Palabra Sobre la Memoria</a></li>
+<li class="toc-l2"><a href="#closure-parte-2">Closure (PARTE 2)</a></li>
+<li class="toc-l2"><a href="#closure-parte-3">Closure (PARTE 3)</a></li>
+<li class="toc-l2"><a href="#módulos">Módulos</a></li>
+<li class="toc-l2"><a href="#soluciones-sugeridas">Soluciones Sugeridas</a></li>
+<li class="toc-l3"><a href="#sugerencia-baldes-de-canicas">Sugerencia: Baldes de Canicas</a></li>
+<li class="toc-l3"><a href="#sugerencia-closure-parte-1">Sugerencia: Closure (PARTE 1)</a></li>
+<li class="toc-l3"><a href="#sugerencia-closure-parte-2">Sugerencia: Closure (PARTE 2)</a></li>
+<li class="toc-l3"><a href="#sugerencia-closure-parte-3">Sugerencia: Closure (PARTE 3)</a></li>
+<li class="toc-l3"><a href="#sugerencia-módulos">Sugerencia: Módulos</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apéndice A · Explorando más a fondo — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🚀</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#6366f1">
+      <span class="sidebar-emoji">🚀</span>
+      <div><div class="sidebar-book">Get Started</div><div class="sidebar-sub">Empezando</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group" open>
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap active"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../get-started/README.html">Get Started</a> <span>/</span> Apéndice A · Explorando más a fondo</div>
+    <article class="prose" style="--book-color:#6366f1">
+      <h1 id="you-dont-know-js-yet-get-started---2nd-edition">You Don't Know JS Yet: Get Started - 2nd Edition</h1>
+<h1 id="apéndice-a-explorando-más-a-fondo">Apéndice A: Explorando más a fondo</h1>
+<p>En este apéndice vamos a explorar con un poco más de detalle algunos temas del texto principal de los capítulos. Pensá en este contenido como una vista previa opcional de algunos de los detalles más sutiles que se tratan a lo largo del resto de la serie de libros.</p>
+<h2 id="valores-vs-referencias">Valores vs. Referencias</h2>
+<p>En el Capítulo 2 presentamos los dos tipos principales de valores: primitivos y objetos. Pero todavía no discutimos una diferencia clave entre ambos: cómo se asignan y se pasan estos valores.</p>
+<p>En muchos lenguajes, quien desarrolla puede elegir entre asignar/pasar un valor como el valor en sí mismo, o como una referencia al valor. En JS, sin embargo, esta decisión está determinada por completo por el tipo de valor. Eso sorprende a muchas personas que vienen de otros lenguajes cuando empiezan a usar JS.</p>
+<p>Si asignás/pasás el valor en sí mismo, el valor se copia. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var myName = "Kyle";
+
+var yourName = myName;</code></pre></div>
+<p>Acá, la variable <code>yourName</code> tiene una copia separada del string <code>"Kyle"</code> respecto del valor que está almacenado en <code>myName</code>. Eso es porque el valor es un primitivo, y los valores primitivos siempre se asignan/pasan como <strong>copias de valor</strong>.</p>
+<p>Así es como podés demostrar que hay dos valores separados involucrados:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var myName = "Kyle";
+
+var yourName = myName;
+
+myName = "Frank";
+
+console.log(myName);
+// Frank
+
+console.log(yourName);
+// Kyle</code></pre></div>
+<p>¿Ves cómo <code>yourName</code> no se vio afectada por la reasignación de <code>myName</code> a <code>"Frank"</code>? Eso es porque cada variable tiene su propia copia del valor.</p>
+<p>En cambio, las referencias son la idea de que dos o más variables apuntan al mismo valor, de modo que modificar ese valor compartido se reflejaría al acceder a través de cualquiera de esas referencias. En JS, solo los valores de tipo objeto (arrays, objetos, funciones, etc.) se tratan como referencias.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var myAddress = {
+    street: "123 JS Blvd",
+    city: "Austin",
+    state: "TX"
+};
+
+var yourAddress = myAddress;
+
+// I've got to move to a new house!
+myAddress.street = "456 TS Ave";
+
+console.log(yourAddress.street);
+// 456 TS Ave</code></pre></div>
+<p>Como el valor asignado a <code>myAddress</code> es un objeto, se mantiene/asigna por referencia, y por lo tanto la asignación a la variable <code>yourAddress</code> es una copia de la referencia, no del valor objeto en sí mismo. Por eso el valor actualizado asignado a <code>myAddress.street</code> se refleja cuando accedemos a <code>yourAddress.street</code>. <code>myAddress</code> y <code>yourAddress</code> tienen copias de la referencia al único objeto compartido, así que una actualización en una es una actualización en ambas.</p>
+<p>De nuevo, JS elige el comportamiento de copia-de-valor vs. copia-de-referencia según el tipo de valor. Los primitivos se mantienen por valor, los objetos se mantienen por referencia. No hay forma de anular esto en JS, en ninguna de las dos direcciones.</p>
+<h2 id="tantas-formas-de-función">Tantas formas de función</h2>
+<p>Recordá este fragmento de la sección "Funciones" del Capítulo 2:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var awesomeFunction = function(coolThings) {
+    // ..
+    return amazingStuff;
+};</code></pre></div>
+<p>La expresión de función de acá se denomina <em>expresión de función anónima</em>, ya que no tiene un identificador de nombre entre la palabra clave <code>function</code> y la lista de parámetros <code>(..)</code>. Este punto confunde a muchas personas que desarrollan en JS porque, a partir de ES6, JS realiza una "inferencia de nombre" sobre una función anónima:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">awesomeFunction.name;
+// "awesomeFunction"</code></pre></div>
+<p>La propiedad <code>name</code> de una función revelará o bien su nombre dado directamente (en el caso de una declaración) o bien su nombre inferido en el caso de una expresión de función anónima. Ese valor generalmente lo usan las herramientas de desarrollo al inspeccionar un valor de función o al reportar un stack trace de error.</p>
+<p>Así que incluso una expresión de función anónima <em>podría</em> obtener un nombre. Sin embargo, la inferencia de nombre solo ocurre en casos limitados, como cuando la expresión de función se asigna (con <code>=</code>). Si pasás una expresión de función como argumento a una llamada de función, por ejemplo, no ocurre inferencia de nombre; la propiedad <code>name</code> será un string vacío, y la consola de desarrollo normalmente reportará "(anonymous function)".</p>
+<p>Incluso si se infiere un nombre, <strong>sigue siendo una función anónima.</strong> ¿Por qué? Porque el nombre inferido es un valor de string de metadatos, no un identificador disponible para referirse a la función. Una función anónima no tiene un identificador para usar que le permita referirse a sí misma desde adentro de sí misma—para recursión, para desvincular eventos, etc.</p>
+<p>Compará la forma de la expresión de función anónima con:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// let awesomeFunction = ..
+// const awesomeFunction = ..
+var awesomeFunction = function someName(coolThings) {
+    // ..
+    return amazingStuff;
+};
+
+awesomeFunction.name;
+// "someName"</code></pre></div>
+<p>Esta expresión de función es una <em>expresión de función nombrada</em>, ya que el identificador <code>someName</code> está asociado directamente con la expresión de función en tiempo de compilación; la asociación con el identificador <code>awesomeFunction</code> igual no ocurre hasta el tiempo de ejecución, en el momento de ese statement. Esos dos identificadores no tienen por qué coincidir; a veces tiene sentido que sean diferentes, y otras veces es mejor que sean iguales.</p>
+<p>Notá también que el nombre explícito de la función, el identificador <code>someName</code>, tiene precedencia al asignar un <em>nombre</em> para la propiedad <code>name</code>.</p>
+<p>¿Las expresiones de función deberían ser nombradas o anónimas? Las opiniones varían muchísimo al respecto. La mayoría de quienes desarrollan tienden a no preocuparse por usar funciones anónimas. Son más cortas, y sin duda más comunes en la amplia esfera del código JS que anda dando vueltas.</p>
+<p>En mi opinión, si una función existe en tu programa, tiene un propósito; de lo contrario, ¡sacala! Y si tiene un propósito, tiene un nombre natural que describe ese propósito.</p>
+<p>Si una función tiene un nombre, vos, quien escribe el código, deberías incluir ese nombre en el código, para que quien lo lee no tenga que inferir ese nombre leyendo y ejecutando mentalmente el código fuente de esa función. Incluso un cuerpo de función trivial como <code>x * 2</code> hay que leerlo para inferir un nombre como "double" o "multBy2"; ese breve trabajo mental extra es innecesario cuando podrías tomarte un segundo para nombrar la función "double" o "multBy2" <em>una sola vez</em>, ahorrándole a quien lee ese trabajo mental repetido cada vez que se lea en el futuro.</p>
+<p>Hay, lamentablemente en algunos aspectos, muchas otras formas de definición de función en JS a principios de 2020 (¡quizás más en el futuro!).</p>
+<p>Acá hay algunas formas de declaración más:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// generator function declaration
+function *two() { .. }
+
+// async function declaration
+async function three() { .. }
+
+// async generator function declaration
+async function *four() { .. }
+
+// named function export declaration (ES6 modules)
+export function five() { .. }</code></pre></div>
+<p>Y acá hay algunas más de las (¡muchas!) formas de expresión de función:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// IIFE
+(function(){ .. })();
+(function namedIIFE(){ .. })();
+
+// asynchronous IIFE
+(async function(){ .. })();
+(async function namedAIIFE(){ .. })();
+
+// arrow function expressions
+var f;
+f = () =&gt; 42;
+f = x =&gt; x * 2;
+f = (x) =&gt; x * 2;
+f = (x,y) =&gt; x * y;
+f = x =&gt; ({ x: x * 2 });
+f = x =&gt; { return x * 2; };
+f = async x =&gt; {
+    var y = await doSomethingAsync(x);
+    return y * 2;
+};
+someOperation( x =&gt; x * 2 );
+// ..</code></pre></div>
+<p>Tené en cuenta que las arrow function expressions son <strong>sintácticamente anónimas</strong>, lo que significa que la sintaxis no provee una forma de dar un identificador de nombre directo a la función. La expresión de función puede obtener un nombre inferido, pero solo si es una de las formas de asignación, no en la forma (¡más común!) de ser pasada como argumento de una llamada de función (como en la última línea del fragmento).</p>
+<p>Como no creo que las funciones anónimas sean una buena idea para usar con frecuencia en tus programas, no soy fanático de usar la forma de arrow function <code>=&gt;</code>. Este tipo de función en realidad tiene un propósito específico (es decir, manejar la palabra clave <code>this</code> de forma léxica), pero eso no significa que debamos usarla para cada función que escribimos. Usá la herramienta más apropiada para cada trabajo.</p>
+<p>Las funciones también se pueden especificar en definiciones de clase y en definiciones de objetos literales. Normalmente se las denomina "métodos" cuando están en estas formas, aunque en JS este término no tiene mucha diferencia observable respecto de "función":</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">class SomethingKindaGreat {
+    // class methods
+    coolMethod() { .. }   // no commas!
+    boringMethod() { .. }
+}
+
+var EntirelyDifferent = {
+    // object methods
+    coolMethod() { .. },   // commas!
+    boringMethod() { .. },
+
+    // (anonymous) function expression property
+    oldSchool: function() { .. }
+};</code></pre></div>
+<p>¡Uf! Esa es un montón de formas distintas de definir funciones.</p>
+<p>Acá no hay ningún atajo simple; simplemente tenés que construir familiaridad con todas las formas de función para poder reconocerlas en el código existente y usarlas apropiadamente en el código que escribís. ¡Estudialas de cerca y practicá!</p>
+<h2 id="comparación-condicional-coercitiva">Comparación condicional coercitiva</h2>
+<p>Sí, el nombre de esa sección es todo un trabalenguas. ¿Pero de qué estamos hablando? Estamos hablando de expresiones condicionales que necesitan realizar comparaciones orientadas a la coerción para tomar sus decisiones.</p>
+<p>Los statements <code>if</code> y el ternario <code>? :</code>, así como las cláusulas de prueba en los bucles <code>while</code> y <code>for</code>, todos realizan una comparación implícita de valores. Pero ¿de qué tipo? ¿Es "estricta" o "coercitiva"? Ambas, en realidad.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var x = 1;
+
+if (x) {
+    // will run!
+}
+
+while (x) {
+    // will run, once!
+    x = false;
+}</code></pre></div>
+<p>Podrías pensar en estas expresiones condicionales <code>(x)</code> así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var x = 1;
+
+if (x == true) {
+    // will run!
+}
+
+while (x == true) {
+    // will run, once!
+    x = false;
+}</code></pre></div>
+<p>En este caso específico —el valor de <code>x</code> siendo <code>1</code>— ese modelo mental funciona, pero no es preciso de forma más general. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var x = "hello";
+
+if (x) {
+    // will run!
+}
+
+if (x == true) {
+    // won't run :(
+}</code></pre></div>
+<p>Ups. Entonces, ¿qué está haciendo en realidad el statement <code>if</code>? Este es el modelo mental más preciso:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var x = "hello";
+
+if (Boolean(x) == true) {
+    // will run
+}
+
+// which is the same as:
+
+if (Boolean(x) === true) {
+    // will run
+}</code></pre></div>
+<p>Como la función <code>Boolean(..)</code> siempre devuelve un valor de tipo boolean, el <code>==</code> vs <code>===</code> en este fragmento es irrelevante; ambos harán lo mismo. Pero lo importante es ver que, antes de la comparación, ocurre una coerción, desde cualquier tipo que <code>x</code> tenga en ese momento hacia boolean.</p>
+<p>Simplemente no podés escapar de las coerciones en las comparaciones de JS. Ponete las pilas y aprendelas.</p>
+<h2 id="clases-prototipales">"Clases" prototipales</h2>
+<p>En el Capítulo 3 presentamos los prototypes y mostramos cómo podemos vincular objetos a través de una cadena de prototype.</p>
+<p>Otra forma de conectar dichos vínculos de prototype sirvió como predecesora (honestamente, fea) de la elegancia del sistema <code>class</code> de ES6 (ver el Capítulo 2, "Clases"), y se denomina clases prototipales.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>¡Aunque este estilo de código es bastante infrecuente en JS hoy en día, sigue siendo desconcertantemente común que te pregunten sobre él en entrevistas de trabajo!</p></div></div>
+<p>Primero recordemos el estilo de codificación con <code>Object.create(..)</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var Classroom = {
+    welcome() {
+        console.log("Welcome, students!");
+    }
+};
+
+var mathClass = Object.create(Classroom);
+
+mathClass.welcome();
+// Welcome, students!</code></pre></div>
+<p>Acá, un objeto <code>mathClass</code> está vinculado a través de su prototype a un objeto <code>Classroom</code>. A través de este vínculo, la llamada de función <code>mathClass.welcome()</code> se delega al método definido en <code>Classroom</code>.</p>
+<p>El patrón de clase prototipal habría etiquetado este comportamiento de delegación como "herencia", y alternativamente lo habría definido (con el mismo comportamiento) así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function Classroom() {
+    // ..
+}
+
+Classroom.prototype.welcome = function hello() {
+    console.log("Welcome, students!");
+};
+
+var mathClass = new Classroom();
+
+mathClass.welcome();
+// Welcome, students!</code></pre></div>
+<p>Todas las funciones, por defecto, referencian un objeto vacío en una propiedad llamada <code>prototype</code>. A pesar de la nomenclatura confusa, este <strong>no</strong> es el <em>prototype</em> de la función (donde la función está vinculada por prototype), sino más bien el objeto prototype al cual <em>vincular</em> cuando se crean otros objetos llamando a la función con <code>new</code>.</p>
+<p>Agregamos una propiedad <code>welcome</code> sobre ese objeto vacío (llamado <code>Classroom.prototype</code>), apuntando a la función <code>hello()</code>.</p>
+<p>Luego <code>new Classroom()</code> crea un nuevo objeto (asignado a <code>mathClass</code>), y lo vincula por prototype al objeto <code>Classroom.prototype</code> existente.</p>
+<p>Aunque <code>mathClass</code> no tiene una propiedad/función <code>welcome()</code>, delega exitosamente a la función <code>Classroom.prototype.welcome()</code>.</p>
+<p>Este patrón de "clase prototipal" ahora se desaconseja fuertemente, en favor de usar el mecanismo <code>class</code> de ES6:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">class Classroom {
+    constructor() {
+        // ..
+    }
+
+    welcome() {
+        console.log("Welcome, students!");
+    }
+}
+
+var mathClass = new Classroom();
+
+mathClass.welcome();
+// Welcome, students!</code></pre></div>
+<p>Por debajo, se conecta el mismo vínculo de prototype, pero esta sintaxis <code>class</code> encaja con el patrón de diseño orientado a clases de forma mucho más limpia que las "clases prototipales".</p>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../get-started/ch4.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 4 · Los tres pilares</span></a>
+      <a class="pager-btn next" href="../get-started/apB.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Apéndice B · Práctica, práctica, práctica</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#valores-vs-referencias">Valores vs. Referencias</a></li>
+<li class="toc-l2"><a href="#tantas-formas-de-función">Tantas formas de función</a></li>
+<li class="toc-l2"><a href="#comparación-condicional-coercitiva">Comparación condicional coercitiva</a></li>
+<li class="toc-l2"><a href="#clases-prototipales">"Clases" prototipales</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

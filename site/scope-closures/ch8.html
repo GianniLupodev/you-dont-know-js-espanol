@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 8 · El patrón módulo — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔭</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#0ea5e9">
+      <span class="sidebar-emoji">🔭</span>
+      <div><div class="sidebar-book">Scope & Closures</div><div class="sidebar-sub">Scope y Closures</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap active"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../scope-closures/README.html">Scope & Closures</a> <span>/</span> Cap. 8 · El patrón módulo</div>
+    <article class="prose" style="--book-color:#0ea5e9">
+      <h1 id="you-dont-know-js-yet-scope-closures---2nd-edition">You Don't Know JS Yet: Scope &amp; Closures - 2nd Edition</h1>
+<h1 id="capítulo-8-el-patrón-módulo">Capítulo 8: El Patrón Módulo</h1>
+<p>En este capítulo cerramos el texto principal del libro explorando uno de los patrones de organización de código más importantes de toda la programación: el módulo. Como veremos, los módulos están construidos inherentemente a partir de lo que ya hemos cubierto: la recompensa por tu esfuerzo en aprender el scope léxico y el closure.</p>
+<p>Hemos examinado cada ángulo del scope léxico, desde la amplitud del scope global hacia abajo a través de los block scopes anidados, hasta las complejidades del ciclo de vida de las variables. Luego aprovechamos el scope léxico para entender todo el poder del closure.</p>
+<p>Tomate un momento para reflexionar sobre lo lejos que has llegado en este viaje hasta ahora; ¡has dado grandes pasos para conocer JS más profundamente!</p>
+<p>El tema central de este libro ha sido que entender y dominar el scope y el closure es clave para estructurar y organizar correctamente nuestro código, especialmente las decisiones sobre dónde almacenar información en las variables.</p>
+<p>Nuestro objetivo en este capítulo final es apreciar cómo los módulos encarnan la importancia de estos temas, elevándolos de conceptos abstractos a mejoras concretas y prácticas en la construcción de programas.</p>
+<h2 id="encapsulamiento-y-mínima-exposición-pole">Encapsulamiento y Mínima Exposición (POLE)</h2>
+<p>El encapsulamiento suele citarse como un principio de la programación orientada a objetos (OO), pero es más fundamental y de aplicación más amplia que eso. El objetivo del encapsulamiento es agrupar o ubicar juntos la información (datos) y el comportamiento (funciones) que en conjunto sirven a un propósito común.</p>
+<p>Independientemente de cualquier sintaxis o mecanismo de código, el espíritu del encapsulamiento puede materializarse en algo tan simple como usar archivos separados para contener fragmentos del programa general con un propósito común. Si agrupamos todo lo que potencia una lista de resultados de búsqueda en un único archivo llamado "search-list.js", estamos encapsulando esa parte del programa.</p>
+<p>La tendencia reciente en la programación front-end moderna a organizar las aplicaciones en torno a la arquitectura de Componentes lleva el encapsulamiento aún más lejos. Para muchos, resulta natural consolidar todo lo que constituye la lista de resultados de búsqueda —incluso más allá del código, incluyendo el marcado de presentación y los estilos— en una única unidad de lógica de programa, algo tangible con lo que podemos interactuar. Y luego etiquetamos esa colección como el componente "SearchList".</p>
+<p>Otro objetivo clave es el control de la visibilidad de ciertos aspectos de los datos y la funcionalidad encapsulados. Recordá del Capítulo 6 el principio de <em>mínima exposición</em> (POLE), que busca protegerse defensivamente contra varios <em>peligros</em> de la sobreexposición del scope; estos afectan tanto a variables como a funciones. En JS, lo más frecuente es que implementemos el control de visibilidad a través de la mecánica del scope léxico.</p>
+<p>La idea es agrupar juntos fragmentos de programa similares, y limitar selectivamente el acceso programático a las partes que consideramos detalles <em>privados</em>. Lo que no se considera <em>privado</em> se marca entonces como <em>público</em>, accesible para todo el programa.</p>
+<p>El efecto natural de este esfuerzo es una mejor organización del código. Es más fácil construir y mantener software cuando sabemos dónde están las cosas, con límites y puntos de conexión claros y evidentes. También es más fácil mantener la calidad si evitamos las trampas de los datos y la funcionalidad sobreexpuestos.</p>
+<p>Estos son algunos de los principales beneficios de organizar los programas JS en módulos.</p>
+<h2 id="qué-es-un-módulo">¿Qué Es un Módulo?</h2>
+<p>Un módulo es una colección de datos y funciones relacionados (a menudo llamados métodos en este contexto), caracterizada por una división entre detalles <em>privados</em> ocultos y detalles <em>públicos</em> accesibles, usualmente llamados la "API pública".</p>
+<p>Un módulo también tiene estado: mantiene cierta información a lo largo del tiempo, junto con funcionalidad para acceder a esa información y actualizarla.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Una preocupación más amplia del patrón módulo es abrazar plenamente la modularización a nivel de sistema a través del bajo acoplamiento y otras técnicas de arquitectura de programas. Ese es un tema complejo que excede ampliamente los límites de nuestra discusión, pero vale la pena estudiarlo más allá de este libro.</p></div></div>
+<p>Para entender mejor qué es un módulo, comparemos algunas características de los módulos con patrones de código útiles que no son del todo módulos.</p>
+<h3 id="namespaces-agrupación-sin-estado">Namespaces (Agrupación sin Estado)</h3>
+<p>Si agrupás un conjunto de funciones relacionadas, sin datos, entonces en realidad no tenés el encapsulamiento esperado que un módulo implica. El mejor término para esta agrupación de funciones <em>sin estado</em> es namespace:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// namespace, not module
+var Utils = {
+    cancelEvt(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        evt.stopImmediatePropagation();
+    },
+    wait(ms) {
+        return new Promise(function c(res){
+            setTimeout(res,ms);
+        });
+    },
+    isValidEmail(email) {
+        return /[^@]+@[^@.]+\.[^@.]+/.test(email);
+    }
+};</code></pre></div>
+<p><code>Utils</code> aquí es una colección útil de utilidades, pero todas son funciones independientes del estado. Reunir funcionalidad junta es en general una buena práctica, pero eso no hace que esto sea un módulo. Más bien, hemos definido un namespace <code>Utils</code> y organizado las funciones bajo él.</p>
+<h3 id="estructuras-de-datos-agrupación-con-estado">Estructuras de Datos (Agrupación con Estado)</h3>
+<p>Incluso si agrupás datos y funciones con estado juntos, si no estás limitando la visibilidad de nada de eso, entonces te quedás corto en el aspecto POLE del encapsulamiento; no resulta particularmente útil etiquetar eso como un módulo.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// data structure, not module
+var Student = {
+    records: [
+        { id: 14, name: "Kyle", grade: 86 },
+        { id: 73, name: "Suzy", grade: 87 },
+        { id: 112, name: "Frank", grade: 75 },
+        { id: 6, name: "Sarah", grade: 91 }
+    ],
+    getName(studentID) {
+        var student = this.records.find(
+            student =&gt; student.id == studentID
+        );
+        return student.name;
+    }
+};
+
+Student.getName(73);
+// Suzy</code></pre></div>
+<p>Dado que <code>records</code> es un dato accesible públicamente, no oculto detrás de una API pública, <code>Student</code> aquí no es realmente un módulo.</p>
+<p><code>Student</code> sí tiene el aspecto de datos-y-funcionalidad del encapsulamiento, pero no el aspecto de control de visibilidad. Lo mejor es etiquetar esto como una instancia de una estructura de datos.</p>
+<h3 id="módulos-control-de-acceso-con-estado">Módulos (Control de Acceso con Estado)</h3>
+<p>Para encarnar el espíritu completo del patrón módulo, no solo necesitamos agrupación y estado, sino también control de acceso a través de la visibilidad (privado vs. público).</p>
+<p>Convirtamos <code>Student</code> de la sección anterior en un módulo. Empezaremos con una forma que yo llamo el "módulo clásico", que originalmente se conocía como el "módulo revelador" (revealing module) cuando surgió por primera vez a comienzos de los años 2000. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var Student = (function defineStudent(){
+    var records = [
+        { id: 14, name: "Kyle", grade: 86 },
+        { id: 73, name: "Suzy", grade: 87 },
+        { id: 112, name: "Frank", grade: 75 },
+        { id: 6, name: "Sarah", grade: 91 }
+    ];
+
+    var publicAPI = {
+        getName
+    };
+
+    return publicAPI;
+
+    // ************************
+
+    function getName(studentID) {
+        var student = records.find(
+            student =&gt; student.id == studentID
+        );
+        return student.name;
+    }
+})();
+
+Student.getName(73);   // Suzy</code></pre></div>
+<p><code>Student</code> es ahora una instancia de un módulo. Cuenta con una API pública con un único método: <code>getName(..)</code>. Este método puede acceder al dato privado oculto <code>records</code>.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Debería señalar que los datos explícitos de estudiantes codificados de forma fija dentro de esta definición de módulo son solo para fines ilustrativos. Un módulo típico en tu programa recibirá estos datos de una fuente externa, cargados típicamente desde bases de datos, archivos de datos JSON, llamadas Ajax, etc. Luego los datos se inyectan en la instancia del módulo típicamente a través de método(s) en la API pública del módulo.</p></div></div>
+<p>¿Cómo funciona el formato de módulo clásico?</p>
+<p>Observá que la instancia del módulo se crea mediante la ejecución de la IIFE <code>defineStudent()</code>. Esta IIFE devuelve un objeto (llamado <code>publicAPI</code>) que tiene una propiedad que referencia la función interna <code>getName(..)</code>.</p>
+<p>Nombrar al objeto <code>publicAPI</code> es una preferencia estilística de mi parte. El objeto puede nombrarse como quieras (a JS no le importa), o podés simplemente devolver un objeto directamente sin asignarlo a ninguna variable interna con nombre. Más sobre esta elección en el Apéndice A.</p>
+<p>Desde afuera, <code>Student.getName(..)</code> invoca esta función interna expuesta, que mantiene el acceso a la variable interna <code>records</code> vía closure.</p>
+<p>No <em>tenés</em> que devolver un objeto con una función como una de sus propiedades. Podrías simplemente devolver una función directamente, en lugar del objeto. Eso igual satisface todas las partes centrales de un módulo clásico.</p>
+<p>En virtud de cómo funciona el scope léxico, definir variables y funciones dentro de tu función externa de definición de módulo hace que todo sea <em>por defecto</em> privado. Solo las propiedades agregadas al objeto de API pública devuelto por la función se exportarán para uso público externo.</p>
+<p>El uso de una IIFE implica que nuestro programa solo necesita una única instancia central del módulo, comúnmente llamada "singleton". De hecho, este ejemplo específico es lo bastante simple como para que no haya una razón obvia por la cual necesitaríamos algo más que una sola instancia del módulo <code>Student</code>.</p>
+<h4 id="fábrica-de-módulos-múltiples-instancias">Fábrica de Módulos (Múltiples Instancias)</h4>
+<p>Pero si quisiéramos definir un módulo que soportara múltiples instancias en nuestro programa, podemos ajustar ligeramente el código:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// factory function, not singleton IIFE
+function defineStudent() {
+    var records = [
+        { id: 14, name: "Kyle", grade: 86 },
+        { id: 73, name: "Suzy", grade: 87 },
+        { id: 112, name: "Frank", grade: 75 },
+        { id: 6, name: "Sarah", grade: 91 }
+    ];
+
+    var publicAPI = {
+        getName
+    };
+
+    return publicAPI;
+
+    // ************************
+
+    function getName(studentID) {
+        var student = records.find(
+            student =&gt; student.id == studentID
+        );
+        return student.name;
+    }
+}
+
+var fullTime = defineStudent();
+fullTime.getName(73);            // Suzy</code></pre></div>
+<p>En lugar de especificar <code>defineStudent()</code> como una IIFE, simplemente la definimos como una función independiente normal, que en este contexto comúnmente se llama función "fábrica de módulos" (module factory).</p>
+<p>Luego llamamos a la fábrica de módulos, produciendo una instancia del módulo que etiquetamos como <code>fullTime</code>. Esta instancia del módulo implica una nueva instancia del scope interno, y por lo tanto un nuevo closure que <code>getName(..)</code> mantiene sobre <code>records</code>. <code>fullTime.getName(..)</code> ahora invoca el método sobre esa instancia específica.</p>
+<h4 id="definición-del-módulo-clásico">Definición del Módulo Clásico</h4>
+<p>Entonces, para aclarar qué hace que algo sea un módulo clásico:</p>
+<ul><li>Debe haber un scope externo, típicamente de una función fábrica de módulos que se ejecuta al menos una vez.</li></ul>
+<ul><li>El scope interno del módulo debe tener al menos una pieza de información oculta que represente el estado del módulo.</li></ul>
+<ul><li>El módulo debe devolver en su API pública una referencia a al menos una función que tenga closure sobre el estado oculto del módulo (para que ese estado se preserve efectivamente).</li></ul>
+<p>Es probable que te cruces con otras variaciones de este enfoque de módulo clásico, que veremos en más detalle en el Apéndice A.</p>
+<h2 id="módulos-commonjs-de-node">Módulos CommonJS de Node</h2>
+<p>En el Capítulo 4, presentamos el formato de módulo CommonJS usado por Node. A diferencia del formato de módulo clásico descrito antes, donde podías agrupar la fábrica de módulos o la IIFE junto con cualquier otro código incluyendo otros módulos, los módulos CommonJS están basados en archivos; un módulo por archivo.</p>
+<p>Ajustemos nuestro ejemplo de módulo para adherirse a ese formato:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">module.exports.getName = getName;
+
+// ************************
+
+var records = [
+    { id: 14, name: "Kyle", grade: 86 },
+    { id: 73, name: "Suzy", grade: 87 },
+    { id: 112, name: "Frank", grade: 75 },
+    { id: 6, name: "Sarah", grade: 91 }
+];
+
+function getName(studentID) {
+    var student = records.find(
+        student =&gt; student.id == studentID
+    );
+    return student.name;
+}</code></pre></div>
+<p>Los identificadores <code>records</code> y <code>getName</code> están en el scope de nivel superior de este módulo, pero ese no es el scope global (como se explicó en el Capítulo 4). Como tal, todo aquí es <em>por defecto</em> privado al módulo.</p>
+<p>Para exponer algo en la API pública de un módulo CommonJS, agregás una propiedad al objeto vacío provisto como <code>module.exports</code>. En algún código heredado más antiguo, podés cruzarte con referencias a solo un <code>exports</code> desnudo, pero por claridad del código siempre deberías calificar completamente esa referencia con el prefijo <code>module.</code>.</p>
+<p>Por cuestiones de estilo, me gusta poner mis "exports" arriba y la implementación de mi módulo abajo. Pero estos exports pueden ubicarse en cualquier parte. Recomiendo encarecidamente agruparlos todos juntos, ya sea al principio o al final de tu archivo.</p>
+<p>Algunos desarrolladores tienen la costumbre de reemplazar el objeto exports por defecto, así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// defining a new object for the API
+module.exports = {
+    // ..exports..
+};</code></pre></div>
+<p>Hay algunas peculiaridades con este enfoque, incluyendo comportamiento inesperado si varios de esos módulos dependen circularmente unos de otros. Por eso recomiendo no reemplazar el objeto. Si querés asignar múltiples exports a la vez, usando el estilo de definición de objeto literal, podés hacer esto en su lugar:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Object.assign(module.exports,{
+   // .. exports ..
+});</code></pre></div>
+<p>Lo que sucede aquí es que se define el objeto literal <code>{ .. }</code> con la API pública de tu módulo especificada, y luego <code>Object.assign(..)</code> realiza una copia superficial de todas esas propiedades sobre el objeto <code>module.exports</code> existente, en lugar de reemplazarlo. Este es un buen equilibrio entre conveniencia y un comportamiento de módulo más seguro.</p>
+<p>Para incluir otra instancia de módulo dentro de tu módulo/programa, usá el método <code>require(..)</code> de Node. Suponiendo que este módulo se encuentra en "/path/to/student.js", así podemos acceder a él:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var Student = require("/path/to/student.js");
+
+Student.getName(73);
+// Suzy</code></pre></div>
+<p><code>Student</code> ahora referencia la API pública de nuestro módulo de ejemplo.</p>
+<p>Los módulos CommonJS se comportan como instancias singleton, de forma similar al estilo de definición de módulo IIFE presentado antes. No importa cuántas veces hagas <code>require(..)</code> del mismo módulo, solo obtenés referencias adicionales a la única instancia compartida del módulo.</p>
+<p><code>require(..)</code> es un mecanismo de todo-o-nada; incluye una referencia a toda la API pública expuesta del módulo. Para acceder efectivamente solo a parte de la API, el enfoque típico se ve así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var getName = require("/path/to/student.js").getName;
+
+// or alternately:
+
+var { getName } = require("/path/to/student.js");</code></pre></div>
+<p>De forma similar al formato de módulo clásico, los métodos exportados públicamente de la API de un módulo CommonJS mantienen closures sobre los detalles internos del módulo. Así es como el estado singleton del módulo se mantiene a lo largo de la vida de tu programa.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>En las sentencias <code>require("student")</code> de Node, las rutas no absolutas (<code>"student"</code>) asumen una extensión de archivo ".js" y buscan en "node_modules".</p></div></div>
+<h2 id="módulos-es-modernos-esm">Módulos ES Modernos (ESM)</h2>
+<p>El formato ESM comparte varias similitudes con el formato CommonJS. ESM está basado en archivos, y las instancias de módulo son singletons, con todo privado <em>por defecto</em>. Una diferencia notable es que se asume que los archivos ESM están en strict mode, sin necesidad de una pragma <code>"use strict"</code> arriba. No hay forma de definir un ESM en modo no estricto.</p>
+<p>En lugar de <code>module.exports</code> en CommonJS, ESM usa la palabra clave <code>export</code> para exponer algo en la API pública del módulo. La palabra clave <code>import</code> reemplaza a la sentencia <code>require(..)</code>. Ajustemos "students.js" para usar el formato ESM:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">export { getName };
+
+// ************************
+
+var records = [
+    { id: 14, name: "Kyle", grade: 86 },
+    { id: 73, name: "Suzy", grade: 87 },
+    { id: 112, name: "Frank", grade: 75 },
+    { id: 6, name: "Sarah", grade: 91 }
+];
+
+function getName(studentID) {
+    var student = records.find(
+        student =&gt; student.id == studentID
+    );
+    return student.name;
+}</code></pre></div>
+<p>El único cambio aquí es la sentencia <code>export { getName }</code>. Como antes, las sentencias <code>export</code> pueden aparecer en cualquier parte a lo largo del archivo, aunque <code>export</code> debe estar en el scope de nivel superior; no puede estar dentro de ningún otro bloque o función.</p>
+<p>ESM ofrece bastante variación en cómo se pueden especificar las sentencias <code>export</code>. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">export function getName(studentID) {
+    // ..
+}</code></pre></div>
+<p>Aunque <code>export</code> aparece antes de la palabra clave <code>function</code> aquí, esta forma sigue siendo una declaración de <code>function</code> que además resulta ser exportada. Es decir, el identificador <code>getName</code> tiene <em>function hoisting</em> (ver Capítulo 5), por lo que está disponible a lo largo de todo el scope del módulo.</p>
+<p>Otra variación permitida:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">export default function getName(studentID) {
+    // ..
+}</code></pre></div>
+<p>Este es un llamado "default export", que tiene una semántica diferente de otros exports. En esencia, un "default export" es un atajo para los consumidores del módulo cuando hacen <code>import</code>, dándoles una sintaxis más breve cuando solo necesitan este único miembro de API por defecto.</p>
+<p>Los exports que no son <code>default</code> se conocen como "named exports".</p>
+<p>La palabra clave <code>import</code> —al igual que <code>export</code>, debe usarse solo en el nivel superior de un ESM fuera de cualquier bloque o función— también tiene varias variaciones en su sintaxis. La primera se conoce como "named import":</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">import { getName } from "/path/to/students.js";
+
+getName(73);   // Suzy</code></pre></div>
+<p>Como podés ver, esta forma importa solo los miembros de la API pública nombrados específicamente de un módulo (omitiendo cualquier cosa no nombrada explícitamente), y agrega esos identificadores al scope de nivel superior del módulo actual. Este tipo de import es un estilo familiar para quienes están acostumbrados a los imports de paquetes en lenguajes como Java.</p>
+<p>Se pueden listar múltiples miembros de la API dentro del conjunto <code>{ .. }</code>, separados por comas. Un named import también puede ser <em>renombrado</em> con la palabra clave <code>as</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">import { getName as getStudentName }
+   from "/path/to/students.js";
+
+getStudentName(73);
+// Suzy</code></pre></div>
+<p>Si <code>getName</code> es un "default export" del módulo, podemos importarlo así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">import getName from "/path/to/students.js";
+
+getName(73);   // Suzy</code></pre></div>
+<p>La única diferencia aquí es quitar los <code>{ }</code> alrededor del binding de import. Si querés mezclar un default import con otros named imports:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">import { default as getName, /* .. others .. */ }
+   from "/path/to/students.js";
+
+getName(73);   // Suzy</code></pre></div>
+<p>En contraste, la otra variación mayor de <code>import</code> se llama "namespace import":</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">import * as Student from "/path/to/students.js";
+
+Student.getName(73);   // Suzy</code></pre></div>
+<p>Como probablemente sea obvio, el <code>*</code> importa todo lo exportado a la API, default y named, y lo almacena todo bajo el único identificador de namespace especificado. Este enfoque es el que más se acerca a la forma de los módulos clásicos durante la mayor parte de la historia de JS.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Al momento de escribir esto, los navegadores modernos han soportado ESM durante algunos años ya, pero el soporte más o menos estable de Node para ESM es bastante reciente, y ha estado evolucionando durante bastante tiempo. Es probable que la evolución continúe durante un año o más; la introducción de ESM a JS allá en ES6 creó varias preocupaciones de compatibilidad desafiantes para la interoperabilidad de Node con los módulos CommonJS. Consultá la documentación de ESM de Node para todos los detalles más recientes: https://nodejs.org/api/esm.html</p></div></div>
+<h2 id="saliendo-del-scope">Saliendo del Scope</h2>
+<p>Ya sea que uses el formato de módulo clásico (navegador o Node), el formato CommonJS (en Node), o el formato ESM (navegador o Node), los módulos son una de las formas más efectivas de estructurar y organizar la funcionalidad y los datos de tu programa.</p>
+<p>El patrón módulo es la conclusión de nuestro viaje en este libro de aprender cómo podemos usar las reglas del scope léxico para colocar variables y funciones en ubicaciones apropiadas. POLE es la postura defensiva de <em>privado por defecto</em> que siempre adoptamos, asegurándonos de evitar la sobreexposición e interactuar solo con la mínima superficie de API pública necesaria.</p>
+<p>Y debajo de los módulos, la <em>magia</em> de cómo se mantiene todo el estado de nuestro módulo son los closures aprovechando el sistema de scope léxico.</p>
+<p>Eso es todo para el texto principal. ¡Felicitaciones por tremendo viaje hasta aquí! Como he dicho numerosas veces a lo largo del libro, es una muy buena idea pausar, reflexionar y practicar lo que acabamos de discutir.</p>
+<p>Cuando te sientas cómodo y listo, revisá los apéndices, que profundizan en algunos de los rincones de estos temas, y también te desafían con algunos ejercicios de práctica para solidificar lo que has aprendido.</p>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../scope-closures/ch7.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 7 · Usar los closures</span></a>
+      <a class="pager-btn next" href="../scope-closures/apA.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Apéndice A · Explorando más a fondo</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#encapsulamiento-y-mínima-exposición-pole">Encapsulamiento y Mínima Exposición (POLE)</a></li>
+<li class="toc-l2"><a href="#qué-es-un-módulo">¿Qué Es un Módulo?</a></li>
+<li class="toc-l3"><a href="#namespaces-agrupación-sin-estado">Namespaces (Agrupación sin Estado)</a></li>
+<li class="toc-l3"><a href="#estructuras-de-datos-agrupación-con-estado">Estructuras de Datos (Agrupación con Estado)</a></li>
+<li class="toc-l3"><a href="#módulos-control-de-acceso-con-estado">Módulos (Control de Acceso con Estado)</a></li>
+<li class="toc-l2"><a href="#módulos-commonjs-de-node">Módulos CommonJS de Node</a></li>
+<li class="toc-l2"><a href="#módulos-es-modernos-esm">Módulos ES Modernos (ESM)</a></li>
+<li class="toc-l2"><a href="#saliendo-del-scope">Saliendo del Scope</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 4 · Esto es por qué "this" — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🧩</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#8b5cf6">
+      <span class="sidebar-emoji">🧩</span>
+      <div><div class="sidebar-book">Objects & Classes</div><div class="sidebar-sub">Objetos y Clases</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap active"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../objects-classes/README.html">Objects & Classes</a> <span>/</span> Cap. 4 · Esto es por qué "this"</div>
+    <article class="prose" style="--book-color:#8b5cf6">
+      <h1 id="you-dont-know-js-yet-objects-classes---2nd-edition">You Don't Know JS Yet: Objects &amp; Classes - 2nd Edition</h1>
+<h1 id="capítulo-4-this-funciona">Capítulo 4: This Funciona</h1>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Trabajo en progreso</p></div></div>
+<p>Hasta ahora hemos visto usar bastante la palabra clave <code>this</code>, pero en realidad no hemos profundizado para entender exactamente cómo funciona en JS. Es hora de hacerlo.</p>
+<p>Pero para entender correctamente <code>this</code> en JS, necesitas dejar de lado cualquier preconcepto que puedas tener, especialmente suposiciones provenientes de cómo funciona <code>this</code> en otros lenguajes de programación en los que puedas tener experiencia.</p>
+<p>Esto es lo más importante que hay que entender sobre <code>this</code>: la determinación de qué valor (usualmente, objeto) apunta <code>this</code> no se hace en tiempo de autoría, sino que se determina en tiempo de ejecución. Eso significa que no puedes simplemente mirar una función <code>this</code>-aware (incluso un method en una definición de <code>class</code>) y saber con certeza qué contendrá <code>this</code> mientras esa función se ejecuta.</p>
+<p>En cambio, tienes que encontrar cada lugar donde se invoca la función, y mirar <em>cómo</em> se invoca (ni siquiera importa <em>dónde</em>). Esa es la única manera de responder completamente a qué apuntará <code>this</code>.</p>
+<p>De hecho, una misma función <code>this</code>-aware puede invocarse de al menos cuatro maneras diferentes, y cualquiera de esos enfoques terminará asignando un <code>this</code> distinto para esa invocación de función en particular.</p>
+<p>Así que la pregunta típica que podríamos hacernos al leer código -- "¿A qué apunta <code>this</code> en la función?" -- no es en realidad una pregunta válida. La pregunta que realmente tienes que hacerte es: "Cuando la función se invoca de cierta manera, ¿qué <code>this</code> se asignará para esa invocación?"</p>
+<p>Si tu cerebro ya se está retorciendo con solo leer esta introducción del capítulo... ¡bien! Acomódate para un recableado de cómo piensas sobre <code>this</code> en JS.</p>
+<h2 id="this-aware">This Aware</h2>
+<p>Usé la frase <code>this</code>-aware hace un momento. Pero, ¿qué quiero decir exactamente con eso?</p>
+<p>Cualquier función que tenga una palabra clave <code>this</code> dentro.</p>
+<p>Si una función no tiene <code>this</code> en ningún lado, entonces las reglas de cómo se comporta <code>this</code> no afectan a esa función de ninguna manera. Pero si <em>sí</em> tiene aunque sea un solo <code>this</code>, entonces no puedes de ninguna manera determinar cómo se comportará la función sin averiguar, para cada invocación de la función, a qué apuntará <code>this</code>.</p>
+<p>Es como si la palabra clave <code>this</code> fuera un marcador de posición en una plantilla. La sustitución del valor de ese marcador de posición no se determina cuando escribimos el código; se determina mientras el código se está ejecutando.</p>
+<p>Podrías pensar que estoy jugando con las palabras acá. Por supuesto, cuando escribes el programa, escribes todas las llamadas a cada función, así que ya determinaste qué va a ser <code>this</code> cuando escribiste el código, ¿verdad? ¡¿Verdad?!</p>
+<p>¡No tan rápido!</p>
+<p>En primer lugar, no siempre escribes todo el código que invoca tu(s) función(es). Tu(s) función(es) <code>this</code>-aware podrían pasarse como callback(s) a algún otro código, ya sea en tu base de código, o en un framework/utilidad de terceros, o incluso dentro de un mecanismo nativo incorporado del lenguaje o del entorno que aloja tu programa.</p>
+<p>Pero incluso dejando de lado el paso de funciones como callbacks, varios mecanismos en JS permiten comportamientos condicionales en tiempo de ejecución para determinar qué valor (de nuevo, usualmente objeto) se asignará al <code>this</code> de una invocación de función en particular. Así que aunque hayas escrito todo ese código, <em>en el mejor de los casos</em> tendrás que ejecutar mentalmente las distintas condiciones/caminos que terminan afectando la invocación de la función.</p>
+<p>¿Y por qué importa todo esto?</p>
+<p>Porque no eres solo tú, el autor del código, quien necesita descifrar estas cosas. Es <em>cada lector</em> de tu código, para siempre. Si alguien (incluso tu futuro yo) quiere leer un fragmento de código que define una función <code>this</code>-aware, eso inevitablemente significa que, para entender y predecir completamente su comportamiento, esa persona tendrá que encontrar, leer y entender cada una de las invocaciones de esa función.</p>
+<h3 id="this-confuses-me">This Confuses Me</h3>
+<p>Ahora bien, para ser justos, eso ya es parcialmente cierto si consideramos los parámetros de una función. Para entender cómo va a funcionar una función, necesitamos saber qué se le está pasando. Así que cualquier función con al menos un parámetro es, en un sentido similar, <em>argument</em>-aware -- es decir, qué argumento(s) se pasa(n) y se asigna(n) a los parámetros de la función.</p>
+<p>Pero con los parámetros, a menudo tenemos un poco más de pista desde la propia función sobre qué harán y contendrán los parámetros.</p>
+<p>A menudo vemos los nombres de los parámetros declarados justo en el encabezado de la función, lo que contribuye mucho a explicar su naturaleza/propósito. Y si hay valores por defecto para los parámetros, a menudo los vemos declarados en línea con cláusulas <code>= loquesea</code>. Más aún, dependiendo del estilo de código del autor, podríamos ver en las primeras líneas de la función un conjunto de lógica que se aplica a estos parámetros; esto podría ser aserciones sobre los valores (valores no permitidos, etc), o incluso modificaciones (conversión de tipos, formateo, etc).</p>
+<p>En realidad, <code>this</code> se parece mucho a un parámetro de una función, pero es un parámetro implícito en lugar de uno explícito. No ves ninguna señal de que <code>this</code> vaya a usarse, en ningún lado del encabezado de la función. Tienes que leer todo el cuerpo de la función para ver si <code>this</code> aparece en algún lado.</p>
+<p>El nombre del "parámetro" siempre es <code>this</code>, así que no obtenemos mucha pista sobre su naturaleza/propósito a partir de un nombre tan general. De hecho, históricamente hay mucha confusión sobre qué se supone que significa "this". Y rara vez vemos mucho (si es que algo) hecho para validar/convertir/etc el valor de <code>this</code> aplicado a una invocación de función. De hecho, prácticamente todo el código <code>this</code>-aware que he visto simplemente asume alegremente que el "parámetro" <code>this</code> está conteniendo exactamente el valor que se espera. ¡Hablando de <strong>una trampa para bugs inesperados!</strong></p>
+<h3 id="so-what-is-this">So What Is This?</h3>
+<p>Si <code>this</code> es un parámetro implícito, ¿cuál es su propósito? ¿Qué se está pasando?</p>
+<p>Con suerte ya has leído el libro "Scope &amp; Closures" de esta serie. Si no, te animo enérgicamente a volver y leer ese una vez que termines este. En ese libro, expliqué extensamente cómo funcionan los scopes (¡y los closures!), una característica especialmente importante de las funciones.</p>
+<p>El lexical scope (incluyendo todas las variables sobre las que se hace closure) representa un contexto <em>estático</em> contra el cual se evalúan las referencias a identificadores léxicos de la función. Es fijo/estático porque en tiempo de autoría, cuando colocas funciones y declaraciones de variables en varios scopes (anidados), esas decisiones son fijas, y no se ven afectadas por ninguna condición de tiempo de ejecución.</p>
+<p>En contraste, un lenguaje de programación diferente podría ofrecer scope <em>dinámico</em>, donde el contexto para las referencias a variables de una función no se determina por decisiones en tiempo de autoría sino por condiciones en tiempo de ejecución. Tal sistema sería, sin duda, más flexible que el contexto estático -- aunque con la flexibilidad a menudo viene la complejidad.</p>
+<p>Para ser claros: el scope en JS es siempre y únicamente léxico y <em>estático</em> (si ignoramos trucos del non-strict mode como <code>eval(..)</code> y <code>with</code>). Sin embargo, una de las cosas verdaderamente poderosas de JS es que ofrece otro mecanismo con flexibilidad y capacidades similares al scope <em>dinámico</em>.</p>
+<p>El mecanismo <code>this</code> es, en efecto, contexto <em>dinámico</em> (no scope); es cómo una función <code>this</code>-aware puede invocarse dinámicamente contra diferentes contextos -- ¡algo que es imposible con los identificadores de closure y lexical scope!</p>
+<h3 id="why-is-this-so-implicit">Why Is This So Implicit?</h3>
+<p>Podrías preguntarte por qué algo tan importante como un contexto <em>dinámico</em> se maneja como una entrada implícita a una función, en lugar de ser un argumento explícito que se pasa.</p>
+<p>Esa es una pregunta muy importante, pero no es una que podamos responder del todo, todavía. Aférrate a esa pregunta, eso sí.</p>
+<h3 id="can-we-get-on-with-this">Can We Get On With This?</h3>
+<p>Entonces, ¿por qué me he explayado tanto sobre <em>este</em> tema por un par de páginas ya? Lo entiendes, ¿verdad? Estás listo para seguir adelante.</p>
+<p>Mi punto es que tú, el autor del código, y todos los demás lectores del código incluso años o décadas en el futuro, necesitan ser <code>this</code>-aware. Esa es la elección, la carga, que impones sobre la lectura de tal código. Y sí, eso vale para la elección de usar <code>class</code> (ver Capítulo 3), ya que la mayoría de los methods de clase serán <code>this</code>-aware por necesidad.</p>
+<p>Sé consciente de <em>esta</em> elección de <code>this</code> en el código que escribes. Hazlo intencionalmente, y hazlo de tal manera que produzca más beneficio en el resultado que carga. Asegúrate de que el uso de <code>this</code> en tu código <em>justifique su propio peso</em>.</p>
+<p>Déjame ponerlo de <em>esta</em> manera: no uses código <code>this</code>-aware a menos que realmente puedas justificarlo, y hayas sopesado cuidadosamente los costos. Solo porque hayas visto muchos ejemplos de código lanzando <code>this</code> por todos lados en el código de otros, no significa que <code>this</code> pertenezca en <em>este</em> código que estás escribiendo.</p>
+<p>El mecanismo <code>this</code> en JS, emparejado con la delegación de <code>[[Prototype]]</code>, es un pilar extremadamente poderoso del lenguaje. Pero como dice el cliché: "un gran poder conlleva una gran responsabilidad". Anecdóticamente, aunque realmente me gusta y aprecio <em>este</em> pilar de JS, probablemente menos del 5% del código JS que escribo lo usa. Y cuando lo hago, es con moderación. No es mi capacidad de JS por defecto, a la que recurro primero.</p>
+<h2 id="this-is-it">This Is It!</h2>
+<p>OK, basta de la conferencia verborrágica. Estás listo para sumergirte en el código de <code>this</code>, ¿verdad?</p>
+<p>Volvamos (y extendamos) a <code>Point2d</code> del Capítulo 3, pero solo como un objeto con propiedades de datos y funciones sobre él, en lugar de usar <code>class</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var point = {
+    x: null,
+    y: null,
+
+    init(x,y) {
+        this.x = x;
+        this.y = y;
+    },
+    rotate(angleRadians) {
+        var rotatedX = this.x * Math.cos(angleRadians) -
+            this.y * Math.sin(angleRadians);
+        var rotatedY = this.x * Math.sin(angleRadians) +
+            this.y * Math.cos(angleRadians);
+        this.x = rotatedX;
+        this.y = rotatedY;
+    },
+    toString() {
+        return `(${this.x},${this.y})`;
+    },
+};</code></pre></div>
+<p>Como puedes ver, las funciones <code>init(..)</code>, <code>rotate(..)</code> y <code>toString()</code> son <code>this</code>-aware. Podrías tener la costumbre de asumir que la referencia <code>this</code> obviamente siempre contendrá el objeto <code>point</code>. Pero eso no está garantizado de ninguna manera.</p>
+<p>Sigue recordándote a medida que avanzas por el resto de este capítulo: el valor de <code>this</code> para una función se determina por <em>cómo</em> se invoca la función. Eso significa que no puedes mirar la definición de la función, ni dónde se define la función (¡ni siquiera la <code>class</code> que la contiene!). De hecho, ni siquiera importa desde dónde se llama la función.</p>
+<p>Solo necesitamos mirar <em>cómo</em> se llaman las funciones; ese es el único factor que importa.</p>
+<h3 id="implicit-context-invocation">Implicit Context Invocation</h3>
+<p>Considera esta llamada:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">point.init(3,4);</code></pre></div>
+<p>Estamos invocando la función <code>init(..)</code>, pero fíjate en el <code>point.</code> delante de ella. Este es un binding de <em>contexto implícito</em>. Le dice a JS: invoca la función <code>init(..)</code> con <code>this</code> referenciando a <code>point</code>.</p>
+<p>Esa es la manera <em>normal</em> en que esperaríamos que funcione un <code>this</code>, y esa es también una de las maneras más comunes en que invocamos funciones. Así que la invocación típica nos da el resultado intuitivo. ¡Eso es algo bueno!</p>
+<h3 id="default-context-invocation">Default Context Invocation</h3>
+<p>Pero, ¿qué pasa si hacemos esto?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const init = point.init;
+init(3,4);</code></pre></div>
+<p>Podrías asumir que obtendríamos el mismo resultado que el fragmento anterior. Pero no es así como funciona la asignación de <code>this</code> en JS.</p>
+<p>El <em>call-site</em> de la función es <code>init(3,4)</code>, que es diferente de <code>point.init(3,4)</code>. Cuando no hay <em>contexto implícito</em> (<code>point.</code>), ni ningún otro tipo de mecanismo de asignación de <code>this</code>, ocurre la asignación de <em>contexto por defecto</em>.</p>
+<p>¿A qué referenciará <code>this</code> cuando <code>init(3,4)</code> se invoque de esa manera?</p>
+<p><em>Depende.</em></p>
+<p>Uh oh. ¿Depende? Eso suena confuso.</p>
+<p>No te preocupes, no es tan malo como suena. La asignación de <em>contexto por defecto</em> depende de si el código está en strict mode o no. Pero por suerte, prácticamente todo el código JS en estos días se está ejecutando en strict mode; por ejemplo, ESM (ES Modules) siempre se ejecuta en strict mode, al igual que el código dentro de un bloque <code>class</code>. Y prácticamente todo el código JS transpilado (vía Babel, TypeScript, etc) está escrito para declarar strict mode.</p>
+<p>Así que casi todo el tiempo, el código JS moderno se estará ejecutando en strict mode, y por lo tanto el contexto de <em>asignación por defecto</em> no "dependerá" de nada; es bastante sencillo: <code>undefined</code>. ¡Eso es todo!</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Ten en cuenta: <code>undefined</code> no significa "no definido"; significa "definido con el valor especial vacío <code>undefined</code>". Lo sé, lo sé... el nombre y el significado no coinciden. Es el equipaje heredado del lenguaje, para ti. (encogiéndose de hombros)</p></div></div>
+<p>Eso significa que <code>init(3,4)</code>, si se ejecuta en strict mode, lanzaría una excepción. ¿Por qué? Porque la referencia <code>this.x</code> en <code>init(..)</code> es un acceso a la propiedad <code>.x</code> sobre <code>undefined</code> (es decir, <code>undefined.x</code>), lo cual no está permitido:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"use strict";
+
+var point = { /* .. */ };
+
+const init = point.init;
+init(3,4);
+// TypeError: Cannot set properties of
+// undefined (setting 'x')</code></pre></div>
+<p>Detente un momento y considera: ¿por qué elegiría JS poner por defecto el contexto en <code>undefined</code>, de modo que cualquier invocación de <em>contexto por defecto</em> de una función <code>this</code>-aware falle con tal excepción?</p>
+<p>Porque una función <code>this</code>-aware <strong>siempre necesita un <code>this</code></strong>. La invocación <code>init(3,4)</code> no está proporcionando un <code>this</code>, así que eso <em>es</em> un error, y <em>debería</em> lanzar una excepción para que el error pueda corregirse. La lección: ¡nunca invoques una función <code>this</code>-aware sin proporcionarle un <code>this</code>!</p>
+<p>Solo para completar: en el menos común non-strict mode, el <em>contexto por defecto</em> es el objeto global -- JS lo define como <code>globalThis</code>, que en el JS de navegador es esencialmente un alias de <code>window</code>, y en Node es <code>global</code>. Así que, cuando <code>init(3,4)</code> se ejecuta en non-strict mode, la expresión <code>this.x</code> es <code>globalThis.x</code> -- también conocida como <code>window.x</code> en el navegador, o <code>global.x</code> en Node. Por lo tanto, <code>globalThis.x</code> queda establecido en <code>3</code> y <code>globalThis.y</code> queda establecido en <code>4</code>.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// no strict-mode here, beware!
+
+var point = { /* .. */ };
+
+const init = point.init;
+init(3,4);
+
+globalThis.x;   // 3
+globalThis.y;   // 4
+point.x;        // null
+point.y;        // null</code></pre></div>
+<p>Eso es desafortunado, porque es casi seguro que <em>no</em> es el resultado deseado. No solo es malo si es una variable global, sino que tampoco está cambiando la propiedad en nuestro objeto <code>point</code>, así que los bugs del programa están garantizados.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>¡Ay! Nadie quiere variables globales accidentales creadas implícitamente desde todas partes del código. La lección: ¡asegúrate siempre de que tu código se esté ejecutando en strict mode!</p></div></div>
+<h3 id="explicit-context-invocation">Explicit Context Invocation</h3>
+<p>Las funciones pueden invocarse alternativamente con <em>contexto explícito</em>, usando las utilidades incorporadas <code>call(..)</code> o <code>apply(..)</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var point = { /* .. */ };
+
+const init = point.init;
+
+init.call( point, 3, 4 );
+// or: init.apply( point, [ 3, 4 ] )
+
+point.x;        // 3
+point.y;        // 4</code></pre></div>
+<p><code>init.call(point,3,4)</code> es efectivamente lo mismo que <code>point.init(3,4)</code>, en el sentido de que ambos asignan <code>point</code> como el contexto de <code>this</code> para la invocación de <code>init(..)</code>.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Tanto la utilidad <code>call(..)</code> como <code>apply(..)</code> toman como su primer argumento un valor de contexto para <code>this</code>; eso casi siempre es un objeto, pero técnicamente puede ser cualquier valor (number, string, etc). La utilidad <code>call(..)</code> toma los argumentos subsiguientes y los pasa a la función invocada, mientras que <code>apply(..)</code> espera que su segundo argumento sea un array de valores para pasar como argumentos.</p></div></div>
+<p>Podría parecer incómodo contemplar invocar una función con el estilo de asignación de <em>contexto explícito</em> (<code>call(..)</code> / <code>apply(..)</code>) en tu programa. Pero es más útil de lo que podría ser obvio a primera vista.</p>
+<p>Recordemos el fragmento original:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var point = {
+    x: null,
+    y: null,
+
+    init(x,y) {
+        this.x = x;
+        this.y = y;
+    },
+    rotate(angleRadians) { /* .. */ },
+    toString() {
+        return `(${this.x},${this.y})`;
+    },
+};
+
+point.init(3,4);
+
+var anotherPoint = {};
+point.init.call( anotherPoint, 5, 6 );
+
+point.x;                // 3
+point.y;                // 4
+anotherPoint.x;         // 5
+anotherPoint.y;         // 6</code></pre></div>
+<p>¿Estás viendo lo que hice ahí?</p>
+<p>Quería definir <code>anotherPoint</code>, pero no quería repetir las definiciones de esas funciones <code>init(..)</code> / <code>rotate(..)</code> / <code>toString()</code> de <code>point</code>. Así que "tomé prestada" una referencia de función, <code>point.init</code>, y establecí explícitamente el objeto vacío <code>anotherPoint</code> como el contexto de <code>this</code>, vía <code>call(..)</code>.</p>
+<p>Cuando <code>init(..)</code> se está ejecutando en ese momento, <code>this</code> dentro de ella referenciará a <code>anotherPoint</code>, y por eso las propiedades <code>x</code> / <code>y</code> (valores <code>5</code> / <code>6</code>, respectivamente) quedan establecidas ahí.</p>
+<p>Cualquier función <code>this</code>-aware puede tomarse prestada de esta manera: <code>point.rotate.call(anotherPoint, ..)</code>, <code>point.toString.call(anotherPoint)</code>.</p>
+<h4 id="revisiting-implicit-context-invocation">Revisiting Implicit Context Invocation</h4>
+<p>Otro enfoque para compartir comportamiento entre <code>point</code> y <code>anotherPoint</code> habría sido:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var point = { /* .. */ };
+
+var anotherPoint = {
+    init: point.init,
+    rotate: point.rotate,
+    toString: point.toString,
+};
+
+anotherPoint.init(5,6);
+
+anotherPoint.x;         // 5
+anotherPoint.y;         // 6</code></pre></div>
+<p>Esta es otra manera de "tomar prestadas" las funciones, agregando referencias compartidas a las funciones en cualquier objeto destino (por ejemplo, <code>anotherPoint</code>). La invocación en el call-site <code>anotherPoint.init(5,6)</code> es el estilo más natural/ergonómico que se apoya en la asignación de <em>contexto implícito</em>.</p>
+<p>Puede parecer que este enfoque es un poco más limpio, comparando <code>anotherPoint.init(5,6)</code> con <code>point.init.call(anotherPoint,5,6)</code>.</p>
+<p>Pero la principal desventaja es tener que modificar cualquier objeto destino con tales referencias de función compartidas, lo que puede ser verboso, manual y propenso a errores. A veces tal enfoque es aceptable, pero muchas otras veces, la asignación de <em>contexto explícito</em> con <code>call(..)</code> / <code>apply(..)</code> es más preferible.</p>
+<h3 id="new-context-invocation">New Context Invocation</h3>
+<p>Hasta ahora hemos visto tres maneras diferentes de asignación de contexto en el call-site de la función: <em>por defecto</em>, <em>implícito</em> y <em>explícito</em>.</p>
+<p>Una cuarta manera de llamar a una función, y asignar el <code>this</code> para esa invocación, es con la palabra clave <code>new</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var point = {
+    // ..
+
+    init: function() { /* .. */ }
+
+    // ..
+};
+
+var anotherPoint = new point.init(3,4);
+
+anotherPoint.x;     // 3
+anotherPoint.y;     // 4</code></pre></div>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Este ejemplo tiene un poco de matiz por explicar. La forma <code>init: function() { .. }</code> mostrada aquí -- específicamente, una function expression asignada a una propiedad -- es requerida para que la función pueda llamarse válidamente con la palabra clave <code>new</code>. De fragmentos anteriores, la forma concisa de method <code>init() { .. }</code> define una función que <em>no puede</em> llamarse con <code>new</code>.</p></div></div>
+<p>Típicamente has visto <code>new</code> usado con <code>class</code> para crear instancias. Pero como mecanismo subyacente del lenguaje JS, <code>new</code> no es inherentemente una operación de <code>class</code>.</p>
+<p>En cierto sentido, la palabra clave <code>new</code> secuestra una función y fuerza su comportamiento a un modo diferente al de una invocación normal. Aquí están los 4 pasos especiales que JS realiza cuando una función se invoca con <code>new</code>:</p>
+<ol><li>crea un objeto vacío completamente nuevo, de la nada.</li></ol>
+<ol><li>enlaza el <code>[[Prototype]]</code> de ese nuevo objeto vacío al objeto <code>.prototype</code> de la función (ver Capítulo 2).</li></ol>
+<ol><li>invoca la función con el contexto de <code>this</code> establecido en ese nuevo objeto vacío.</li></ol>
+<ol><li>si la función no retorna explícitamente su propio valor de objeto (con una sentencia <code>return ..</code>), asume que la llamada a la función debería en cambio retornar el nuevo objeto (de los pasos 1-3).</li></ol>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>El paso 4 implica que si invocas con <code>new</code> una función que <em>sí</em> retorna su propio objeto -- como <code>return { .. }</code>, etc -- entonces el nuevo objeto de los pasos 1-3 <em>no</em> se retorna. Ese es un gotcha complicado del cual hay que estar al tanto, en el sentido de que efectivamente descarta ese nuevo objeto antes de que el programa tenga la oportunidad de recibir y almacenar una referencia a él. Esencialmente, <code>new</code> nunca debería usarse para invocar una función que tiene sentencia(s) <code>return ..</code> explícita(s) dentro.</p></div></div>
+<p>Para entender estos 4 pasos de <code>new</code> de manera más concreta, voy a ilustrarlos en código, como una alternativa a usar la palabra clave <code>new</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// alternative to:
+//   var anotherPoint = new point.init(3,4)
+
+var anotherPoint;
+// this is a bare block to hide local
+// `let` declarations
+{
+    // (Step 1)
+    let tmpObj = {};
+
+    // (Step 2)
+    Object.setPrototypeOf(
+        tmpObj, point.init.prototype
+    );
+    // or: tmpObj.__proto__ = point.init.prototype
+
+    // (Step 3)
+    let res = point.init.call(tmpObj,3,4);
+
+    // (Step 4)
+    anotherPoint = (
+        typeof res !== "object" ? tmpObj : res
+    );
+}</code></pre></div>
+<p>¡Claramente, la invocación con <code>new</code> agiliza ese conjunto de pasos manuales!</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>El <code>Object.setPrototypeOf(..)</code> en el paso 2 también podría haberse hecho vía la propiedad <code>__proto__</code>, como <code>tmpObj.__proto__ = point.init.prototype</code>, o incluso como parte del object literal (paso 1) con <code>tmpObj = { __proto__: point.init.prototype }</code>.</p></div></div>
+<p>Omitiendo parte de la formalidad de estos pasos, recordemos un fragmento anterior y veamos cómo <code>new</code> aproxima un resultado similar:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var point = { /* .. */ };
+
+// this approach:
+var anotherPoint = {};
+point.init.call(anotherPoint,5,6);
+
+// can instead be approximated as:
+var yetAnotherPoint = new point.init(5,6);</code></pre></div>
+<p>¡Eso es un poco más lindo! Pero hay una salvedad aquí.</p>
+<p>Usar las otras funciones que <code>point</code> contiene contra <code>anotherPoint</code> / <code>yetAnotherPoint</code>, no querremos hacerlo con <code>new</code>. ¿Por qué? Porque <code>new</code> está creando un <em>nuevo</em> objeto, pero eso no es lo que queremos si pretendemos invocar una función contra un objeto existente.</p>
+<p>En cambio, probablemente usaremos la asignación de <em>contexto explícito</em>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">point.rotate.call( anotherPoint, /*angleRadians=*/Math.PI );
+
+point.toString.call( yetAnotherPoint );
+// (5,6)</code></pre></div>
+<h3 id="review-this">Review This</h3>
+<p>Hemos visto cuatro reglas para la asignación de contexto de <code>this</code> en las llamadas a funciones. Pongámoslas en orden de precedencia:</p>
+<ol><li>¿La función se invoca con <code>new</code>, creando y estableciendo un <em>nuevo</em> <code>this</code>?</li></ol>
+<ol><li>¿La función se invoca con <code>call(..)</code> o <code>apply(..)</code>, estableciendo <em>explícitamente</em> <code>this</code>?</li></ol>
+<ol><li>¿La función se invoca con una referencia de objeto en el call-site (por ejemplo, <code>point.init(..)</code>), estableciendo <em>implícitamente</em> <code>this</code>?</li></ol>
+<ol><li>Si nada de lo anterior... ¿estamos en non-strict mode? Si es así, pon por <em>defecto</em> el <code>this</code> en <code>globalThis</code>. Pero si estás en strict mode, pon por <em>defecto</em> el <code>this</code> en <code>undefined</code>.</li></ol>
+<p>Estas reglas, <em>en este orden</em>, son cómo JS determina el <code>this</code> para una invocación de función. Si múltiples reglas coinciden con un call-site (por ejemplo, <code>new point.init.call(..)</code>), gana la primera regla de la lista que coincida.</p>
+<p>Eso es todo, ahora eres maestro de la palabra clave <code>this</code>. Bueno, no del todo. Hay un montón más de matices por cubrir. ¡Pero vas bien encaminado!</p>
+<h2 id="an-arrow-points-somewhere">An Arrow Points Somewhere</h2>
+<p>Todo lo que he afirmado hasta ahora sobre <code>this</code> en las funciones, y cómo se determina basándose en el call-site, hace una suposición gigante: que estás tratando con una función (o method) <em>regular</em>.</p>
+<p>Entonces, ¿qué es una función <em>irregular</em>?!? Se ve así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const x = x =&gt; x &lt;= x;</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Sí, estoy siendo un poco sarcástico e injusto al llamar "irregular" a una arrow function y al usar un ejemplo tan artificioso. Es un chiste, ¿okay?</p></div></div>
+<p>Aquí hay un ejemplo real de una arrow function <code>=&gt;</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const clickHandler = evt =&gt;
+    evt.target.matches("button") ?
+        this.theFormElem.submit() :
+        evt.stopPropagation();</code></pre></div>
+<p>A modo de comparación, déjame mostrar también el equivalente sin arrow:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const clickHandler = function(evt) {
+    evt.target.matches("button") ?
+        this.theFormElem.submit() :
+        evt.stopPropagation();
+};</code></pre></div>
+<p>O si lo hiciéramos un poco a la vieja escuela -- ¡esto es lo mío! -- podríamos probar la forma de function declaration independiente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function clickHandler(evt) {
+    evt.target.matches("button") ?
+        this.theFormElem.submit() :
+        evt.stopPropagation();
+}</code></pre></div>
+<p>O si la función apareciera como un method en una definición de <code>class</code>, o como un method conciso en un object literal, se vería así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// ..
+clickHandler(evt) {
+    evt.target.matches("button") ?
+        this.theFormElem.submit() :
+        evt.stopPropagation();
+}</code></pre></div>
+<p>En lo que realmente quiero enfocarme es en cómo cada una de estas formas de la función se comportará con respecto a su referencia <code>this</code>, y si la primera forma <code>=&gt;</code> difiere de las demás (pista: ¡lo hace!). Pero empecemos con una pequeña prueba para ver si has estado prestando atención.</p>
+<p>Para cada una de esas formas de función que acabamos de mostrar, ¿cómo sabemos a qué referenciará cada <code>this</code>?</p>
+<h3 id="wheres-the-call-site">Where's The Call-site?</h3>
+<p>Con suerte, respondiste con algo como: "primero, necesitamos ver cómo se llaman las funciones".</p>
+<p>Bastante justo.</p>
+<p>Digamos que nuestro programa se ve así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var infoForm = {
+    theFormElem: null,
+    theSubmitBtn: null,
+
+    init() {
+        this.theFormElem =
+            document.getElementById("the-info-form");
+        this.theSubmitBtn =
+            theFormElem.querySelector("button[type=submit]");
+
+        // is *this* the call-site?
+        this.theSubmitBtn.addEventListener(
+            "click",
+            this.clickHandler,
+            false
+        );
+    },
+
+    // ..
+}</code></pre></div>
+<p>Ah, interesante. La mitad de ustedes, lectores, nunca han visto código real de la DOM API como <code>getElementById(..)</code>, <code>querySelector(..)</code> y <code>addEventListener(..)</code> antes. ¡Escuché las campanas de confusión silbar recién!</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Lo siento, estoy delatando mi edad, aquí. He estado haciendo estas cosas el tiempo suficiente como para recordar cuando hacíamos ese tipo de código mucho antes de tener utilidades como jQuery atiborrando el código con <code>$</code> por todos lados. Y después de muchos años de evolución del front-end, parece que aterrizamos en algún lugar bastante más "moderno" -- al menos, esa es la presunción predominante.</p></div></div>
+<p>Supongo que muchos de ustedes hoy en día están acostumbrados a ver código de frameworks de componentes (React, etc) algo así:</p>
+<div class="code-block" data-lang="jsx"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-jsx">// ..
+
+infoForm(props) {
+    return (
+        &lt;form ref={this.theFormElem}&gt;
+            &lt;button type=submit onClick=this.clickHandler&gt;
+                Click Me
+            &lt;/button&gt;
+        &lt;/form&gt;
+    );
+}
+
+// ..</code></pre></div>
+<p>Por supuesto, hay un montón de otras maneras en que ese código podría tomar forma, dependiendo de si estás usando un framework u otro, etc.</p>
+<p>O quizás ya ni siquiera estés usando componentes estilo <code>class</code> / <code>this</code>, porque has movido todo a hooks y closures. En cualquier caso, para los propósitos de nuestra discusión, <em>este</em> capítulo trata todo sobre <code>this</code>, así que necesitamos atenernos a un estilo de código como el de arriba, para tener código relacionado con la discusión.</p>
+<p>Y ninguno de esos dos fragmentos de código anteriores muestra la función <code>clickHandler</code> siendo definida. Pero he dicho repetidamente hasta ahora, que eso no importa; todo lo que importa es ... ¿qué? dilo conmigo... todo lo que importa es <em>cómo</em> se invoca la función.</p>
+<p>Entonces, ¿cómo se está invocando <code>clickHandler</code>? ¿Cuál es el call-site, y qué regla de asignación de contexto coincide?</p>
+<h3 id="hidden-from-sight">Hidden From Sight</h3>
+<p>Si estás atascado, no te preocupes. Estoy haciendo esto difícil deliberadamente, para señalar algo muy importante.</p>
+<p>Cuando ocurren los bindings de event handler <code>"click"</code> o <code>onClick=</code>, en ambos casos, especificamos <code>this.clickHandler</code>, lo que implica que hay un objeto de contexto <code>this</code> con una propiedad llamada <code>clickHandler</code>, que está conteniendo nuestra definición de función.</p>
+<p>Entonces, ¿es <code>this.clickHandler</code> el call-site? Si lo fuera, ¿qué regla de asignación aplica? ¿La regla de <em>contexto implícito</em> (#3)?</p>
+<p>Desafortunadamente, no.</p>
+<p>El problema es que, <strong>en realidad no podemos ver el call-site</strong> en este programa. Uh oh.</p>
+<p>Si no podemos ver el call-site, ¿cómo sabemos <em>cómo</em> se va a llamar realmente la función?</p>
+<p><em>Ese</em> es exactamente el punto que estoy planteando.</p>
+<p>No importa que hayamos pasado <code>this.clickHandler</code>. Eso es meramente una referencia a un valor de objeto función. No es un call-site.</p>
+<p>Por detrás, en algún lugar dentro de un framework, librería, o incluso el propio entorno de JS, cuando un usuario hace clic en el botón, se va a invocar una referencia a la función <code>clickHandler(..)</code>. Y como hemos insinuado, ese call-site incluso va a pasar el objeto de evento del DOM como el argumento <code>evt</code>.</p>
+<p>Como no podemos ver el call-site, tenemos que <em>imaginarlo</em>. ¿Podría verse como...?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// ..
+eventCallback( domEventObj );
+// ..</code></pre></div>
+<p>Si así fuera, ¿qué regla de <code>this</code> aplicaría? ¿La regla de <em>contexto por defecto</em> (#4)?</p>
+<p>O, ¿qué pasaría si el call-site se viera así...?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// ..
+eventCallback.call( domElement, domEventObj );</code></pre></div>
+<p>Ahora, ¿qué regla de <code>this</code> aplicaría? ¿La regla de <em>contexto explícito</em> (#2)?</p>
+<p>A menos que abras y veas el código fuente del framework/librería, o leas la documentación/especificación, no <em>sabrás</em> qué esperar de ese call-site. Lo que significa que predecir, en última instancia, a qué apunta <code>this</code> en la función <code>clickHandler</code> que escribes, es... por decirlo suavemente... un poco enrevesado.</p>
+<h3 id="this-is-wrong"><em>This</em> Is Wrong</h3>
+<p>Para ahorrarte más dolor aquí, iré directo al grano.</p>
+<p>Prácticamente todas las implementaciones de un mecanismo de click-handler van a hacer algo como el <code>.call(..)</code>, y van a establecer el elemento del DOM (por ejemplo, el botón) al que el event listener está vinculado, como el <em>contexto explícito</em> para la invocación.</p>
+<p>Hmmm... ¿está bien eso, o va a ser un problema?</p>
+<p>Recuerda que nuestra función <code>clickHandler(..)</code> es <code>this</code>-aware, y que su referencia <code>this.theFormElem</code> implica referenciar un objeto con una propiedad <code>theFormElem</code>, que a su vez apunta al elemento <code>&lt;form&gt;</code> padre. Los botones del DOM no tienen, por defecto, una propiedad <code>theFormElem</code>.</p>
+<p>En otras palabras, la referencia <code>this</code> que nuestro event handler tendrá establecida es casi con certeza incorrecta. Ups.</p>
+<p>A menos que queramos reescribir la función <code>clickHandler</code>, vamos a necesitar arreglar eso.</p>
+<h3 id="fixing-this">Fixing <code>this</code></h3>
+<p>Consideremos algunas opciones para abordar la mala asignación. Para mantener las cosas enfocadas, me atendré a este estilo de binding de evento para la discusión:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">this.submitBtnaddEventListener(
+    "click",
+    this.clickHandler,
+    false
+);</code></pre></div>
+<p>Aquí hay una manera de abordarlo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// store a fixed reference to the current
+// `this` context
+var context = this;
+
+this.submitBtn.addEventListener(
+    "click",
+    function handler(evt){
+        return context.clickHandler(evt);
+    },
+    false
+);</code></pre></div>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>La mayoría del código JS más antiguo que usa este enfoque dirá algo como <code>var self = this</code> en lugar del nombre <code>context</code> que le estoy dando aquí. "Self" es una palabra más corta, y suena más genial. Pero también tiene por completo el significado semántico equivocado. La palabra clave <code>this</code> no es una referencia "self" a la función, sino más bien el contexto para esa invocación de función actual. Esas pueden parecer la misma cosa a primera vista, pero son conceptos completamente diferentes, tan diferentes como las manzanas y una canción de los Beatles. Así que... parafraseándolos, "Hey developer, don't make it bad. Take a sad <code>self</code> and make it better <code>context</code>."</p></div></div>
+<p>¿Qué está pasando aquí? Reconocí que el código que lo rodea, donde se va a ejecutar la llamada <code>addEventListener</code>, tiene un contexto <code>this</code> actual que es correcto, y necesitamos asegurarnos de que ese mismo contexto <code>this</code> se aplique cuando <code>clickHandler(..)</code> sea invocada.</p>
+<p>Definí una función envolvente (<code>handler(..)</code>) y luego forcé al call-site a verse como:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">context.clickHandler(evt);</code></pre></div>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>¿Qué regla de asignación de contexto de <code>this</code> se aplica aquí? Correcto, la regla de <em>contexto implícito</em> (#3).</p></div></div>
+<p>Ahora, no importa cómo se vea el call-site interno de la librería/framework/entorno. Pero, ¿por qué?</p>
+<p>Porque ahora estamos <em>realmente</em> en control del call-site. No importa cómo se invoque <code>handler(..)</code>, o a qué se asigne su <code>this</code>. Solo importa que cuando <code>clickHandler(..)</code> sea invocada, el contexto <code>this</code> se establezca en lo que queríamos.</p>
+<p>Logré ese truco no solo definiendo una función envolvente (<code>handler(..)</code>) para poder controlar el call-site, sino... y esto es importante, así que no te lo pierdas... ¡definí <code>handler(..)</code> como una función NO <code>this</code>-aware! No hay palabra clave <code>this</code> dentro de <code>handler(..)</code>, así que cualquier <code>this</code> que establezca (o no) la librería/framework/entorno, es completamente irrelevante.</p>
+<p>La línea <code>var context = this</code> es crítica para el truco. Define una variable léxica <code>context</code>, que no es ninguna palabra clave especial, que contiene una instantánea del valor del <code>this</code> externo. Luego dentro de <code>clickHandler</code>, simplemente referenciamos una variable léxica (<code>context</code>), sin ninguna palabra clave <code>this</code> relativa/mágica.</p>
+<h3 id="lexical-this">Lexical This</h3>
+<p>El nombre de este patrón, por cierto, es "lexical this", que significa un <code>this</code> que se comporta como una variable de lexical scope en lugar de como un binding de contexto dinámico.</p>
+<p>Pero resulta que JS tiene una manera más fácil de realizar el truco de magia de "lexical this". ¿Estás listo para la revelación del truco?</p>
+<p>...</p>
+<p>¡La arrow function <code>=&gt;</code>! ¡Tadá!</p>
+<p>Así es, la función <code>=&gt;</code> es, a diferencia de todas las otras formas de función, especial, en el sentido de que no es especial en absoluto. O, más bien, que no define nada especial para el comportamiento de <code>this</code>, en lo más mínimo.</p>
+<p>En una función <code>=&gt;</code>, la palabra clave <code>this</code>... <strong>no es una palabra clave</strong>. No es absolutamente nada diferente de cualquier otra variable, como <code>context</code> o <code>happyFace</code> o <code>foobarbaz</code>.</p>
+<p>Déjame ilustrar <em>este</em> punto más directamente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function outer() {
+    console.log(this.value);
+
+    // define a return an "inner"
+    // function
+    var inner = () =&gt; {
+        console.log(this.value);
+    };
+
+    return inner;
+}
+
+var one = {
+    value: 42,
+};
+var two = {
+    value: "sad face",
+};
+
+var innerFn = outer.call(one);
+// 42
+
+innerFn.call(two);
+// 42   &lt;-- not "sad face"</code></pre></div>
+<p>El <code>innerFn.call(two)</code> habría, para cualquier definición de función <em>regular</em>, resultado en <code>"sad face"</code> aquí. Pero dado que la función <code>inner</code> que definimos y retornamos (y asignamos a <code>innerFn</code>) era una arrow function <code>=&gt;</code> <em>irregular</em>, no tiene ningún comportamiento especial de <code>this</code>, sino que tiene comportamiento de "lexical this".</p>
+<p>Cuando la función <code>innerFn(..)</code> (también conocida como <code>inner(..)</code>) se invoca, incluso con una asignación de <em>contexto explícito</em> vía <code>.call(..)</code>, esa asignación se ignora.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>No estoy seguro de por qué las arrow functions <code>=&gt;</code> tienen siquiera un <code>call(..)</code> / <code>apply(..)</code>, ya que son funciones silenciosas no-op. Supongo que es por consistencia con las funciones normales. Pero como veremos más adelante, hay otras inconsistencias entre las funciones <em>regulares</em> y las arrow functions <code>=&gt;</code> <em>irregulares</em>.</p></div></div>
+<p>Cuando se encuentra un <code>this</code> (<code>this.value</code>) dentro de una arrow function <code>=&gt;</code>, <code>this</code> se trata como una variable léxica normal, no como una palabra clave especial. Y dado que no hay una variable <code>this</code> en esa función misma, JS hace lo que siempre hace con las variables léxicas: sube un nivel de lexical scope -- en este caso, a la función <code>outer(..)</code> que la rodea, y verifica si hay algún <code>this</code> registrado en ese scope.</p>
+<p>Por suerte, <code>outer(..)</code> es una función <em>regular</em>, lo que significa que tiene una palabra clave <code>this</code> normal. Y la invocación <code>outer.call(one)</code> asignó <code>one</code> a su <code>this</code>.</p>
+<p>Así que, <code>innerFn.call(two)</code> está invocando <code>inner()</code>, pero cuando <code>inner()</code> busca un valor para <code>this</code>, obtiene... <code>one</code>, no <code>two</code>.</p>
+<h4 id="back-to-the-button">Back To The... Button</h4>
+<p>Pensaste que iba a hacer un chiste de juego de palabras y decir "future" ahí, ¿verdad?</p>
+<p>Una manera más directa y apropiada de resolver nuestro problema anterior, donde habíamos hecho <code>var context = this</code> para obtener una especie de comportamiento falso de "lexical this", es usar la arrow function <code>=&gt;</code>, ya que su característica de diseño primaria es... "lexical this".</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">this.submitBtn.addEventListener(
+    "click",
+    evt =&gt; this.clickHandler(evt),
+    false
+);</code></pre></div>
+<p>¡Boom! ¡Problema resuelto! ¡Mic drop!</p>
+<p>Escúchame en <em>esto</em>: la arrow function <code>=&gt;</code> <em>no</em> -- repito, <em>no</em> -- se trata de escribir menos caracteres. El punto primario de que la función <code>=&gt;</code> fuera agregada a JS era darnos el comportamiento de "lexical this" sin tener que recurrir a hacks estilo <code>var context = this</code> (o peor, <code>var self = this</code>).</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Si necesitas "lexical this", prefiere siempre una arrow function <code>=&gt;</code>. Si no necesitas "lexical this", bueno... la arrow function <code>=&gt;</code> podría no ser la mejor herramienta para el trabajo.</p></div></div>
+<h4 id="confession-time">Confession Time</h4>
+<p>He dicho todo el tiempo en este capítulo, que cómo escribes una función, y dónde escribes la función, no tiene <em>nada</em> que ver con cómo se asignará su <code>this</code>.</p>
+<p>Para las funciones regulares, eso es cierto. Pero cuando consideramos una arrow function <code>=&gt;</code> irregular, ya no es del todo preciso.</p>
+<p>¿Recuerdas la forma <code>=&gt;</code> original de <code>clickHandler</code> de antes en el capítulo?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const clickHandler = evt =&gt;
+    evt.target.matches("button") ?
+        this.theFormElem.submit() :
+        evt.stopPropagation();</code></pre></div>
+<p>Si usamos esa forma, en el mismo contexto que nuestro binding de evento, podría verse así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const clickHandler = evt =&gt;
+    evt.target.matches("button") ?
+        this.theFormElem.submit() :
+        evt.stopPropagation();
+
+this.submitBtn.addEventListener("click",clickHandler,false);</code></pre></div>
+<p>A muchos desarrolladores les gusta incluso reducirlo aún más, a una arrow function <code>=&gt;</code> en línea:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">this.submitBtn.addEventListener(
+    "click",
+    evt =&gt; evt.target.matches("button") ?
+        this.theFormElem.submit() :
+        evt.stopPropagation(),
+    false
+);</code></pre></div>
+<p>Cuando escribimos una arrow function <code>=&gt;</code>, sabemos con certeza que su binding de <code>this</code> será exactamente el binding de <code>this</code> actual de cualquier función que la rodee y que se esté ejecutando, independientemente de cómo se vea el call-site de la arrow function <code>=&gt;</code>. Así que en otras palabras, <em>cómo</em> escribimos la arrow function <code>=&gt;</code>, y <em>dónde</em> la escribimos, sí importa.</p>
+<p>Eso no responde del todo la pregunta de <code>this</code>, eso sí. Solo desplaza la pregunta a <em>cómo se invocó la función que la contiene</em>. En realidad, el enfoque en el call-site sigue siendo lo único que importa.</p>
+<p>Pero el matiz que confieso haber omitido hasta <em>este</em> momento es: importa <em>qué</em> call-site consideramos, no solo <em>cualquier</em> call-site en el call stack actual. El call-site que importa es la invocación de función más cercana en el call stack actual <em><strong>que realmente asigna un contexto <code>this</code></strong></em>.</p>
+<p>Dado que una arrow function <code>=&gt;</code> nunca tiene un call-site que asigne <code>this</code> (sin importar qué), ese call-site no es relevante para la pregunta. Tenemos que seguir subiendo por el call stack hasta que encontremos una invocación de función que <em>sí</em> asigne <code>this</code> -- incluso si tal función invocada no es en sí misma <code>this</code>-aware.</p>
+<p><strong>ESE</strong> es el único call-site que importa.</p>
+<h4 id="find-the-right-call-site">Find The Right Call-Site</h4>
+<p>Déjame ilustrar, con un lío enrevesado de un montón de funciones/llamadas anidadas:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">globalThis.value = { result: "Sad face" };
+
+function one() {
+    function two() {
+        var three = {
+            value: { result: "Hmmm" },
+
+            fn: () =&gt; {
+                const four = () =&gt; this.value;
+                return four.call({
+                    value: { result: "OK", },
+                });
+            },
+        };
+        return three.fn();
+    };
+    return two();
+}
+
+new one();          // ???</code></pre></div>
+<p>¿Puedes recorrer eso (esa pesadilla) en tu cabeza y determinar qué se retornará de la invocación <code>new one()</code>?</p>
+<p>Podría ser cualquiera de estos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// from `four.call(..)`:
+{ result: "OK" }
+
+// or, from `three` object:
+{ result: "Hmmm" }
+
+// or, from the `globalThis.value`:
+{ result: "Sad face" }
+
+// or, empty object from the `new` call:
+{}</code></pre></div>
+<p>El call-stack para esa invocación <code>new one()</code> es:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">four         |
+three.fn     |
+two          | (this = globalThis)
+one          | (this = {})
+[ global ]   | (this = globalThis)</code></pre></div>
+<p>Dado que <code>four()</code> y <code>fn()</code> son ambas arrow functions <code>=&gt;</code>, los call-sites <code>three.fn()</code> y <code>four.call(..)</code> no asignan <code>this</code>; por lo tanto, son irrelevantes para nuestra consulta. ¿Cuál es la siguiente invocación a considerar en el call-stack? <code>two()</code>. Esa es una función regular (puede aceptar asignación de <code>this</code>), y el call-site coincide con la regla de asignación de <em>contexto por defecto</em> (#4). Dado que no estamos en strict mode, <code>this</code> se asigna a <code>globalThis</code>.</p>
+<p>Cuando <code>four()</code> se está ejecutando, <code>this</code> es simplemente una variable normal. Entonces mira a la función que la contiene (<code>three.fn()</code>), pero nuevamente encuentra una función sin <code>this</code>. Así que sube otro nivel, y encuentra una función <code>two()</code> <em>regular</em> que tiene un <code>this</code> definido. Y ese <code>this</code> es <code>globalThis</code>. Así que la expresión <code>this.value</code> se resuelve a <code>globalThis.value</code>, que nos retorna... <code>{ result: "Sad face" }</code>.</p>
+<p>...</p>
+<p>Respira hondo. Sé que eso es mucho que procesar mentalmente. Y para ser justos, ese es un ejemplo súper artificioso. Casi nunca verás toda esa complejidad mezclada en un mismo call-stack.</p>
+<p>Pero absolutamente encontrarás call-stacks mixtos en programas reales. Necesitas sentirte cómodo con el análisis que acabo de ilustrar, para poder desentrañar el call-stack hasta que encuentres el call-site más reciente que asigne <code>this</code>.</p>
+<p>Recuerda el adagio que cité antes: "un gran poder conlleva una gran responsabilidad". Elegir código orientado a <code>this</code> (incluso <code>class</code>es) significa elegir tanto la flexibilidad que nos brinda, como la necesidad de sentirse cómodo navegando el call-stack para entender cómo se comportará.</p>
+<p>Esa es la única manera de escribir efectivamente (¡y luego leer!) código <code>this</code>-aware.</p>
+<h3 id="this-is-bound-to-come-up">This Is Bound To Come Up</h3>
+<p>Retrocediendo un poco, hay otra opción si no quieres usar el comportamiento de "lexical this" de una arrow function <code>=&gt;</code> para abordar la funcionalidad del event handler del botón.</p>
+<p>Además de <code>call(..)</code> / <code>apply(..)</code> -- ¡estas invocan funciones, recuerda! -- las funciones de JS también tienen una tercera utilidad incorporada, llamada <code>bind(..)</code> -- que <em>no</em> invoca la función, solo para que quede claro.</p>
+<p>La utilidad <code>bind(..)</code> define una <em>nueva</em> versión envuelta/vinculada de una función, donde su <code>this</code> está preestablecido y fijo, y no puede sobrescribirse con un <code>call(..)</code> o <code>apply(..)</code>, ni siquiera con un objeto de <em>contexto implícito</em> en el call-site:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">this.submitBtn.addEventListener(
+    "click",
+    this.clickHandler.bind(this),
+    false
+);</code></pre></div>
+<p>Dado que estoy pasando una función vinculada a <code>this</code> como el event handler, de manera similar no importa cómo esa utilidad intente establecer un <code>this</code>, porque ya he forzado a <code>this</code> a ser lo que quería: el valor de <code>this</code> del contexto de invocación de la función que lo rodea.</p>
+<h4 id="hardly-new">Hardly New</h4>
+<p>Este patrón a menudo se denomina "hard binding", ya que estamos creando una referencia de función que está fuertemente vinculada a un <code>this</code> en particular. Muchos escritos de JS han afirmado que la arrow function <code>=&gt;</code> es esencialmente solo sintaxis para el hard-binding <code>bind(this)</code>. No lo es. Profundicemos.</p>
+<p>Si fueras a crear una utilidad <code>bind(..)</code>, podría verse algo como <em>esto</em>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function bind(fn,context) {
+    return function bound(...args){
+        return fn.apply(context,args);
+    };
+}</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Así no es como <code>bind(..)</code> está implementado en realidad. El comportamiento es más sofisticado y matizado. Solo estoy ilustrando una porción de su comportamiento en este fragmento.</p></div></div>
+<p>¿Eso te resulta familiar? Está usando el viejo y querido hack falso de "lexical this". Y por detrás, es una asignación de <em>contexto explícito</em>, en este caso vía <code>apply(..)</code>.</p>
+<p>Entonces, espera... ¿eso no significa que podríamos simplemente hacerlo con una arrow function <code>=&gt;</code>?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function bind(fn,context) {
+    return (...args) =&gt; fn.apply(context,args);
+}</code></pre></div>
+<p>Eh... no del todo. Como con la mayoría de las cosas en JS, hay un poco de matiz. Déjame ilustrar:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// candidate implementation, for comparison
+function fakeBind(fn,context) {
+    return (...args) =&gt; fn.apply(context,args);
+}
+
+// test subject
+function thisAwareFn() {
+    console.log(`Value: ${this.value}`);
+}
+
+// control data
+var obj = {
+    value: 42,
+};
+
+// experiment
+var f = thisAwareFn.bind(obj);
+var g = fakeBind(thisAwareFn,obj);
+
+f();            // Value: 42
+g();            // Value: 42
+
+new f();        // Value: undefined
+new g();        // &lt;--- ???</code></pre></div>
+<p>Primero, mira la llamada <code>new f()</code>. Eso es, admitámoslo, un uso extraño, llamar <code>new</code> sobre una función hard-bound. Probablemente sea bastante raro que alguna vez lo hagas. Pero muestra algo medio interesante. Aunque <code>f()</code> estaba hard-bound a un contexto <code>this</code> de <code>obj</code>, el operador <code>new</code> fue capaz de secuestrar el <code>this</code> de la función hard-bound y re-vincularlo al objeto recién creado y vacío. Ese objeto no tiene propiedad <code>value</code>, por eso vemos <code>"Value: undefined"</code> impreso.</p>
+<p>Si eso se siente extraño, estoy de acuerdo. Es un matiz raro de los rincones del lenguaje. No es algo que probablemente alguna vez explotes. Pero lo señalo no solo por trivia. Vuelve a las cuatro reglas presentadas antes en este capítulo. ¿Recuerdas cómo afirmé su orden de precedencia, y <code>new</code> estaba en la cima (#1), por delante de la regla de asignación <em>explícita</em> <code>call(..)</code> / <code>apply(..)</code> (#2)?</p>
+<p>Dado que podemos pensar en <code>bind(..)</code> como una especie de variación de esa regla, ahora vemos ese orden de precedencia demostrado. <code>new</code> tiene más precedencia que, y puede sobrescribir, incluso una función hard-bound. Medio te hace pensar que la función hard-bound quizás no está tan "hard"-bound, ¿eh?</p>
+<p>Pero... ¿qué va a pasar con la llamada <code>new g()</code>, que está invocando <code>new</code> sobre la arrow function <code>=&gt;</code> retornada? ¿Predices el mismo resultado que <code>new f()</code>?</p>
+<p>Lamento decepcionarte.</p>
+<p>Esa línea en realidad lanzará una excepción, porque una función <code>=&gt;</code> no puede usarse con la palabra clave <code>new</code>.</p>
+<p>¿Pero por qué? Mi mejor respuesta, no siendo yo mismo una autoridad en TC39, es que conceptual y realmente, una arrow function <code>=&gt;</code> no es una función con un <code>this</code> hard-bound, es una función que no tiene <code>this</code> en absoluto. Como tal, <code>new</code> no tiene sentido contra tal función, así que JS simplemente lo prohíbe.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Recuerda antes, cuando señalé que las arrow functions <code>=&gt;</code> tienen <code>call(..)</code>, <code>apply(..)</code>, e incluso un <code>bind(..)</code>. Pero hemos visto que tales funciones básicamente ignoran estas utilidades como no-ops. Es un poco extraño, en mi opinión, que las arrow functions <code>=&gt;</code> tengan todas esas utilidades como no-ops de paso, pero para la palabra clave <code>new</code>, eso no es solo, de nuevo, un no-op de paso, sino más bien prohibido con una excepción.</p></div></div>
+<p>Pero el punto principal es: una arrow function <code>=&gt;</code> <em>no</em> es una forma sintáctica de <code>bind(this)</code>.</p>
+<h3 id="losing-this-battle">Losing This Battle</h3>
+<p>Volviendo una vez más a nuestro ejemplo de event handler del botón:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">this.submitBtnaddEventListener(
+    "click",
+    this.clickHandler,
+    false
+);</code></pre></div>
+<p>Hay una preocupación más profunda que todavía no hemos abordado.</p>
+<p>Hemos visto varios enfoques diferentes para construir una referencia de función callback diferente que pasar ahí, en lugar de <code>this.clickHandler</code>.</p>
+<p>Pero cualquiera de esas maneras que elijamos, están produciendo literalmente una función diferente, no solo una modificación in situ de nuestra función <code>clickHandler</code> existente.</p>
+<p>¿Por qué importa eso?</p>
+<p>Bueno, en primer lugar, cuantas más funciones creemos (y re-creemos), más tiempo de procesamiento (muy ligero) y más memoria (bastante pequeña, usualmente) estamos consumiendo. Y cuando estamos re-creando una referencia de función, y descartando una vieja, eso también está dejando memoria no reclamada dando vueltas, lo que pone presión sobre el garbage collector (GC) para que, más a menudo, pause el universo de nuestro programa momentáneamente mientras limpia y reclama esa memoria.</p>
+<p>Si conectar esta escucha de eventos es una operación de una sola vez, no es gran cosa. Pero si está ocurriendo una y otra vez, los efectos de rendimiento a nivel del sistema <em>pueden</em> empezar a acumularse. ¿Alguna vez tuviste una animación que de otra manera era fluida y que se entrecortó? Eso fue probablemente el GC entrando en acción, limpiando un montón de memoria reclamable.</p>
+<p>Pero otra preocupación es, para cosas como los event handlers, si vamos a quitar un event listener en algún momento posterior, necesitamos mantener una referencia a la misma función exacta que adjuntamos originalmente. Si estamos usando una librería/framework, a menudo (¡pero no siempre!) ellos se encargan de ese pequeño detalle de trabajo sucio por ti. Pero de lo contrario, depende de nosotros asegurarnos de que cualquier función que planeemos adjuntar, mantengamos una referencia por si la necesitamos después.</p>
+<p>Así que el punto que estoy planteando es: preestablecer una asignación de <code>this</code>, sin importar cómo lo hagas, para que sea predecible, viene con un costo. Un costo a nivel del sistema y un costo de mantenimiento/complejidad del programa. <em>Nunca</em> es gratis.</p>
+<p>Una manera de reaccionar ante ese hecho es decidir, OK, simplemente vamos a fabricar todas esas referencias de función con <code>this</code> asignado de una vez, por adelantado, al principio. De esa manera, nos aseguramos de reducir tanto la presión del sistema como la presión del código, al mínimo.</p>
+<p>Suena razonable, ¿verdad? No tan rápido.</p>
+<h4 id="pre-binding-function-contexts">Pre-Binding Function Contexts</h4>
+<p>Si tienes una referencia de función única que necesita estar vinculada a <code>this</code>, y usas una arrow <code>=&gt;</code> o una llamada <code>bind(this)</code>, no veo ningún problema con eso.</p>
+<p>Pero si la mayoría o todas las funciones <code>this</code>-aware en un segmento de tu código se invocan de maneras donde el <code>this</code> no es el contexto predecible que esperas, y por eso decides que necesitas hacer hard-bind a todas ellas... creo que esa es una gran señal de advertencia de que estás encarando las cosas de la manera equivocada.</p>
+<p>Por favor recuerda la discusión en la sección "Avoid This" del Capítulo 3, que comenzó con este fragmento de código:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">class Point2d {
+    x = null
+    getDoubleX = () =&gt; this.x * 2
+
+    constructor(x,y) {
+        this.x = x;
+        this.y = y;
+    }
+    toString() { /* .. */ }
+}
+
+var point = new Point2d(3,4);</code></pre></div>
+<p>Ahora imagina que hiciéramos esto con ese código:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const getX = point.getDoubleX;
+
+// later, elsewhere
+
+getX();         // 6</code></pre></div>
+<p>Como puedes ver, el problema que estábamos tratando de resolver es el mismo con el que hemos estado lidiando aquí en este capítulo. Es que queríamos poder invocar una referencia de función como <code>getX()</code>, y que eso <em>signifique</em> y <em>se comporte como</em> <code>point.getDoubleX()</code>. Pero las reglas de <code>this</code> en las funciones <em>regulares</em> no funcionan de esa manera.</p>
+<p>Así que usamos una arrow function <code>=&gt;</code>. No es gran cosa, ¿verdad?</p>
+<p>Error.</p>
+<p>El verdadero problema de raíz es que <em>queremos</em> dos cosas conflictivas de nuestro código, y estamos tratando de usar el mismo <em>martillo</em> para ambos <em>clavos</em>.</p>
+<p>Queremos tener un method <code>this</code>-aware almacenado en el prototype de la <code>class</code>, de modo que haya solo una definición para la función, y todas nuestras subclases e instancias compartan agradablemente esa misma función. Y la manera en que todas comparten es a través del poder del binding dinámico de <code>this</code>.</p>
+<p>Pero al mismo tiempo, <em>también</em> queremos que esas referencias de función se mantengan mágicamente con <code>this</code> asignado a nuestra instancia cuando pasemos esas referencias de función por ahí y otro código esté a cargo del call-site.</p>
+<p>En otras palabras, a veces queremos que algo como <code>point.getDoubleX</code> signifique, "dame una referencia que tenga <code>this</code> asignado a <code>point</code>", y otras veces queremos que la misma expresión <code>point.getDoubleX</code> signifique, dame una referencia de función con <code>this</code> dinámicamente asignable para que pueda obtener correctamente el contexto que necesito en este momento.</p>
+<p>Quizás JS podría ofrecer un operador diferente además de <code>.</code>, como <code>::</code> o <code>-&gt;</code> o algo así, que te permitiera distinguir qué tipo de referencia de función buscas. De hecho, hay una propuesta de larga data para un operador de binding de <code>this</code> (<code>::</code>), que recibe atención de vez en cuando, y luego parece estancarse. Quién sabe, quizás algún día tal operador finalmente aterrice, y tengamos mejores opciones.</p>
+<p>Pero sospecho firmemente que incluso si aterriza algún día, va a entregar una referencia de función completamente nueva, exactamente como los enfoques <code>=&gt;</code> o <code>bind(this)</code> de los que ya hemos hablado. No vendrá como una solución gratuita y perfecta. Siempre habrá una tensión entre querer que la misma función sea a veces <code>this</code>-flexible y a veces <code>this</code>-predecible.</p>
+<p>Con lo que los autores de JS de código orientado a <code>class</code> a menudo se topan, tarde o temprano, es con esta tensión exacta. ¿Y sabes qué hacen?</p>
+<p>No consideran los <em>costos</em> de simplemente pre-vincular todos los methods <code>this</code>-aware de la clase convirtiéndolos en arrow functions <code>=&gt;</code> en member properties. No se dan cuenta de que han anulado por completo todo el propósito de la cadena de <code>[[Prototype]]</code>. Y no se dan cuenta de que si el contexto fijo es lo que <em>realmente necesitan</em>, hay un mecanismo totalmente diferente en JS que está mejor adaptado para ese propósito.</p>
+<h4 id="take-a-more-critical-look">Take A More Critical Look</h4>
+<p>Así que cuando haces este tipo de cosas:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">class Point2d {
+    x = null
+    y = null
+    getDoubleX = () =&gt; this.x * 2
+    toString = () =&gt; `(${this.x},${this.y})`
+
+    constructor(x,y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+var point = new Point2d(3,4);
+var anotherPoint = new Point2d(5,6);
+
+var f = point.getDoubleX;
+var g = anotherPoint.toString;
+
+f();            // 6
+g();            // (5,6)</code></pre></div>
+<p>Yo digo, "¡puaj!", a los methods <code>this</code>-aware hard-bound <code>getDoubleX()</code> y <code>toString()</code> ahí. Para mí, eso es un code smell. Pero aquí hay un enfoque aún <em>peor</em> que ha sido favorecido por muchos desarrolladores en el pasado:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">class Point2d {
+    x = null
+    y = null
+
+    constructor(x,y) {
+        this.x = x;
+        this.y = y;
+        this.getDoubleX = this.getDoubleX.bind(this);
+        this.toString = this.toString.bind(this);
+    }
+    getDoubleX() { return this.x * 2; }
+    toString() { return `(${this.x},${this.y})`; }
+}
+
+var point = new Point2d(3,4);
+var anotherPoint = new Point2d(5,6);
+
+var f = point.getDoubleX;
+var g = anotherPoint.toString;
+
+f();            // 6
+g();            // (5,6)</code></pre></div>
+<p>Doble puaj.</p>
+<p>En ambos casos, estás usando un mecanismo de <code>this</code> pero traicionándolo/neutralizándolo por completo, quitándole todo el poderoso dinamismo de <code>this</code>.</p>
+<p>Realmente deberías al menos estar contemplando este enfoque alternativo, que se salta todo el mecanismo de <code>this</code> por completo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function Point2d(px,py) {
+    var x = px;
+    var y = py;
+
+    return {
+        getDoubleX() { return x * 2; },
+        toString() { return `(${x},${y})`; }
+    };
+}
+
+var point = Point2d(3,4);
+var anotherPoint = Point2d(5,6);
+
+var f = point.getDoubleX;
+var g = anotherPoint.toString;
+
+f();            // 6
+g();            // (5,6)</code></pre></div>
+<p>¿Ves? No hay un <code>this</code> feo o complejo que ensucie ese código o del cual preocuparse por casos límite. El lexical scope es súper sencillo e intuitivo.</p>
+<p>Cuando todo lo que queremos es que la mayoría/todos nuestros comportamientos de función tengan un contexto fijo y predecible, la solución más apropiada, la solución más sencilla e incluso más performante, son las variables léxicas y el scope closure.</p>
+<p>Cuando te tomas toda la molestia de salpicar referencias <code>this</code> por todo un fragmento de código, y luego cortas todo el mecanismo de raíz con "lexical this" de <code>=&gt;</code> o <code>bind(this)</code>, elegiste hacer el código más verboso, más complejo, más recargado. Y no obtuviste nada de ello que fuera más beneficioso, excepto seguir la moda de <code>this</code> (y de <code>class</code>).</p>
+<p>...</p>
+<p>Respira hondo. Recomponte.</p>
+<p>Me estoy hablando a mí mismo, no a ti. ¡Pero si lo que acabo de decir te molesta, te estoy hablando a ti, también!</p>
+<p>OK, escucha. Esa es solo mi opinión. Si no estás de acuerdo, está bien. Pero aplica el mismo nivel de rigor al pensar en cómo funcionan estos mecanismos, como yo lo he hecho, cuando decides a qué conclusiones quieres llegar.</p>
+<h2 id="variations">Variations</h2>
+<p>Antes de cerrar nuestra extensa discusión sobre <code>this</code>, hay algunas variaciones irregulares en las llamadas a funciones de las que deberíamos hablar.</p>
+<h3 id="indirect-function-calls">Indirect Function Calls</h3>
+<p>¿Recuerdas este ejemplo de antes en el capítulo?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var point = {
+    x: null,
+    y: null,
+
+    init(x,y) {
+        this.x = x;
+        this.y = y;
+    },
+    rotate(angleRadians) { /* .. */ },
+    toString() { /* .. */ },
+};
+
+var init = point.init;
+init(3,4);                  // broken!</code></pre></div>
+<p>Esto está roto porque el call-site <code>init(3,4)</code> no proporciona la señal de asignación de <code>this</code> necesaria. Pero hay otras maneras de observar una ruptura similar. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">(1,point.init)(3,4);        // broken!</code></pre></div>
+<p>Esta sintaxis de aspecto extraño primero evalúa una expresión <code>(1,point.init)</code>, que es una expresión de serie de comas. El resultado de tal expresión es el valor evaluado final, que en este caso es la referencia de función (contenida por <code>point.init</code>).</p>
+<p>Así que el resultado pone esa referencia de función en la pila de expresiones, y luego invoca ese valor con <code>(3,4)</code>. Esa es una invocación indirecta de la función. ¿Y cuál es el resultado? En realidad coincide con la regla de asignación de <em>contexto por defecto</em> (#4) que vimos antes en el capítulo.</p>
+<p>Por lo tanto, en non-strict mode, el <code>this</code> para la llamada <code>point.init(..)</code> será <code>globalThis</code>. De haber estado en strict mode, habría sido <code>undefined</code>, y la operación <code>this.x = x</code> habría entonces lanzado una excepción por acceder inválidamente a la propiedad <code>x</code> en el valor <code>undefined</code>.</p>
+<p>Hay varias maneras diferentes de obtener una invocación de función indirecta. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">(()=&gt;point.init)()(3,4);    // broken!</code></pre></div>
+<p>Y otro ejemplo de invocación de función indirecta es el patrón Immediately Invoked Function Expression (IIFE):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">(function(){
+    // `this` assigned via "default" rule
+})();</code></pre></div>
+<p>Como puedes ver, el valor de function expression se pone en la pila de expresiones, y luego se invoca con el <code>()</code> al final.</p>
+<p>¿Pero qué hay de este código:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">(point.init)(3,4);</code></pre></div>
+<p>¿Cuál será el resultado de ese código?</p>
+<p>Por el mismo razonamiento que hemos visto en los ejemplos anteriores, es lógico pensar que la expresión <code>point.init</code> pone el valor de función en la pila de expresiones, y luego se invoca indirectamente con <code>(3,4)</code>.</p>
+<p>¡No del todo, eso sí! La gramática de JS tiene una regla especial para manejar la forma de invocación <code>(someIdentifier)(..)</code> como si hubiera sido <code>someIdentifier(..)</code> (sin el <code>(..)</code> alrededor del nombre del identificador).</p>
+<p>¿Te preguntas por qué alguna vez querrías forzar el <em>contexto por defecto</em> para la asignación de <code>this</code> vía una invocación de función indirecta?</p>
+<h3 id="accessing-globalthis">Accessing <code>globalThis</code></h3>
+<p>Antes de responder eso, introduzcamos otra manera de realizar la asignación indirecta de <code>this</code> en una función. Hasta ahora, los patrones de invocación de función indirecta mostrados son sensibles al strict mode. Pero, ¿qué pasaría si quisiéramos una asignación indirecta de <code>this</code> en una función que no respete el strict mode?</p>
+<p>El constructor <code>Function(..)</code> toma un string de código y define dinámicamente la función equivalente. Sin embargo, siempre lo hace como si esa función hubiera sido declarada en el scope global. Y más aún, asegura que tal función <em>no</em> se ejecute en strict mode, sin importar el estado de strict mode del programa. Ese es el mismo resultado que ejecutar un indirecto</p>
+<p>Un uso de nicho de tal asignación indirecta de <code>this</code> en función, agnóstica al strict mode, es para obtener una referencia confiable al verdadero objeto global antes de que la especificación de JS realmente definiera el identificador <code>globalThis</code> (por ejemplo, en un polyfill para él):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"use strict";
+
+var gt = new Function("return this")();
+gt === globalThis;                      // true</code></pre></div>
+<p>De hecho, un resultado similar, usando el truco del operador coma (ver sección anterior) y <code>eval(..)</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"use strict";
+
+function getGlobalThis() {
+    return (1,eval)("this");
+}
+
+getGlobalThis() === globalThis;      // true</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p><code>eval("this")</code> sería sensible al strict mode, pero <code>(1,eval)("this")</code> no lo es, y por lo tanto nos da de manera confiable el <code>globalThis</code> en cualquier programa.</p></div></div>
+<p>Desafortunadamente, los enfoques <code>new Function(..)</code> y <code>(1,eval)(..)</code> ambos tienen una limitación importante: ese código será bloqueado en el código JS basado en navegador si la app se sirve con ciertas restricciones de Content-Security-Policy (CSP), que no permiten la evaluación dinámica de código (por razones de seguridad).</p>
+<p>¿Podemos sortear esto? Sí, en su mayor parte. <sup class="fnref"><a href="#fn-globalThisPolyfill">[globalThisPolyfill]</a></sup></p>
+<p>La especificación de JS dice que una función getter definida en el objeto global, o en cualquier objeto que herede de él (como <code>Object.prototype</code>), ejecuta la función getter con el contexto de <code>this</code> asignado a <code>globalThis</code>, independientemente del strict mode del programa.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// Adapted from: https://mathiasbynens.be/notes/globalthis#robust-polyfill
+function getGlobalThis() {
+    Object.defineProperty(Object.prototype,"__get_globalthis__",{
+        get() { return this; },
+        configurable: true
+    });
+    var gt = __get_globalthis__;
+    delete Object.prototype.__get_globalthis__;
+    return gt;
+}
+
+getGlobalThis() === globalThis;      // true</code></pre></div>
+<p>Sí, eso es súper retorcido. ¡Pero así es el <code>this</code> de JS para ti!</p>
+<h3 id="template-tag-functions">Template Tag Functions</h3>
+<p>Hay una variación inusual más de invocación de función que deberíamos cubrir: las tagged template functions.</p>
+<p>Los template strings -- lo que prefiero llamar literales interpolados -- pueden "etiquetarse" con una función prefijo, que se invoca con el contenido parseado del template literal:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function tagFn(/* .. */) {
+    // ..
+}
+
+tagFn`actually a function invocation!`;</code></pre></div>
+<p>Como puedes ver, no hay sintaxis de invocación <code>(..)</code>, solo la función tag (<code>tagFn</code>) apareciendo antes del `<code> </code>template literal<code> </code>`; se permite el espacio en blanco entre ellos, pero es muy poco común.</p>
+<p>A pesar de la apariencia extraña, la función <code>tagFn(..)</code> será invocada. Se le pasa la lista de uno o más literales string que fueron parseados del template literal, junto con cualquier valor de expresión interpolada que se haya encontrado.</p>
+<p>No vamos a cubrir todos los pormenores de las tagged template functions -- son, en serio, una de las características más poderosas e interesantes jamás agregadas a JS -- pero dado que estamos hablando de la asignación de <code>this</code> en las invocaciones de función, por completar, necesitamos hablar de cómo se asignará <code>this</code>.</p>
+<p>La otra forma de funciones tag que puedes encontrar es:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var someObj = {
+    tagFn() { /* .. */ }
+};
+
+someObj.tagFn`also a function invocation!`;</code></pre></div>
+<p>Aquí está la explicación fácil: `<code> tagFn</code>..<code> </code><code> y </code><code> someObj.tagFn</code>..<code> </code><code> tendrán cada una un comportamiento de asignación de </code>this<code> correspondiente a los call-sites </code>tagFn(..)<code> y </code>someObj.tagFn(..)<code>, respectivamente. En otras palabras, </code><code> tagFn</code>..<code> </code><code> se comporta según la regla de asignación de *contexto por defecto* (#4), y </code><code> someObj.tagFn</code>..<code> </code>` se comporta según la regla de asignación de <em>contexto implícito</em> (#3).</p>
+<p>Por suerte para nosotros, no necesitamos preocuparnos por las reglas de asignación de <code>new</code> o <code>call(..)</code> / <code>apply(..)</code>, ya que esas formas no son posibles con las funciones tag.</p>
+<p>Cabe señalar que es bastante raro que una función de tagged template literal se defina como <code>this</code>-aware, así que es bastante improbable que necesites aplicar estas reglas. Pero por si acaso, ahora estás al <em>tanto</em>.</p>
+<h2 id="stay-aware">Stay Aware</h2>
+<p>Entonces, eso es <code>this</code>. Estoy dispuesto a apostar que para muchos de ustedes, fue un poco más... digamos, enrevesado... de lo que podrían haber estado esperando.</p>
+<p>La buena noticia, quizás, es que en la práctica no tropiezas a menudo con todas estas complejidades diferentes. Pero cuanto más uses <code>this</code>, más requerirá de ti, y de los lectores de tu código, entender cómo funciona realmente.</p>
+<p>La lección aquí es que deberías ser intencional y consciente de todos los aspectos de <code>this</code> antes de ir salpicándolo por tu código. Asegúrate de estar usándolo de la manera más efectiva y aprovechando al máximo este importante pilar de JS.</p>
+<div class="footnotes"><hr><ol><li id="fn-globalThisPolyfill">"A horrifying globalThis polyfill in universal JavaScript"; Mathias Bynens; April 18 2019; https://mathiasbynens.be/notes/globalthis#robust-polyfill ; Accessed July 2022</li></ol></div>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../objects-classes/ch3.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 3 · Clases</span></a>
+      <a class="pager-btn next" href="../objects-classes/ch5.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 5 · Delegación</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#this-aware">This Aware</a></li>
+<li class="toc-l3"><a href="#this-confuses-me">This Confuses Me</a></li>
+<li class="toc-l3"><a href="#so-what-is-this">So What Is This?</a></li>
+<li class="toc-l3"><a href="#why-is-this-so-implicit">Why Is This So Implicit?</a></li>
+<li class="toc-l3"><a href="#can-we-get-on-with-this">Can We Get On With This?</a></li>
+<li class="toc-l2"><a href="#this-is-it">This Is It!</a></li>
+<li class="toc-l3"><a href="#implicit-context-invocation">Implicit Context Invocation</a></li>
+<li class="toc-l3"><a href="#default-context-invocation">Default Context Invocation</a></li>
+<li class="toc-l3"><a href="#explicit-context-invocation">Explicit Context Invocation</a></li>
+<li class="toc-l3"><a href="#new-context-invocation">New Context Invocation</a></li>
+<li class="toc-l3"><a href="#review-this">Review This</a></li>
+<li class="toc-l2"><a href="#an-arrow-points-somewhere">An Arrow Points Somewhere</a></li>
+<li class="toc-l3"><a href="#wheres-the-call-site">Where's The Call-site?</a></li>
+<li class="toc-l3"><a href="#hidden-from-sight">Hidden From Sight</a></li>
+<li class="toc-l3"><a href="#this-is-wrong"><em>This</em> Is Wrong</a></li>
+<li class="toc-l3"><a href="#fixing-this">Fixing <code>this</code></a></li>
+<li class="toc-l3"><a href="#lexical-this">Lexical This</a></li>
+<li class="toc-l3"><a href="#this-is-bound-to-come-up">This Is Bound To Come Up</a></li>
+<li class="toc-l3"><a href="#losing-this-battle">Losing This Battle</a></li>
+<li class="toc-l2"><a href="#variations">Variations</a></li>
+<li class="toc-l3"><a href="#indirect-function-calls">Indirect Function Calls</a></li>
+<li class="toc-l3"><a href="#accessing-globalthis">Accessing <code>globalThis</code></a></li>
+<li class="toc-l3"><a href="#template-tag-functions">Template Tag Functions</a></li>
+<li class="toc-l2"><a href="#stay-aware">Stay Aware</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

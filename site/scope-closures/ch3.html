@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 3 · El alcance de la cadena de scopes — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔭</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#0ea5e9">
+      <span class="sidebar-emoji">🔭</span>
+      <div><div class="sidebar-book">Scope & Closures</div><div class="sidebar-sub">Scope y Closures</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap active"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../scope-closures/README.html">Scope & Closures</a> <span>/</span> Cap. 3 · El alcance de la cadena de scopes</div>
+    <article class="prose" style="--book-color:#0ea5e9">
+      <h1 id="you-dont-know-js-yet-scope-closures---2nd-edition">You Don't Know JS Yet: Scope &amp; Closures - 2nd Edition</h1>
+<h1 id="capítulo-3-la-cadena-de-scope">Capítulo 3: La Cadena de Scope</h1>
+<p>Los Capítulos 1 y 2 establecieron una definición concreta de <em>lexical scope</em> (y sus partes) e ilustraron metáforas útiles para su fundamento conceptual. Antes de continuar con este capítulo, buscá a alguien más para explicarle (por escrito o en voz alta), con tus propias palabras, qué es el lexical scope y por qué es útil entenderlo.</p>
+<p>Eso parece un paso que podrías saltear, pero descubrí que realmente ayuda tomarse el tiempo de reformular estas ideas como explicaciones para otros. ¡Eso ayuda a nuestro cerebro a digerir lo que estamos aprendiendo!</p>
+<p>Ahora es momento de meternos en los detalles finos, así que esperá que las cosas se vuelvan mucho más detalladas de acá en adelante. Seguí adelante, de todos modos, porque estas discusiones realmente dejan en claro cuánto es lo que todavía <em>no sabemos</em> sobre el scope. Asegurate de tomarte tu tiempo con el texto y con todos los fragmentos de código proporcionados.</p>
+<p>Para refrescar el contexto de nuestro ejemplo recurrente, recordemos la ilustración codificada por colores de las burbujas de scope anidadas, del Capítulo 2, Figura 2:</p>
+<p>&lt;figure&gt;     &lt;img src="images/fig2.png" width="500" alt="Colored Scope Bubbles" align="center"&gt;     &lt;figcaption&gt;&lt;em&gt;Fig. 2 (Ch. 2): Colored Scope Bubbles&lt;/em&gt;&lt;/figcaption&gt;     &lt;br&gt;&lt;br&gt; &lt;/figure&gt;</p>
+<p>Las conexiones entre los scopes que están anidados dentro de otros scopes se llaman la cadena de scope, que determina el camino a lo largo del cual se puede acceder a las variables. La cadena es dirigida, lo que significa que la búsqueda se mueve solamente hacia arriba/afuera.</p>
+<h2 id="la-búsqueda-es-mayormente-conceptual">La "Búsqueda" Es (Mayormente) Conceptual</h2>
+<p>En la Figura 2, fijate en el color de la referencia a la variable <code>students</code> en el bucle <code>for</code>. ¿Cómo determinamos exactamente que es una canica RED(1)?</p>
+<p>En el Capítulo 2, describimos el acceso en tiempo de ejecución a una variable como una "búsqueda", donde el <em>Engine</em> tiene que empezar preguntándole al <em>Scope Manager</em> del scope actual si conoce un identificador/variable, y proceder hacia arriba/afuera de vuelta a través de la cadena de scopes anidados (hacia el global scope) hasta encontrarla, si es que lo hace. La búsqueda se detiene en cuanto se encuentra la primera declaración con nombre coincidente en un balde de scope.</p>
+<p>El proceso de búsqueda determinó así que <code>students</code> es una canica RED(1), porque no habíamos encontrado todavía un nombre de variable coincidente mientras recorríamos la cadena de scope, hasta que llegamos al global scope RED(1) final.</p>
+<p>De manera similar, se determina que <code>studentID</code> en el statement <code>if</code> es una canica BLUE(2).</p>
+<p>Esta sugerencia de un proceso de búsqueda en tiempo de ejecución funciona bien para la comprensión conceptual, pero no es realmente como funcionan las cosas usualmente en la práctica.</p>
+<p>El color del balde de una canica (es decir, la metainformación de qué scope proviene una variable) <em>generalmente se determina</em> durante el procesamiento inicial de compilación. Como el lexical scope prácticamente queda finalizado en ese punto, el color de una canica no cambiará en base a nada que pueda suceder después durante el tiempo de ejecución.</p>
+<p>Dado que el color de la canica se conoce desde la compilación, y es inmutable, esta información probablemente se almacenaría con (o al menos sería accesible desde) la entrada de cada variable en el AST; esa información luego es usada explícitamente por las instrucciones ejecutables que constituyen el tiempo de ejecución del programa.</p>
+<p>En otras palabras, el <em>Engine</em> (del Capítulo 2) no necesita buscar a través de un montón de scopes para averiguar de qué balde de scope proviene una variable. ¡Esa información ya se conoce! Evitar la necesidad de una búsqueda en tiempo de ejecución es un beneficio clave de optimización del lexical scope. El tiempo de ejecución opera de manera más eficiente sin gastar tiempo en todas estas búsquedas.</p>
+<p>Pero dije "...generalmente se determina..." hace un momento, con respecto a averiguar el color de una canica durante la compilación. Entonces, ¿en qué caso <em>no</em> se conocería durante la compilación?</p>
+<p>Considerá una referencia a una variable que no está declarada en ninguno de los scopes léxicamente disponibles en el archivo actual—ver <em>Get Started</em>, Capítulo 1, que afirma que cada archivo es su propio programa separado desde la perspectiva de la compilación de JS. Si no se encuentra ninguna declaración, eso no es <em>necesariamente</em> un error. Otro archivo (programa) en el tiempo de ejecución bien podría declarar esa variable en el global scope compartido.</p>
+<p>Así que la determinación definitiva de si la variable alguna vez fue declarada apropiadamente en algún balde accesible puede necesitar diferirse al tiempo de ejecución.</p>
+<p>Cualquier referencia a una variable que inicialmente está <em>sin declarar</em> queda como una canica sin color durante la compilación de ese archivo; este color no puede determinarse hasta que otro(s) archivo(s) relevante(s) hayan sido compilados y comience el tiempo de ejecución de la aplicación. Esa búsqueda diferida eventualmente resolverá el color a cualquiera que sea el scope en el que se encuentra la variable (probablemente el global scope).</p>
+<p>Sin embargo, esta búsqueda solo sería necesaria una vez por variable como máximo, ya que nada más durante el tiempo de ejecución podría cambiar después el color de esa canica.</p>
+<p>La sección "Fallos de Búsqueda" del Capítulo 2 cubre qué sucede si una canica termina estando todavía sin color en el momento en que su referencia se ejecuta en tiempo de ejecución.</p>
+<h2 id="shadowing">Shadowing</h2>
+<p>El "Shadowing" podría sonar misterioso y un poco turbio. Pero no te preocupes, ¡es completamente legítimo!</p>
+<p>Nuestro ejemplo recurrente de estos capítulos usa diferentes nombres de variables a lo largo de los límites de scope. Como todos tienen nombres únicos, en cierto modo no importaría si todos ellos estuvieran simplemente almacenados en un solo balde (como RED(1)).</p>
+<p>Donde tener diferentes baldes de lexical scope empieza a importar más es cuando tenés dos o más variables, cada una en diferentes scopes, con los mismos nombres léxicos. Un solo scope no puede tener dos o más variables con el mismo nombre; tales referencias múltiples se asumirían como una sola variable.</p>
+<p>Así que si necesitás mantener dos o más variables del mismo nombre, tenés que usar scopes separados (a menudo anidados). Y en ese caso, es muy relevante cómo están dispuestos los diferentes baldes de scope.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Suzy";
+
+function printStudent(studentName) {
+    studentName = studentName.toUpperCase();
+    console.log(studentName);
+}
+
+printStudent("Frank");
+// FRANK
+
+printStudent(studentName);
+// SUZY
+
+console.log(studentName);
+// Suzy</code></pre></div>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Antes de que sigas, tomate un tiempo para analizar este código usando las diversas técnicas/metáforas que cubrimos en el libro. En particular, asegurate de identificar los colores de las canicas/burbujas en este fragmento. ¡Es buena práctica!</p></div></div>
+<p>La variable <code>studentName</code> en la línea 1 (el statement <code>var studentName = ..</code>) crea una canica RED(1). La variable con el mismo nombre se declara como una canica BLUE(2) en la línea 3, el parámetro en la definición de la función <code>printStudent(..)</code>.</p>
+<p>¿De qué color de canica será <code>studentName</code> en el statement de asignación <code>studentName = studentName.toUpperCase()</code> y en el statement <code>console.log(studentName)</code>? Las tres referencias a <code>studentName</code> serán BLUE(2).</p>
+<p>Con la noción conceptual de la "búsqueda", afirmamos que empieza con el scope actual y se abre camino hacia afuera/arriba, deteniéndose en cuanto se encuentra una variable coincidente. El <code>studentName</code> BLUE(2) se encuentra enseguida. El <code>studentName</code> RED(1) ni siquiera se considera.</p>
+<p>Este es un aspecto clave del comportamiento del lexical scope, llamado <em>shadowing</em>. La variable <code>studentName</code> BLUE(2) (parámetro) hace shadowing sobre el <code>studentName</code> RED(1). Así que el parámetro está haciendo shadowing sobre la variable global (sombreada). ¡Repetí esa oración para vos mismo unas cuantas veces para asegurarte de tener la terminología clara!</p>
+<p>Por eso la reasignación de <code>studentName</code> afecta solamente a la variable interna (parámetro): el <code>studentName</code> BLUE(2), no el <code>studentName</code> global RED(1).</p>
+<p>Cuando elegís hacer shadowing sobre una variable de un scope externo, un impacto directo es que desde ese scope hacia adentro/abajo (a través de cualquier scope anidado) ahora es imposible que cualquier canica se coloree como la variable sombreada—(RED(1), en este caso). En otras palabras, cualquier referencia al identificador <code>studentName</code> corresponderá a esa variable de parámetro, nunca a la variable global <code>studentName</code>. Es léxicamente imposible referenciar al <code>studentName</code> global en cualquier parte dentro de la función <code>printStudent(..)</code> (o desde cualquier scope anidado).</p>
+<h3 id="truco-para-deshacer-el-shadowing-global">Truco para Deshacer el Shadowing Global</h3>
+<p>Por favor, tené cuidado: aprovechar la técnica que estoy por describir no es muy buena práctica, ya que es limitada en utilidad, confusa para los lectores de tu código, y propensa a invitar bugs a tu programa. La cubro solo porque podrías encontrarte con este comportamiento en programas existentes, y entender lo que está pasando es crítico para no tropezarte.</p>
+<p><em>Sí</em> es posible acceder a una variable global desde un scope donde esa variable ha sido sombreada, pero no a través de una referencia típica de identificador léxico.</p>
+<p>En el global scope (RED(1)), las declaraciones <code>var</code> y las declaraciones <code>function</code> también se exponen a sí mismas como propiedades (del mismo nombre que el identificador) en el <em>objeto global</em>—esencialmente una representación en objeto del global scope. Si has escrito JS para un entorno de navegador, probablemente reconozcas el objeto global como <code>window</code>. Eso no es <em>enteramente</em> preciso, pero es suficientemente bueno para nuestra discusión. En el próximo capítulo, exploraremos más el tema del global scope/objeto.</p>
+<p>Considerá este programa, ejecutado específicamente como un archivo .js independiente en un entorno de navegador:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Suzy";
+
+function printStudent(studentName) {
+    console.log(studentName);
+    console.log(window.studentName);
+}
+
+printStudent("Frank");
+// "Frank"
+// "Suzy"</code></pre></div>
+<p>¿Notás la referencia <code>window.studentName</code>? Esta expression está accediendo a la variable global <code>studentName</code> como una propiedad en <code>window</code> (que por ahora estamos fingiendo que es sinónimo del objeto global). Esa es la única manera de acceder a una variable sombreada desde dentro de un scope donde la variable que hace shadowing está presente.</p>
+<p>El <code>window.studentName</code> es un espejo de la variable global <code>studentName</code>, no una copia instantánea separada. Los cambios a una siguen viéndose desde la otra, en cualquier dirección. Podés pensar en <code>window.studentName</code> como un getter/setter que accede a la variable <code>studentName</code> real. De hecho, incluso podés <em>agregar</em> una variable al global scope creando/estableciendo una propiedad en el objeto global.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Recordá: que <em>puedas</em> no significa que <em>debas</em>. No hagas shadowing sobre una variable global a la que necesitás acceder, y a la inversa, evitá usar este truco para acceder a una variable global que hayas sombreado. ¡Y definitivamente no confundas a los lectores de tu código creando variables globales como propiedades de <code>window</code> en lugar de con declaraciones formales!</p></div></div>
+<p>Este pequeño "truco" solo funciona para acceder a una variable del global scope (no a una variable sombreada de un scope anidado), e incluso en ese caso, solo a una que fue declarada con <code>var</code> o <code>function</code>.</p>
+<p>Otras formas de declaraciones del global scope no crean propiedades espejadas en el objeto global:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var one = 1;
+let notOne = 2;
+const notTwo = 3;
+class notThree {}
+
+console.log(window.one);       // 1
+console.log(window.notOne);    // undefined
+console.log(window.notTwo);    // undefined
+console.log(window.notThree);  // undefined</code></pre></div>
+<p>Las variables (¡sin importar cómo se declaren!) que existen en cualquier otro scope que no sea el global scope son completamente inaccesibles desde un scope donde han sido sombreadas:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var special = 42;
+
+function lookingFor(special) {
+    // The identifier `special` (parameter) in this
+    // scope is shadowed inside keepLooking(), and
+    // is thus inaccessible from that scope.
+
+    function keepLooking() {
+        var special = 3.141592;
+        console.log(special);
+        console.log(window.special);
+    }
+
+    keepLooking();
+}
+
+lookingFor(112358132134);
+// 3.141592
+// 42</code></pre></div>
+<p>El <code>special</code> global RED(1) está sombreado por el <code>special</code> BLUE(2) (parámetro), y el <code>special</code> BLUE(2) a su vez está sombreado por el <code>special</code> GREEN(3) dentro de <code>keepLooking()</code>. Todavía podemos acceder al <code>special</code> RED(1) usando la referencia indirecta <code>window.special</code>. Pero no hay manera de que <code>keepLooking()</code> acceda al <code>special</code> BLUE(2) que contiene el número <code>112358132134</code>.</p>
+<h3 id="copiar-no-es-acceder">Copiar No Es Acceder</h3>
+<p>Me han hecho la siguiente pregunta de "¿Pero qué pasa con...?" docenas de veces. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var special = 42;
+
+function lookingFor(special) {
+    var another = {
+        special: special
+    };
+
+    function keepLooking() {
+        var special = 3.141592;
+        console.log(special);
+        console.log(another.special);  // Ooo, tricky!
+        console.log(window.special);
+    }
+
+    keepLooking();
+}
+
+lookingFor(112358132134);
+// 3.141592
+// 112358132134
+// 42</code></pre></div>
+<p>¡Ah! Entonces, ¿esta técnica del objeto <code>another</code> desmiente mi afirmación de que el parámetro <code>special</code> es "completamente inaccesible" desde dentro de <code>keepLooking()</code>? No, la afirmación sigue siendo correcta.</p>
+<p><code>special: special</code> está copiando el valor de la variable de parámetro <code>special</code> dentro de otro contenedor (una propiedad del mismo nombre). Por supuesto, si ponés un valor en otro contenedor, el shadowing ya no se aplica (¡a menos que <code>another</code> también estuviera sombreado!). Pero eso no significa que estemos accediendo al parámetro <code>special</code>; significa que estamos accediendo a la copia del valor que tenía en ese momento, por medio de <em>otro</em> contenedor (propiedad de objeto). No podemos reasignar el parámetro <code>special</code> BLUE(2) a un valor diferente desde dentro de <code>keepLooking()</code>.</p>
+<p>Otro "¡Pero...!?" que quizás estés por plantear: ¿qué pasa si hubiera usado objetos o arrays como los valores en lugar de los números (<code>112358132134</code>, etc.)? ¿El que tengamos referencias a objetos en lugar de copias de valores primitivos "arreglaría" la inaccesibilidad?</p>
+<p>No. Mutar el contenido del valor de objeto a través de una copia de referencia <strong>no</strong> es lo mismo que acceder léxicamente a la variable en sí. Todavía no podemos reasignar el parámetro <code>special</code> BLUE(2).</p>
+<h3 id="shadowing-ilegal">Shadowing Ilegal</h3>
+<p>No todas las combinaciones de shadowing de declaraciones están permitidas. <code>let</code> puede hacer shadowing sobre <code>var</code>, pero <code>var</code> no puede hacer shadowing sobre <code>let</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function something() {
+    var special = "JavaScript";
+
+    {
+        let special = 42;   // totally fine shadowing
+
+        // ..
+    }
+}
+
+function another() {
+    // ..
+
+    {
+        let special = "JavaScript";
+
+        {
+            var special = "JavaScript";
+            // ^^^ Syntax Error
+
+            // ..
+        }
+    }
+}</code></pre></div>
+<p>Fijate que en la función <code>another()</code>, la declaración interna <code>var special</code> está intentando declarar un <code>special</code> de alcance de función, lo cual en sí mismo está bien (como se muestra en la función <code>something()</code>).</p>
+<p>La descripción del error de sintaxis en este caso indica que <code>special</code> ya ha sido definido, pero ese mensaje de error es un poco engañoso—de nuevo, ningún error de este tipo ocurre en <code>something()</code>, ya que el shadowing en general está permitido sin problemas.</p>
+<p>La verdadera razón por la que se genera como un <code>SyntaxError</code> es porque el <code>var</code> básicamente está intentando "cruzar el límite" de (o saltar por encima de) la declaración <code>let</code> del mismo nombre, lo cual no está permitido.</p>
+<p>Esa prohibición de cruzar límites se detiene efectivamente en cada límite de función, así que esta variante no genera ninguna excepción:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function another() {
+    // ..
+
+    {
+        let special = "JavaScript";
+
+        ajax("https://some.url",function callback(){
+            // totally fine shadowing
+            var special = "JavaScript";
+
+            // ..
+        });
+    }
+}</code></pre></div>
+<p>Resumen: <code>let</code> (en un scope interno) siempre puede hacer shadowing sobre un <code>var</code> de un scope externo. <code>var</code> (en un scope interno) solo puede hacer shadowing sobre un <code>let</code> de un scope externo si hay un límite de función en el medio.</p>
+<h2 id="scope-del-nombre-de-función">Scope del Nombre de Función</h2>
+<p>Como ya has visto, una declaración <code>function</code> se ve así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function askQuestion() {
+    // ..
+}</code></pre></div>
+<p>Y como se discutió en los Capítulos 1 y 2, tal declaración <code>function</code> creará un identificador en el scope circundante (en este caso, el global scope) llamado <code>askQuestion</code>.</p>
+<p>¿Qué pasa con este programa?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var askQuestion = function(){
+    // ..
+};</code></pre></div>
+<p>Lo mismo es cierto para la variable <code>askQuestion</code> que se crea. Pero como es una function expression—una definición de función usada como valor en lugar de una declaración independiente—la función en sí no hará "hoisting" (ver Capítulo 5).</p>
+<p>Una diferencia importante entre las declaraciones <code>function</code> y las function expressions es qué le sucede al identificador de nombre de la función. Considerá una named function expression:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var askQuestion = function ofTheTeacher(){
+    // ..
+};</code></pre></div>
+<p>Sabemos que <code>askQuestion</code> termina en el scope externo. Pero, ¿qué pasa con el identificador <code>ofTheTeacher</code>? Para las declaraciones <code>function</code> formales, el identificador de nombre termina en el scope externo/circundante, así que podría ser razonable asumir que ese es el caso acá. Pero <code>ofTheTeacher</code> se declara como un identificador <strong>dentro de la función misma</strong>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var askQuestion = function ofTheTeacher() {
+    console.log(ofTheTeacher);
+};
+
+askQuestion();
+// function ofTheTeacher()...
+
+console.log(ofTheTeacher);
+// ReferenceError: ofTheTeacher is not defined</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>En realidad, <code>ofTheTeacher</code> no está exactamente <em>en el scope de la función</em>. El Apéndice A, "Scopes Implícitos" lo explicará con más detalle.</p></div></div>
+<p>No solo <code>ofTheTeacher</code> se declara dentro de la función en lugar de afuera, sino que también se define como de solo lectura:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var askQuestion = function ofTheTeacher() {
+    "use strict";
+    ofTheTeacher = 42;   // TypeError
+
+    //..
+};
+
+askQuestion();
+// TypeError</code></pre></div>
+<p>Como usamos strict mode, el fallo de asignación se reporta como un <code>TypeError</code>; en modo no estricto, tal asignación falla silenciosamente sin excepción.</p>
+<p>¿Qué pasa cuando una function expression no tiene un identificador de nombre?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var askQuestion = function(){
+   // ..
+};</code></pre></div>
+<p>Una function expression con un identificador de nombre se denomina "named function expression", pero una sin un identificador de nombre se denomina "anonymous function expression". Las anonymous function expressions claramente no tienen ningún identificador de nombre que afecte a ningún scope.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Discutiremos las function expressions con nombre vs. anónimas con mucho más detalle, incluyendo qué factores afectan la decisión de usar una u otra, en el Apéndice A.</p></div></div>
+<h2 id="arrow-functions">Arrow Functions</h2>
+<p>ES6 agregó una forma adicional de function expression al lenguaje, llamada "arrow functions":</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var askQuestion = () =&gt; {
+    // ..
+};</code></pre></div>
+<p>La arrow function <code>=&gt;</code> no requiere la palabra <code>function</code> para definirla. Además, los <code>( .. )</code> alrededor de la lista de parámetros son opcionales en algunos casos simples. Del mismo modo, las <code>{ .. }</code> alrededor del cuerpo de la función son opcionales en algunos casos. Y cuando se omiten las <code>{ .. }</code>, se devuelve un valor de retorno sin usar una palabra clave <code>return</code>.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>El atractivo de las arrow functions <code>=&gt;</code> a menudo se vende como "sintaxis más corta", y se afirma que eso equivale a un código objetivamente más legible. Esta afirmación es dudosa en el mejor de los casos, y creo que directamente equivocada. Profundizaremos en la "legibilidad" de las diversas formas de función en el Apéndice A.</p></div></div>
+<p>Las arrow functions son léxicamente anónimas, lo que significa que no tienen ningún identificador directamente relacionado que haga referencia a la función. La asignación a <code>askQuestion</code> crea un nombre inferido de "askQuestion", pero eso <strong>no es lo mismo que no ser anónima</strong>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var askQuestion = () =&gt; {
+    // ..
+};
+
+askQuestion.name;   // askQuestion</code></pre></div>
+<p>Las arrow functions logran su brevedad sintáctica a expensas de tener que hacer malabares mentales con un montón de variaciones para diferentes formas/condiciones. Solo algunas, por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">() =&gt; 42;
+
+id =&gt; id.toUpperCase();
+
+(id,name) =&gt; ({ id, name });
+
+(...args) =&gt; {
+    return args[args.length - 1];
+};</code></pre></div>
+<p>La verdadera razón por la que traigo a colación las arrow functions es por la afirmación común pero incorrecta de que las arrow functions de algún modo se comportan diferente con respecto al lexical scope que las funciones <code>function</code> estándar.</p>
+<p>Esto es incorrecto.</p>
+<p>Más allá de ser anónimas (y de no tener forma declarativa), las arrow functions <code>=&gt;</code> tienen las mismas reglas de lexical scope que tienen las funciones <code>function</code>. Una arrow function, con o sin <code>{ .. }</code> alrededor de su cuerpo, igual crea un balde de scope separado, interno y anidado. Las declaraciones de variables dentro de este balde de scope anidado se comportan igual que en un scope de <code>function</code>.</p>
+<h2 id="retrocediendo">Retrocediendo</h2>
+<p>Cuando se define una función (declaración o expression), se crea un nuevo scope. El posicionamiento de los scopes anidados unos dentro de otros crea una jerarquía natural de scope a lo largo del programa, llamada la cadena de scope. La cadena de scope controla el acceso a las variables, orientada direccionalmente hacia arriba y hacia afuera.</p>
+<p>Cada nuevo scope ofrece una hoja en blanco, un espacio para contener su propio conjunto de variables. Cuando un nombre de variable se repite en diferentes niveles de la cadena de scope, ocurre el shadowing, que impide el acceso a la variable externa desde ese punto hacia adentro.</p>
+<p>A medida que damos un paso atrás de estos detalles más finos, el próximo capítulo cambia el foco hacia el scope primario que todos los programas de JS incluyen: el global scope.</p>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../scope-closures/ch2.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 2 · Ilustrando el Scope léxico</span></a>
+      <a class="pager-btn next" href="../scope-closures/ch4.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 4 · Scope global</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#la-búsqueda-es-mayormente-conceptual">La "Búsqueda" Es (Mayormente) Conceptual</a></li>
+<li class="toc-l2"><a href="#shadowing">Shadowing</a></li>
+<li class="toc-l3"><a href="#truco-para-deshacer-el-shadowing-global">Truco para Deshacer el Shadowing Global</a></li>
+<li class="toc-l3"><a href="#copiar-no-es-acceder">Copiar No Es Acceder</a></li>
+<li class="toc-l3"><a href="#shadowing-ilegal">Shadowing Ilegal</a></li>
+<li class="toc-l2"><a href="#scope-del-nombre-de-función">Scope del Nombre de Función</a></li>
+<li class="toc-l2"><a href="#arrow-functions">Arrow Functions</a></li>
+<li class="toc-l2"><a href="#retrocediendo">Retrocediendo</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

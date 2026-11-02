@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 4 · Scope global — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔭</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#0ea5e9">
+      <span class="sidebar-emoji">🔭</span>
+      <div><div class="sidebar-book">Scope & Closures</div><div class="sidebar-sub">Scope y Closures</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap active"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../scope-closures/README.html">Scope & Closures</a> <span>/</span> Cap. 4 · Scope global</div>
+    <article class="prose" style="--book-color:#0ea5e9">
+      <h1 id="you-dont-know-js-yet-scope-closures---2nd-edition">You Don't Know JS Yet: Scope &amp; Closures - 2nd Edition</h1>
+<h1 id="capítulo-4-alrededor-del-global-scope">Capítulo 4: Alrededor del Global Scope</h1>
+<p>El Capítulo 3 mencionó el "global scope" varias veces, pero quizás todavía te preguntes por qué el scope más externo de un programa es tan importante en el JS moderno. La gran mayoría del trabajo ahora se hace dentro de funciones y módulos en lugar de hacerlo globalmente.</p>
+<p>¿Alcanza con solo afirmar "Evitá usar el global scope" y listo?</p>
+<p>El global scope de un programa de JS es un tema rico, con mucha más utilidad y matices de los que probablemente supondrías. Este capítulo primero explora cómo el global scope es (todavía) útil y relevante para escribir programas de JS hoy en día, y luego examina las diferencias respecto a dónde y <em>cómo acceder</em> al global scope en distintos entornos de JS.</p>
+<p>Entender completamente el global scope es crítico para dominar el uso del lexical scope para estructurar tus programas.</p>
+<h2 id="por-qué-global-scope">¿Por qué Global Scope?</h2>
+<p>Probablemente no sea ninguna sorpresa para los lectores que la mayoría de las aplicaciones están compuestas por múltiples (¡a veces muchos!) archivos de JS individuales. Entonces, ¿cómo se unen exactamente todos esos archivos separados en un único contexto de ejecución por parte del engine de JS?</p>
+<p>Con respecto a las aplicaciones ejecutadas en el navegador, hay tres formas principales.</p>
+<p>Primero, si estás usando directamente ES modules (sin transpilarlos a algún otro formato de bundle de módulos), estos archivos son cargados individualmente por el entorno de JS. Cada módulo entonces hace <code>import</code> de referencias a los otros módulos a los que necesita acceder. Los archivos de módulos separados cooperan entre sí exclusivamente a través de estos imports compartidos, sin necesitar ningún scope externo compartido.</p>
+<p>Segundo, si estás usando un bundler en tu proceso de build, todos los archivos típicamente se concatenan antes de ser entregados al navegador y al engine de JS, que luego solo procesa un único archivo grande. Incluso con todas las piezas de la aplicación ubicadas en un único archivo, es necesario algún mecanismo para que cada pieza registre un <em>nombre</em> al que las otras piezas puedan referirse, así como alguna facilidad para que ese acceso ocurra.</p>
+<p>En algunas configuraciones de build, todo el contenido del archivo se envuelve en un único scope envolvente, como una función envoltura, un módulo universal (UMD—ver Apéndice A), etc. Cada pieza puede registrarse a sí misma para el acceso desde otras piezas por medio de variables locales en ese scope compartido. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">(function wrappingOuterScope(){
+    var moduleOne = (function one(){
+        // ..
+    })();
+
+    var moduleTwo = (function two(){
+        // ..
+
+        function callModuleOne() {
+            moduleOne.someMethod();
+        }
+
+        // ..
+    })();
+})();</code></pre></div>
+<p>Como se muestra, las variables locales <code>moduleOne</code> y <code>moduleTwo</code> dentro del function scope de <code>wrappingOuterScope()</code> se declaran para que estos módulos puedan acceder entre sí para su cooperación.</p>
+<p>Si bien el scope de <code>wrappingOuterScope()</code> es una función y no el global scope completo del entorno, sí actúa como una especie de "scope a nivel de aplicación", un balde donde todos los identificadores de nivel superior pueden almacenarse, aunque no en el global scope real. En ese sentido, es una especie de reemplazo del global scope.</p>
+<p>Y finalmente, la tercera forma: ya sea que se use una herramienta de bundler para una aplicación, o que los archivos (que no son ES modules) simplemente se carguen individualmente en el navegador (vía tags <code>&lt;script&gt;</code> u otra carga dinámica de recursos de JS), si no hay un único scope envolvente que abarque todas estas piezas, el <strong>global scope</strong> es la única forma en que pueden cooperar entre sí:</p>
+<p>Un archivo agrupado de este tipo a menudo se ve más o menos así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var moduleOne = (function one(){
+    // ..
+})();
+var moduleTwo = (function two(){
+    // ..
+
+    function callModuleOne() {
+        moduleOne.someMethod();
+    }
+
+    // ..
+})();</code></pre></div>
+<p>Acá, dado que no hay un function scope envolvente, estas declaraciones de <code>moduleOne</code> y <code>moduleTwo</code> simplemente se dejan caer en el global scope. Esto es efectivamente lo mismo que si los archivos no se hubieran concatenado, sino cargado por separado:</p>
+<p>module1.js:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var moduleOne = (function one(){
+    // ..
+})();</code></pre></div>
+<p>module2.js:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var moduleTwo = (function two(){
+    // ..
+
+    function callModuleOne() {
+        moduleOne.someMethod();
+    }
+
+    // ..
+})();</code></pre></div>
+<p>Si estos archivos se cargan por separado como archivos .js independientes normales en un entorno de navegador, cada declaración de variable de nivel superior terminará siendo una variable global, ya que el global scope es el único recurso compartido entre estos dos archivos separados—son programas independientes, desde la perspectiva del engine de JS.</p>
+<p>Además de (potencialmente) dar cuenta de dónde reside el código de una aplicación durante la ejecución, y de cómo cada pieza puede acceder a las otras piezas para cooperar, el global scope también es donde:</p>
+<ul><li>JS expone sus built-ins:</li></ul>
+<ul><li>primitivos: <code>undefined</code>, <code>null</code>, <code>Infinity</code>, <code>NaN</code></li><li>nativos: <code>Date()</code>, <code>Object()</code>, <code>String()</code>, etc.</li><li>funciones globales: <code>eval()</code>, <code>parseInt()</code>, etc.</li><li>namespaces: <code>Math</code>, <code>Atomics</code>, <code>JSON</code></li><li>amigos de JS: <code>Intl</code>, <code>WebAssembly</code></li></ul>
+<ul><li>El entorno que aloja al engine de JS expone sus propios built-ins:</li></ul>
+<ul><li><code>console</code> (y sus métodos)</li><li>el DOM (<code>window</code>, <code>document</code>, etc)</li><li>timers (<code>setTimeout(..)</code>, etc)</li><li>APIs de la plataforma web: <code>navigator</code>, <code>history</code>, geolocalización, WebRTC, etc.</li></ul>
+<p>Estos son solo algunos de los muchos <em>globales</em> con los que tus programas van a interactuar.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Node también expone varios elementos "globalmente", pero técnicamente no están en el <code>global</code> scope: <code>require()</code>, <code>__dirname</code>, <code>module</code>, <code>URL</code>, y demás.</p></div></div>
+<p>La mayoría de los desarrolladores coinciden en que el global scope no debería ser simplemente un vertedero para cada variable de tu aplicación. Eso es un desastre de bugs esperando a suceder. Pero también es innegable que el global scope es un <em>pegamento</em> importante para prácticamente toda aplicación de JS.</p>
+<h2 id="dónde-está-exactamente-este-global-scope">¿Dónde Está Exactamente este Global Scope?</h2>
+<p>Podría parecer obvio que el global scope está ubicado en la porción más externa de un archivo; es decir, no dentro de ninguna función u otro bloque. Pero no es tan simple como eso.</p>
+<p>Distintos entornos de JS manejan los scopes de tus programas, especialmente el global scope, de manera diferente. Es bastante común que los desarrolladores de JS alberguen conceptos erróneos sin siquiera darse cuenta.</p>
+<h3 id="el-window-del-navegador">El "Window" del Navegador</h3>
+<p>Con respecto al tratamiento del global scope, el entorno más <em>puro</em> en el que se puede ejecutar JS es como un archivo .js independiente cargado en el entorno de una página web en un navegador. No quiero decir "puro" como en que no se agregue nada automáticamente—¡puede agregarse mucho!—sino más bien en términos de una intrusión mínima en el código o interferencia con su comportamiento esperado del global scope.</p>
+<p>Considerá este archivo .js:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Kyle";
+
+function hello() {
+    console.log(`Hello, ${ studentName }!`);
+}
+
+hello();
+// Hello, Kyle!</code></pre></div>
+<p>Este código puede cargarse en el entorno de una página web usando un tag <code>&lt;script&gt;</code> inline, un tag de script <code>&lt;script src=..&gt;</code> en el markup, o incluso un elemento <code>&lt;script&gt;</code> del DOM creado dinámicamente. En los tres casos, los identificadores <code>studentName</code> y <code>hello</code> se declaran en el global scope.</p>
+<p>Eso significa que si accedés al global object (comúnmente, <code>window</code> en el navegador), vas a encontrar propiedades con esos mismos nombres ahí:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Kyle";
+
+function hello() {
+    console.log(`Hello, ${ window.studentName }!`);
+}
+
+window.hello();
+// Hello, Kyle!</code></pre></div>
+<p>Ese es el comportamiento por defecto que uno esperaría de una lectura de la especificación de JS: el scope externo <em>es</em> el global scope y <code>studentName</code> se crea legítimamente como variable global.</p>
+<p>Eso es lo que quiero decir con <em>puro</em>. Pero lamentablemente, eso no siempre será cierto en todos los entornos de JS con los que te encuentres, y eso a menudo sorprende a los desarrolladores de JS.</p>
+<h4 id="globales-que-hacen-shadowing-de-globales">Globales que Hacen Shadowing de Globales</h4>
+<p>Recordá la discusión sobre shadowing (y el unshadowing global) del Capítulo 3, donde la declaración de una variable puede anular e impedir el acceso a una declaración del mismo nombre de un scope externo.</p>
+<p>Una consecuencia inusual de la diferencia entre una variable global y una propiedad global del mismo nombre es que, dentro del global scope mismo, una propiedad del global object puede ser objeto de shadowing por una variable global:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">window.something = 42;
+
+let something = "Kyle";
+
+console.log(something);
+// Kyle
+
+console.log(window.something);
+// 42</code></pre></div>
+<p>La declaración <code>let</code> agrega una variable global <code>something</code> pero no una propiedad del global object (ver Capítulo 3). El efecto entonces es que el identificador léxico <code>something</code> hace shadowing de la propiedad del global object <code>something</code>.</p>
+<p>Es casi con certeza una mala idea crear una divergencia entre el global object y el global scope. Los lectores de tu código casi con certeza se van a confundir.</p>
+<p>Una forma simple de evitar este problema con las declaraciones globales: siempre usá <code>var</code> para los globales. Reservá <code>let</code> y <code>const</code> para los block scopes (ver "Scoping con Bloques" en el Capítulo 6).</p>
+<h4 id="globales-del-dom">Globales del DOM</h4>
+<p>Afirmé que un entorno de JS alojado en un navegador tiene el comportamiento de global scope más <em>puro</em> que veremos. Sin embargo, no es del todo <em>puro</em>.</p>
+<p>Un comportamiento sorprendente en el global scope que podés encontrar con aplicaciones de JS basadas en el navegador: un elemento del DOM con un atributo <code>id</code> crea automáticamente una variable global que lo referencia.</p>
+<p>Considerá este markup:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">&lt;ul id="my-todo-list"&gt;
+   &lt;li id="first"&gt;Write a book&lt;/li&gt;
+   ..
+&lt;/ul&gt;</code></pre></div>
+<p>Y el JS para esa página podría incluir:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">first;
+// &lt;li id="first"&gt;..&lt;/li&gt;
+
+window["my-todo-list"];
+// &lt;ul id="my-todo-list"&gt;..&lt;/ul&gt;</code></pre></div>
+<p>Si el valor del <code>id</code> es un nombre léxico válido (como <code>first</code>), se crea la variable léxica. Si no, la única forma de acceder a ese global es a través del global object (<code>window[..]</code>).</p>
+<p>El auto-registro de todos los elementos del DOM que llevan <code>id</code> como variables globales es un comportamiento legacy antiguo de los navegadores que, no obstante, debe permanecer porque muchos sitios viejos todavía dependen de él. Mi consejo es nunca usar estas variables globales, aunque siempre vayan a crearse silenciosamente.</p>
+<h4 id="qué-hay-en-un-nombre-de-window">¿Qué Hay en un Nombre (de Window)?</h4>
+<p>Otra rareza del global scope en el JS basado en el navegador:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var name = 42;
+
+console.log(name, typeof name);
+// "42" string</code></pre></div>
+<p><code>window.name</code> es un "global" predefinido en un contexto de navegador; es una propiedad del global object, así que parece una variable global normal (y sin embargo es todo menos "normal").</p>
+<p>Usamos <code>var</code> para nuestra declaración, lo cual <strong>no</strong> hace shadowing de la propiedad global predefinida <code>name</code>. Eso significa que, efectivamente, la declaración <code>var</code> se ignora, ya que ya existe una propiedad del global scope object con ese nombre. Como discutimos antes, si hubiéramos usado <code>let name</code>, habríamos hecho shadowing de <code>window.name</code> con una variable global <code>name</code> separada.</p>
+<p>Pero el comportamiento verdaderamente sorprendente es que aunque asignamos el número <code>42</code> a <code>name</code> (y por lo tanto a <code>window.name</code>), cuando luego recuperamos su valor, ¡es el string <code>"42"</code>! En este caso, la rareza se debe a que <code>name</code> en realidad es un getter/setter predefinido en el objeto <code>window</code>, que insiste en que su valor sea un valor string. ¡Uf!</p>
+<p>Con la excepción de algunos casos extremos raros como los ID de elementos del DOM y <code>window.name</code>, el JS que se ejecuta como un archivo independiente en una página de navegador tiene algunos de los comportamientos de global scope más <em>puros</em> que vamos a encontrar.</p>
+<h3 id="web-workers">Web Workers</h3>
+<p>Los Web Workers son una extensión de la plataforma web por encima del comportamiento del JS del navegador, que permite que un archivo de JS se ejecute en un thread completamente separado (a nivel de sistema operativo) del thread que está ejecutando el programa principal de JS.</p>
+<p>Dado que estos programas Web Worker se ejecutan en un thread separado, están restringidos en sus comunicaciones con el thread de la aplicación principal, para evitar/limitar las race conditions y otras complicaciones. El código de Web Worker no tiene acceso al DOM, por ejemplo. Sin embargo, algunas web APIs sí están disponibles para el worker, como <code>navigator</code>.</p>
+<p>Dado que un Web Worker se trata como un programa completamente separado, no comparte el global scope con el programa principal de JS. Sin embargo, el engine de JS del navegador sigue ejecutando el código, así que podemos esperar una <em>pureza</em> similar en su comportamiento del global scope. Dado que no hay acceso al DOM, el alias <code>window</code> para el global scope no existe.</p>
+<p>En un Web Worker, la referencia al global object típicamente se hace usando <code>self</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Kyle";
+let studentID = 42;
+
+function hello() {
+    console.log(`Hello, ${ self.studentName }!`);
+}
+
+self.hello();
+// Hello, Kyle!
+
+self.studentID;
+// undefined</code></pre></div>
+<p>Al igual que con los programas principales de JS, las declaraciones <code>var</code> y <code>function</code> crean propiedades espejadas en el global object (es decir, <code>self</code>), mientras que otras declaraciones (<code>let</code>, etc) no.</p>
+<p>Así que, de nuevo, el comportamiento del global scope que estamos viendo acá es casi tan <em>puro</em> como puede serlo para ejecutar programas de JS; ¡quizás sea incluso más <em>puro</em> ya que no hay un DOM que enrede las cosas!</p>
+<h3 id="la-consolarepl-de-las-developer-tools">La Consola/REPL de las Developer Tools</h3>
+<p>Recordá del Capítulo 1 de <em>Get Started</em> que las Developer Tools no crean un entorno de JS completamente apegado. Sí procesan código de JS, pero también se inclinan a favor de que la interacción de UX sea lo más amigable posible para los desarrolladores (es decir, la experiencia de desarrollo, o DX).</p>
+<p>En algunos casos, favorecer la DX al escribir fragmentos cortos de JS, por sobre los pasos estrictos normales esperados para procesar un programa completo de JS, produce diferencias observables en el comportamiento del código entre programas y herramientas. Por ejemplo, ciertas condiciones de error aplicables a un programa de JS podrían relajarse y no mostrarse cuando el código se ingresa en una herramienta de desarrollo.</p>
+<p>Con respecto a nuestras discusiones acá sobre el scope, tales diferencias observables en el comportamiento pueden incluir:</p>
+<ul><li>El comportamiento del global scope</li></ul>
+<ul><li>Hoisting (ver Capítulo 5)</li></ul>
+<ul><li>Declaradores de block-scoping (<code>let</code> / <code>const</code>, ver Capítulo 6) cuando se usan en el scope más externo</li></ul>
+<p>Aunque podría parecer, mientras usás la consola/REPL, que las sentencias ingresadas en el scope más externo están siendo procesadas en el global scope real, eso no es del todo exacto. Tales herramientas típicamente emulan la posición del global scope hasta cierto punto; es emulación, no apego estricto. Estos entornos de herramientas priorizan la conveniencia del desarrollador, lo que significa que a veces (como en nuestras discusiones actuales sobre el scope), el comportamiento observado puede desviarse de la especificación de JS.</p>
+<p>La conclusión es que las Developer Tools, si bien están optimizadas para ser convenientes y útiles para una variedad de actividades de desarrollo, <strong>no</strong> son entornos adecuados para determinar o verificar comportamientos explícitos y matizados del contexto real de un programa de JS.</p>
+<h3 id="es-modules-esm">ES Modules (ESM)</h3>
+<p>ES6 introdujo soporte de primera clase para el patrón de módulos (cubierto en el Capítulo 8). Uno de los impactos más obvios de usar ESM es cómo cambia el comportamiento del scope de nivel superior observable en un archivo.</p>
+<p>Recordá este fragmento de código de antes (que ajustaremos al formato ESM usando la palabra clave <code>export</code>):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Kyle";
+
+function hello() {
+    console.log(`Hello, ${ studentName }!`);
+}
+
+hello();
+// Hello, Kyle!
+
+export hello;</code></pre></div>
+<p>Si ese código está en un archivo que se carga como un ES module, seguirá ejecutándose exactamente igual. Sin embargo, los efectos observables, desde la perspectiva general de la aplicación, serán diferentes.</p>
+<p>A pesar de ser declarados en el nivel superior del archivo (módulo), en el scope más externo obvio, <code>studentName</code> y <code>hello</code> no son variables globales. En cambio, son de alcance a todo el módulo, o si preferís, "module-global".</p>
+<p>Sin embargo, en un módulo no hay un "objeto de scope a nivel de módulo" implícito al que estas declaraciones de nivel superior se agreguen como propiedades, como sí lo hay cuando las declaraciones aparecen en el nivel superior de archivos de JS que no son módulos. Esto no quiere decir que las variables globales no puedan existir o ser accedidas en tales programas. Es solo que las variables globales no se <em>crean</em> al declarar variables en el scope de nivel superior de un módulo.</p>
+<p>El scope de nivel superior del módulo desciende del global scope, casi como si todo el contenido del módulo estuviera envuelto en una función. Por lo tanto, todas las variables que existen en el global scope (¡estén o no en el global object!) están disponibles como identificadores léxicos desde dentro del scope del módulo.</p>
+<p>ESM fomenta una minimización de la dependencia del global scope, donde importás los módulos que necesites para que el módulo actual opere. Como tal, ves con menos frecuencia el uso del global scope o de su global object.</p>
+<p>Sin embargo, como se señaló antes, ¡todavía hay montones de globales de JS y de la web a los que vas a seguir accediendo desde el global scope, te des cuenta o no!</p>
+<h3 id="node">Node</h3>
+<p>Un aspecto de Node que a menudo toma desprevenidos a los desarrolladores de JS es que Node trata cada archivo .js que carga, incluyendo el principal con el que iniciás el proceso de Node, como un <em>módulo</em> (ES module o módulo CommonJS, ver Capítulo 8). El efecto práctico es que el nivel superior de tus programas de Node <strong>nunca es en realidad el global scope</strong>, de la forma en que lo es al cargar un archivo que no es un módulo en el navegador.</p>
+<p>Al momento de escribir esto, Node agregó recientemente soporte para ES modules. Pero además, Node ha soportado desde sus inicios un formato de módulos conocido como "CommonJS", que se ve así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var studentName = "Kyle";
+
+function hello() {
+    console.log(`Hello, ${ studentName }!`);
+}
+
+hello();
+// Hello, Kyle!
+
+module.exports.hello = hello;</code></pre></div>
+<p>Antes de procesarlo, Node efectivamente envuelve tal código en una función, de modo que las declaraciones <code>var</code> y <code>function</code> queden contenidas en el scope de esa función envoltura, <strong>no</strong> tratadas como variables globales.</p>
+<p>Imaginá el código anterior tal como lo ve Node, de esta manera (ilustrativo, no real):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function Module(module,require,__dirname,...) {
+    var studentName = "Kyle";
+
+    function hello() {
+        console.log(`Hello, ${ studentName }!`);
+    }
+
+    hello();
+    // Hello, Kyle!
+
+    module.exports.hello = hello;
+}</code></pre></div>
+<p>Node entonces esencialmente invoca la función <code>Module(..)</code> agregada para ejecutar tu módulo. Podés ver claramente acá por qué los identificadores <code>studentName</code> y <code>hello</code> no son globales, sino que están declarados en el scope del módulo.</p>
+<p>Como se señaló antes, Node define una cantidad de "globales" como <code>require()</code>, pero en realidad no son identificadores en el global scope (ni propiedades del global object). Se inyectan en el scope de cada módulo, esencialmente un poco como los parámetros listados en la declaración de la función <code>Module(..)</code>.</p>
+<p>Entonces, ¿cómo definís variables globales reales en Node? La única forma de hacerlo es agregar propiedades a otro de los "globales" provistos automáticamente por Node, que irónicamente se llama <code>global</code>. <code>global</code> es una referencia al objeto real del global scope, algo parecido a usar <code>window</code> en un entorno de JS de navegador.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">global.studentName = "Kyle";
+
+function hello() {
+    console.log(`Hello, ${ studentName }!`);
+}
+
+hello();
+// Hello, Kyle!
+
+module.exports.hello = hello;</code></pre></div>
+<p>Acá agregamos <code>studentName</code> como una propiedad del objeto <code>global</code>, y luego en la sentencia <code>console.log(..)</code> podemos acceder a <code>studentName</code> como una variable global normal.</p>
+<p>Recordá que el identificador <code>global</code> no está definido por JS; está definido específicamente por Node.</p>
+<h2 id="global-this">Global This</h2>
+<p>Repasando los entornos de JS que hemos examinado hasta ahora, un programa puede o no:</p>
+<ul><li>Declarar una variable global en el scope de nivel superior con declaraciones <code>var</code> o <code>function</code>—o <code>let</code>, <code>const</code>, y <code>class</code>.</li></ul>
+<ul><li>También agregar las declaraciones de variables globales como propiedades del global scope object si se usa <code>var</code> o <code>function</code> para la declaración.</li></ul>
+<ul><li>Referirse al global scope object (para agregar o recuperar variables globales, como propiedades) con <code>window</code>, <code>self</code>, o <code>global</code>.</li></ul>
+<p>Creo que es justo decir que el acceso y comportamiento del global scope es más complicado de lo que la mayoría de los desarrolladores supone, como ilustraron las secciones anteriores. Pero la complejidad nunca es más obvia que al intentar precisar una referencia universalmente aplicable al global scope object.</p>
+<p>Otro "truco" más para obtener una referencia al global scope object se ve así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const theGlobalScopeObject =
+    (new Function("return this"))();</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Una función puede construirse dinámicamente a partir de código almacenado en un valor string con el constructor <code>Function()</code>, similar a <code>eval(..)</code> (ver "Haciendo Trampa: Modificaciones del Scope en Tiempo de Ejecución" en el Capítulo 1). Tal función se ejecutará automáticamente en modo non-strict (por razones de legado) cuando se invoque con la invocación de función normal <code>()</code> como se muestra; su <code>this</code> apuntará al global object. Ver el tercer libro de la serie, <em>Objects &amp; Classes</em>, para más información sobre cómo se determinan los bindings de <code>this</code>.</p></div></div>
+<p>Entonces, tenemos <code>window</code>, <code>self</code>, <code>global</code>, y este feo truco de <code>new Function(..)</code>. Esas son muchas formas distintas de intentar llegar a este global object. Cada una tiene sus pros y sus contras.</p>
+<p>¿¡¿Por qué no introducir una más?!?</p>
+<p>A partir de ES2020, JS finalmente definió una referencia estandarizada al global scope object, llamada <code>globalThis</code>. Así que, sujeto a lo reciente que sean los engines de JS en los que se ejecuta tu código, podés usar <code>globalThis</code> en lugar de cualquiera de esos otros enfoques.</p>
+<p>Hasta podríamos intentar definir un polyfill multi-entorno que sea más seguro en los entornos de JS previos a <code>globalThis</code>, como por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const theGlobalScopeObject =
+    (typeof globalThis != "undefined") ? globalThis :
+    (typeof global != "undefined") ? global :
+    (typeof window != "undefined") ? window :
+    (typeof self != "undefined") ? self :
+    (new Function("return this"))();</code></pre></div>
+<p>¡Uf! Eso sin duda no es lo ideal, pero funciona si te encontrás necesitando una referencia confiable al global scope.</p>
+<p>(El nombre propuesto <code>globalThis</code> fue bastante controvertido mientras se agregaba la funcionalidad a JS. Específicamente, yo y muchos otros sentíamos que la referencia a "this" en su nombre era engañosa, ya que la razón por la que referenciás este objeto es para acceder al global scope, nunca para acceder a algún tipo de binding global/por defecto de <code>this</code>. Se consideraron muchos otros nombres, pero por una variedad de razones fueron descartados. Lamentablemente, el nombre elegido terminó siendo un último recurso. Si planeás interactuar con el global scope object en tus programas, para reducir la confusión, te recomiendo enfáticamente elegir un mejor nombre, como (¡el ridículamente largo pero preciso!) <code>theGlobalScopeObject</code> usado acá.)</p>
+<h2 id="globalmente-consciente">Globalmente Consciente</h2>
+<p>El global scope está presente y es relevante en todo programa de JS, aunque los patrones modernos para organizar código en módulos restan énfasis a gran parte de la dependencia de almacenar identificadores en ese namespace.</p>
+<p>Aun así, a medida que nuestro código prolifera cada vez más allá de los confines del navegador, es especialmente importante que tengamos un dominio sólido de las diferencias en cómo el global scope (¡y el global scope object!) se comportan en los distintos entornos de JS.</p>
+<p>Con el panorama general del global scope ahora más nítidamente enfocado, el próximo capítulo desciende nuevamente a los detalles más profundos del lexical scope, examinando cómo y cuándo pueden usarse las variables.</p>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../scope-closures/ch3.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 3 · El alcance de la cadena de scopes</span></a>
+      <a class="pager-btn next" href="../scope-closures/ch5.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 5 · El (no tan) secreto de los closures</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#por-qué-global-scope">¿Por qué Global Scope?</a></li>
+<li class="toc-l2"><a href="#dónde-está-exactamente-este-global-scope">¿Dónde Está Exactamente este Global Scope?</a></li>
+<li class="toc-l3"><a href="#el-window-del-navegador">El "Window" del Navegador</a></li>
+<li class="toc-l3"><a href="#web-workers">Web Workers</a></li>
+<li class="toc-l3"><a href="#la-consolarepl-de-las-developer-tools">La Consola/REPL de las Developer Tools</a></li>
+<li class="toc-l3"><a href="#es-modules-esm">ES Modules (ESM)</a></li>
+<li class="toc-l3"><a href="#node">Node</a></li>
+<li class="toc-l2"><a href="#global-this">Global This</a></li>
+<li class="toc-l2"><a href="#globalmente-consciente">Globalmente Consciente</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

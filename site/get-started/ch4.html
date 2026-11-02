@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 4 · Los tres pilares — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🚀</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#6366f1">
+      <span class="sidebar-emoji">🚀</span>
+      <div><div class="sidebar-book">Get Started</div><div class="sidebar-sub">Empezando</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group" open>
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap active"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../get-started/README.html">Get Started</a> <span>/</span> Cap. 4 · Los tres pilares</div>
+    <article class="prose" style="--book-color:#6366f1">
+      <h1 id="you-dont-know-js-yet-get-started---2nd-edition">You Don't Know JS Yet: Get Started - 2nd Edition</h1>
+<h1 id="capítulo-4-el-panorama-general">Capítulo 4: El panorama general</h1>
+<p>Este libro repasa aquello de lo que necesitás estar al tanto a medida que <em>empezás</em> con JS. El objetivo es llenar los vacíos con los que los lectores más nuevos en JS podrían haber tropezado en sus primeros encuentros con el lenguaje. También espero que a lo largo del libro hayamos insinuado suficiente detalle profundo como para despertar tu curiosidad y que quieras indagar más en el lenguaje.</p>
+<p>El resto de los libros de esta serie es donde vamos a desglosar todo lo que queda del lenguaje, con muchísimo más detalle del que podríamos haber abarcado en unos pocos capítulos breves acá.</p>
+<p>Pero acordate de tomarte tu tiempo. En lugar de lanzarte apresuradamente al siguiente libro en un intento de atravesar todos los libros con rapidez, dedicá algo de tiempo a repasar el material de este libro. Dedicá algo más de tiempo a revisar el código de tus proyectos actuales, y a comparar lo que ves con lo que se discutió hasta ahora.</p>
+<p>Cuando estés listo, este capítulo final divide la organización del lenguaje JS en tres pilares principales, luego ofrece una breve hoja de ruta de qué esperar del resto de la serie de libros, y cómo te sugiero que procedas. Además, no te saltees los apéndices, especialmente el Apéndice B, "¡Práctica, práctica, práctica!".</p>
+<h2 id="pilar-1-scope-y-closure">Pilar 1: Scope y Closure</h2>
+<p>La organización de las variables en unidades de scope (funciones, bloques) es una de las características más fundamentales de cualquier lenguaje; quizás ninguna otra característica tenga un impacto mayor en cómo se comportan los programas.</p>
+<p>Los scopes son como baldes, y las variables son como las bolitas que ponés dentro de esos baldes. El modelo de scope de un lenguaje es como las reglas que te ayudan a determinar qué bolitas de qué color van en qué baldes del color que coincide.</p>
+<p>Los scopes se anidan unos dentro de otros, y para cualquier expression o statement dado, solo las variables en ese nivel de anidamiento de scope, o en scopes superiores/externos, son accesibles; las variables de scopes inferiores/internos están ocultas y son inaccesibles.</p>
+<p>Así es como se comportan los scopes en la mayoría de los lenguajes, lo que se denomina lexical scope. Los límites de la unidad de scope, y cómo se organizan las variables en ellos, se determinan en el momento en que el programa es parseado (compilado). En otras palabras, es una decisión en tiempo de autoría: dónde ubicás una función/scope en el programa determina cuál será la estructura de scope de esa parte del programa.</p>
+<p>JS tiene lexical scope, aunque muchos afirman que no, debido a dos características particulares de su modelo que no están presentes en otros lenguajes con lexical scope.</p>
+<p>La primera se llama comúnmente <em>hoisting</em>: cuando todas las variables declaradas en cualquier parte de un scope se tratan como si estuvieran declaradas al comienzo del scope. La otra es que las variables declaradas con <code>var</code> tienen function scope, incluso si aparecen dentro de un bloque.</p>
+<p>Ni el hoisting ni el <code>var</code> con function scope son suficientes para respaldar la afirmación de que JS no tiene lexical scope. Las declaraciones <code>let</code>/<code>const</code> tienen un comportamiento de error peculiar llamado la "Temporal Dead Zone" (TDZ) que da como resultado variables observables pero inutilizables. Aunque encontrarse con la TDZ puede resultar extraño, <em>tampoco</em> es una invalidación del lexical scoping. Todas estas son simplemente partes únicas del lenguaje que todos los desarrolladores de JS deberían aprender y comprender.</p>
+<p>El closure es un resultado natural del lexical scope cuando el lenguaje tiene funciones como valores de primera clase, como ocurre con JS. Cuando una función hace referencia a variables de un scope externo, y esa función se pasa de un lado a otro como un valor y se ejecuta en otros scopes, mantiene el acceso a las variables de su scope original; esto es el closure.</p>
+<p>A lo largo de toda la programación, pero especialmente en JS, el closure impulsa muchos de los patrones de programación más importantes, incluidos los módulos. Tal como lo veo, los módulos son lo más <em>a favor de la veta</em> que podés llegar a estar, en lo que respecta a la organización del código en JS.</p>
+<p>Para profundizar en el scope, los closures, y cómo funcionan los módulos, leé el Libro 2, <em>Scope &amp; Closures</em>.</p>
+<h2 id="pilar-2-prototypes">Pilar 2: Prototypes</h2>
+<p>El segundo pilar del lenguaje es el sistema de prototypes. Cubrimos este tema en profundidad en el Capítulo 3 ("Prototypes"), pero solo quiero hacer algunos comentarios más sobre su importancia.</p>
+<p>JS es uno de los muy pocos lenguajes en los que tenés la opción de crear objetos directa y explícitamente, sin definir primero su estructura en una clase.</p>
+<p>Durante muchos años, la gente implementó el patrón de diseño de clases sobre los prototypes —la llamada "herencia prototipal" (ver Apéndice A, "'Clases' prototipales")— y luego, con la llegada de la palabra clave <code>class</code> de ES6, el lenguaje redobló la apuesta por su inclinación hacia la programación al estilo OO/clases.</p>
+<p>Pero creo que ese enfoque ha opacado la belleza y el poder del sistema de prototypes: la capacidad de que dos objetos simplemente se conecten entre sí y cooperen dinámicamente (durante la ejecución de una función/método) a través de compartir un contexto <code>this</code>.</p>
+<p>Las clases son solo uno de los patrones que podés construir sobre ese poder. Pero otro enfoque, en una dirección muy diferente, es simplemente abrazar los objetos como objetos, olvidarse por completo de las clases, y dejar que los objetos cooperen a través de la prototype chain. Esto se llama <em>delegación de comportamiento</em>. Creo que la delegación es más poderosa que la herencia de clases, como medio para organizar el comportamiento y los datos en nuestros programas.</p>
+<p>Pero la herencia de clases se lleva casi toda la atención. Y el resto se va a la programación funcional (FP), como una especie de forma "anticlase" de diseñar programas. Esto me entristece, porque sofoca cualquier posibilidad de explorar la delegación como una alternativa viable.</p>
+<p>Te animo a que dediques bastante tiempo a sumergirte en el Libro 3, <em>Objects &amp; Classes</em>, para ver cómo la delegación de objetos encierra mucho más potencial del que quizás hayamos reconocido. Este no es un mensaje anti-<code>class</code>, pero sí es intencionalmente un mensaje de "las clases no son la única forma de usar objetos" que quiero que más desarrolladores de JS consideren.</p>
+<p>La delegación de objetos es, yo argumentaría, mucho más <em>a favor de la veta</em> de JS que las clases (más sobre las <em>vetas</em> en un rato).</p>
+<h2 id="pilar-3-tipos-y-coerción">Pilar 3: Tipos y Coerción</h2>
+<p>El tercer pilar de JS es, por lejos, la parte más ignorada de la naturaleza de JS.</p>
+<p>La gran mayoría de los desarrolladores tiene fuertes ideas equivocadas sobre cómo funcionan los <em>tipos</em> en los lenguajes de programación, y especialmente sobre cómo funcionan en JS. Una ola de interés en la comunidad más amplia de JS ha comenzado a inclinarse hacia enfoques de "tipado estático", usando herramientas con conciencia de tipos como TypeScript o Flow.</p>
+<p>Estoy de acuerdo en que los desarrolladores de JS deberían aprender más sobre los tipos, y deberían aprender más sobre cómo JS maneja las conversiones de tipos. También estoy de acuerdo en que las herramientas con conciencia de tipos pueden ayudar a los desarrolladores, ¡asumiendo que primero hayan adquirido y usado este conocimiento!</p>
+<p>Pero no estoy en absoluto de acuerdo con que la conclusión inevitable de esto sea decidir que el mecanismo de tipos de JS es malo y que necesitamos encubrir los tipos de JS con soluciones externas al lenguaje. No tenemos que seguir el camino del "tipado estático" para ser inteligentes y sólidos con los tipos en nuestros programas. Hay otras opciones, si estás dispuesto a ir <em>en contra de la veta</em> de la multitud, y <em>a favor de la veta</em> de JS (de nuevo, más sobre eso está por venir).</p>
+<p>Se podría argumentar que este pilar es más importante que los otros dos, en el sentido de que ningún programa de JS hará nada útil si no aprovecha correctamente los tipos de valor de JS, así como la conversión (coerción) de valores entre tipos.</p>
+<p>Incluso si amás TypeScript/Flow, no vas a sacarles el máximo provecho a esas herramientas o enfoques de codificación si no estás profundamente familiarizado con cómo el lenguaje en sí maneja los tipos de valor.</p>
+<p>Para aprender más sobre los tipos y la coerción de JS, mirá el Libro 4, <em>Types &amp; Grammar</em>. Pero por favor no te saltees este tema solo porque siempre escuchaste que deberíamos usar <code>===</code> y olvidarnos de todo lo demás.</p>
+<p>Sin aprender este pilar, tu base en JS es, en el mejor de los casos, inestable e incompleta.</p>
+<h2 id="a-favor-de-la-veta">A favor de la veta</h2>
+<p>Tengo algún consejo para compartir sobre cómo continuar tu camino de aprendizaje con JS, y tu recorrido a través del resto de esta serie de libros: estate atento a la <em>veta</em> (recordá las diversas referencias a la <em>veta</em> más temprano en este capítulo).</p>
+<p>Primero, considerá la <em>veta</em> (como en la madera) de cómo la mayoría de la gente aborda y usa JS. Probablemente ya hayas notado que estos libros van en contra de esa <em>veta</em> en muchos aspectos. En YDKJSY, te respeto a vos, el lector, lo suficiente como para explicarte todas las partes de JS, no solo algunas partes populares seleccionadas. Creo que sos capaz de ese conocimiento y que lo merecés.</p>
+<p>Pero eso no es lo que vas a encontrar en gran parte del resto del material que hay por ahí. También significa que cuanto más sigas y te adhieras a la orientación de estos libros —que pienses cuidadosamente y analices por vos mismo qué es lo mejor para tu código— más vas a destacar. Eso puede ser algo bueno y malo. Si alguna vez querés diferenciarte de la multitud, ¡vas a tener que romper con la forma en que la multitud lo hace!</p>
+<p>Pero también mucha gente me ha dicho que citó algún tema/explicación de estos libros durante una entrevista de trabajo, y el entrevistador le dijo al candidato que estaba equivocado; de hecho, según se reporta, hay gente que ha perdido ofertas de trabajo como resultado.</p>
+<p>En la medida de lo posible, me esfuerzo en estos libros por brindar información completamente precisa sobre JS, informada en general a partir de la propia especificación. Pero también dosifico bastante de mis opiniones sobre cómo podés interpretar y usar JS para el mejor beneficio en tus programas. No presento opinión como hecho, ni viceversa. Siempre vas a saber cuál es cuál en estos libros.</p>
+<p>Los hechos sobre JS no están realmente sujetos a debate. O bien la especificación dice algo, o no lo dice. Si no te gusta lo que dice la especificación, o mi forma de transmitirlo, ¡reclamáselo a TC39! Si estás en una entrevista y afirman que estás equivocado respecto de los hechos, preguntales ahí mismo si podés buscarlo en la especificación. Si el entrevistador no quiere reconsiderarlo, entonces de todos modos no deberías querer trabajar ahí.</p>
+<p>Pero si elegís alinearte con mis opiniones, tenés que estar preparado para respaldar esas elecciones con el <em>porqué</em> sentís de esa manera. No te limites a repetir como un loro lo que digo. Adueñate de tus opiniones. Defendelas. Y si alguien con quien esperabas trabajar no está de acuerdo, retirate con la cabeza todavía en alto. Es un gran JS, y hay mucho espacio para un montón de formas diferentes.</p>
+<p>En otras palabras, no tengas miedo de ir en contra de la <em>veta</em>, como lo he hecho yo con estos libros y con todas mis enseñanzas. Nadie puede decirte cómo vas a aprovechar mejor JS; eso te toca decidirlo a vos. Yo simplemente intento empoderarte para que llegues a tus propias conclusiones, cualesquiera que sean.</p>
+<p>Por otro lado, hay una <em>veta</em> a la que realmente deberías prestarle atención y seguir: la <em>veta</em> de cómo funciona JS, a nivel del lenguaje. Hay cosas que funcionan bien y de forma natural en JS, dada la práctica y el enfoque correctos, y hay cosas que realmente no deberías intentar hacer en el lenguaje.</p>
+<p>¿Podés hacer que tu programa de JS se vea como un programa de Java, C# o Perl? ¿Qué tal como Python o Ruby, o incluso PHP? En distintos grados, claro que podés. ¿Pero deberías?</p>
+<p>No, no creo que debas. Creo que deberías aprender y abrazar la forma de JS, y hacer que tus programas de JS sean tan "JS-eros" como sea práctico. Algunos pensarán que eso significa una programación descuidada e informal, pero no quiero decir eso en absoluto. Solo quiero decir que JS tiene un montón de patrones e idiomas que son reconociblemente "JS", y ir a favor de esa <em>veta</em> es el camino general hacia el mejor éxito.</p>
+<p>Finalmente, quizás la <em>veta</em> más importante que reconocer es cómo hacen las cosas el o los programas existentes en los que estás trabajando, y los desarrolladores con los que trabajás. No leas estos libros y luego intentes cambiar <em>toda esa veta</em> en tus proyectos existentes de la noche a la mañana. Ese enfoque siempre va a fracasar.</p>
+<p>Vas a tener que ir modificando estas cosas de a poco, con el tiempo. Trabajá en construir consenso con tus compañeros desarrolladores sobre por qué es importante revisar y reconsiderar un enfoque. Pero hacelo con un solo tema pequeño a la vez, y dejá que las comparaciones de código de antes y después hagan la mayor parte del trabajo. Reuní a todo el equipo para discutir, e impulsá decisiones que se basen en el análisis y la evidencia del código, en lugar de en la inercia de "nuestros desarrolladores senior siempre lo hicieron de esta manera".</p>
+<p>Ese es el consejo más importante que puedo transmitirte para ayudarte a aprender JS. Seguí siempre buscando mejores formas de usar lo que JS nos da para escribir código más legible. ¡Todos los que trabajen en tu código, incluido tu yo futuro, te lo van a agradecer!</p>
+<h2 id="en-orden">En orden</h2>
+<p>Así que ahora tenés una perspectiva más amplia de lo que queda por explorar en JS, y la actitud correcta para abordar el resto de tu camino.</p>
+<p>Pero una de las preguntas prácticas más comunes que recibo en este punto es: "¿En qué orden debería leer los libros?". Hay una respuesta directa... pero también depende.</p>
+<p>Mi sugerencia para la mayoría de los lectores es avanzar por esta serie en este orden:</p>
+<ol><li>Arrancá con una base sólida de JS con <em>Get Started</em> (Libro 1) -- buenas noticias, ¡ya casi terminaste este libro!</li></ol>
+<ol><li>En <em>Scope &amp; Closures</em> (Libro 2), indagá en el primer pilar de JS: lexical scope, cómo eso sustenta el closure, y cómo el patrón de módulos organiza el código.</li></ol>
+<ol><li>En <em>Objects &amp; Classes</em> (Libro 3), enfocate en el segundo pilar de JS: cómo funciona el <code>this</code> de JS, cómo los prototypes de objetos sustentan la delegación, y cómo los prototypes habilitan el mecanismo <code>class</code> para la organización del código al estilo OO.</li></ol>
+<ol><li>En <em>Types &amp; Grammar</em> (Libro 4), abordá el tercer y último pilar de JS: los tipos y la coerción de tipos, así como la forma en que la sintaxis y la gramática de JS definen cómo escribimos nuestro código.</li></ol>
+<ol><li>Con los <strong>tres pilares</strong> sólidamente en su lugar, <em>Sync &amp; Async</em> (Libro 5) explora luego cómo usamos el control de flujo para modelar el cambio de estado en nuestros programas, tanto de forma síncrona (de inmediato) como asíncrona (a lo largo del tiempo).</li></ol>
+<ol><li>La serie concluye con <em>ES.Next &amp; Beyond</em> (Libro 6), una mirada hacia adelante al futuro cercano y a mediano plazo de JS, incluida una variedad de características que probablemente lleguen a tus programas de JS dentro de no mucho tiempo.</li></ol>
+<p>Ese es el orden previsto para leer esta serie de libros.</p>
+<p>Sin embargo, los Libros 2, 3 y 4 generalmente pueden leerse en cualquier orden, dependiendo de qué tema sientas más curiosidad y comodidad por explorar primero. Pero no te recomiendo que te saltees ninguno de estos tres libros —ni siquiera <em>Types &amp; Grammar</em>, ¡como algunos de ustedes estarán tentados de hacer!— incluso si creés que ya tenés ese tema dominado.</p>
+<p>El Libro 5 (<em>Sync &amp; Async</em>) es crucial para entender JS en profundidad, pero si empezás a meterte y te resulta demasiado intimidante, este libro puede posponerse hasta que tengas más experiencia con el lenguaje. Cuanto más JS hayas escrito (¡y con cuánto más hayas batallado!), más vas a llegar a apreciar este libro. Así que no tengas miedo de volver a él más adelante.</p>
+<p>El último libro de la serie, <em>ES.Next &amp; Beyond</em>, en algunos aspectos se sostiene por sí solo. Puede leerse al final, como sugiero, o justo después de <em>Get Started</em> si estás buscando un atajo para ampliar tu radar sobre de qué se trata JS. Este libro también será más propenso a recibir actualizaciones en el futuro, así que probablemente quieras volver a visitarlo de vez en cuando.</p>
+<p>Sin importar cómo elijas avanzar con YDKJSY, mirá primero los apéndices de este libro, especialmente practicando los fragmentos del Apéndice B, "¡Práctica, práctica, práctica!". ¿Mencioné que deberías ir a practicar? No hay mejor manera de aprender a programar que escribiendo código.</p>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../get-started/ch3.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 3 · Cavando en las raíces de JS</span></a>
+      <a class="pager-btn next" href="../get-started/apA.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Apéndice A · Explorando más a fondo</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#pilar-1-scope-y-closure">Pilar 1: Scope y Closure</a></li>
+<li class="toc-l2"><a href="#pilar-2-prototypes">Pilar 2: Prototypes</a></li>
+<li class="toc-l2"><a href="#pilar-3-tipos-y-coerción">Pilar 3: Tipos y Coerción</a></li>
+<li class="toc-l2"><a href="#a-favor-de-la-veta">A favor de la veta</a></li>
+<li class="toc-l2"><a href="#en-orden">En orden</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 1 · Tipos primitivos — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔡</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#ec4899">
+      <span class="sidebar-emoji">🔡</span>
+      <div><div class="sidebar-book">Types & Grammar</div><div class="sidebar-sub">Tipos y Gramática</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap active"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../types-grammar/README.html">Types & Grammar</a> <span>/</span> Cap. 1 · Tipos primitivos</div>
+    <article class="prose" style="--book-color:#ec4899">
+      <h1 id="you-dont-know-js-yet-types-grammar---2nd-edition">You Don't Know JS Yet: Types &amp; Grammar - 2nd Edition</h1>
+<h1 id="capítulo-1-valores-primitivos">Capítulo 1: Valores Primitivos</h1>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Trabajo en progreso</p></div></div>
+<p>En el Capítulo 1 del libro "Objects &amp; Classes" de esta serie, confrontamos el error común de creer que "todo en JS es un objeto". Ahora volvemos a ese tema y, una vez más, desmentimos ese mito.</p>
+<p>Aquí veremos los tipos de valor centrales de JS, específicamente los tipos que no son objetos, llamados <em>primitivos</em>.</p>
+<h2 id="tipos-de-valor">Tipos de Valor</h2>
+<p>JS no aplica types a las variables ni a las propiedades -- lo que yo llamo "tipos contenedores" -- sino que los valores en sí mismos tienen types -- lo que yo llamo "tipos de valor".</p>
+<p>El lenguaje provee siete tipos de valor primitivos (no objeto) incorporados: <sup class="fnref"><a href="#fn-PrimitiveValues">[PrimitiveValues]</a></sup></p>
+<ul><li><code>undefined</code></li><li><code>null</code></li><li><code>boolean</code></li><li><code>number</code></li><li><code>bigint</code></li><li><code>symbol</code></li><li><code>string</code></li></ul>
+<p>Estos tipos de valor definen colecciones de uno o más valores concretos, cada uno con un conjunto de comportamientos compartidos por todos los valores de cada type.</p>
+<h3 id="type-of">Type-Of</h3>
+<p>El tipo de cualquier valor puede inspeccionarse mediante el operador <code>typeof</code>, que siempre devuelve un valor <code>string</code> que representa el tipo de valor JS subyacente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">typeof true;            // "boolean"
+
+typeof 42;              // "number"
+
+typeof 42n;             // "bigint"
+
+typeof Symbol("42");    // "symbol"</code></pre></div>
+<p>El operador <code>typeof</code>, cuando se usa sobre una variable en lugar de un valor, reporta el tipo de valor de <em>el valor contenido en la variable</em>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting = "Hello";
+typeof greeting;        // "string"</code></pre></div>
+<p>Las variables de JS en sí mismas no tienen types. Contienen cualquier valor arbitrario, el cual, a su vez, tiene un tipo de valor.</p>
+<h3 id="no-objetos">¿No-objetos?</h3>
+<p>¿Qué hace específicamente que los 7 tipos de valor primitivos sean distintos de los tipos de valor objeto (y sus subtipos)? ¿Por qué no deberíamos simplemente considerarlos a todos como esencialmente <em>objetos</em> por debajo?</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myName = "Kyle";
+
+myName.nickname = "getify";
+
+console.log(myName.nickname);           // undefined</code></pre></div>
+<p>Este fragmento parece fallar silenciosamente al intentar agregar una propiedad <code>nickname</code> a un string primitivo. Tomado al pie de la letra, eso podría dar a entender que los primitivos son en realidad objetos por debajo, como muchos han afirmado (erróneamente) a lo largo de los años.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Uno podría explicar esa falla silenciosa como un ejemplo de <em>auto-boxing</em> (ver "Objetos Automáticos" en el Capítulo 3), donde el primitivo se convierte implícitamente en un objeto envoltorio de instancia <code>String</code> al intentar asignar la propiedad, y luego ese objeto interno se descarta una vez que la sentencia se completa. De hecho, dije exactamente eso en la primera edición de este libro. ¡Pero estaba equivocado; ups!</p></div></div>
+<p>Algo más profundo está en juego, como vemos en esta versión del fragmento anterior:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"use strict";
+
+myName = "Kyle";
+
+myName.nickname = "getify";
+// TypeError: Cannot create property 'nickname'
+// on string 'Kyle'</code></pre></div>
+<p>¡Interesante! En strict-mode, JS impone una restricción que prohíbe asignar una nueva propiedad a un valor primitivo, como si lo promoviera implícitamente a un nuevo objeto.</p>
+<p>En cambio, en modo no estricto, JS permite que la violación pase sin mención. ¿Y por qué? Porque strict-mode se agregó al lenguaje en ES5.1 (2011), más de 15 años después, y un cambio así habría roto programas existentes de no haberse definido como sensible a la nueva declaración strict-mode.</p>
+<p>Entonces, ¿qué podemos concluir sobre la distinción entre primitivos y objetos? Los primitivos son valores a los que <em>no se les permite tener propiedades</em>; solo los objetos tienen permitido eso.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Esta distinción en particular parece contradecirse con expresiones como <code>"hello".length</code>; incluso en strict-mode, devuelve el valor esperado <code>5</code>. ¡Así que ciertamente <em>parece</em> que el string tiene una propiedad <code>length</code>! Pero, como se mencionó recién, la explicación correcta es el <em>auto-boxing</em>; cubriremos el tema en "Objetos Automáticos" en el Capítulo 3.</p></div></div>
+<h2 id="valores-vacíos">Valores Vacíos</h2>
+<p>Los types <code>null</code> y <code>undefined</code> típicamente representan un vacío o una ausencia de valor.</p>
+<p>Desafortunadamente, el tipo de valor <code>null</code> tiene un resultado de <code>typeof</code> inesperado. En lugar de <code>"null"</code>, vemos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">typeof null;            // "object"</code></pre></div>
+<p>No, eso no significa que <code>null</code> sea de algún modo una clase especial de objeto. Es solo una herencia de los primeros días de JS, que no puede cambiarse por la cantidad de código circulante que rompería.</p>
+<p>El type <code>undefined</code> se reporta tanto para valores <code>undefined</code> explícitos como para cualquier lugar donde se encuentre un valor aparentemente faltante:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">typeof undefined;               // "undefined"
+
+var whatever;
+
+typeof whatever;                // "undefined"
+typeof nonExistent;             // "undefined"
+
+whatever = {};
+typeof whatever.missingProp;    // "undefined"
+
+whatever = [];
+typeof whatever[10];            // "undefined"</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>La expresión <code>typeof nonExistent</code> se refiere a una variable no declarada <code>nonExistent</code>. Normalmente, acceder a una referencia de variable no declarada provocaría una excepción, pero al operador <code>typeof</code> se le concede la capacidad especial de acceder de forma segura incluso a identificadores inexistentes y devolver tranquilamente <code>"undefined"</code> en lugar de lanzar una excepción.</p></div></div>
+<p>Sin embargo, cada type "vacío" respectivo tiene exactamente un valor, con el mismo nombre. Así que <code>null</code> es el único valor en el tipo de valor <code>null</code>, y <code>undefined</code> es el único valor en el tipo de valor <code>undefined</code>.</p>
+<h3 id="nullish">Null'ish</h3>
+<p>Semánticamente, los types <code>null</code> y <code>undefined</code> representan ambos un vacío general, o la ausencia de otro valor afirmativo y significativo.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>A las operaciones de JS que se comportan igual tanto si encuentran <code>null</code> como <code>undefined</code> se las denomina "null'ish" (o "nullish"). ¡Supongo que "undefined'ish" se vería/sonaría demasiado raro!</p></div></div>
+<p>Para gran parte de JS, especialmente el código que escriben los desarrolladores, estos dos valores <em>nullish</em> son intercambiables; la decisión de usar/asignar intencionalmente <code>null</code> o <code>undefined</code> en un escenario dado depende de la situación y queda a criterio del desarrollador.</p>
+<p>JS provee una serie de capacidades para ayudar a tratar los dos valores nullish como indistinguibles.</p>
+<p>Por ejemplo, el operador <code>==</code> (comparación de igualdad coercitiva) trata específicamente a <code>null</code> y <code>undefined</code> como coercitivamente iguales entre sí, pero a ningún otro valor del lenguaje. Como tal, una verificación <code>.. == null</code> es segura de realizar si querés comprobar si un valor es específicamente <code>null</code> o <code>undefined</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (greeting == null) {
+    // greeting is nullish/empty
+}</code></pre></div>
+<p>Otra adición (reciente) a JS es el operador <code>??</code> (coalescencia nullish):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">who = myName ?? "User";
+
+// equivalent to:
+who = (myName != null) ? myName : "User";</code></pre></div>
+<p>Como ilustra el equivalente ternario, <code>??</code> comprueba si <code>myName</code> es no-nullish y, de ser así, devuelve su valor. De lo contrario, devuelve el otro operando (aquí, <code>"User"</code>).</p>
+<p>Junto con <code>??</code>, JS también agregó el operador <code>?.</code> (encadenamiento condicional nullish):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">record = {
+    shippingAddress: {
+        street: "123 JS Lane",
+        city: "Browserville",
+        state: "XY"
+    }
+};
+
+console.log( record?.shippingAddress?.street );
+// 123 JS Lane
+
+console.log( record?.billingAddress?.street );
+// undefined</code></pre></div>
+<p>El operador <code>?.</code> comprueba el valor inmediatamente precedente (a la izquierda) y, si es nullish, el operador se detiene y devuelve un valor <code>undefined</code>. De lo contrario, realiza el acceso a la propiedad con <code>.</code> sobre ese valor y continúa con la expresión.</p>
+<p>Para que quede claro: <code>record?.</code> está diciendo, "comprobá <code>record</code> por nullish antes del acceso a propiedad con <code>.</code>". Adicionalmente, <code>billingAddress?.</code> está diciendo, "comprobá <code>billingAddress</code> por nullish antes del acceso a propiedad con <code>.</code>".</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Algunos desarrolladores de JS creen que el más nuevo <code>?.</code> es superior a <code>.</code>, y que por lo tanto debería usarse casi siempre en lugar de <code>.</code>. Yo creo que esa es una perspectiva imprudente. En primer lugar, agrega ruido visual extra, lo cual solo debería hacerse si obtenés un beneficio de ello. En segundo lugar, deberías ser consciente de, y planificar para, el vacío de algún valor, para justificar el uso de <code>?.</code>. Si siempre esperás que un valor no-nullish esté presente en alguna expresión, usar <code>?.</code> para acceder a una propiedad en él no solo es innecesario/derrochador, sino que además podría potencialmente ocultar bugs futuros donde tu suposición de presencia de valor falló pero <code>?.</code> lo tapó. Como con la mayoría de las características en JS, usá <code>.</code> donde sea más apropiado, y usá <code>?.</code> donde sea más apropiado. Nunca sustituyas uno cuando el otro es más apropiado.</p></div></div>
+<p>También existe una forma algo extraña del operador, <code>?.[</code>, no <code>?[</code>, para cuando necesitás usar acceso de estilo <code>[ .. ]</code> en lugar de acceso con <code>.</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">record?.["shipping" + "Address"]?.state;    // XY</code></pre></div>
+<p>Otra variación más, denominada "llamada opcional", es <code>?.(</code>, y se usa cuando se llama condicionalmente a una función si el valor es no-nullish:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// instead of:
+//   if (someFunc) someFunc(42);
+//
+// or:
+//   someFunc &amp;&amp; someFunc(42);
+
+someFunc?.(42);</code></pre></div>
+<p>El operador <code>?.(</code> parece estar comprobando si <code>someFunc(..)</code> es una función válida que puede ser llamada. ¡Pero no lo hace! Solo está comprobando que el valor sea no-nullish antes de intentar invocarlo. Si es algún otro tipo de valor no-nullish pero tampoco función, el intento de ejecución igual fallará con una excepción <code>TypeError</code>.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Debido a ese gotcha, me <em>disgusta mucho</em> esta forma del operador, y advierto a cualquiera que no lo use nunca. Creo que es una característica mal concebida que hace más daño (a JS mismo, y a los programas) que bien. Hay muy pocas características de JS de las que iría tan lejos como para decir, "nunca la uses". Pero esta es una de las partes verdaderamente <em>malas</em> del lenguaje, en mi opinión.</p></div></div>
+<h3 id="distinctish">Distinct'ish</h3>
+<p>Es importante tener en cuenta que <code>null</code> y <code>undefined</code> <em>son</em> en realidad types distintos y, por lo tanto, <code>null</code> puede ser notablemente diferente de <code>undefined</code>. Podés, con cuidado, construir programas que mayormente los traten como indistinguibles. Pero eso requiere cuidado y disciplina por parte del desarrollador. Desde la perspectiva de JS, son más a menudo distintos.</p>
+<p>Hay casos en los que <code>null</code> y <code>undefined</code> activarán comportamientos diferentes del lenguaje, lo cual es importante tener presente. No cubriremos todos los casos de forma exhaustiva aquí, pero acá hay un ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function greet(msg = "Hello") {
+    console.log(msg);
+}
+
+greet();            // Hello
+greet(undefined);   // Hello
+greet("Hi");        // Hi
+
+greet(null);        // null</code></pre></div>
+<p>La cláusula <code>= ..</code> en un parámetro se denomina el "valor por defecto del parámetro". Solo entra en acción y asigna su valor por defecto al parámetro si el argumento en esa posición está ausente, o es exactamente el valor <code>undefined</code>. Si pasás <code>null</code>, esa cláusula no se activa, y así <code>null</code> queda asignado al parámetro.</p>
+<p>No hay una forma <em>correcta</em> o <em>incorrecta</em> de usar <code>null</code> o <code>undefined</code> en un programa. Así que la conclusión es: tené cuidado al elegir un valor u otro. Y si los estás usando de forma intercambiable, tené cuidado extra.</p>
+<h2 id="valores-boolean">Valores Boolean</h2>
+<p>El type <code>boolean</code> contiene dos valores: <code>false</code> y <code>true</code>.</p>
+<p>En los "viejos tiempos", los lenguajes de programación, por convención, usaban <code>0</code> para significar <code>false</code> y <code>1</code> para significar <code>true</code>. Así que podés pensar en el type <code>boolean</code>, y en las palabras clave <code>false</code> y <code>true</code>, como un azúcar semántico conveniente por encima de los valores <code>0</code> y <code>1</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// isLoggedIn = 1;
+isLoggedIn = true;
+
+isComplete = 0;
+// isComplete = false;</code></pre></div>
+<p>Los valores boolean son el modo en que toda la toma de decisiones ocurre en un programa JS:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">if (isLoggedIn) {
+    // do something
+}
+
+while (!isComplete) {
+    // keep going
+}</code></pre></div>
+<p>El operador <code>!</code> niega/invierte un valor boolean al otro: <code>false</code> se vuelve <code>true</code>, y <code>true</code> se vuelve <code>false</code>.</p>
+<h2 id="valores-string">Valores String</h2>
+<p>El type <code>string</code> contiene cualquier valor que sea una colección de uno o más caracteres, delimitado (rodeado a ambos lados) por caracteres de comillas:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myName = "Kyle";</code></pre></div>
+<p>JS no distingue un solo carácter como un type diferente como hacen algunos lenguajes; <code>"a"</code> es un string igual que <code>"abc"</code> lo es.</p>
+<p>Los strings pueden delimitarse con comillas dobles (<code>"</code>), comillas simples (<code>'</code>), o acentos graves (`<code> </code> ``). El delimitador de cierre siempre debe coincidir con el delimitador de apertura.</p>
+<p>Los strings tienen una longitud intrínseca que corresponde a cuántos code-points -- en realidad, code-units, más sobre eso en un momento -- contienen.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myName = "Kyle";
+
+myName.length;      // 4</code></pre></div>
+<p>Esto no necesariamente corresponde a la cantidad de caracteres visibles presentes entre los delimitadores de inicio y fin (es decir, el literal string). A veces puede ser un poco confuso mantener clara la diferencia entre un literal string y el valor string subyacente, así que prestá mucha atención.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Cubriremos el cálculo de longitud de strings en detalle, en el Capítulo 2.</p></div></div>
+<h3 id="codificaciones-de-caracteres-de-js">Codificaciones de Caracteres de JS</h3>
+<p>¿Qué tipo de codificación de caracteres usa JS para los caracteres de los strings?</p>
+<p>Probablemente hayas oído de "Unicode" y quizás incluso de "UTF-8" (8 bits) o "UTF-16" (16 bits). Si sos como yo (antes de hacer la investigación que me llevó escribir este texto), tal vez simplemente lo pasaste por alto y decidiste que eso es todo lo que necesitás saber sobre las codificaciones de caracteres en los strings de JS.</p>
+<p>Pero... no lo es. Ni por asomo.</p>
+<p>Resulta que necesitás entender cómo funcionan una variedad de aspectos de Unicode, e incluso considerar conceptos de UCS-2 (Universal Character Set de 2 bytes), que es similar a UTF-16, pero no exactamente lo mismo. <sup class="fnref"><a href="#fn-UTFUCS">[UTFUCS]</a></sup></p>
+<p>Unicode define todos los "caracteres" que podemos representar universalmente en programas de computadora, asignando un número específico a cada uno, llamado code-points. Estos números van desde <code>0</code> hasta un máximo de <code>1114111</code> (<code>10FFFF</code> en hexadecimal).</p>
+<p>La notación estándar para caracteres Unicode es <code>U+</code> seguido de 4 a 6 caracteres hexadecimales. Por ejemplo, el <code>❤</code> (símbolo de corazón) es el code-point <code>10084</code> (<code>2764</code> en hexadecimal), y por lo tanto se nota con <code>U+2764</code>.</p>
+<p>El primer grupo de 65.535 code points en Unicode se llama el BMP (Basic Multilingual Plane). Todos estos pueden representarse con 16 bits (2 bytes). Al representar caracteres Unicode del BMP, es bastante directo, ya que <em>entran</em> prolijamente en caracteres UTF-16 individuales de JS.</p>
+<p>Todos los demás code points están agrupados en 16 planos llamados "planos suplementarios" o "planos astrales". Estos code-points requieren más de 16 bits para representarse -- 21 bits para ser exactos -- así que al representar caracteres extendidos/suplementarios por encima del BMP, JS en realidad almacena estos code-points como un par de dos code units adyacentes de 16 bits, llamados <em>mitades sustitutas</em> (o <em>pares sustitutos</em>).</p>
+<p>Por ejemplo, el code point Unicode <code>127878</code> (hexadecimal <code>1F386</code>) es <code>🎆</code> (símbolo de fuegos artificiales). JS lo almacena en un valor string como dos code units de mitad sustituta: <code>U+D83C</code> y <code>U+DF86</code>. Tené en cuenta que estas dos partes del carácter completo <em>no</em> se sostienen por sí solas; solo son válidas/significativas cuando se emparejan inmediatamente adyacentes una a la otra.</p>
+<p>Esto tiene implicancias en la longitud de los strings, porque un solo carácter visible como el símbolo de fuegos artificiales <code>🎆</code>, cuando está en un string de JS, se cuenta como 2 caracteres a efectos de la longitud del string.</p>
+<p>Revisitaremos los caracteres Unicode en un momento, y luego cubriremos los desafíos de calcular la longitud de los strings en el Capítulo 2.</p>
+<h3 id="secuencias-de-escape">Secuencias de Escape</h3>
+<p>Si se usan <code>"</code> o <code>'</code> para delimitar un literal string, los contenidos solo se analizan en busca de <em>secuencias de escape de caracteres</em>: <code>\</code> seguido de uno o más caracteres que JS reconoce y analiza con un significado especial. Cualquier otro carácter en un string que no se analice como secuencia de escape (de un solo carácter o de varios) se inserta tal cual en el valor string.</p>
+<p>Para las secuencias de escape de un solo carácter, los siguientes caracteres se reconocen después de un <code>\</code>: <code>b</code>, <code>f</code>, <code>n</code>, <code>r</code>, <code>t</code>, <code>v</code>, <code>0</code>, <code>'</code>, <code>"</code>, y <code>\</code>. Por ejemplo, <code>\n</code> significa nueva línea, <code>\t</code> significa tabulación, etc.</p>
+<p>Si un <code>\</code> va seguido de cualquier otro carácter (excepto <code>x</code> y <code>u</code> -- explicados abajo), como por ejemplo <code>\k</code>, esa secuencia se interpreta como que el <code>\</code> es un escape innecesario, que por lo tanto se descarta, dejando solo el carácter literal en sí (<code>k</code>).</p>
+<p>Para incluir un <code>"</code> en medio de un literal string delimitado por <code>"</code>, usá la secuencia de escape <code>\"</code>. De manera similar, si estás incluyendo un carácter <code>'</code> en medio de un literal string delimitado por <code>'</code>, usá la secuencia de escape <code>\'</code>. En cambio, un <code>'</code> <em>no</em> necesita ser escapado dentro de un string delimitado por <code>"</code>, ni viceversa.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myTitle = "Kyle Simpson (aka, \"getify\"), former O'Reilly author";
+
+console.log(myTitle);
+// Kyle Simpson (aka, "getify"), former O'Reilly author</code></pre></div>
+<p>En texto, la barra inclinada <code>/</code> es la más común. Pero ocasionalmente necesitás una barra invertida <code>\</code>. Para incluir un carácter de barra invertida <code>\</code> literal sin que actúe como el inicio de una secuencia de escape de caracteres, usá la <code>\\</code> (doble barra invertida).</p>
+<p>Entonces, ¿como qué se analizaría <code>\\\</code> (tres barras invertidas) en un string? Las primeras dos <code>\</code> serían una secuencia de escape <code>\\</code>, insertando así un solo carácter <code>\</code> en el valor string, y la <code>\</code> restante simplemente escaparía cualquier carácter que venga inmediatamente después.</p>
+<p>Un lugar donde las barras invertidas aparecen comúnmente es en las rutas de archivos de Windows, que usan el separador <code>\</code> en lugar del separador <code>/</code> usado en las rutas de estilo linux/unix:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">windowsFontsPath =
+    "C:\\Windows\\Fonts\\";
+
+console.log(windowsFontsPath);
+// C:\Windows\Fonts\"</code></pre></div>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>¿Qué hay de cuatro barras invertidas <code>\\\\</code> en un literal string? Bueno, eso son simplemente dos secuencias de escape <code>\\</code> una al lado de la otra, así que resulta en dos barras invertidas adyacentes (<code>\\</code>) en el valor string subyacente. Quizás reconozcas que hay un patrón de regla par/impar en juego. Así, deberías poder descifrar cualquier cantidad impar (<code>\\\\\</code>, <code>\\\\\\\\\</code>, etc) o par (<code>\\\\\\</code>, <code>\\\\\\\\\\</code>, etc) de barras invertidas en un literal string.</p></div></div>
+<h4 id="continuación-de-línea">Continuación de Línea</h4>
+<p>El carácter <code>\</code> seguido de un carácter de nueva línea real (no solo la <code>n</code> literal) es un caso especial, y crea lo que se llama una continuación de línea:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting = "Hello \
+Friends!";
+
+console.log(greeting);
+// Hello Friends!</code></pre></div>
+<p>Como podés ver, la nueva línea al final de la línea <code>greeting = </code> está inmediatamente precedida por un <code>\</code>, lo que permite que este literal string continúe en la línea siguiente. Sin el <code>\</code> de escape antes de ella, una nueva línea -- la nueva línea real, no la secuencia de escape de caracteres <code>\n</code> -- que aparezca en un literal string delimitado por <code>"</code> o <code>'</code> en realidad produciría un error de análisis de sintaxis de JS.</p>
+<p>Debido a que el <code>\</code> de fin de línea convierte el carácter de nueva línea en una continuación de línea, el carácter de nueva línea se omite del string, como lo muestra la salida de <code>console.log(..)</code>.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Esta característica de continuación de línea a menudo se denomina "strings multilínea", pero creo que esa es una etiqueta confusa. Como podés ver, el valor string en sí no tiene múltiples líneas, solo fue definido a lo largo de múltiples líneas mediante las continuaciones de línea. Un string multilínea en realidad tendría múltiples líneas en el valor subyacente. Revisitaremos este tema más adelante en este capítulo cuando cubramos los Template Literals.</p></div></div>
+<h3 id="escapes-de-varios-caracteres">Escapes de Varios Caracteres</h3>
+<p>Las secuencias de escape de varios caracteres pueden ser secuencias hexadecimales o Unicode.</p>
+<p>Las secuencias de escape hexadecimales se usan para codificar cualquiera de los caracteres ASCII base (códigos 0-255), y se ven como <code>\x</code> seguido de exactamente dos caracteres hexadecimales (<code>0-9</code> y <code>a-f</code> / <code>A-F</code> -- sin distinción de mayúsculas/minúsculas). Por ejemplo, <code>A9</code> o <code>a9</code> son el valor decimal <code>169</code>, que corresponde a:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">copyright = "\xA9";  // or "\xa9"
+
+console.log(copyright);     // ©</code></pre></div>
+<p>Para cualquier carácter normal que pueda escribirse en un teclado, como <code>"a"</code>, suele ser más legible simplemente especificar el carácter literal, en lugar de una representación hexadecimal más ofuscada:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"a" === "\x61";             // true</code></pre></div>
+<h4 id="unicode-en-strings">Unicode En Strings</h4>
+<p>Las secuencias de escape Unicode por sí solas pueden codificar cualquiera de los caracteres del BMP de Unicode. Se ven como <code>\u</code> seguido de exactamente cuatro caracteres hexadecimales.</p>
+<p>Por ejemplo, la secuencia de escape <code>©</code> (o <code>©</code>) corresponde a ese mismo símbolo <code>©</code>, mientras que <code>☺</code> (o <code>☺</code>) corresponde al carácter Unicode con code-point <code>9786</code>: <code>☺</code> (símbolo de carita sonriente).</p>
+<p>Cuando se reconoce cualquier secuencia de escape de caracteres (sin importar la longitud), el único carácter que representa se inserta en el string, en lugar de los caracteres separados originales. Así, en el string <code>"☺"</code>, hay solo un carácter (carita sonriente), no seis caracteres individuales.</p>
+<p>Pero como se explicó antes, muchos code-points Unicode están muy por encima de <code>65535</code>. Por ejemplo, <code>1F4A9</code> (o <code>1f4a9</code>) es el code-point decimal <code>128169</code>, que corresponde al gracioso símbolo <code>💩</code> (montón de caca).</p>
+<p>Pero <code>Ὂ9</code> no funcionaría para incluir este carácter en un string, ya que se analizaría como la secuencia de escape Unicode <code>Ὂ</code>, seguida de un carácter <code>9</code> literal. Para abordar esta limitación, se introdujo una variación de las secuencias de escape Unicode que permite una cantidad arbitraria de caracteres hexadecimales después del <code>\u</code>, rodeándolos con llaves <code>{ .. }</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myReaction = "\u{1F4A9}";
+
+console.log(myReaction);
+// 💩</code></pre></div>
+<p>¿Recordás la discusión anterior sobre los caracteres Unicode extendidos (no-BMP) y las <em>mitades sustitutas</em>? El mismo <code>💩</code> también podría definirse con dos code-units explícitos, que forman un par sustituto:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myReaction = "💩";
+
+console.log(myReaction);
+// 💩</code></pre></div>
+<p>Las tres representaciones de este mismo carácter se almacenan internamente por JS de forma idéntica, y son indistinguibles:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"💩" === "\u{1F4A9}";                // true
+"\u{1F4A9}" === "💩";     // true</code></pre></div>
+<p>Aunque a JS no le importa de qué manera se represente tal carácter en tu programa, considerá cuidadosamente las diferencias de legibilidad al escribir tu código.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Aunque <code>💩</code> parece un solo carácter, su representación interna afecta cosas como el cálculo de longitud de un string que contenga ese carácter. Cubriremos el cálculo de longitud de strings en el Capítulo 2.</p></div></div>
+<h5 id="normalización-unicode">Normalización Unicode</h5>
+<p>Otra complicación en el manejo de strings Unicode es que incluso ciertos caracteres individuales del BMP pueden representarse de distintas formas.</p>
+<p>Por ejemplo, el carácter <code>"é"</code> puede representarse ya sea como sí mismo (code-point <code>233</code>, es decir <code>\xe9</code> o <code>é</code> o <code>\u{e9}</code>), o como la combinación de dos code-points: el carácter <code>"e"</code> (code-point <code>101</code>, es decir <code>\x65</code>, <code>e</code>, <code>\u{65}</code>) y la <em>tilde combinante</em> (code-point <code>769</code>, es decir <code>́</code>, <code>\u{301}</code>).</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">eTilde1 = "é";
+eTilde2 = "é";
+eTilde3 = "é";
+
+console.log(eTilde1);       // é
+console.log(eTilde2);       // é
+console.log(eTilde3);       // é</code></pre></div>
+<p>El literal string asignado a <code>eTilde3</code> en este fragmento almacena la marca de acento como un símbolo de <em>marca combinante</em> separado. Al igual que los pares sustitutos, una marca combinante solo tiene sentido en conexión con el símbolo al que está adyacente (usualmente después).</p>
+<p>El renderizado del símbolo Unicode debería ser el mismo sin importar nada, pero cómo se almacena internamente el carácter <code>"é"</code> afecta cosas como el cálculo de <code>length</code> del string que lo contiene, así como la comparación de igualdad y relacional (más sobre esto en el Capítulo 2):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">eTilde1.length;             // 2
+eTilde2.length;             // 1
+eTilde3.length;             // 2
+
+eTilde1 === eTilde2;        // false
+eTilde1 === eTilde3;        // true</code></pre></div>
+<p>Un desafío particular es que podés copiar y pegar un string con un carácter <code>"é"</code> visible en él, y ese carácter que copiaste puede haber estado en la forma <em>compuesta</em> o <em>descompuesta</em>. Pero no hay manera visual de distinguirlo, y aun así el valor string subyacente en el literal será diferente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">"é" === "é";           // false!!</code></pre></div>
+<p>Esta diferencia de representación interna puede ser bastante desafiante si no se planifica cuidadosamente. Afortunadamente, JS provee un método utilitario <code>normalize(..)</code> en los strings para ayudar:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">eTilde1 = "é";
+eTilde2 = "\u{e9}";
+eTilde3 = "\u{65}\u{301}";
+
+eTilde1.normalize("NFC") === eTilde2;
+eTilde2.normalize("NFD") === eTilde3;</code></pre></div>
+<p>El modo de normalización <code>"NFC"</code> combina code-points adyacentes en el code-point <em>compuesto</em> (si es posible), mientras que el modo de normalización <code>"NFD"</code> divide un solo code-point en sus code-points <em>descompuestos</em> (si es posible).</p>
+<p>Y en realidad puede haber más de dos code-points <em>descompuestos</em> individuales que conforman un solo code-point <em>compuesto</em> -- por ejemplo, un solo carácter podría tener varias marcas diacríticas aplicadas.</p>
+<p>Al trabajar con strings Unicode que serán comparados, ordenados o analizados por longitud, es muy importante tener presente la normalización Unicode, y usarla donde sea necesario.</p>
+<h5 id="clusters-de-grafemas-unicode">Clusters de Grafemas Unicode</h5>
+<p>Una complicación final del manejo de strings Unicode es el soporte para el agrupamiento de múltiples code-points adyacentes en un solo símbolo visualmente distinto, denominado un <em>grafema</em> (o un <em>cluster de grafemas</em>).</p>
+<p>Un ejemplo sería un emoji de familia como <code>"👩‍👩‍👦‍👦"</code>, que en realidad está compuesto de 7 code-points que todos se agrupan juntos en un solo símbolo visual.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">familyEmoji = "\u{1f469}\u{200d}\u{1f469}\u{200d}\u{1f466}\u{200d}\u{1f466}";
+
+familyEmoji;            // 👩‍👩‍👦‍👦</code></pre></div>
+<p>Este emoji <em>no</em> es un solo code-point Unicode registrado, y como tal, no hay ninguna <em>normalización</em> que pueda realizarse para componer estos 7 code-points separados en una sola entidad. La lógica de renderizado visual para tales símbolos compuestos es bastante compleja, mucho más allá de lo que la mayoría de los desarrolladores de JS quieren incrustar en nuestros programas. Existen librerías para manejar parte de esta lógica, pero suelen ser grandes y aun así no necesariamente cubren todos los matices/variaciones.</p>
+<p>A diferencia de los pares sustitutos y las marcas combinantes, los símbolos en los clusters de grafemas de hecho pueden actuar como caracteres independientes, pero tienen el comportamiento combinante especial cuando se colocan adyacentes entre sí.</p>
+<p>Este tipo de complejidad afecta significativamente los cálculos de longitud, la comparación, el ordenamiento, y muchas otras operaciones comunes orientadas a strings.</p>
+<h3 id="template-literals">Template Literals</h3>
+<p>Mencioné antes que los strings pueden alternativamente delimitarse con acentos graves `<code> </code>..<code> </code>`:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myName = `Kyle`;</code></pre></div>
+<p>Todas las mismas reglas para las codificaciones de caracteres, las secuencias de escape de caracteres, y las longitudes aplican a este tipo de strings.</p>
+<p>Sin embargo, los contenidos de estos literales de plantilla (template literals) adicionalmente se analizan en busca de una secuencia delimitadora especial <code>${ .. }</code>, que marca una expresión a evaluar e interpolar en el valor string en esa ubicación:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myName = `Kyle`;
+
+greeting = `Hello, ${myName}!`;
+
+console.log(greeting);      // Hello, Kyle!</code></pre></div>
+<p>Todo lo que está entre las <code>{ .. }</code> en un template literal de este tipo es una expresión arbitraria de JS. Puede ser variables simples como <code>myName</code>, o programas complejos de JS, o cualquier cosa intermedia (¡incluso otra expresión de template literal!).</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>A esta característica comúnmente se la llama "template literals" o "template strings", pero creo que eso es confuso. "Template" (plantilla) usualmente significa, en contextos de programación, un conjunto reutilizable de texto que puede reevaluarse con datos diferentes. Por ejemplo, los <em>motores de plantillas</em> para páginas, las plantillas de email para campañas de newsletter, etc. Esta característica de JS no es reutilizable. Es un literal, y produce un solo valor inmediato (usualmente un string). Podés poner tal valor en una función, y llamar a la función múltiples veces. Pero entonces la función está actuando como la plantilla, no el literal en sí. Yo prefiero en cambio referirme a esta característica como <em>literales interpolados</em>, o el gracioso diminutivo: <em>interpoliterales</em>. Simplemente creo que ese nombre es más precisamente descriptivo.</p></div></div>
+<p>Los template literals también tienen un comportamiento interesantemente diferente respecto de las nuevas líneas, comparados con los strings clásicos delimitados por <code>"</code> o <code>'</code>. Recordá que, para esos strings, una continuación de línea requería un <code>\</code> al final de cada línea, justo antes de una nueva línea. ¡No es así con los template literals!</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myPoem = `
+Roses are red
+Violets are blue
+C3PO's a funny robot
+and so R2.`;
+
+console.log(myPoem);
+//
+// Roses are red
+// Violets are blue
+// C3PO's a funny robot
+// and so R2.</code></pre></div>
+<p>Las continuaciones de línea con template literals <em>no requieren</em> escape. Sin embargo, eso significa que la nueva línea es parte del string, incluso la primera nueva línea de arriba. En otras palabras, <code>myPoem</code> arriba contiene un verdadero <em>string multilínea</em>, como se muestra. No obstante, si escapás con <code>\</code> el final de cualquier línea en un template literal, la nueva línea se omitirá, igual que con los strings que no son template literals.</p>
+<p>Los template literals usualmente resultan en un valor string, pero no siempre. Una forma de template literal que puede verse algo extraña se llama <em>tagged template literal</em> (template literal etiquetado):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">price = formatCurrency`The cost is: ${totalCost}`;</code></pre></div>
+<p>Aquí, <code>formatCurrency</code> es una etiqueta aplicada al valor template literal, que en realidad invoca <code>formatCurrency(..)</code> como función, pasándole los literales string y las expresiones interpoladas analizadas del valor. Esta función puede entonces ensamblarlos de la manera que considere conveniente -- como formatear un valor <code>number</code> como moneda en el locale actual -- y devolver cualquier valor, string o de otro tipo, que quiera.</p>
+<p>Así que los tagged template literals no siempre son strings; pueden ser cualquier valor. Pero los template literals sin etiqueta <em>siempre serán</em> strings.</p>
+<p>Algunos desarrolladores de JS creen que los strings de template literal sin etiqueta son los mejores para usar en <em>todos</em> los strings, incluso si no se usa ninguna interpolación de expresiones ni múltiples líneas. Yo disiento. Creo que solo deberían usarse al interpolar (o hacer multilínea).</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>El principio que siempre aplico al hacer tales determinaciones: usá la característica/herramienta más cercana a lo que necesitás, y la menos capaz, para cualquier tarea.</p></div></div>
+<p>Más aún, hay unos pocos lugares donde los strings de estilo `<code> </code>..<code> </code><code> están prohibidos. Por ejemplo, el pragma </code>"use strict"<code> no puede usar acentos graves, o el pragma se ignorará silenciosamente (y así el programa correrá accidentalmente en modo no estricto). Además, este estilo de strings no puede usarse en nombres de propiedades entrecomillados de literales de objeto, patrones de destructuring, ni en la cláusula de especificador de módulo </code>import .. from ..` de los ES Module.</p>
+<p>Mi postura: usá strings delimitados por `<code> </code>..<code> </code><code> donde esté permitido, pero solo cuando se necesite interpolación/multilínea; y seguí usando strings delimitados por </code>".."<code> o </code>'..'` para todo lo demás.</p>
+<h2 id="valores-number">Valores Number</h2>
+<p>El type <code>number</code> contiene cualquier valor numérico (número entero o decimal), como <code>-42</code> o <code>3.1415926</code>. Estos valores son representados por el engine de JS como valores binarios de punto flotante de doble precisión IEEE-754 de 64 bits. <sup class="fnref"><a href="#fn-IEEE754">[IEEE754]</a></sup></p>
+<p>Los <code>number</code> de JS son siempre decimales; los números enteros (es decir, "integers") no se almacenan de una manera diferente/especial. Un "integer" almacenado como valor <code>number</code> meramente no tiene nada distinto de cero en su porción fraccionaria; <code>42</code> es así indistinguible en JS de <code>42.0</code> y <code>42.000000</code>.</p>
+<p>Podemos usar <code>Number.isInteger(..)</code> para determinar si un valor <code>number</code> tiene alguna fracción distinta de cero o no:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.isInteger(42);           // true
+Number.isInteger(42.0);         // true
+Number.isInteger(42.000000);    // true
+
+Number.isInteger(42.0000001);   // false</code></pre></div>
+<h3 id="parsing-vs-coercion">Parsing vs Coercion</h3>
+<p>Si un valor string contiene contenidos de apariencia numérica, es posible que necesites convertir de ese valor string a un <code>number</code>, para propósitos de operación matemática.</p>
+<p>Sin embargo, es muy importante distinguir entre la conversión por parsing y la conversión por coercion.</p>
+<p>Podemos convertir por parsing con las utilidades incorporadas de JS <code>parseInt(..)</code> o <code>parseFloat(..)</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">someNumericText = "123.456";
+
+parseInt(someNumericText,10);               // 123
+parseFloat(someNumericText);                // 123.456
+
+parseInt("42",10) === parseFloat("42");     // true
+
+parseInt("512px");                          // 512</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>El parsing solo es relevante para valores string, ya que es una operación carácter por carácter (de izquierda a derecha). No tiene sentido parsear los contenidos de un <code>boolean</code>, ni parsear los contenidos de un <code>number</code> o un <code>null</code>; no hay nada que parsear. Si pasás cualquier cosa que no sea un valor string a <code>parseInt(..)</code> / <code>parseFloat(..)</code>, esas utilidades primero convierten ese valor a string y luego intentan parsearlo. Eso es casi con certeza problemático (conduce a bugs) o derrochador -- <code>parseInt(42)</code> es tonto, y <code>parseInt(42.3)</code> es un abuso de <code>parseInt(..)</code> para hacer el trabajo de <code>Math.floor(..)</code>.</p></div></div>
+<p>El parsing extrae los caracteres de apariencia numérica del valor string, y los coloca en un valor <code>number</code>, deteniéndose una vez que encuentra un carácter no numérico (por ejemplo, que no sea <code>-</code>, <code>.</code> o <code>0</code>-<code>9</code>). Si el parsing falla en el primer carácter, ambas utilidades devuelven el valor especial <code>NaN</code> (ver "Invalid Number" más abajo), indicando que la operación fue inválida y falló.</p>
+<p>Cuando <code>parseInt(..)</code> encuentra el <code>.</code> en <code>"123.456"</code>, se detiene, usando solo el <code>123</code> en el valor <code>number</code> resultante. <code>parseFloat(..)</code>, en cambio, acepta este carácter <code>.</code>, y sigue parseando un float con cualesquiera dígitos decimales que haya después del <code>.</code>.</p>
+<p>La utilidad <code>parseInt(..)</code> específicamente toma como segundo argumento opcional -- pero <em>en realidad</em>, más bien necesario -- el <code>radix</code>: la base numérica a asumir para interpretar los caracteres del string para el <code>number</code> (rango <code>2</code> - <code>36</code>). <code>10</code> es para números estándar en base 10, <code>2</code> es para binario, <code>8</code> es para octal, y <code>16</code> es para hexadecimal. Cualquier otro <code>radix</code> inusual, como <code>23</code>, asume dígitos en orden, <code>0</code> - <code>9</code> seguidos de la ordenación de caracteres <code>a</code> - <code>z</code> (sin distinción de mayúsculas/minúsculas). Si el radix especificado está fuera del rango <code>2</code> - <code>36</code>, <code>parseInt(..)</code> falla como inválido y devuelve el valor <code>NaN</code>.</p>
+<p>Si se omite el <code>radix</code>, el comportamiento de <code>parseInt(..)</code> es bastante matizado y confuso, en el sentido de que intenta hacer una mejor conjetura para un radix, basándose en lo que ve en el primer carácter. Esto históricamente ha llevado a muchos bugs sutiles, así que nunca confíes en la autoadivinanza por defecto; siempre especificá un radix explícito (como <code>10</code> en las llamadas de arriba).</p>
+<p><code>parseFloat(..)</code> siempre parsea con un radix de <code>10</code>, así que no acepta segundo argumento.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Una diferencia sorprendente entre <code>parseInt(..)</code> y <code>parseFloat(..)</code> es que <code>parseInt(..)</code> no parseará completamente la notación científica (por ejemplo, <code>"1.23e+5"</code>), deteniéndose en cambio en el <code>.</code> ya que no es válido para integers; de hecho, incluso <code>"1e+5"</code> se detiene en la <code>"e"</code>. <code>parseFloat(..)</code>, por otro lado, parsea completamente la notación científica como se espera.</p></div></div>
+<p>En contraste con la conversión por parsing, la conversión por coercion es un tipo de operación de todo-o-nada. O bien los contenidos completos del string se reconocen como numéricos (integer o punto flotante), o la conversión completa falla (resultando en <code>NaN</code> -- de nuevo, ver "Invalid Number" más adelante en este capítulo).</p>
+<p>La conversión por coercion puede hacerse explícitamente con la función <code>Number(..)</code> (sin la palabra clave <code>new</code>) o con el operador unario <code>+</code> delante del valor:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">someNumericText = "123.456";
+
+Number(someNumericText);        // 123.456
++someNumericText;               // 123.456
+
+Number("512px");                // NaN
++"512px";                       // NaN</code></pre></div>
+<h3 id="otras-representaciones-numéricas">Otras Representaciones Numéricas</h3>
+<p>Además de definir números usando los numerales tradicionales en base 10 (<code>0</code>-<code>9</code>), JS soporta definir literales numéricos solo de números enteros en otras tres bases: binario (base 2), octal (base 8), y hexadecimal (base 16).</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// binary
+myAge = 0b101010;
+myAge;              // 42
+
+// octal
+myAge = 0o52;
+myAge;              // 42
+
+// hexadecimal
+myAge = 0x2a;
+myAge;              // 42</code></pre></div>
+<p>Como podés ver, los prefijos <code>0b</code> (binario), <code>0o</code> (octal), y <code>0x</code> (hexadecimal) señalan la definición de números en las diferentes bases, pero los decimales no están permitidos en estos literales numéricos.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>La sintaxis de JS permite también los prefijos <code>0B</code>, <code>0O</code>, y <code>0X</code>. Sin embargo, por favor no uses nunca esas formas de prefijo en mayúsculas. Creo que cualquier persona sensata estaría de acuerdo: <code>0O</code> es mucho más fácil de confundir a simple vista que <code>0o</code> (que, de por sí, es un poco visualmente ambiguo a simple vista). ¡Quedate siempre con las formas de prefijo en minúsculas!</p></div></div>
+<p>Es importante darse cuenta de que no estás definiendo un <em>número diferente</em>, solo usando una forma diferente para producir el mismo valor numérico subyacente.</p>
+<p>Por defecto, JS representa el valor numérico subyacente en modo de salida/string con la forma estándar en base 10. Sin embargo, los valores <code>number</code> tienen un método incorporado <code>toString(..)</code> que produce una representación string en cualquier base/radix especificado (al igual que con <code>parseInt(..)</code>, en el rango <code>2</code> - <code>36</code>):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42;
+
+myAge.toString(2);          // "101010"
+myAge.toString(8);          // "52"
+myAge.toString(16);         // "2a"
+myAge.toString(23);         // "1j"
+myAge.toString(36);         // "16"</code></pre></div>
+<p>Podés hacer un round-trip de cualquier representación string de radix arbitrario de vuelta a un <code>number</code> usando <code>parseInt(..)</code>, con el radix apropiado:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42;
+
+parseInt(myAge.toString("23"),23);      // 42</code></pre></div>
+<p>Otra forma permitida para especificar literales numéricos es usando notación científica:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 4.2E1;      // or 4.2e1 or 4.2e+1
+
+myAge;              // 42</code></pre></div>
+<p><code>4.2E1</code> (o <code>4.2e1</code>) significa <code>4.2 * (10 ** 1)</code> (<code>10</code> elevado a la <code>1</code>). El exponente puede opcionalmente tener un signo <code>+</code> o <code>-</code>. Si se omite el signo, se asume que es <code>+</code>. Un exponente negativo hace el número más pequeño (mueve el decimal hacia la izquierda) en lugar de más grande (moviendo el decimal hacia la derecha):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">4.2E-3;             // 0.0042</code></pre></div>
+<p>Esta forma de notación científica es especialmente útil para la legibilidad al especificar potencias más grandes de <code>10</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">someBigPowerOf10 = 1000000000;
+
+// vs:
+
+someBigPowerOf10 = 1e9;</code></pre></div>
+<p>Por defecto, JS representará (por ejemplo, como valores string, etc) los números muy grandes o muy pequeños -- específicamente, si los valores requieren más de 21 dígitos de precisión -- usando esta misma notación científica:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">ratherBigNumber = 123 ** 11;
+ratherBigNumber.toString();     // "9.748913698143826e+22"
+
+prettySmallNumber = 123 ** -11;
+prettySmallNumber.toString();   // "1.0257553107587752e-23"</code></pre></div>
+<p>Los números con valores absolutos más pequeños (más cercanos a <code>0</code>) que estos umbrales igual pueden forzarse a la forma de notación científica (como strings):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">plainBoringNumber = 42;
+
+plainBoringNumber.toExponential();      // "4.2e+1"
+plainBoringNumber.toExponential(0);     // "4e+1"
+plainBoringNumber.toExponential(4);     // "4.2000e+1"</code></pre></div>
+<p>El argumento opcional de <code>toExponential(..)</code> especifica la cantidad de dígitos decimales a incluir en la representación string.</p>
+<p>Otra comodidad de legibilidad para especificar literales numéricos en el código es la capacidad de insertar <code>_</code> como separador de dígitos donde sea conveniente/significativo hacerlo. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">someBigPowerOf10 = 1_000_000_000;
+
+totalCostInPennies = 123_45;  // vs 12_345</code></pre></div>
+<p>La decisión de usar <code>12345</code> (sin separador), <code>12_345</code> (como "12.345"), o <code>123_45</code> (como "123,45") queda enteramente a criterio del autor del código; JS ignora los separadores. Pero según el contexto, <code>123_45</code> podría ser más significativo semánticamente (en términos de legibilidad) que el más tradicional estilo de agrupamiento de tres dígitos desde la derecha separados por comas imitado con <code>12_345</code>.</p>
+<h3 id="representaciones-binarias-bit-a-bit-ieee-754">Representaciones Binarias Bit a Bit IEEE-754</h3>
+<p>IEEE-754<sup class="fnref"><a href="#fn-IEEE754">[IEEE754]</a></sup> es un estándar técnico para la representación binaria de números decimales. Es ampliamente usado por la mayoría de los lenguajes de programación de computadoras, incluyendo JS, Python, Ruby, etc.</p>
+<p>No voy a cubrirlo exhaustivamente, pero creo que una breve introducción a cómo funcionan los números en lenguajes como JS está más que justificada, dado lo pocos programadores que tienen <em>alguna</em> familiaridad con ello.</p>
+<p>En IEEE-754 de 64 bits -- llamado de "doble precisión", porque originalmente IEEE-754 solía ser de 32 bits, ¡y ahora es el doble de eso! -- los 64 bits se dividen en tres secciones: 52 bits para el valor base del número (es decir, "fracción", "mantisa", o "significando"), 11 bits para el exponente al que elevar <code>2</code> antes de multiplicar, y 1 bit para el signo del valor final.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Dado que solo 52 de los 64 bits se usan en realidad para representar el valor base, <code>number</code> no tiene en realidad <code>2^64</code> valores en él. Según la especificación para el type <code>number</code><sup class="fnref"><a href="#fn-NumberType">[NumberType]</a></sup>, la cantidad de valores es precisamente <code>2^64 - 2^53 + 3</code>, o alrededor de 18 trillones, repartidos aproximadamente de manera uniforme entre números positivos y negativos.</p></div></div>
+<p>Estos bits están dispuestos de izquierda a derecha, así (S = Bit de Signo, E = Bit de Exponente, M = Bit de Mantisa):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">SEEEEEEEEEEEMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</code></pre></div>
+<p>Así, el número <code>42</code> (o <code>42.000000</code>) estaría representado por estos bits:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// 42:
+01000000010001010000000000000000
+00000000000000000000000000000000</code></pre></div>
+<p>El bit de signo es <code>0</code>, lo que significa que el número es positivo (<code>1</code> significa negativo).</p>
+<p>El exponente de 11 bits es el binario <code>10000000100</code>, que en base 10 es <code>1028</code>. Pero en IEEE-754, este valor se interpreta como almacenado sin signo con un "sesgo de exponente" de <code>1023</code>, lo que significa que estamos desplazando hacia arriba el rango del exponente de <code>-1022:1023</code> a <code>1:2046</code> (donde <code>0</code> y <code>2047</code> están reservados para representaciones especiales). Así, tomamos <code>1028</code> y le restamos el sesgo <code>1023</code>, lo que da un exponente efectivo de <code>5</code>. Elevamos <code>2</code> a ese valor (<code>2^5</code>), dando <code>32</code>.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Si al restar <code>1023</code> del valor del exponente se obtiene un negativo (por ejemplo, <code>-3</code>), eso igual se interpreta como el exponente de <code>2</code>; elevar <code>2</code> a números negativos solo produce valores cada vez más pequeños.</p></div></div>
+<p>Los 52 bits restantes nos dan el valor base <code>01010000...</code>, interpretado como el decimal binario <code>1.0101000...</code> (con todos ceros a la derecha). Convirtiendo <em>eso</em> a base 10, obtenemos <code>1.3125000...</code>. Finalmente, entonces, multiplicá eso por el <code>32</code> ya calculado a partir del exponente. El resultado: <code>42</code>.</p>
+<p>Como quizás puedas darte cuenta ahora, este estándar de representación numérica IEEE-754 se llama "punto flotante" porque el punto decimal "flota" de un lado a otro a lo largo de los bits, dependiendo del valor de exponente especificado.</p>
+<p>El número <code>42.0000001</code>, que solo difiere de <code>42.000000</code> por apenas <code>0.0000001</code>, estaría representado por estos bits:</p>
+<div class="code-block" data-lang="text"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-text">// 42.0000001:
+01000000010001010000000000000000
+00000000110101101011111110010101</code></pre></div>
+<p>¡Fijate cómo el patrón de bits anterior y este difieren en bastantes bits en las posiciones finales! La fracción decimal binaria que contiene todos esos bits <code>1</code> extra (<code>1.010100000000...01011111110010101</code>) se convierte a base 10 como <code>1.31250000312500003652</code>, que multiplicado por <code>32</code> nos da exactamente <code>42.0000001</code>.</p>
+<p>Revisitaremos más detalles sobre la (im)precisión del punto flotante en el Capítulo 2. ¡Pero ahora entendés <em>un poco más</em> sobre cómo funciona IEEE-754!</p>
+<h3 id="límites-de-number">Límites de Number</h3>
+<p>Como quizás resulte evidente ahora que viste cómo funciona IEEE-754, los 52 bits del valor base del número deben compartirse, representando tanto la porción del número entero (si la hay) como la porción decimal (si la hay) del valor <code>number</code> previsto. Esencialmente, cuanto más grande sea la porción del número entero a representar, menos bits quedan disponibles para la porción decimal, y viceversa.</p>
+<p>El valor más grande que puede almacenarse con precisión en el type <code>number</code> se expone como <code>Number.MAX_VALUE</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.MAX_VALUE;           // 1.7976931348623157e+308</code></pre></div>
+<p>Quizás esperes que ese valor sea un valor decimal, dada la representación. Pero mirando más de cerca, <code>1.79E308</code> es (aproximadamente) <code>2^1024 - 1</code>. Eso parece mucho más como si debiera ser un integer, ¿no? Podemos verificar:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.isInteger(Number.MAX_VALUE);         // true</code></pre></div>
+<p>¿Pero qué pasa si vas por encima del valor máximo?</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.MAX_VALUE === (Number.MAX_VALUE + 1);
+// true -- oops!
+
+Number.MAX_VALUE === (Number.MAX_VALUE + 10000000);
+// true</code></pre></div>
+<p>Entonces, ¿es <code>Number.MAX_VALUE</code> realmente el valor más grande representable en JS? Es ciertamente el valor <code>number</code> <em>finito</em> más grande.</p>
+<p>IEEE-754 define un valor infinito especial, que JS expone como <code>Infinity</code>; también hay un <code>-Infinity</code> en el otro extremo lejano de la recta numérica. Los valores pueden ser testeados para ver si son finitos o infinitos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.isFinite(Number.MAX_VALUE);  // true
+
+Number.isFinite(Infinity);          // false
+Number.isFinite(-Infinity);         // false</code></pre></div>
+<p>Nunca podés contar hacia arriba (con <code>+ 1</code>) desde <code>Number.MAX_VALUE</code> hasta <code>Infinity</code>, sin importar cuánto tiempo dejes correr el programa, porque la operación <code>+ 1</code> en realidad no está incrementando más allá del valor tope <code>Number.MAX_VALUE</code>.</p>
+<p>Sin embargo, las operaciones aritméticas de JS (<code>+</code>, <code>*</code>, e incluso <code>/</code>) definitivamente pueden desbordar el type <code>number</code> por el extremo superior, en cuyo caso <code>Infinity</code> es el resultado:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.MAX_VALUE + 1E291;           // 1.7976931348623157e+308
+Number.MAX_VALUE + 1E292;           // Infinity
+
+Number.MAX_VALUE * 1.0000000001;    // Infinity
+
+1 / 1E-308;                         // 1e+308
+1 / 1E-309;                         // Infinity</code></pre></div>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Lo inverso no es cierto: una operación aritmética sobre un valor infinito <em>nunca</em> producirá un valor finito.</p></div></div>
+<p>Yendo de lo muy grande a lo muy, muy pequeño -- en realidad, lo más cercano a cero, ¡lo que no es lo mismo que ir muy, muy negativo! -- el valor decimal absoluto más pequeño que teóricamente podrías almacenar en el type <code>number</code> sería <code>2^-1022</code> (¿recordás el rango del exponente de IEEE-754?), o alrededor de <code>2E-308</code>. Sin embargo, los engines de JS tienen permitido por la especificación variar en sus representaciones internas para este límite inferior. Cualquiera sea el límite inferior efectivo del engine, se expondrá como <code>Number.MIN_VALUE</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.MIN_VALUE;               // 5e-324 &lt;-- usually!</code></pre></div>
+<p>La mayoría de los engines de JS parecen tener un valor mínimo representable alrededor de <code>5E-324</code> (aproximadamente <code>2^-1074</code>). Dependiendo del engine y/o la plataforma, puede exponerse un valor diferente. Tené cuidado con cualquier lógica de programa que dependa de tales valores dependientes de la implementación.</p>
+<h3 id="límites-de-enteros-seguros">Límites de Enteros Seguros</h3>
+<p>Dado que <code>Number.MAX_VALUE</code> es un integer, podrías suponer que es el integer más grande del lenguaje. Pero eso no es realmente preciso.</p>
+<p>El integer más grande que podés almacenar con precisión en el type <code>number</code> es <code>2^53 - 1</code>, o <code>9007199254740991</code>, que es <em>mucho más pequeño</em> que <code>Number.MAX_VALUE</code> (alrededor de <code>2^1024 - 1</code>). Este valor especial más seguro se expone como <code>Number.MAX_SAFE_INTEGER</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">maxInt = Number.MAX_SAFE_INTEGER;
+
+maxInt;             // 9007199254740991
+
+maxInt + 1;         // 9007199254740992
+
+maxInt + 2;         // 9007199254740992</code></pre></div>
+<p>Hemos visto que pueden aparecer integers más grandes que <code>9007199254740991</code>. Sin embargo, esos integers más grandes no son "seguros", en el sentido de que la precisión/exactitud empieza a desmoronarse cuando hacés operaciones con ellos. Como se muestra arriba, las expresiones <code>maxInt + 1</code> y <code>maxInt + 2</code> ambas dan erróneamente el mismo resultado, ilustrando el peligro al exceder el límite <code>Number.MAX_SAFE_INTEGER</code>.</p>
+<p>¿Pero cuál es el integer seguro más pequeño?</p>
+<p>Dependiendo de cómo interpretes "más pequeño", podrías responder ya sea <code>0</code> o... <code>Number.MIN_SAFE_INTEGER</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.MIN_SAFE_INTEGER;    // -9007199254740991</code></pre></div>
+<p>Y JS provee una utilidad para determinar si un valor es un integer en este rango seguro (<code>-2^53 + 1</code> - <code>2^53 - 1</code>):</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.isSafeInteger(2 ** 53);      // false
+Number.isSafeInteger(2 ** 53 - 1);  // true</code></pre></div>
+<h3 id="ceros-dobles">Ceros Dobles</h3>
+<p>Puede sorprenderte saber que JS tiene dos ceros: <code>0</code>, y <code>-0</code> (cero negativo). ¿Pero qué demonios es un "cero negativo"? <sup class="fnref"><a href="#fn-SignedZero">[SignedZero]</a></sup> Un matemático seguramente se resistiría a tal noción.</p>
+<p>Esto no es solo una peculiaridad graciosa de JS; está impuesto por la especificación IEEE-754<sup class="fnref"><a href="#fn-IEEE754">[IEEE754]</a></sup>. Todos los números de punto flotante tienen signo, incluido el cero. Y aunque JS en cierto modo oculta la existencia de <code>-0</code>, es completamente posible producirlo y detectarlo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function isNegZero(v) {
+    return v == 0 &amp;&amp; (1 / v) == -Infinity;
+}
+
+regZero = 0 / 1;
+negZero = 0 / -1;
+
+regZero === negZero;        // true -- oops!
+Object.is(-0,regZero);      // false -- phew!
+Object.is(-0,negZero);      // true
+
+isNegZero(regZero);         // false
+isNegZero(negZero);         // true</code></pre></div>
+<p>Quizás te preguntes por qué alguna vez necesitaríamos algo como <code>-0</code>. Puede ser útil cuando se usan números para representar tanto la magnitud del movimiento (velocidad) de algún elemento (como un personaje de juego o una animación) como también su dirección (por ejemplo, negativo = izquierda, positivo = derecha).</p>
+<p>Sin tener un valor de cero con signo, no podrías saber hacia qué dirección estaba apuntando tal elemento en el momento en que quedó en reposo.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Si bien JS define un cero con signo en el type <code>number</code>, no hay un cero con signo correspondiente en el type numérico <code>bigint</code>. Como tal, <code>-0n</code> simplemente se interpreta como <code>0n</code>, y los dos son indistinguibles.</p></div></div>
+<h3 id="invalid-number">Invalid Number</h3>
+<p>Las operaciones matemáticas a veces pueden producir un resultado inválido. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">42 / "Kyle";            // NaN</code></pre></div>
+<p>Probablemente sea obvio, pero si intentás dividir un número por un string, esa es una operación matemática inválida.</p>
+<p>Otro tipo de operación numérica inválida es intentar convertir coercitivamente un valor que no se asemeja a algo numérico a un <code>number</code>. Como se discutió antes, podemos hacerlo con la función <code>Number(..)</code> o con el operador unario <code>+</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = Number("just a number");
+
+myAge;                  // NaN
+
++undefined;             // NaN</code></pre></div>
+<p>Todas esas operaciones inválidas (matemáticas o coercitivas/numéricas) producen el valor <code>number</code> especial llamado <code>NaN</code>.</p>
+<p>La raíz histórica de "NaN" (de la especificación IEEE-754<sup class="fnref"><a href="#fn-IEEE754">[IEEE754]</a></sup>) es como acrónimo de "Not a Number" (No es un número). Técnicamente, hay alrededor de 9 cuatrillones de valores en el espacio numérico IEEE-754 de 64 bits designados como "NaN", pero JS los trata a todos de forma indistinguible como el único valor <code>NaN</code>.</p>
+<p>Desafortunadamente, ese significado de <em>no es un número</em> produce confusión, ya que <code>NaN</code> es <em>absolutamente</em> un <code>number</code>.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>¡¿Por qué <code>NaN</code> es un <code>number</code>?! Pensá en lo opuesto: ¿qué pasaría si una operación matemática/numérica, como <code>+</code> o <code>/</code>, produjera un valor no-<code>number</code> (como <code>null</code>, <code>undefined</code>, etc)? ¿No sería eso realmente extraño e inesperado? ¿Qué pasaría si lanzaran excepciones, de modo que tuvieras que hacer <code>try..catch</code> en toda tu matemática? El único comportamiento sensato es que las operaciones numéricas/matemáticas deberían <em>siempre</em> producir un <code>number</code>, incluso si ese valor es inválido porque provino de una operación inválida.</p></div></div>
+<p>Para evitar tal confusión, prefiero fuertemente definir "NaN" como cualquiera de los siguientes en su lugar:</p>
+<ul><li>"iNvalid Number" (Número iNválido)</li><li>"Not actual Number" (No es un Número real)</li><li>"Not available Number" (No hay Número disponible)</li><li>"Not applicable Number" (Número No aplicable)</li></ul>
+<p><code>NaN</code> es un valor especial en JS, en el sentido de que es el único valor del lenguaje que carece de la <em>propiedad de identidad</em> -- nunca es igual a sí mismo.</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">NaN === NaN;            // false</code></pre></div>
+<p>Así que, desafortunadamente, el operador <code>===</code> no puede comprobar un valor para ver si es <code>NaN</code>. Pero hay algunas maneras de hacerlo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">politicianIQ = "nothing" / Infinity;
+
+Number.isNaN(politicianIQ);         // true
+
+Object.is(NaN,politicianIQ);        // true
+[ NaN ].includes(politicianIQ);     // true</code></pre></div>
+<p>Acá hay un hecho de prácticamente todos los programas de JS, te des cuenta o no: <code>NaN</code> pasa. En serio, casi todos los programas que hacen alguna matemática o conversiones numéricas están sujetos a que aparezca <code>NaN</code>.</p>
+<p>Si no estás comprobando apropiadamente <code>NaN</code> en tus programas donde hacés matemática o conversiones numéricas, puedo decir con cierto grado de certeza: probablemente tengas un bug numérico en algún lugar de tu programa, y simplemente todavía no te ha mordido (¡que vos sepas!).</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>JS originalmente proveyó una función global llamada <code>isNaN(..)</code> para la comprobación de <code>NaN</code>, pero desafortunadamente tiene un bug de coercion de larga data. <code>isNaN("Kyle")</code> devuelve <code>true</code>, aunque el valor string <code>"Kyle"</code> definitivamente <em>no</em> es el valor <code>NaN</code>. Esto se debe a que la función global <code>isNaN(..)</code> fuerza a cualquier argumento no-<code>number</code> a coercionarse a un <code>number</code> primero, antes de comprobar <code>NaN</code>. Coercionar <code>"Kyle"</code> a un <code>number</code> produce <code>NaN</code>, ¡así que ahora la función ve un <code>NaN</code> y devuelve <code>true</code>! Esta función global <code>isNaN(..)</code> con bug todavía existe en JS, pero nunca debería usarse. Al comprobar <code>NaN</code>, siempre usá <code>Number.isNaN(..)</code>, <code>Object.is(..)</code>, etc.</p></div></div>
+<h2 id="valores-biginteger">Valores BigInteger</h2>
+<p>Como el integer seguro máximo en los <code>number</code> de JS es <code>9007199254740991</code> (ver arriba), un límite relativamente tan bajo puede presentar un problema si un programa JS necesita realizar matemática de integers más grandes, o incluso solo contener valores como IDs de integer de 64 bits (por ejemplo, los IDs de Tweets de Twitter).</p>
+<p>Por esa razón, JS provee el type alternativo <code>bigint</code> (BigInteger), que puede almacenar integers arbitrariamente grandes (teóricamente no limitados, excepto por la memoria finita de la máquina y/o la implementación de JS).</p>
+<p>Para distinguir un <code>bigint</code> de un valor <code>number</code> entero, que de otro modo ambos se verían igual (<code>42</code>), JS requiere un sufijo <code>n</code> en los valores <code>bigint</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42n;        // this is a bigint, not a number
+
+myKidsAge = 11;     // this is a number, not a bigint</code></pre></div>
+<p>Ilustremos la falta de límite superior del <code>bigint</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Number.MAX_SAFE_INTEGER;        // 9007199254740991
+
+Number.MAX_SAFE_INTEGER + 2;    // 9007199254740992 -- oops!
+
+myBigInt = 9007199254740991n;
+
+myBigInt + 2n;                  // 9007199254740993n -- phew!
+
+myBigInt ** 2n;                 // 81129638414606663681390495662081n</code></pre></div>
+<p>Como podés ver, el tipo de valor <code>bigint</code> es capaz de hacer aritmética precisa por encima del límite de integer del tipo de valor <code>number</code>.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>¿Notaste que el operador <code>+</code> requirió <code>.. + 2n</code> en lugar de solo <code>.. + 2</code>? No podés mezclar los tipos de valor <code>number</code> y <code>bigint</code> en la misma expresión. Esta restricción es molesta, pero protege a tu programa de operaciones matemáticas inválidas que darían resultados inesperados no obvios.</p></div></div>
+<p>Un valor <code>bigint</code> también puede crearse con la función <code>BigInt(..)</code>; por ejemplo, para convertir un valor <code>number</code> entero a un <code>bigint</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myAge = 42n;
+
+inc = 1;
+
+myAge += BigInt(inc);
+
+myAge;              // 43n</code></pre></div>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Aunque pueda parecer contraintuitivo para algunos lectores, <code>BigInt(..)</code> <em>siempre</em> se llama sin la palabra clave <code>new</code>. Si se usa <code>new</code>, se lanzará una excepción.</p></div></div>
+<p>Ese es definitivamente uno de los usos más comunes de la función <code>BigInt(..)</code>: convertir <code>number</code>s a <code>bigint</code>s, para propósitos de operación matemática.</p>
+<p>Pero no es tan infrecuente representar valores de integer grandes como strings, especialmente si esos valores llegan al entorno de JS desde otros entornos de lenguaje, o mediante ciertos formatos de intercambio, que en sí mismos no soportan valores de estilo <code>bigint</code>.</p>
+<p>Como tal, <code>BigInt(..)</code> es útil para coercionar esos valores string a <code>bigint</code>s:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myBigInt = BigInt("12345678901234567890");
+
+myBigInt;                       // 12345678901234567890n</code></pre></div>
+<p>A diferencia de <code>parseInt(..)</code>, si algún carácter en el string es no numérico (dígitos <code>0-9</code> o <code>-</code>), incluyendo <code>.</code> o incluso un carácter de sufijo <code>n</code> al final, se lanzará una excepción. En otras palabras, <code>BigInt(..)</code> es una conversión por coercion de todo-o-nada, no una conversión por parsing.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Creo que es absurdo que <code>BigInt(..)</code> no acepte el carácter <code>n</code> al final al coercionar strings (y así efectivamente ignorarlo). Hice un fuerte lobby por ese comportamiento, en el proceso de TC39, pero finalmente fue denegado. En mi opinión, ahora es una pequeñísima verruga gotcha en JS, pero una verruga al fin.</p></div></div>
+<h2 id="valores-symbol">Valores Symbol</h2>
+<p>El type <code>symbol</code> contiene valores especiales opacos llamados "symbols". Estos valores solo pueden crearse mediante la función <code>Symbol(..)</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">secret = Symbol("my secret");</code></pre></div>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Al igual que con <code>BigInt(..)</code>, la función <code>Symbol(..)</code> debe llamarse sin la palabra clave <code>new</code>.</p></div></div>
+<p>El string <code>"my secret"</code> pasado a la llamada de la función <code>Symbol(..)</code> <em>no</em> es el valor symbol en sí, aunque parezca así. Es meramente una etiqueta descriptiva opcional, usada solo para propósitos de depuración, en beneficio del desarrollador.</p>
+<p>El valor subyacente devuelto por <code>Symbol(..)</code> es una clase especial de valor que se resiste a que el programa/desarrollador inspeccione cualquier cosa sobre su representación subyacente. Eso es lo que quiero decir con "opaco".</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Podrías pensar en los symbols como si fueran números integer que se incrementan monótonamente -- de hecho, eso es similar a cómo al menos algunos engines de JS los implementan. Pero el engine de JS nunca expondrá ninguna representación del valor subyacente de un symbol de ninguna manera que vos o el programa puedan ver.</p></div></div>
+<p>Los symbols están garantizados por el engine de JS de ser únicos (solo dentro del programa en sí), y son inadivinables. En otras palabras, un valor symbol duplicado nunca puede crearse en un programa.</p>
+<p>Quizás te estés preguntando en este punto para qué se usan los symbols.</p>
+<p>Un uso típico es como valores "especiales" que el desarrollador distingue de cualesquiera otros valores que podrían colisionar accidentalmente. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">EMPTY = Symbol("not set yet");
+myNickname = EMPTY;
+
+// later:
+
+if (myNickname == EMPTY) {
+    // ..
+}</code></pre></div>
+<p>Aquí, he definido un valor <code>EMPTY</code> especial e inicializado <code>myNickname</code> con él. Más tarde, compruebo si todavía es ese valor especial, y entonces realizo alguna acción si es así. Podría no querer haber usado <code>null</code> o <code>undefined</code> para tales propósitos, ya que otro desarrollador podría pasar uno de esos valores comunes incorporados. <code>EMPTY</code>, en cambio, aquí es un valor único e inadivinable que solo yo he definido y sobre el que tengo control y acceso.</p>
+<p>Quizás aún más comúnmente, los symbols a menudo se usan como propiedades especiales (meta-) en los objetos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myInfo = {
+    name: "Kyle Simpson",
+    nickname: "getify",
+    age: 42
+};
+
+// later:
+PRIVATE_ID = Symbol("private unique ID, don't touch!");
+
+myInfo[PRIVATE_ID] = generateID();</code></pre></div>
+<p>Es importante notar que las propiedades symbol igual son visibles públicamente en cualquier objeto; no son <em>en realidad</em> privadas. Pero se tratan como especiales y apartadas de la colección normal de propiedades del objeto. Es similar a si en cambio hubiera hecho:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">Object.defineProperty(myInfo,"__private_id_dont_touch",{
+    value: generateID(),
+    enumerable: false,
+});</code></pre></div>
+<p>Solo por convención, la mayoría de los desarrolladores saben que si un nombre de propiedad está prefijado con <code>_</code> (¡o aún más, <code>__</code>!), eso significa que es "pseudo-privado" y que hay que dejarlo tranquilo a menos que realmente se supone que deban acceder a él.</p>
+<p>Los symbols básicamente sirven para el mismo caso de uso, pero un poco más ergonómicamente que el enfoque de prefijado.</p>
+<h3 id="well-known-symbols-wks">Well-Known Symbols (WKS)</h3>
+<p>JS predefine un conjunto de symbols, denominados <em>well-known symbols</em> (WKS), que representan ciertos ganchos especiales de metaprogramación en los objetos. Estos symbols se almacenan como propiedades estáticas en el objeto de función <code>Symbol</code>. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myInfo = {
+    // ..
+};
+
+String(myInfo);         // [object Object]
+
+myInfo[Symbol.toStringTag] = "my-info";
+String(myInfo);         // [object my-info]</code></pre></div>
+<p><code>Symbol.toStringTag</code> es un well-known symbol para acceder y sobrescribir la representación string por defecto de un objeto plano (<code>"[object Object]"</code>), reemplazando la parte <code>"Object"</code> con un valor diferente (por ejemplo, <code>"my-info"</code>).</p>
+<p>Ver el libro "Objects &amp; Classes" de esta serie para más información sobre los Well-Known Symbols y la metaprogramación.</p>
+<h3 id="registro-global-de-symbols">Registro Global de Symbols</h3>
+<p>A menudo, querés mantener los valores symbol privados, como dentro del scope de un módulo. Pero ocasionalmente, querés exponerlos para que sean accesibles globalmente a lo largo de todos los archivos de un programa JS.</p>
+<p>En lugar de solo adjuntarlos como variables globales (es decir, propiedades en el objeto <code>globalThis</code>), JS provee un <em>espacio de nombres global</em> alternativo donde registrar symbols:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// retrieve if already registered,
+// otherwise register
+PRIVATE_ID = Symbol.for("private-id");
+
+// elsewhere:
+
+privateIDKey = Symbol.keyFor(PRIVATE_ID);
+privateIDKey;           // "private-id"
+
+// elsewhere:
+
+// retrieve symbol from registry undeer
+// specified key
+privateIDSymbol = Symbol.for(privateIDKey);</code></pre></div>
+<p>El valor pasado a <code>Symbol.for(..)</code> <em>no</em> es el mismo que el pasado a <code>Symbol(..)</code>. <code>Symbol.for(..)</code> espera una <em>clave</em> única bajo la cual registrar el symbol en el registro global, mientras que <code>Symbol(..)</code> opcionalmente acepta una etiqueta descriptiva (no necesariamente única).</p>
+<p>Si el registro no tiene un symbol bajo esa <em>clave</em> especificada, se crea un nuevo symbol (sin etiqueta descriptiva) y se registra automáticamente allí. De lo contrario, <code>Symbol.for(..)</code> devuelve cualquier symbol previamente registrado que esté bajo esa <em>clave</em>.</p>
+<p>Yendo en la dirección opuesta, si tenés el valor symbol en sí, y querés recuperar la <em>clave</em> bajo la cual está registrado, <code>Symbol.keyFor(..)</code> toma el symbol en sí como entrada, y devuelve la <em>clave</em> (si la hay). Eso es útil en caso de que sea más conveniente pasar el valor string de la <em>clave</em> que el symbol en sí.</p>
+<h3 id="objeto-o-primitivo">¿Objeto o Primitivo?</h3>
+<p>A diferencia de otros primitivos como <code>42</code>, donde podés crear múltiples copias del mismo valor, los symbols <em>sí</em> actúan más como referencias de objeto específicas en el sentido de que siempre son completamente únicos (a efectos de asignación de valor y comparación de igualdad). La especificación también categoriza la función <code>Symbol()</code> bajo la sección de "Objetos Fundamentales", llamando a la función un "constructor", e incluso definiendo su propiedad <code>prototype</code>.</p>
+<p>Sin embargo, como se mencionó antes, <code>new</code> no puede usarse con <code>Symbol(..)</code>; esto es similar al "constructor" <code>BigInt()</code>. Sabemos claramente que los valores <code>bigint</code> son primitivos, así que los valores <code>symbol</code> parecen ser del mismo <em>tipo</em>.</p>
+<p>Y en la sección "Terms and Definitions" de la especificación, lista symbol como un valor primitivo. <sup class="fnref"><a href="#fn-PrimitiveValues">[PrimitiveValues]</a></sup> Más aún, los valores en sí se usan en los programas de JS como primitivos en lugar de como objetos. Por ejemplo, los symbols se usan principalmente como claves en los objetos -- ¡sabemos que los objetos no pueden usar otros valores de objeto como claves! -- junto con los strings, que también son primitivos.</p>
+<p>Como se mencionó antes, algunos engines de JS incluso implementan internamente los symbols como integers únicos que se incrementan monótonamente (¡primitivos!).</p>
+<p>Finalmente, como se explicó al principio de este capítulo, sabemos que a los valores primitivos <em>no se les permite</em> tener propiedades asignadas, sino que se les hace <em>auto-boxing</em> (ver "Objetos Automáticos" en el Capítulo 3) internamente al type de objeto envoltorio correspondiente para facilitar el acceso a propiedades/métodos. Los symbols siguen todos estos comportamientos exactos, igual que todos los demás primitivos.</p>
+<p>Considerado todo esto, creo que los symbols son <em>mucho más</em> parecidos a primitivos que a objetos, así que así es como los presento en este libro.</p>
+<h2 id="los-primitivos-son-tipos-incorporados">Los Primitivos Son Tipos Incorporados</h2>
+<p>Ahora hemos profundizado en los siete tipos de valor primitivos (no objeto) que JS provee automáticamente incorporados.</p>
+<p>Antes de pasar a discutir el tipo de valor objeto incorporado de JS, queremos echar un vistazo más de cerca a los tipos de comportamientos que podemos esperar de los valores de JS. Lo haremos en profundidad, en el próximo capítulo.</p>
+<div class="footnotes"><hr><ol><li id="fn-PrimitiveValues">"4.4.5 primitive value", ECMAScript 2022 Language Specification; https://tc39.es/ecma262/#sec-primitive-value ; Accessed August 2022</li><li id="fn-UTFUCS">"JavaScript’s internal character encoding: UCS-2 or UTF-16?"; Mathias Bynens; January 20 2012; https://mathiasbynens.be/notes/javascript-encoding ; Accessed July 2022</li><li id="fn-IEEE754">"IEEE-754"; https://en.wikipedia.org/wiki/IEEE_754 ; Accessed July 2022</li><li id="fn-NumberType">"6.1.6.1 The Number Type", ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-ecmascript-language-types-number-type ; Accessed August 2022</li><li id="fn-SignedZero">"Signed Zero", Wikipedia; https://en.wikipedia.org/wiki/Signed_zero ; Accessed August 2022</li></ol></div>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../types-grammar/toc.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Índice</span></a>
+      <a class="pager-btn next" href="../types-grammar/ch2.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 2 · Valores primitivos</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#tipos-de-valor">Tipos de Valor</a></li>
+<li class="toc-l3"><a href="#type-of">Type-Of</a></li>
+<li class="toc-l3"><a href="#no-objetos">¿No-objetos?</a></li>
+<li class="toc-l2"><a href="#valores-vacíos">Valores Vacíos</a></li>
+<li class="toc-l3"><a href="#nullish">Null'ish</a></li>
+<li class="toc-l3"><a href="#distinctish">Distinct'ish</a></li>
+<li class="toc-l2"><a href="#valores-boolean">Valores Boolean</a></li>
+<li class="toc-l2"><a href="#valores-string">Valores String</a></li>
+<li class="toc-l3"><a href="#codificaciones-de-caracteres-de-js">Codificaciones de Caracteres de JS</a></li>
+<li class="toc-l3"><a href="#secuencias-de-escape">Secuencias de Escape</a></li>
+<li class="toc-l3"><a href="#escapes-de-varios-caracteres">Escapes de Varios Caracteres</a></li>
+<li class="toc-l3"><a href="#template-literals">Template Literals</a></li>
+<li class="toc-l2"><a href="#valores-number">Valores Number</a></li>
+<li class="toc-l3"><a href="#parsing-vs-coercion">Parsing vs Coercion</a></li>
+<li class="toc-l3"><a href="#otras-representaciones-numéricas">Otras Representaciones Numéricas</a></li>
+<li class="toc-l3"><a href="#representaciones-binarias-bit-a-bit-ieee-754">Representaciones Binarias Bit a Bit IEEE-754</a></li>
+<li class="toc-l3"><a href="#límites-de-number">Límites de Number</a></li>
+<li class="toc-l3"><a href="#límites-de-enteros-seguros">Límites de Enteros Seguros</a></li>
+<li class="toc-l3"><a href="#ceros-dobles">Ceros Dobles</a></li>
+<li class="toc-l3"><a href="#invalid-number">Invalid Number</a></li>
+<li class="toc-l2"><a href="#valores-biginteger">Valores BigInteger</a></li>
+<li class="toc-l2"><a href="#valores-symbol">Valores Symbol</a></li>
+<li class="toc-l3"><a href="#well-known-symbols-wks">Well-Known Symbols (WKS)</a></li>
+<li class="toc-l3"><a href="#registro-global-de-symbols">Registro Global de Symbols</a></li>
+<li class="toc-l3"><a href="#objeto-o-primitivo">¿Objeto o Primitivo?</a></li>
+<li class="toc-l2"><a href="#los-primitivos-son-tipos-incorporados">Los Primitivos Son Tipos Incorporados</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

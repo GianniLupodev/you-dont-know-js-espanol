@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 3 · Valores de objeto — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🔡</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#ec4899">
+      <span class="sidebar-emoji">🔡</span>
+      <div><div class="sidebar-book">Types & Grammar</div><div class="sidebar-sub">Tipos y Gramática</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group">
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group" open>
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap active"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../types-grammar/README.html">Types & Grammar</a> <span>/</span> Cap. 3 · Valores de objeto</div>
+    <article class="prose" style="--book-color:#ec4899">
+      <h1 id="you-dont-know-js-yet-types-grammar---2nd-edition">You Don't Know JS Yet: Types &amp; Grammar - 2nd Edition</h1>
+<h1 id="capítulo-3-valores-objeto">Capítulo 3: Valores Objeto</h1>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Trabajo en progreso</p></div></div>
+<p>Ahora que ya nos sentimos cómodos con los tipos primitivos integrados, dirigimos nuestra atención a los tipos <code>object</code> en JS.</p>
+<p>Podría escribir un libro entero hablando de los objetos en profundidad; de hecho, ¡ya lo hice! El título "Objects &amp; Classes" de esta serie cubre los objetos en profundidad, así que asegurate de haberlo leído antes de continuar con este capítulo.</p>
+<p>En lugar de repetir el contenido de ese libro, aquí centraremos nuestra atención en cómo el value-type <code>object</code> se comporta e interactúa con otros valores en JS.</p>
+<h2 id="tipos-de-objetos">Tipos de Objetos</h2>
+<p>El value-type <code>object</code> comprende varios sub-tipos, cada uno con comportamientos especializados, incluyendo:</p>
+<ul><li>objetos planos (plain objects)</li><li>objetos fundamentales (primitivos "encajados" / boxed primitives)</li><li>objetos integrados (built-in objects)</li><li>arrays</li><li>expresiones regulares</li><li>funciones (es decir, "objetos invocables")</li></ul>
+<p>Más allá de los comportamientos especializados, una característica compartida es que todos los objetos pueden actuar como colecciones (de propiedades) que contienen valores (incluyendo funciones/métodos).</p>
+<h2 id="objetos-planos-plain-objects">Objetos Planos (Plain Objects)</h2>
+<p>Al value-type objeto general a veces se lo denomina <em>plain ol' javascript objects</em> (POJOs).</p>
+<p>Los objetos planos tienen una forma literal:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">address = {
+    street: "12345 Market St",
+    city: "San Francisco",
+    state: "CA",
+    zip: "94114"
+};</code></pre></div>
+<p>Este objeto plano (POJO), tal como se define con las llaves <code>{ .. }</code>, es una colección de propiedades con nombre (<code>street</code>, <code>city</code>, <code>state</code> y <code>zip</code>). Las propiedades pueden contener cualquier valor, primitivos u otros objetos (incluyendo arrays, funciones, etc).</p>
+<p>El mismo objeto también podría haberse definido de manera imperativa usando el constructor <code>new Object()</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">address = new Object();
+address.street = "12345 Market St";
+address.city = "San Francisco";
+address.state = "CA";
+address.zip = "94114";</code></pre></div>
+<p>Los objetos planos están por defecto <code>[[Prototype]]</code>-vinculados a <code>Object.prototype</code>, lo que les da acceso delegado a varios métodos generales de objeto, tales como:</p>
+<ul><li><code>toString()</code> / <code>toLocaleString()</code></li><li><code>valueOf()</code></li><li><code>isPrototypeOf(..)</code></li><li><code>hasOwnProperty(..)</code> (recientemente obsoleto -- alternativa: la utilidad estática <code>Object.hasOwn(..)</code>)</li><li><code>propertyIsEnumerable(..)</code></li><li><code>__proto__</code> (función getter)</li></ul>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">address.isPrototypeOf(Object.prototype);    // true
+address.isPrototypeOf({});                  // false</code></pre></div>
+<h2 id="objetos-fundamentales-fundamental-objects">Objetos Fundamentales (Fundamental Objects)</h2>
+<p>JS define varios tipos de objeto <em>fundamentales</em>, que son instancias de varios constructores integrados, incluyendo:</p>
+<ul><li><code>new String()</code></li><li><code>new Number()</code></li><li><code>new Boolean()</code></li></ul>
+<p>Notá que estos constructores deben usarse con la palabra clave <code>new</code> para construir instancias de los objetos fundamentales. De lo contrario, estas funciones en realidad realizan type coercion (ver el Capítulo 4).</p>
+<p>Estos constructores de objetos fundamentales crean value-types objeto en lugar de primitivos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myName = "Kyle";
+typeof myName;                      // "string"
+
+myNickname = new String("getify");
+typeof myNickname;                  // "object"</code></pre></div>
+<p>En otras palabras, una instancia de un constructor de objeto fundamental puede verse, en realidad, como un envoltorio (wrapper) alrededor del valor primitivo subyacente correspondiente.</p>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p>Se considera, de manera casi universal, una <em>mala práctica</em> instanciar directamente estos objetos fundamentales. Las contrapartes primitivas son, en general, más predecibles, más performantes, y ofrecen <em>auto-boxing</em> (ver la sección "Objetos Automáticos" más abajo) cada vez que se necesita la forma de envoltorio-objeto subyacente para acceder a una propiedad/método.</p></div></div>
+<p>Las funciones <code>Symbol(..)</code> y <code>BigInt(..)</code> son referidas en la especificación como "constructores", aunque no se usan con la palabra clave <code>new</code>, y los valores que producen en un programa JS son efectivamente primitivos.</p>
+<p>Sin embargo, existen <em>objetos fundamentales</em> internos para estos dos tipos, usados para la delegación de prototipos y el <em>auto-boxing</em>.</p>
+<p>En contraste, para los valores primitivos <code>null</code> y <code>undefined</code>, no existen "constructores" <code>Null()</code> o <code>Undefined()</code>, ni objetos fundamentales o prototipos correspondientes.</p>
+<h3 id="prototipos">Prototipos</h3>
+<p>Las instancias de los constructores de objetos fundamentales están <code>[[Prototype]]</code>-vinculadas a los objetos <code>prototype</code> de sus constructores:</p>
+<ul><li><code>String.prototype</code>: define la propiedad <code>length</code>, así como métodos específicos de string, como <code>toUpperCase()</code>, etc.</li></ul>
+<ul><li><code>Number.prototype</code>: define métodos específicos de number, como <code>toPrecision(..)</code>, <code>toFixed(..)</code>, etc.</li></ul>
+<ul><li><code>Boolean.prototype</code>: define los métodos por defecto <code>toString()</code> y <code>valueOf()</code>.</li></ul>
+<ul><li><code>Symbol.prototype</code>: define <code>description</code> (getter), así como los métodos por defecto <code>toString()</code> y <code>valueOf()</code>.</li></ul>
+<ul><li><code>BigInt.prototype</code>: define los métodos por defecto <code>toString()</code>, <code>toLocaleString()</code> y <code>valueOf()</code>.</li></ul>
+<p>Cualquier instancia directa de los constructores integrados tiene acceso <code>[[Prototype]]</code>-delegado a las propiedades/métodos de su respectivo <code>prototype</code>. Más aún, los valores primitivos correspondientes también tienen ese acceso delegado, por medio del <em>auto-boxing</em>.</p>
+<h3 id="objetos-automáticos">Objetos Automáticos</h3>
+<p>He mencionado el <em>auto-boxing</em> varias veces (incluyendo los Capítulos 1 y 2, y unas cuantas veces hasta ahora en este capítulo). Finalmente llegó el momento de explicar ese concepto.</p>
+<p>Acceder a una propiedad o método en un valor requiere que el valor sea un objeto. Como ya vimos en el Capítulo 1, los primitivos <em>no son</em> objetos, así que JS necesita entonces convertir/envolver temporalmente ese primitivo a su contraparte de objeto fundamental<sup class="fnref"><a href="#fn-AutoBoxing">[AutoBoxing]</a></sup> para realizar ese acceso.</p>
+<p>Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">myName = "Kyle";
+
+myName.length;              // 4
+
+myName.toUpperCase();       // "KYLE"</code></pre></div>
+<p>Acceder a la propiedad <code>length</code> o al método <code>toUpperCase()</code> solo está permitido sobre un valor string primitivo porque JS hace <em>auto-boxing</em> del primitivo <code>string</code> convirtiéndolo en un objeto fundamental envoltorio, una instancia de <code>new String(..)</code>. De lo contrario, todos esos accesos tendrían que fallar, ya que los primitivos no tienen ninguna propiedad.</p>
+<p>Más importante aún, cuando el valor primitivo es sometido a <em>auto-boxing</em> hacia su contraparte de objeto fundamental, esos objetos creados internamente tienen acceso a propiedades/métodos predefinidos (como <code>length</code> y <code>toUpperCase()</code>) por medio de un vínculo <code>[[Prototype]]</code> al prototipo de su respectivo objeto fundamental.</p>
+<p>Así, un <code>string</code> <em>auto-boxed</em> es una instancia de <code>new String()</code>, y por lo tanto está vinculado a <code>String.prototype</code>. Además, lo mismo es cierto para <code>number</code> (envuelto como una instancia de <code>new Number()</code>) y <code>boolean</code> (envuelto como una instancia de <code>new Boolean()</code>).</p>
+<p>Aunque los "constructores" <code>Symbol(..)</code> y <code>BigInt(..)</code> (usados sin <code>new</code>) producen valores primitivos, estos valores primitivos también pueden ser sometidos a <em>auto-boxing</em> hacia sus formas de envoltorio de objeto fundamental internas, a los efectos del acceso delegado a propiedades/métodos.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Ver el libro "Objects &amp; Classes" de esta serie para más sobre los vínculos <code>[[Prototype]]</code> y el acceso delegado/heredado a los objetos prototype de los constructores de objetos fundamentales.</p></div></div>
+<p>Dado que <code>null</code> y <code>undefined</code> no tienen objetos fundamentales correspondientes, no hay <em>auto-boxing</em> de estos valores.</p>
+<p>Una pregunta subjetiva para considerar: ¿es el <em>auto-boxing</em> una forma de coercion? Yo digo que sí, aunque algunos no están de acuerdo. Internamente, un primitivo se convierte en un objeto, lo que significa que ocurrió un cambio en el value-type. Sí, es temporal, pero muchísimas coercions son temporales. Más aún, la conversión es más bien <em>implícita</em> (implicada por el acceso a la propiedad/método, pero que solo ocurre internamente). Revisaremos la naturaleza de la coercion en el Capítulo 4.</p>
+<h2 id="otros-objetos-integrados">Otros Objetos Integrados</h2>
+<p>Además de los constructores de objetos fundamentales, JS define una cantidad de otros constructores integrados que crean sub-tipos de objeto aún más especializados:</p>
+<ul><li><code>new Date(..)</code></li><li><code>new Error(..)</code></li><li><code>new Map(..)</code>, <code>new Set(..)</code>, <code>new WeakMap(..)</code>, <code>new WeakSet(..)</code> -- colecciones con clave</li><li><code>new Int8Array(..)</code>, <code>new Uint32Array(..)</code>, etc -- colecciones indexadas, de typed-array</li><li><code>new ArrayBuffer(..)</code>, <code>new SharedArrayBuffer(..)</code>, etc -- colecciones de datos estructurados</li></ul>
+<h2 id="arrays">Arrays</h2>
+<p>Los arrays son objetos especializados para comportarse como colecciones de valores indexadas numéricamente, a diferencia de contener valores en propiedades con nombre como lo hacen los objetos planos.</p>
+<p>Los arrays tienen una forma literal:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">favoriteNumbers = [ 3, 12, 42 ];
+
+favoriteNumbers[2];                 // 42</code></pre></div>
+<p>El mismo array también podría haberse definido de manera imperativa usando el constructor <code>new Array()</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">favoriteNumbers = new Array();
+favoriteNumbers[0] = 3;
+favoriteNumbers[1] = 12;
+favoriteNumbers[2] = 42;</code></pre></div>
+<p>Los arrays están <code>[[Prototype]]</code>-vinculados a <code>Array.prototype</code>, lo que les da acceso delegado a una variedad de métodos orientados a arrays, tales como <code>map(..)</code>, <code>includes(..)</code>, etc:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">favoriteNumbers.map(v =&gt; v * 2);
+// [ 6, 24, 84 ]
+
+favoriteNumbers.includes(42);       // true</code></pre></div>
+<p>Algunos de los métodos definidos en <code>Array.prototype</code> -- por ejemplo, <code>push(..)</code>, <code>pop(..)</code>, <code>sort(..)</code>, etc -- se comportan modificando el valor del array en el lugar (in place). Otros métodos -- por ejemplo, <code>concat(..)</code>, <code>map(..)</code>, <code>slice(..)</code> -- se comportan creando un nuevo array para retornar, dejando el array original intacto. Una tercera categoría de funciones de array -- por ejemplo, <code>indexOf(..)</code>, <code>includes(..)</code>, etc -- simplemente computa y retorna un resultado (que no es un array).</p>
+<h2 id="expresiones-regulares">Expresiones Regulares</h2>
+<p>// TODO</p>
+<h2 id="funciones">Funciones</h2>
+<h2 id="propuesta-recordstuples">Propuesta: Records/Tuples</h2>
+<p>Al momento de escribir esto, existe una propuesta (en stage-2)<sup class="fnref"><a href="#fn-RecordsTuplesProposal">[RecordsTuplesProposal]</a></sup> para agregar un nuevo conjunto de características a JS, que se corresponden estrechamente con los objetos planos y los arrays, pero con algunas diferencias notables.</p>
+<p>Los Records son similares a los objetos planos, pero son inmutables (sellados, de solo lectura), y (a diferencia de los objetos) son tratados como valores primitivos, a los efectos de la asignación de valor y la comparación de igualdad. La diferencia de sintaxis es un <code>#</code> antes del delimitador <code>{ }</code>. Los Records solo pueden contener valores primitivos (incluyendo records y tuples).</p>
+<p>Los Tuples tienen exactamente la misma relación, pero con los arrays, incluyendo el <code>#</code> antes de los delimitadores <code>[ ]</code>.</p>
+<p>Es importante notar que, si bien lucen y parecen objetos/arrays, son efectivamente valores primitivos (no-objeto).</p>
+<p>https://github.com/tc39/proposal-record-tuple ; Consultado en Agosto de 2022</p>
+<div class="footnotes"><hr><ol><li id="fn-FundamentalObjects">"20 Fundamental Objects", EcamScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-fundamental-objects ; Consultado en Agosto de 2022</li><li id="fn-AutoBoxing">"6.2.4.6 PutValue(V,W)", Step 5.a, ECMAScript 2022 Language Specification; https://262.ecma-international.org/13.0/#sec-putvalue ; Consultado en Agosto de 2022</li><li id="fn-RecordsTuplesProposal">"JavaScript Records &amp; Tuples Proposal"; Robin Ricard, Rick Button, Nicolò Ribaudo;</li></ol></div>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../types-grammar/ch2.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 2 · Valores primitivos</span></a>
+      <a class="pager-btn next" href="../types-grammar/ch4.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 4 · Coerción de valores</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#tipos-de-objetos">Tipos de Objetos</a></li>
+<li class="toc-l2"><a href="#objetos-planos-plain-objects">Objetos Planos (Plain Objects)</a></li>
+<li class="toc-l2"><a href="#objetos-fundamentales-fundamental-objects">Objetos Fundamentales (Fundamental Objects)</a></li>
+<li class="toc-l3"><a href="#prototipos">Prototipos</a></li>
+<li class="toc-l3"><a href="#objetos-automáticos">Objetos Automáticos</a></li>
+<li class="toc-l2"><a href="#otros-objetos-integrados">Otros Objetos Integrados</a></li>
+<li class="toc-l2"><a href="#arrays">Arrays</a></li>
+<li class="toc-l2"><a href="#expresiones-regulares">Expresiones Regulares</a></li>
+<li class="toc-l2"><a href="#funciones">Funciones</a></li>
+<li class="toc-l2"><a href="#propuesta-recordstuples">Propuesta: Records/Tuples</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap. 2 · Mirando JS por encima — YDKJS en Español</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <a class="brand" href="../index.html"><span class="brand-logo">🚀</span> You Don't Know JS <span class="brand-es">· Español</span></a>
+  <div class="topbar-actions">
+    <div class="progress-wrap" title="Progreso de lectura"><div class="progress-bar" id="progressBar"></div></div>
+    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head" style="--book-color:#6366f1">
+      <span class="sidebar-emoji">🚀</span>
+      <div><div class="sidebar-book">Get Started</div><div class="sidebar-sub">Empezando</div></div>
+    </div>
+    <nav class="sidebar-nav">
+<details class="book-group" open>
+<summary style="--book-color:#6366f1"><span class="book-emoji">🚀</span><span class="book-name">Get Started</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../get-started/README.html">Portada</a></li>
+<li class="chap"><a href="../get-started/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../get-started/toc.html">Índice</a></li>
+<li class="chap"><a href="../get-started/ch1.html">Cap. 1 · ¿Qué es JavaScript?</a></li>
+<li class="chap active"><a href="../get-started/ch2.html">Cap. 2 · Mirando JS por encima</a></li>
+<li class="chap"><a href="../get-started/ch3.html">Cap. 3 · Cavando en las raíces de JS</a></li>
+<li class="chap"><a href="../get-started/ch4.html">Cap. 4 · Los tres pilares</a></li>
+<li class="chap"><a href="../get-started/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../get-started/apB.html">Apéndice B · Práctica, práctica, práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#0ea5e9"><span class="book-emoji">🔭</span><span class="book-name">Scope & Closures</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../scope-closures/README.html">Portada</a></li>
+<li class="chap"><a href="../scope-closures/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../scope-closures/toc.html">Índice</a></li>
+<li class="chap"><a href="../scope-closures/ch1.html">Cap. 1 · ¿Qué es el Scope?</a></li>
+<li class="chap"><a href="../scope-closures/ch2.html">Cap. 2 · Ilustrando el Scope léxico</a></li>
+<li class="chap"><a href="../scope-closures/ch3.html">Cap. 3 · El alcance de la cadena de scopes</a></li>
+<li class="chap"><a href="../scope-closures/ch4.html">Cap. 4 · Scope global</a></li>
+<li class="chap"><a href="../scope-closures/ch5.html">Cap. 5 · El (no tan) secreto de los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch6.html">Cap. 6 · Exponer el scope con módulos</a></li>
+<li class="chap"><a href="../scope-closures/ch7.html">Cap. 7 · Usar los closures</a></li>
+<li class="chap"><a href="../scope-closures/ch8.html">Cap. 8 · El patrón módulo</a></li>
+<li class="chap"><a href="../scope-closures/apA.html">Apéndice A · Explorando más a fondo</a></li>
+<li class="chap"><a href="../scope-closures/apB.html">Apéndice B · Práctica</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#8b5cf6"><span class="book-emoji">🧩</span><span class="book-name">Objects & Classes</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../objects-classes/README.html">Portada</a></li>
+<li class="chap"><a href="../objects-classes/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../objects-classes/toc.html">Índice</a></li>
+<li class="chap"><a href="../objects-classes/ch1.html">Cap. 1 · Objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch2.html">Cap. 2 · Cómo funcionan los objetos</a></li>
+<li class="chap"><a href="../objects-classes/ch3.html">Cap. 3 · Clases</a></li>
+<li class="chap"><a href="../objects-classes/ch4.html">Cap. 4 · Esto es por qué "this"</a></li>
+<li class="chap"><a href="../objects-classes/ch5.html">Cap. 5 · Delegación</a></li>
+<li class="chap"><a href="../objects-classes/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#ec4899"><span class="book-emoji">🔡</span><span class="book-name">Types & Grammar</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../types-grammar/README.html">Portada</a></li>
+<li class="chap"><a href="../types-grammar/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../types-grammar/toc.html">Índice</a></li>
+<li class="chap"><a href="../types-grammar/ch1.html">Cap. 1 · Tipos primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch2.html">Cap. 2 · Valores primitivos</a></li>
+<li class="chap"><a href="../types-grammar/ch3.html">Cap. 3 · Valores de objeto</a></li>
+<li class="chap"><a href="../types-grammar/ch4.html">Cap. 4 · Coerción de valores</a></li>
+<li class="chap"><a href="../types-grammar/thanks.html">Agradecimientos</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#f59e0b"><span class="book-emoji">⏳</span><span class="book-name">Sync & Async</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../sync-async/README.html">Portada</a></li>
+<li class="chap"><a href="../sync-async/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../sync-async/toc.html">Índice</a></li>
+<li class="chap"><a href="../sync-async/ch1.html">Cap. 1 · Promesas</a></li>
+</ul></details>
+<details class="book-group">
+<summary style="--book-color:#10b981"><span class="book-emoji">🌌</span><span class="book-name">ES.Next & Beyond</span></summary>
+<ul class="chap-list">
+<li class="chap"><a href="../es-next-beyond/README.html">Portada</a></li>
+<li class="chap"><a href="../es-next-beyond/foreword.html">Prólogo</a></li>
+<li class="chap"><a href="../es-next-beyond/toc.html">Índice</a></li>
+<li class="chap"><a href="../es-next-beyond/ch1.html">Cap. 1 · ES.Next y más allá</a></li>
+</ul></details>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="content">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> <span>/</span> <a href="../get-started/README.html">Get Started</a> <span>/</span> Cap. 2 · Mirando JS por encima</div>
+    <article class="prose" style="--book-color:#6366f1">
+      <h1 id="you-dont-know-js-yet-get-started---2nd-edition">You Don't Know JS Yet: Get Started - 2nd Edition</h1>
+<h1 id="capítulo-2-explorando-js">Capítulo 2: Explorando JS</h1>
+<p>La mejor manera de aprender JS es empezar a escribir JS.</p>
+<p>Para eso, necesitás saber cómo funciona el lenguaje, y en eso nos vamos a enfocar acá. Incluso si ya programaste en otros lenguajes antes, tomate tu tiempo para sentirte cómodo con JS, y asegurate de practicar cada parte.</p>
+<p>Este capítulo no es una referencia exhaustiva de cada detalle de la sintaxis del lenguaje JS. Tampoco pretende ser un completo manual de "introducción a JS".</p>
+<p>En cambio, solo vamos a recorrer algunas de las áreas temáticas principales del lenguaje. Nuestro objetivo es tener una mejor <em>sensación</em> de él, para poder avanzar escribiendo nuestros propios programas con más confianza. Vamos a volver sobre muchos de estos temas con sucesivamente más detalle a medida que avancés por el resto de este libro, y el resto de la serie.</p>
+<p>Por favor, no esperes que este capítulo sea una lectura rápida. Es largo y hay un montón de detalles para masticar. Tomate tu tiempo.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>Si todavía te estás familiarizando con JS, te sugiero que reserves bastante tiempo extra para trabajar a lo largo de este capítulo. Tomá cada sección y reflexioná y explorá el tema por un rato. Mirá programas JS existentes y compará lo que veas en ellos con el código y las explicaciones (¡y opiniones!) que se presentan acá. Vas a sacar mucho más provecho del resto del libro y de la serie con una base sólida sobre la <em>naturaleza</em> de JS.</p></div></div>
+<h2 id="cada-archivo-es-un-programa">Cada Archivo es un Programa</h2>
+<p>Casi todos los sitios web (aplicaciones web) que usás están compuestos por muchos archivos JS distintos (típicamente con la extensión de archivo .js). Es tentador pensar en todo el conjunto (la aplicación) como un solo programa. Pero JS lo ve de forma diferente.</p>
+<p>En JS, cada archivo independiente es su propio programa separado.</p>
+<p>La razón por la que esto importa gira principalmente en torno al manejo de errores. Como JS trata a los archivos como programas, un archivo puede fallar (durante el parseo/compilación o la ejecución) y eso no necesariamente va a impedir que el siguiente archivo sea procesado. Obviamente, si tu aplicación depende de cinco archivos .js, y uno de ellos falla, la aplicación en general probablemente va a operar solo parcialmente, en el mejor de los casos. Es importante asegurarse de que cada archivo funcione correctamente, y que en la medida de lo posible, manejen las fallas en otros archivos de la forma más elegante posible.</p>
+<p>Puede sorprenderte considerar archivos .js separados como programas JS separados. Desde la perspectiva de tu uso de una aplicación, seguro parece un gran programa. Eso es porque la ejecución de la aplicación permite que estos <em>programas</em> individuales cooperen y actúen como un solo programa.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Muchos proyectos usan herramientas de proceso de build que terminan combinando archivos separados del proyecto en un único archivo que se entrega a una página web. Cuando esto pasa, JS trata a este único archivo combinado como el programa entero.</p></div></div>
+<p>La única manera en que múltiples archivos .js independientes actúan como un solo programa es compartiendo su estado (y el acceso a su funcionalidad pública) a través del "scope global". Se mezclan en este espacio de nombres del scope global, de modo que en tiempo de ejecución actúan como un todo.</p>
+<p>Desde ES6, JS también soporta un formato de módulo además del típico formato de programa JS independiente. Los módulos también están basados en archivos. Si un archivo se carga mediante un mecanismo de carga de módulos como una <code>import</code> statement o una etiqueta <code>&lt;script type=module&gt;</code>, todo su código se trata como un único módulo.</p>
+<p>Aunque normalmente no pensarías en un módulo —una colección de estado y métodos expuestos públicamente para operar sobre ese estado— como un programa independiente, JS de hecho sigue tratando a cada módulo por separado. De manera similar a cómo el "scope global" permite que archivos independientes se mezclen en tiempo de ejecución, importar un módulo dentro de otro permite la interoperación en tiempo de ejecución entre ellos.</p>
+<p>Sin importar qué patrón de organización de código (y mecanismo de carga) se use para un archivo (independiente o módulo), igual deberías pensar en cada archivo como su propio (mini) programa, que luego puede cooperar con otros (mini) programas para realizar las funciones de tu aplicación en general.</p>
+<h2 id="valores">Valores</h2>
+<p>La unidad de información más fundamental en un programa es un valor. Los valores son datos. Son la forma en que el programa mantiene el estado. Los valores vienen en dos formas en JS: <strong>primitivo</strong> y <strong>objeto</strong>.</p>
+<p>Los valores se incrustan en los programas usando <em>literales</em>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">greeting("My name is Kyle.");</code></pre></div>
+<p>En este programa, el valor <code>"My name is Kyle."</code> es un string literal primitivo; los strings son colecciones ordenadas de caracteres, normalmente usadas para representar palabras y oraciones.</p>
+<p>Usé el carácter de comilla doble <code>"</code> para <em>delimitar</em> (rodear, separar, definir) el valor del string. Pero también podría haber usado el carácter de comilla simple <code>'</code>. La elección de qué carácter de comilla usar es enteramente estilística. Lo importante, por el bien de la legibilidad y mantenibilidad del código, es elegir uno y usarlo de forma consistente a lo largo del programa.</p>
+<p>Otra opción para delimitar un string literal es usar el carácter de comilla invertida (back-tick) `<code> </code> ``. Sin embargo, esta elección no es meramente estilística; también hay una diferencia de comportamiento. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">console.log("My name is ${ firstName }.");
+// My name is ${ firstName }.
+
+console.log('My name is ${ firstName }.');
+// My name is ${ firstName }.
+
+console.log(`My name is ${ firstName }.`);
+// My name is Kyle.</code></pre></div>
+<p>Suponiendo que este programa ya definió una variable <code>firstName</code> con el valor de string <code>"Kyle"</code>, el string delimitado por `<code> </code> `<code> entonces resuelve la expresión de la variable (indicada con </code>${ .. }`) a su valor actual. Esto se llama <strong>interpolación</strong>.</p>
+<p>El string delimitado por la comilla invertida `<code> </code> `` puede usarse sin incluir expresiones interpoladas, pero eso frustra todo el propósito de esa sintaxis alternativa de string literal:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">console.log(
+    `Am I confusing you by omitting interpolation?`
+);
+// Am I confusing you by omitting interpolation?</code></pre></div>
+<p>El mejor enfoque es usar <code>"</code> o <code>'</code> (de nuevo, ¡elegí uno y quedate con él!) para los strings <em>a menos que necesites</em> interpolación; reservá `<code> </code> `` solo para los strings que vayan a incluir expresiones interpoladas.</p>
+<p>Además de los strings, los programas JS a menudo contienen otros valores literales primitivos como booleanos y números:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">while (false) {
+    console.log(3.141592);
+}</code></pre></div>
+<p><code>while</code> representa un tipo de bucle, una manera de repetir operaciones <em>mientras</em> su condición sea verdadera.</p>
+<p>En este caso, el bucle nunca va a correr (y no se va a imprimir nada), porque usamos el valor booleano <code>false</code> como condicional del bucle. <code>true</code> habría resultado en un bucle que sigue para siempre, ¡así que tené cuidado!</p>
+<p>El número <code>3.141592</code> es, como quizás sepas, una aproximación del PI matemático a los primeros seis dígitos. Sin embargo, en lugar de incrustar semejante valor, típicamente usarías el valor predefinido <code>Math.PI</code> para ese propósito. Otra variación de los números es el tipo primitivo <code>bigint</code> (big-integer o entero grande), que se usa para almacenar números arbitrariamente grandes.</p>
+<p>Los números se usan más a menudo en los programas para contar pasos, como las iteraciones de un bucle, y para acceder a información en posiciones numéricas (es decir, un índice de array). Vamos a cubrir arrays/objetos en un ratito, pero como ejemplo, si hubiera un array llamado <code>names</code>, podríamos acceder al elemento en su segunda posición así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">console.log(`My name is ${ names[1] }.`);
+// My name is Kyle.</code></pre></div>
+<p>Usamos <code>1</code> para el elemento en la segunda posición, en lugar de <code>2</code>, porque al igual que en la mayoría de los lenguajes de programación, los índices de array de JS están basados en 0 (<code>0</code> es la primera posición).</p>
+<p>Además de strings, números y booleanos, otros dos valores <em>primitivos</em> en los programas JS son <code>null</code> y <code>undefined</code>. Si bien hay diferencias entre ellos (algunas históricas y otras contemporáneas), en su mayor parte ambos valores sirven al propósito de indicar la <em>vacuidad</em> (o ausencia) de un valor.</p>
+<p>Muchos desarrolladores prefieren tratar a ambos de forma consistente de esta manera, es decir, asumiendo que los valores son indistinguibles. Si se tiene cuidado, esto a menudo es posible. Sin embargo, lo más seguro y mejor es usar solo <code>undefined</code> como el único valor vacío, ¡aunque <code>null</code> resulte atractivo por ser más corto de tipear!</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">while (value != undefined) {
+    console.log("Still got something!");
+}</code></pre></div>
+<p>El último valor primitivo que hay que conocer es un symbol, que es un valor de propósito especial que se comporta como un valor oculto e imposible de adivinar. Los symbols se usan casi exclusivamente como claves especiales en objetos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">hitchhikersGuide[ Symbol("meaning of life") ];
+// 42</code></pre></div>
+<p>No vas a encontrar uso directo de symbols muy seguido en los programas JS típicos. Se usan principalmente en código de bajo nivel, como en librerías y frameworks.</p>
+<h3 id="arrays-y-objetos">Arrays Y Objetos</h3>
+<p>Además de los primitivos, el otro tipo de valor en JS es un valor objeto.</p>
+<p>Como se mencionó antes, los arrays son un tipo especial de objeto que está compuesto por una lista de datos ordenada e indexada numéricamente:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var names = [ "Frank", "Kyle", "Peter", "Susan" ];
+
+names.length;
+// 4
+
+names[0];
+// Frank
+
+names[1];
+// Kyle</code></pre></div>
+<p>Los arrays de JS pueden contener cualquier tipo de valor, ya sea primitivo u objeto (incluyendo otros arrays). Como veremos hacia el final del Capítulo 3, incluso las funciones son valores que pueden contenerse en arrays u objetos.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Las funciones, al igual que los arrays, son una clase especial (es decir, un sub-tipo) de objeto. Vamos a cubrir las funciones con más detalle en un rato.</p></div></div>
+<p>Los objetos son más generales: una colección desordenada y con claves de cualquier variedad de valores. En otras palabras, accedés al elemento por un nombre de ubicación de tipo string (es decir, "clave" o "propiedad") en lugar de por su posición numérica (como con los arrays). Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var me = {
+    first: "Kyle",
+    last: "Simpson",
+    age: 39,
+    specialties: [ "JS", "Table Tennis" ]
+};
+
+console.log(`My name is ${ me.first }.`);</code></pre></div>
+<p>Acá, <code>me</code> representa un objeto, y <code>first</code> representa el nombre de una ubicación de información en ese objeto (colección de valores). Otra opción de sintaxis que accede a la información en un objeto por su propiedad/clave usa los corchetes <code>[ ]</code>, como por ejemplo <code>me["first"]</code>.</p>
+<h3 id="determinación-del-tipo-de-valor">Determinación del Tipo de Valor</h3>
+<p>Para distinguir valores, el operador <code>typeof</code> te dice su tipo incorporado, si es primitivo, o <code>"object"</code> en caso contrario:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">typeof 42;                  // "number"
+typeof "abc";               // "string"
+typeof true;                // "boolean"
+typeof undefined;           // "undefined"
+typeof null;                // "object" -- oops, bug!
+typeof { "a": 1 };          // "object"
+typeof [1,2,3];             // "object"
+typeof function hello(){};  // "function"</code></pre></div>
+<div class="callout callout-warning"><div class="callout-head"><span class="callout-ico">⚠️</span>ADVERTENCIA</div><div class="callout-body"><p><code>typeof null</code> lamentablemente devuelve <code>"object"</code> en lugar del esperado <code>"null"</code>. Además, <code>typeof</code> devuelve el específico <code>"function"</code> para las funciones, pero no el esperado <code>"array"</code> para los arrays.</p></div></div>
+<p>Convertir de un tipo de valor a otro, como de string a número, se denomina en JS "coerción". Vamos a cubrir esto con más detalle más adelante en este capítulo.</p>
+<p>Los valores primitivos y los valores objeto se comportan de forma diferente cuando se asignan o se pasan por ahí. Vamos a cubrir estos detalles en el Apéndice A, "Valores vs Referencias."</p>
+<h2 id="declarar-y-usar-variables">Declarar y Usar Variables</h2>
+<p>Para ser explícito sobre algo que puede no haber sido obvio en la sección anterior: en los programas JS, los valores pueden aparecer ya sea como valores literales (como ilustran muchos de los ejemplos anteriores), o pueden contenerse en variables; pensá en las variables simplemente como contenedores de valores.</p>
+<p>Las variables tienen que ser declaradas (creadas) para poder usarse. Hay varias formas de sintaxis que declaran variables (es decir, "identificadores"), y cada forma tiene distintos comportamientos implícitos.</p>
+<p>Por ejemplo, considerá la <code>var</code> statement:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var myName = "Kyle";
+var age;</code></pre></div>
+<p>La palabra clave <code>var</code> declara una variable para ser usada en esa parte del programa, y opcionalmente permite una asignación inicial de un valor.</p>
+<p>Otra palabra clave similar es <code>let</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">let myName = "Kyle";
+let age;</code></pre></div>
+<p>La palabra clave <code>let</code> tiene algunas diferencias respecto de <code>var</code>, siendo la más obvia que <code>let</code> permite un acceso más limitado a la variable que <code>var</code>. Esto se llama "block scoping" (scope de bloque) en oposición al scope regular o de función.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var adult = true;
+
+if (adult) {
+    var myName = "Kyle";
+    let age = 39;
+    console.log("Shhh, this is a secret!");
+}
+
+console.log(myName);
+// Kyle
+
+console.log(age);
+// Error!</code></pre></div>
+<p>El intento de acceder a <code>age</code> fuera de la <code>if</code> statement resulta en un error, porque <code>age</code> tenía un scope de bloque limitado al <code>if</code>, mientras que <code>myName</code> no.</p>
+<p>El block-scoping es muy útil para limitar cuán extendidas están las declaraciones de variables en nuestros programas, lo que ayuda a prevenir el solapamiento accidental de sus nombres.</p>
+<p>Pero <code>var</code> sigue siendo útil en el sentido de que comunica "esta variable va a ser vista por un scope más amplio (el de toda la función)". Ambas formas de declaración pueden ser apropiadas en cualquier parte dada de un programa, dependiendo de las circunstancias.</p>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Es muy común sugerir que <code>var</code> debería evitarse en favor de <code>let</code> (¡o <code>const</code>!), generalmente por una confusión percibida sobre cómo ha funcionado el comportamiento de scope de <code>var</code> desde el comienzo de JS. Creo que este es un consejo excesivamente restrictivo y en definitiva poco útil. Asume que sos incapaz de aprender y usar una característica correctamente en combinación con otras características. ¡Creo que <em>podés</em> y <em>deberías</em> aprender cualquier característica disponible, y usarla donde sea apropiado!</p></div></div>
+<p>Una tercera forma de declaración es <code>const</code>. Es como <code>let</code> pero tiene una limitación adicional: se le debe dar un valor en el momento en que se declara, y no se le puede reasignar un valor diferente más tarde.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const myBirthday = true;
+let age = 39;
+
+if (myBirthday) {
+    age = age + 1;    // OK!
+    myBirthday = false;  // Error!
+}</code></pre></div>
+<p>A la constante <code>myBirthday</code> no se le permite ser reasignada.</p>
+<p>Las variables declaradas con <code>const</code> no son "inmutables", simplemente no pueden ser reasignadas. No es aconsejable usar <code>const</code> con valores objeto, porque esos valores igual pueden cambiarse aunque la variable no pueda reasignarse. Esto lleva a una potencial confusión más adelante, así que creo que es sabio evitar situaciones como:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">const actors = [
+    "Morgan Freeman", "Jennifer Aniston"
+];
+
+actors[2] = "Tom Cruise";   // OK :(
+actors = [];                // Error!</code></pre></div>
+<p>El mejor uso semántico de un <code>const</code> es cuando tenés un valor primitivo simple al que querés darle un nombre útil, como usar <code>myBirthday</code> en lugar de <code>true</code>. Esto hace que los programas sean más fáciles de leer.</p>
+<div class="callout callout-tip"><div class="callout-head"><span class="callout-ico">💡</span>TIP</div><div class="callout-body"><p>¡Si te quedás usando <code>const</code> solo con valores primitivos, evitás cualquier confusión entre reasignación (no permitida) vs. mutación (permitida)! Esa es la forma más segura y mejor de usar <code>const</code>.</p></div></div>
+<p>Además de <code>var</code> / <code>let</code> / <code>const</code>, hay otras formas sintácticas que declaran identificadores (variables) en varios scopes. Por ejemplo:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function hello(myName) {
+    console.log(`Hello, ${ myName }.`);
+}
+
+hello("Kyle");
+// Hello, Kyle.</code></pre></div>
+<p>El identificador <code>hello</code> se crea en el scope exterior, y también se asocia automáticamente de modo que referencia a la función. Pero el parámetro nombrado <code>myName</code> se crea solo dentro de la función, y por lo tanto solo es accesible dentro del scope de esa función. <code>hello</code> y <code>myName</code> se comportan generalmente como si estuvieran declarados con <code>var</code>.</p>
+<p>Otra sintaxis que declara una variable es una cláusula <code>catch</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">try {
+    someError();
+}
+catch (err) {
+    console.log(err);
+}</code></pre></div>
+<p>El <code>err</code> es una variable con scope de bloque que existe solo dentro de la cláusula <code>catch</code>, como si hubiera sido declarada con <code>let</code>.</p>
+<h2 id="funciones">Funciones</h2>
+<p>La palabra "función" tiene una variedad de significados en programación. Por ejemplo, en el mundo de la Programación Funcional, "función" tiene una definición matemática precisa e implica un estricto conjunto de reglas a las que atenerse.</p>
+<p>En JS, deberíamos considerar que "función" toma el significado más amplio de otro término relacionado: "procedimiento". Un procedimiento es una colección de statements que puede invocarse una o más veces, puede recibir algunas entradas, y puede devolver una o más salidas.</p>
+<p>Desde los primeros días de JS, la definición de una función se veía así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function awesomeFunction(coolThings) {
+    // ..
+    return amazingStuff;
+}</code></pre></div>
+<p>Esto se llama una function declaration (declaración de función) porque aparece como una statement por sí misma, no como una expression dentro de otra statement. La asociación entre el identificador <code>awesomeFunction</code> y el valor de la función ocurre durante la fase de compilación del código, antes de que ese código se ejecute.</p>
+<p>En contraste con una statement de function declaration, una function expression puede definirse y asignarse así:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">// let awesomeFunction = ..
+// const awesomeFunction = ..
+var awesomeFunction = function(coolThings) {
+    // ..
+    return amazingStuff;
+};</code></pre></div>
+<p>Esta función es una expression que se asigna a la variable <code>awesomeFunction</code>. A diferencia de la forma de function declaration, una function expression no se asocia con su identificador hasta esa statement durante el tiempo de ejecución.</p>
+<p>Es sumamente importante notar que en JS, las funciones son valores que pueden asignarse (como se muestra en este fragmento) y pasarse por ahí. De hecho, las funciones de JS son un tipo especial del tipo de valor objeto. No todos los lenguajes tratan a las funciones como valores, pero es esencial que un lenguaje soporte el patrón de programación funcional, como lo hace JS.</p>
+<p>Las funciones de JS pueden recibir entrada de parámetros:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function greeting(myName) {
+    console.log(`Hello, ${ myName }!`);
+}
+
+greeting("Kyle");   // Hello, Kyle!</code></pre></div>
+<p>En este fragmento, <code>myName</code> se llama un parámetro, que actúa como una variable local dentro de la función. Las funciones pueden definirse para recibir cualquier cantidad de parámetros, desde ninguno en adelante, como te parezca conveniente. A cada parámetro se le asigna el valor del argumento que pasás en esa posición (<code>"Kyle"</code>, acá) de la llamada.</p>
+<p>Las funciones también pueden devolver valores usando la palabra clave <code>return</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function greeting(myName) {
+    return `Hello, ${ myName }!`;
+}
+
+var msg = greeting("Kyle");
+
+console.log(msg);   // Hello, Kyle!</code></pre></div>
+<p>Solo podés hacer <code>return</code> de un único valor, pero si tenés más valores para devolver, podés envolverlos en un solo objeto/array.</p>
+<p>Como las funciones son valores, pueden asignarse como propiedades en objetos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var whatToSay = {
+    greeting() {
+        console.log("Hello!");
+    },
+    question() {
+        console.log("What's your name?");
+    },
+    answer() {
+        console.log("My name is Kyle.");
+    }
+};
+
+whatToSay.greeting();
+// Hello!</code></pre></div>
+<p>En este fragmento, se incluyen referencias a tres funciones (<code>greeting()</code>, <code>question()</code> y <code>answer()</code>) en el objeto contenido por <code>whatToSay</code>. Cada función puede llamarse accediendo a la propiedad para recuperar el valor de referencia de la función. Compará este estilo directo de definir funciones en un objeto con la sintaxis de <code>class</code> más sofisticada que se discute más adelante en este capítulo.</p>
+<p>Hay muchas formas variadas que toman las <code>function</code>s en JS. Nos sumergimos en estas variaciones en el Apéndice A, "Tantas Formas de Funciones."</p>
+<h2 id="comparaciones">Comparaciones</h2>
+<p>Tomar decisiones en los programas requiere comparar valores para determinar su identidad y su relación entre sí. JS tiene varios mecanismos para habilitar la comparación de valores, así que miremos más de cerca cada uno.</p>
+<h3 id="igualito">Igual...ito</h3>
+<p>La comparación más común en los programas JS hace la pregunta: "¿Este valor X es <em>el mismo que</em> ese valor Y?". ¿Qué significa realmente "el mismo que" para JS, sin embargo?</p>
+<p>Por razones ergonómicas e históricas, el significado es más complicado que el obvio tipo de coincidencia de <em>identidad exacta</em>. A veces una comparación de igualdad pretende una coincidencia <em>exacta</em>, pero otras veces la comparación deseada es un poco más amplia, permitiendo una coincidencia <em>muy similar</em> o <em>intercambiable</em>. En otras palabras, debemos ser conscientes de las sutiles diferencias entre una comparación de <strong>igualdad</strong> (equality) y una comparación de <strong>equivalencia</strong> (equivalence).</p>
+<p>Si pasaste algo de tiempo trabajando con JS y leyendo sobre él, seguramente viste el llamado operador "triple-igual" <code>===</code>, también descrito como el operador de "igualdad estricta". Eso parece bastante directo, ¿no? Seguramente, "estricto" significa estricto, como en estrecho y <em>exacto</em>.</p>
+<p>No <em>exacta</em>mente.</p>
+<p>Sí, la mayoría de los valores que participan en una comparación de igualdad <code>===</code> van a encajar con esa misma intuición de <em>exactamente igual</em>. Considerá algunos ejemplos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">3 === 3.0;              // true
+"yes" === "yes";        // true
+null === null;          // true
+false === false;        // true
+
+42 === "42";            // false
+"hello" === "Hello";    // false
+true === 1;             // false
+0 === null;             // false
+"" === null;            // false
+null === undefined;     // false</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>Otra forma en que a menudo se describe la comparación de igualdad de <code>===</code> es "chequear tanto el valor como el tipo". En varios de los ejemplos que vimos hasta ahora, como <code>42 === "42"</code>, el <em>tipo</em> de ambos valores (número, string, etc.) parece ser el factor distintivo. Sin embargo, hay más que eso. <strong>Todas</strong> las comparaciones de valores en JS consideran el tipo de los valores que se comparan, no <em>solo</em> el operador <code>===</code>. Específicamente, <code>===</code> no permite ningún tipo de conversión de tipo (es decir, "coerción") en su comparación, mientras que otras comparaciones de JS <em>sí</em> permiten coerción.</p></div></div>
+<p>Pero el operador <code>===</code> sí tiene algo de sutileza, un hecho que muchos desarrolladores JS pasan por alto, en su perjuicio. El operador <code>===</code> está diseñado para <em>mentir</em> en dos casos de valores especiales: <code>NaN</code> y <code>-0</code>. Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">NaN === NaN;            // false
+0 === -0;               // true</code></pre></div>
+<p>En el caso de <code>NaN</code>, el operador <code>===</code> <em>miente</em> y dice que una ocurrencia de <code>NaN</code> no es igual a otro <code>NaN</code>. En el caso de <code>-0</code> (sí, ¡este es un valor real y distinto que podés usar intencionalmente en tus programas!), el operador <code>===</code> <em>miente</em> y dice que es igual al valor regular <code>0</code>.</p>
+<p>Como la <em>mentira</em> sobre tales comparaciones puede ser molesta, lo mejor es evitar usar <code>===</code> para ellas. Para las comparaciones de <code>NaN</code>, usá la utilidad <code>Number.isNaN(..)</code>, que no <em>miente</em>. Para la comparación de <code>-0</code>, usá la utilidad <code>Object.is(..)</code>, que tampoco <em>miente</em>. <code>Object.is(..)</code> también puede usarse para chequeos de <code>NaN</code> que no <em>mienten</em>, si lo preferís. Graciosamente, podrías pensar en <code>Object.is(..)</code> como el "cuádruple-igual" <code>====</code>, ¡la comparación realmente-realmente-estricta!</p>
+<p>Hay razones históricas y técnicas más profundas para estas <em>mentiras</em>, pero eso no cambia el hecho de que <code>===</code> no es en realidad una comparación <em>estrictamente y exactamente igual</em>, en el sentido más <em>estricto</em>.</p>
+<p>La historia se vuelve aún más complicada cuando consideramos las comparaciones de valores objeto (no primitivos). Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">[ 1, 2, 3 ] === [ 1, 2, 3 ];    // false
+{ a: 42 } === { a: 42 }         // false
+(x =&gt; x * 2) === (x =&gt; x * 2)   // false</code></pre></div>
+<p>¿Qué está pasando acá?</p>
+<p>Puede parecer razonable asumir que un chequeo de igualdad considera la <em>naturaleza</em> o el <em>contenido</em> del valor; después de todo, <code>42 === 42</code> considera el valor real <code>42</code> y lo compara. Pero cuando se trata de objetos, una comparación que tiene en cuenta el contenido generalmente se denomina "igualdad estructural".</p>
+<p>JS no define <code>===</code> como <em>igualdad estructural</em> para los valores objeto. En cambio, <code>===</code> usa <em>igualdad de identidad</em> para los valores objeto.</p>
+<p>En JS, todos los valores objeto se contienen por referencia (ver "Valores vs Referencias" en el Apéndice A), se asignan y se pasan por copia-de-referencia, <strong>y</strong> para nuestra discusión actual, se comparan por igualdad de referencia (identidad). Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var x = [ 1, 2, 3 ];
+
+// assignment is by reference-copy, so
+// y references the *same* array as x,
+// not another copy of it.
+var y = x;
+
+y === x;              // true
+y === [ 1, 2, 3 ];    // false
+x === [ 1, 2, 3 ];    // false</code></pre></div>
+<p>En este fragmento, <code>y === x</code> es true porque ambas variables contienen una referencia al mismo array inicial. Pero las comparaciones <code>=== [1,2,3]</code> fallan ambas porque <code>y</code> y <code>x</code>, respectivamente, se están comparando con nuevos arrays <em>diferentes</em> <code>[1,2,3]</code>. La estructura y el contenido del array no importan en esta comparación, solo la <strong>identidad de referencia</strong>.</p>
+<p>JS no provee un mecanismo para la comparación de igualdad estructural de valores objeto, solo la comparación de identidad de referencia. Para hacer una comparación de igualdad estructural, vas a necesitar implementar los chequeos vos mismo.</p>
+<p>Pero cuidado, es más complicado de lo que vas a suponer. Por ejemplo, ¿cómo determinarías si dos referencias de función son "estructuralmente equivalentes"? Incluso convertir a string para comparar el texto de su código fuente no tendría en cuenta cosas como el closure. ¡JS no provee la comparación de igualdad estructural porque es casi intratable manejar todos los casos límite!</p>
+<h3 id="comparaciones-coercitivas">Comparaciones Coercitivas</h3>
+<p>Coerción significa que un valor de un tipo se convierte a su respectiva representación en otro tipo (en la medida de lo posible). Como discutiremos en el Capítulo 4, la coerción es un pilar central del lenguaje JS, no una característica opcional que pueda razonablemente evitarse.</p>
+<p>Pero donde la coerción se encuentra con los operadores de comparación (como la igualdad), lamentablemente la confusión y la frustración surgen más a menudo que no.</p>
+<p>Pocas características de JS atraen más ira en la comunidad JS en general que el operador <code>==</code>, generalmente llamado el operador de "igualdad laxa" (loose equality). La mayoría de todo lo que se escribe y del discurso público sobre JS condena a este operador como mal diseñado y peligroso/plagado de bugs cuando se usa en los programas JS. Incluso el propio creador del lenguaje, Brendan Eich, ha lamentado que se haya diseñado como un gran error.</p>
+<p>Por lo que puedo ver, la mayor parte de esta frustración viene de una lista bastante corta de casos límite confusos, pero un problema más profundo es la concepción errónea extremadamente extendida de que realiza sus comparaciones sin considerar los tipos de los valores comparados.</p>
+<p>El operador <code>==</code> realiza una comparación de igualdad de manera similar a cómo lo hace <code>===</code>. De hecho, ambos operadores consideran el tipo de los valores que se comparan. Y si la comparación es entre el mismo tipo de valor, tanto <code>==</code> como <code>===</code> <strong>hacen exactamente lo mismo, sin ninguna diferencia en absoluto.</strong></p>
+<p>Si los tipos de valor que se comparan son diferentes, <code>==</code> se diferencia de <code>===</code> en que permite la coerción antes de la comparación. En otras palabras, ambos quieren comparar valores de tipos iguales, pero <code>==</code> permite conversiones de tipo <em>primero</em>, y una vez que los tipos se convirtieron para ser iguales en ambos lados, entonces <code>==</code> hace lo mismo que <code>===</code>. En lugar de "igualdad laxa", el operador <code>==</code> debería describirse como "igualdad coercitiva".</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">42 == "42";             // true
+1 == true;              // true</code></pre></div>
+<p>En ambas comparaciones, los tipos de valor son diferentes, así que el <code>==</code> hace que los valores no numéricos (<code>"42"</code> y <code>true</code>) se conviertan a números (<code>42</code> y <code>1</code>, respectivamente) antes de que se hagan las comparaciones.</p>
+<p>Simplemente ser consciente de esta naturaleza de <code>==</code> —que prefiere las comparaciones numéricas primitivas— te ayuda a evitar la mayoría de los casos límite problemáticos, como mantenerte alejado de trampas como <code>"" == 0</code> o <code>0 == false</code>.</p>
+<p>Quizás estés pensando: "Ah, bueno, simplemente voy a evitar siempre cualquier comparación de igualdad coercitiva (usando <code>===</code> en su lugar) para evitar esos casos límite". Eh, perdón, eso no es tan probable como esperarías.</p>
+<p>Hay una muy buena posibilidad de que uses operadores de comparación relacional como <code>&lt;</code>, <code>&gt;</code> (e incluso <code>&lt;=</code> y <code>&gt;=</code>).</p>
+<p>Al igual que <code>==</code>, estos operadores van a actuar como si fueran "estrictos" si los tipos que se comparan relacionalmente ya coinciden, pero van a permitir la coerción primero (generalmente, a números) si los tipos difieren.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var arr = [ "1", "10", "100", "1000" ];
+for (let i = 0; i &lt; arr.length &amp;&amp; arr[i] &lt; 500; i++) {
+    // will run 3 times
+}</code></pre></div>
+<p>La comparación <code>i &lt; arr.length</code> está "a salvo" de la coerción porque <code>i</code> y <code>arr.length</code> siempre son números. La comparación <code>arr[i] &lt; 500</code> invoca coerción, sin embargo, porque los valores de <code>arr[i]</code> son todos strings. Esas comparaciones se convierten entonces en <code>1 &lt; 500</code>, <code>10 &lt; 500</code>, <code>100 &lt; 500</code> y <code>1000 &lt; 500</code>. Como esa cuarta es false, el bucle se detiene después de su tercera iteración.</p>
+<p>Estos operadores relacionales típicamente usan comparaciones numéricas, excepto en el caso en que <strong>ambos</strong> valores que se comparan ya son strings; en este caso, usan comparación alfabética (como de diccionario) de los strings:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var x = "10";
+var y = "9";
+
+x &lt; y;      // true, watch out!</code></pre></div>
+<p>No hay manera de hacer que estos operadores relacionales eviten la coerción, aparte de simplemente no usar nunca tipos no coincidentes en las comparaciones. Eso quizás sea admirable como objetivo, pero igual es bastante probable que te encuentres con un caso donde los tipos <em>puedan</em> diferir.</p>
+<p>El enfoque más sabio no es evitar las comparaciones coercitivas, sino abrazarlas y aprender sus entretelones.</p>
+<p>Las comparaciones coercitivas surgen en otros lugares de JS, como en los condicionales (<code>if</code>, etc.), sobre los que vamos a volver en el Apéndice A, "Comparación Condicional Coercitiva."</p>
+<h2 id="cómo-organizamos-en-js">Cómo Organizamos en JS</h2>
+<p>Dos patrones principales para organizar el código (datos y comportamiento) se usan ampliamente a lo largo del ecosistema JS: clases y módulos. Estos patrones no son mutuamente excluyentes; muchos programas pueden usar y usan ambos. Otros programas van a quedarse con un solo patrón, ¡o incluso ninguno!</p>
+<p>En algunos aspectos, estos patrones son muy diferentes. Pero curiosamente, en otros sentidos, son simplemente dos caras de la misma moneda. Ser competente en JS requiere entender ambos patrones y dónde son apropiados (¡y dónde no!).</p>
+<h3 id="clases">Clases</h3>
+<p>Los términos "orientado a objetos", "orientado a clases" y "clases" están todos muy cargados de detalle y matices; no son universales en su definición.</p>
+<p>Vamos a usar acá una definición común y en cierto modo tradicional, la más probablemente familiar para quienes tienen experiencia en lenguajes "orientados a objetos" como C++ y Java.</p>
+<p>Una clase en un programa es la definición de un "tipo" de estructura de datos personalizada que incluye tanto datos como comportamientos que operan sobre esos datos. Las clases definen cómo funciona semejante estructura de datos, pero las clases no son en sí mismas valores concretos. Para obtener un valor concreto que puedas usar en el programa, una clase debe ser <em>instanciada</em> (con la palabra clave <code>new</code>) una o más veces.</p>
+<p>Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">class Page {
+    constructor(text) {
+        this.text = text;
+    }
+
+    print() {
+        console.log(this.text);
+    }
+}
+
+class Notebook {
+    constructor() {
+        this.pages = [];
+    }
+
+    addPage(text) {
+        var page = new Page(text);
+        this.pages.push(page);
+    }
+
+    print() {
+        for (let page of this.pages) {
+            page.print();
+        }
+    }
+}
+
+var mathNotes = new Notebook();
+mathNotes.addPage("Arithmetic: + - * / ...");
+mathNotes.addPage("Trigonometry: sin cos tan ...");
+
+mathNotes.print();
+// ..</code></pre></div>
+<p>En la clase <code>Page</code>, los datos son un string de texto almacenado en una propiedad miembro <code>this.text</code>. El comportamiento es <code>print()</code>, un método que vuelca el texto a la consola.</p>
+<p>Para la clase <code>Notebook</code>, los datos son un array de instancias de <code>Page</code>. El comportamiento es <code>addPage(..)</code>, un método que instancia nuevas páginas <code>Page</code> y las agrega a la lista, así como <code>print()</code> (que imprime todas las páginas en el notebook).</p>
+<p>La statement <code>mathNotes = new Notebook()</code> crea una instancia de la clase <code>Notebook</code>, y <code>page = new Page(text)</code> es donde se crean las instancias de la clase <code>Page</code>.</p>
+<p>El comportamiento (los métodos) solo puede llamarse sobre las instancias (no sobre las clases en sí), como <code>mathNotes.addPage(..)</code> y <code>page.print()</code>.</p>
+<p>El mecanismo de <code>class</code> permite empaquetar datos (<code>text</code> y <code>pages</code>) para organizarlos junto con sus comportamientos (por ejemplo, <code>addPage(..)</code> y <code>print()</code>). El mismo programa podría haberse construido sin ninguna definición de <code>class</code>, pero probablemente habría estado mucho menos organizado, habría sido más difícil de leer y razonar, y más susceptible a bugs y a un mantenimiento deficiente.</p>
+<h4 id="herencia-de-clases">Herencia de Clases</h4>
+<p>Otro aspecto inherente al diseño tradicional "orientado a clases", aunque un poco menos usado comúnmente en JS, es la "herencia" (y el "polimorfismo"). Considerá:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">class Publication {
+    constructor(title,author,pubDate) {
+        this.title = title;
+        this.author = author;
+        this.pubDate = pubDate;
+    }
+
+    print() {
+        console.log(`
+            Title: ${ this.title }
+            By: ${ this.author }
+            ${ this.pubDate }
+        `);
+    }
+}</code></pre></div>
+<p>Esta clase <code>Publication</code> define un conjunto de comportamiento común que cualquier publicación podría necesitar.</p>
+<p>Ahora consideremos tipos más específicos de publicación, como <code>Book</code> y <code>BlogPost</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">class Book extends Publication {
+    constructor(bookDetails) {
+        super(
+            bookDetails.title,
+            bookDetails.author,
+            bookDetails.pubDate
+        );
+        this.publisher = bookDetails.publisher;
+        this.ISBN = bookDetails.ISBN;
+    }
+
+    print() {
+        super.print();
+        console.log(`
+            Publisher: ${ this.publisher }
+            ISBN: ${ this.ISBN }
+        `);
+    }
+}
+
+class BlogPost extends Publication {
+    constructor(title,author,pubDate,URL) {
+        super(title,author,pubDate);
+        this.URL = URL;
+    }
+
+    print() {
+        super.print();
+        console.log(this.URL);
+    }
+}</code></pre></div>
+<p>Tanto <code>Book</code> como <code>BlogPost</code> usan la cláusula <code>extends</code> para <em>extender</em> la definición general de <code>Publication</code> e incluir comportamiento adicional. La llamada <code>super(..)</code> en cada constructor delega al constructor de la clase padre <code>Publication</code> para su trabajo de inicialización, y luego hacen cosas más específicas según su respectivo tipo de publicación (es decir, "sub-clase" o "clase hija").</p>
+<p>Ahora considerá el uso de estas clases hijas:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var YDKJS = new Book({
+    title: "You Don't Know JS",
+    author: "Kyle Simpson",
+    pubDate: "June 2014",
+    publisher: "O'Reilly",
+    ISBN: "123456-789"
+});
+
+YDKJS.print();
+// Title: You Don't Know JS
+// By: Kyle Simpson
+// June 2014
+// Publisher: O'Reilly
+// ISBN: 123456-789
+
+var forAgainstLet = new BlogPost(
+    "For and against let",
+    "Kyle Simpson",
+    "October 27, 2014",
+    "https://davidwalsh.name/for-and-against-let"
+);
+
+forAgainstLet.print();
+// Title: For and against let
+// By: Kyle Simpson
+// October 27, 2014
+// https://davidwalsh.name/for-and-against-let</code></pre></div>
+<p>Notá que ambas instancias de las clases hijas tienen un método <code>print()</code>, que fue una sobrescritura del método <code>print()</code> <em>heredado</em> de la clase padre <code>Publication</code>. Cada uno de esos métodos <code>print()</code> sobrescritos de las clases hijas llama a <code>super.print()</code> para invocar la versión heredada del método <code>print()</code>.</p>
+<p>El hecho de que tanto el método heredado como el sobrescrito puedan tener el mismo nombre y coexistir se llama <em>polimorfismo</em>.</p>
+<p>La herencia es una herramienta poderosa para organizar datos/comportamiento en unidades lógicas separadas (clases), pero permitiendo que la clase hija coopere con el padre accediendo/usando su comportamiento y sus datos.</p>
+<h3 id="módulos">Módulos</h3>
+<p>El patrón de módulo tiene esencialmente el mismo objetivo que el patrón de clase, que es agrupar datos y comportamiento juntos en unidades lógicas. También, al igual que las clases, los módulos pueden "incluir" o "acceder" a los datos y comportamientos de otros módulos, en aras de la cooperación.</p>
+<p>Pero los módulos tienen algunas diferencias importantes respecto de las clases. Lo más notable es que la sintaxis es enteramente distinta.</p>
+<h4 id="módulos-clásicos">Módulos Clásicos</h4>
+<p>ES6 agregó una forma de sintaxis de módulo a la sintaxis nativa de JS, que vamos a ver en un momento. Pero desde los primeros días de JS, los módulos fueron un patrón importante y común que se aprovechó en incontables programas JS, incluso sin una sintaxis dedicada.</p>
+<p>Las características distintivas clave de un <em>módulo clásico</em> son una función exterior (que corre al menos una vez), que devuelve una "instancia" del módulo con una o más funciones expuestas que pueden operar sobre los datos internos (ocultos) de la instancia del módulo.</p>
+<p>Como un módulo de esta forma es <em>solo una función</em>, y llamarla produce una "instancia" del módulo, otra descripción para estas funciones es "fábricas de módulos" (module factories).</p>
+<p>Considerá la forma de módulo clásico de las clases <code>Publication</code>, <code>Book</code> y <code>BlogPost</code> anteriores:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function Publication(title,author,pubDate) {
+    var publicAPI = {
+        print() {
+            console.log(`
+                Title: ${ title }
+                By: ${ author }
+                ${ pubDate }
+            `);
+        }
+    };
+
+    return publicAPI;
+}
+
+function Book(bookDetails) {
+    var pub = Publication(
+        bookDetails.title,
+        bookDetails.author,
+        bookDetails.publishedOn
+    );
+
+    var publicAPI = {
+        print() {
+            pub.print();
+            console.log(`
+                Publisher: ${ bookDetails.publisher }
+                ISBN: ${ bookDetails.ISBN }
+            `);
+        }
+    };
+
+    return publicAPI;
+}
+
+function BlogPost(title,author,pubDate,URL) {
+    var pub = Publication(title,author,pubDate);
+
+    var publicAPI = {
+        print() {
+            pub.print();
+            console.log(URL);
+        }
+    };
+
+    return publicAPI;
+}</code></pre></div>
+<p>Comparando estas formas con las formas de <code>class</code>, hay más similitudes que diferencias.</p>
+<p>La forma de <code>class</code> almacena los métodos y los datos en una instancia de objeto, a la que se debe acceder con el prefijo <code>this.</code>. Con los módulos, los métodos y los datos se acceden como variables identificadoras en el scope, sin ningún prefijo <code>this.</code>.</p>
+<p>Con <code>class</code>, la "API" de una instancia es implícita en la definición de la clase; además, todos los datos y métodos son públicos. Con la función fábrica de módulo, creás y devolvés explícitamente un objeto con cualquier método expuesto públicamente, y cualquier dato u otros métodos no referenciados permanecen privados dentro de la función fábrica.</p>
+<p>Hay otras variaciones de esta forma de función fábrica que son bastante comunes a lo largo de JS, incluso en 2020; podés toparte con estas formas en distintos programas JS: AMD (Asynchronous Module Definition), UMD (Universal Module Definition) y CommonJS (los módulos clásicos estilo Node.js). Las variaciones son menores (no del todo compatibles). Sin embargo, todas estas formas se basan en los mismos principios básicos.</p>
+<p>Considerá también el uso (es decir, la "instanciación") de estas funciones fábrica de módulos:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">var YDKJS = Book({
+    title: "You Don't Know JS",
+    author: "Kyle Simpson",
+    publishedOn: "June 2014",
+    publisher: "O'Reilly",
+    ISBN: "123456-789"
+});
+
+YDKJS.print();
+// Title: You Don't Know JS
+// By: Kyle Simpson
+// June 2014
+// Publisher: O'Reilly
+// ISBN: 123456-789
+
+var forAgainstLet = BlogPost(
+    "For and against let",
+    "Kyle Simpson",
+    "October 27, 2014",
+    "https://davidwalsh.name/for-and-against-let"
+);
+
+forAgainstLet.print();
+// Title: For and against let
+// By: Kyle Simpson
+// October 27, 2014
+// https://davidwalsh.name/for-and-against-let</code></pre></div>
+<p>La única diferencia observable acá es la ausencia del uso de <code>new</code>, llamando a las fábricas de módulos como funciones normales.</p>
+<h4 id="módulos-es">Módulos ES</h4>
+<p>Los módulos ES (ESM), introducidos al lenguaje JS en ES6, están pensados para servir prácticamente al mismo espíritu y propósito que los <em>módulos clásicos</em> recién descritos, teniendo especialmente en cuenta variaciones y casos de uso importantes de AMD, UMD y CommonJS.</p>
+<p>El enfoque de implementación, sin embargo, difiere significativamente.</p>
+<p>Primero, no hay una función envolvente para <em>definir</em> un módulo. El contexto envolvente es un archivo. Los ESM están siempre basados en archivos; un archivo, un módulo.</p>
+<p>Segundo, no interactuás con la "API" de un módulo explícitamente, sino que usás la palabra clave <code>export</code> para agregar una variable o un método a su definición de API pública. Si algo se define en un módulo pero no se hace <code>export</code>, entonces permanece oculto (tal como con los <em>módulos clásicos</em>).</p>
+<p>Tercero, y quizás lo más notablemente distinto de los patrones discutidos previamente, no "instanciás" un módulo ES, simplemente lo hacés <code>import</code> para usar su única instancia. Los ESM son, en efecto, "singletons", en el sentido de que solo hay una instancia creada, en el primer <code>import</code> en tu programa, y todos los demás <code>import</code> simplemente reciben una referencia a esa misma instancia única. Si tu módulo necesita soportar múltiples instanciaciones, tenés que proveer una función fábrica <em>al estilo de módulo clásico</em> en tu definición de ESM para ese propósito.</p>
+<p>En nuestro ejemplo en curso, asumimos múltiple instanciación, así que los siguientes fragmentos van a mezclar tanto ESM como <em>módulos clásicos</em>.</p>
+<p>Considerá el archivo <code>publication.js</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">function printDetails(title,author,pubDate) {
+    console.log(`
+        Title: ${ title }
+        By: ${ author }
+        ${ pubDate }
+    `);
+}
+
+export function create(title,author,pubDate) {
+    var publicAPI = {
+        print() {
+            printDetails(title,author,pubDate);
+        }
+    };
+
+    return publicAPI;
+}</code></pre></div>
+<p>Para importar y usar este módulo, desde otro módulo ES como <code>blogpost.js</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">import { create as createPub } from "publication.js";
+
+function printDetails(pub,URL) {
+    pub.print();
+    console.log(URL);
+}
+
+export function create(title,author,pubDate,URL) {
+    var pub = createPub(title,author,pubDate);
+
+    var publicAPI = {
+        print() {
+            printDetails(pub,URL);
+        }
+    };
+
+    return publicAPI;
+}</code></pre></div>
+<p>Y finalmente, para usar este módulo, lo importamos dentro de otro módulo ES como <code>main.js</code>:</p>
+<div class="code-block" data-lang="js"><button class="copy-btn" title="Copiar código">Copiar</button><pre><code class="lang-js">import { create as newBlogPost } from "blogpost.js";
+
+var forAgainstLet = newBlogPost(
+    "For and against let",
+    "Kyle Simpson",
+    "October 27, 2014",
+    "https://davidwalsh.name/for-and-against-let"
+);
+
+forAgainstLet.print();
+// Title: For and against let
+// By: Kyle Simpson
+// October 27, 2014
+// https://davidwalsh.name/for-and-against-let</code></pre></div>
+<div class="callout callout-nota"><div class="callout-head"><span class="callout-ico">📝</span>NOTA</div><div class="callout-body"><p>La cláusula <code>as newBlogPost</code> en la <code>import</code> statement es opcional; si se omite, se importaría una función de nivel superior simplemente llamada <code>create(..)</code>. En este caso, la estoy renombrando por el bien de la legibilidad; su nombre de fábrica más genérico <code>create(..)</code> se vuelve más descriptivo semánticamente de su propósito como <code>newBlogPost(..)</code>.</p></div></div>
+<p>Como se muestra, los módulos ES pueden usar <em>módulos clásicos</em> internamente si necesitan soportar múltiple instanciación. Alternativamente, podríamos haber expuesto una <code>class</code> desde nuestro módulo en lugar de una función fábrica <code>create(..)</code>, con prácticamente el mismo resultado. Sin embargo, dado que a esa altura ya estás usando ESM, recomendaría quedarse con los <em>módulos clásicos</em> en lugar de <code>class</code>.</p>
+<p>Si tu módulo solo necesita una única instancia, podés saltarte las capas extra de complejidad: hacé <code>export</code> de sus métodos públicos directamente.</p>
+<h2 id="la-madriguera-del-conejo-se-profundiza">La Madriguera del Conejo se Profundiza</h2>
+<p>Como se prometió al comienzo de este capítulo, acabamos de dar un vistazo a una amplia superficie de las partes principales del lenguaje JS. Tu cabeza quizás todavía esté dando vueltas, ¡pero eso es completamente natural después de semejante chorro de información!</p>
+<p>Incluso con este "breve" repaso de JS, cubrimos o insinuamos un montón de detalles que deberías considerar cuidadosamente y asegurarte de sentirte cómodo con ellos. Hablo en serio cuando sugiero: releé este capítulo, quizás varias veces.</p>
+<p>En el próximo capítulo, vamos a profundizar mucho más en algunos aspectos importantes de cómo funciona JS en su núcleo. Pero antes de seguir esa madriguera del conejo más hondo, asegurate de haberte tomado el tiempo adecuado para digerir completamente lo que acabamos de cubrir acá.</p>
+    </article>
+    <nav class="pager">
+      <a class="pager-btn prev" href="../get-started/ch1.html"><span class="pager-dir">← Anterior</span><span class="pager-name">Cap. 1 · ¿Qué es JavaScript?</span></a>
+      <a class="pager-btn next" href="../get-started/ch3.html"><span class="pager-dir">Siguiente →</span><span class="pager-name">Cap. 3 · Cavando en las raíces de JS</span></a>
+    </nav>
+  </main>
+  <aside class="toc" id="toc">
+    <div class="toc-title">En esta página</div>
+    <ul class="toc-list">
+<li class="toc-l2"><a href="#cada-archivo-es-un-programa">Cada Archivo es un Programa</a></li>
+<li class="toc-l2"><a href="#valores">Valores</a></li>
+<li class="toc-l3"><a href="#arrays-y-objetos">Arrays Y Objetos</a></li>
+<li class="toc-l3"><a href="#determinación-del-tipo-de-valor">Determinación del Tipo de Valor</a></li>
+<li class="toc-l2"><a href="#declarar-y-usar-variables">Declarar y Usar Variables</a></li>
+<li class="toc-l2"><a href="#funciones">Funciones</a></li>
+<li class="toc-l2"><a href="#comparaciones">Comparaciones</a></li>
+<li class="toc-l3"><a href="#igualito">Igual...ito</a></li>
+<li class="toc-l3"><a href="#comparaciones-coercitivas">Comparaciones Coercitivas</a></li>
+<li class="toc-l2"><a href="#cómo-organizamos-en-js">Cómo Organizamos en JS</a></li>
+<li class="toc-l3"><a href="#clases">Clases</a></li>
+<li class="toc-l3"><a href="#módulos">Módulos</a></li>
+<li class="toc-l2"><a href="#la-madriguera-del-conejo-se-profundiza">La Madriguera del Conejo se Profundiza</a></li>
+</ul>
+  </aside>
+</div>
+<button class="top-btn" id="topBtn" title="Volver arriba" aria-label="Volver arriba">↑</button>
+<script src="../app.js"></script>
+</body>
+</html>
